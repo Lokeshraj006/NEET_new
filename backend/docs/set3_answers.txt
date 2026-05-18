@@ -1,0 +1,711 @@
+FINAL SHOT - MOCK TEST
+(Academic Session : 2023 - 2024)
+TARGET : PRE-MEDICAL 2024
+Test No. : 03 Test Pattern : NEET (UG)
+ANSWER KEY
+Q. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+A. 4 4 3 3 3 4 2 4 2 3 1 2 2 3 3 2 1 4 2 4 1 3 4 4 2 2 3 4 3 4
+Q. 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60
+A. 3 1 2 1 3 1 2 3 1 1 3 4 3 3 1 2 2 1 3 1 3 4 1 3 1 2 3 3 2 1
+Q. 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90
+A. 3 4 1 2 3 4 1 1 2 4 1 1 4 2 1 1 2 4 2 4 4 3 1 1 4 1 1 3 4 1
+Q. 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120
+A. 2 3 3 1 1 2 3 2 1 4 2 4 3 4 3 1 1 2 2 3 3 3 1 2 3 3 1 1 3 1
+Q. 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150
+A. 4 1 1 4 2 4 4 4 4 2 2 2 2 3 3 3 3 3 1 2 1 1 3 1 1 2 4 3 3 4
+Q. 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180
+A. 2 3 3 1 2 3 1 4 2 1 4 3 1 3 3 4 2 4 2 1 4 4 4 2 2 3 1 4 2 3
+Q. 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200
+A. 3 4 4 3 1 4 1 2 3 1 2 4 3 4 3 4 2 1 2 3
+HINT – SHEET
+4. Ans ( 3 )
+SUBJECT : PHYSICS
+∈ A
+C = 0
+SECTION - A O d
+∈ A ∈ A
+1. Ans ( 4 ) C = 0 = 0
+K
+d−t+ t d− d + d
+k 3 3×2
+V – V – iR = 0 6 ∈ A 6
+D C = 0 = C
+O
+5 d 5
+0 – V – 1(2) = 0
+C 5. Ans ( 3 )
+At r = R
+V = –2V
+C
+kQ
+E =
+2. Ans ( 4 )
+R2
+i (R + r) = i (R + r) At r = 3R/2
+1 1 2 2
+kQ 4 kQ 4E
+E′ = = =
+1(2 + r) = 0.25 (11 + r) (3R/2)2 9 R2 9
+6. Ans ( 4 )
+r = 1Ω
+2π√M
+Time period T =
+K
+3. Ans ( 3 ) M + M
+T′ = 2π√ 2 = 2π √3M
+ε K 2K
+V = ir = r
+3
+R+r ∴ T′ = √ T
+2
+1001CMD303029230166 HS-1/11
+
+TARGET:PRE-MEDICAL 2024/03
+7. Ans ( 2 ) 12. Ans ( 2 )
+Q kA(T 1 −T 2) Escape Velocity = √ 2GM =√2G .(4 πR3ρ)
+= ∝ (T −T )
+1 2 R R 3
+t L
+∝ R√ρ
+4 220−200
+=
+(Q/t) 2 440−400 ∴ Ratio, v e = 1 : 2√2
+v
+p
+Q
+( ) = 8 J/s 13. Ans ( 2 )
+t
+2 2M ×0+M(2√ 2)+M ×0
+1
+x = =
+8. Ans ( 4 ) cm
+4M √2
+→ ^ ^ ^
+Here F = 4i +5j −6k and 2M ×0+M ×0+M(2√ 2)
+1
+y = =
+cm
+4M √2
+→ ^ ^ ^ ^ ^
+r =(2−2)i +(0−(−2))j +(−3−(−2))k = 2j −1k
+∣ i^ j^ k^ ∣ → r = 1 (i^ +j^)
+∣ ∣ √
+2
+→ r ×F→ = ∣ ∣ 0 2 −1∣ ∣ =−7i^ −4j^ −8k^
+∣ ∣
+14. Ans ( 3 )
+∣ ∣
+∣4 5 −6∣
+V 2 = 02 + 2(α r) (n 2πr)
+0
+9. Ans ( 2 )
+5 MR2 5 V 02
+I = . = MR2 ⇒ α =
+6 2 12 4πnr2
+15. Ans ( 3 )
+10. Ans ( 3 )
+2 2
+Y = Fℓ ⇒ Δℓ = Fℓ W =∫ Fdy = ∫ (10y+3y2)dy
+AΔℓ AY
+0 0
+(Δℓ) = (Δℓ) = [5y2 +y3]2 = 20 + 8 = 28 J
+Steel Brass
+0
+W ℓ W ℓ
+⇒ S = B 16. Ans ( 2 )
+AY AY
+S B
+Length of the air column,
+W Y 2
+⇒ S = S =
+W Y 1 10–2
+B B ℓ = 40 cm = 40 × m
+11. Ans ( 1 )
+Frequency of tuning fork, n = 450 Hz
+T = 2πr = 2πr √r (as ν =√ GM )
+In resonance, the frequency of tuning fork will
+v √ r
+GM
+be equal to frequency of air column.
+2π 4π2
+T = r3/2 ⇒ T2 = · r3
+v
+√ GM GM n = (where, v is the velocity of sound)
+4ℓ
+4π2 or V = n × 4ℓ = 450 × 4 × 0.4 ms–1
+Comparing K =
+GM
+–1
+= 720 ms
+HS-2/11 1001CMD303029230166
+
+FINAL SHOT - MOCK TEST/03
+17. Ans ( 1 ) 20. Ans ( 4 )
+Restoring force of spring is
+The standard equation to wave is
+F = – kx
+y = a sin(kx – ωt) .......(i) F ∝ −x
+Where, ω is angular velocity and t is time.
+Given, equation is
+y = a sin (0.01x – 2t) .......(ii)
+Comparing the given equation with standard
+22. Ans ( 3 )
+waveform, we get
+kx = 0.01x and ωt = 2t
+∴ k = 0.01 and ω = 2
+ω 2
+Thus, velocity = = = 200cm/s
+k 0.01
+∴ Velocity of propagation of the wave is
+f = –25 cm
+2
+200 cm/s.
+f = f = 40 cm
+1 3
+1 1 1 1 1
+18. Ans ( 4 ) ∵ = + + and P =
+f f f f f (m)
+A1/2B2 net 1 2 3 net
+1 1 1 1
+X = ∴ = − +
+C3D1/3 f 40 25 40
+net
+2 1 1
+Δx 1 ΔA 2ΔB 3ΔC 1 ΔD = − =
+= + + + 40 25 100cm
+x 2 A B C 3 D 100 1
+∴ P = = 1D or f = = 1m = 100 cm
+1 1 100 P
+% change = ×2%+2×1+3×3+ ×3
+2 3 23. Ans ( 4 )
+According to mirror formula
+= 1 + 2 + 9 + 1
+1 1 1 uf
++ = or v =
+v u f u−f
+= 13%
+1 1 1
+Again, + =
+v′ (u+L) f
+19. Ans ( 2 ) (u+L)f
+v′ =
+u+L−f
+1×10
+a = = 5 m/s2 uf (u+L)f f2L
+1+1 L′=v−v′= − =
+u−f u+L−f (u−f)(u+L−f)
+Since the object is short, i.e., u >> L
+1 1
+2 2
+s = ut + at = 0 + × 5 × 2 = 10m
+2
+2 2 f
+∴ L′ = L( )
+u−f
+1001CMD303029230166 HS-3/11
+
+TARGET:PRE-MEDICAL 2024/03
+24. Ans ( 4 ) 28. Ans ( 4 )
+Fringes are formed at same spot means fringes hc hc
+eV = − ...(i)
+λ λ 0
+coincide
+eV hc hc
+= − ...(ii)
+n 1λ 1 = n 2λ 2 4 2λ λ 0
+(n + 4) 5200Å = (n) 7800Å
+From equation (i) and (ii)
+(n + 4)4 = 6n
+1 1
+−
+n = 8 ⇒ 4 = λ λ 0 On solving λ = 3λ
+0
+1 1
+−
+25. Ans ( 2 ) 2λ λ
+0
+I = I cos2 ϕ 29. Ans ( 3 )
+m
+2
+In (a) & (c) circuits, both the junctions are in
+I ϕ
+m = I cos2 ⇒ ϕ = 90∘
+m
+2 2
+same biasing conditions so offers equal
+λ
+Δx =
+4 resistances.
+D D λ
+y = ×Δx = × Since both are in series, therefore equal potential
+d d 4
+will drop across the junction.
+26. Ans ( 2 )
+For electron 30. Ans ( 4 )
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+y = (A+B)+(A+B) = (A+B) ⋅ (A+B)
+12.27
+λ = Å
+√
+V
+(By De'Morgans theorem)
+V = 25 kV λ = l
+1 1
+= (A + B) .(A + B)
+V = 100 kV λ = l'
+2 2
+= A + B ⇒ OR Gate
+λ′ = √ 25kV = 1 ⇒ λ' = 1 λ
+λ 100kV 2 2 31. Ans ( 3 )
+For zener diode → Doping is high & Depletion
+27. Ans ( 3 )
+P = 200 W, λ = 0.6 mm region is thin & It is operated in Reverse Bias
+region & Zener voltage (V ) is constant
+24 –6 z
+n = 5 × 10 × 200 × 0.6 × 10
+33. Ans ( 2 )
+20
+n = 6 × 10
+V 0(1−e−R Lt) 1 (1−e−1 3.5×2)
+I = =
+R 1.5
+but efficiency is 25% so
+1
+25 = (1−0.37) = 0.21 A
+n' = ×6×1020 = 1.5 × 1020 3
+100
+HS-4/11 1001CMD303029230166
+
+FINAL SHOT - MOCK TEST/03
+34. Ans ( 1 ) 38. Ans ( 3 )
+E = c B
+peak peak 1 20 1
+= 3 × 108 × 2 × 4π × 10–7 η = 1+β ⇒ 100 = 1+β ⇒ β = 4
+= 753 volt/m
+Q Q
+β = 2 ⇒ 4 = 2
+S^ = 1 (E^ ×B^ ) W 20
+μ
+0
+→ ^ ^
+Since B is in −i & wave is travelling towards k, ⇒ Q = 80 J
+2
+→ ^
+∴ E is towards j
+39. Ans ( 1 )
+∴ Equation of electric field
+E→ = 753 cos(ωt – kz)j^ COP = T L
+T −T
+H L
+35. Ans ( 3 )
+240
+Susceptibility 𝛘 = 99 15 =
+T −240
+μ H
+μ = = 1+χ
+r
+μ
+0
+μ = μ 0(1+χ) TH = 256 K = –17°C
+= 4π×10−7[1+99]
+40. Ans ( 1 )
+= 4π×10−5
+P RT PM
+= ⇒ ρ = W
+SECTION - B ρ M w RT
+498×103 ×2×10−3
+36. Ans ( 1 ) ρ =
+8.3×400
+V 2 (10)2
+P = ⇒ R = = 4Ω
+R eq 25
+eq ρ = 0.3 kg/m3
+−1
+1 1
+⇒ ( + ) = 4Ω
+R 6
+41. Ans ( 3 )
+⇒ R = 12 Ω
+1
+According to wein's law, λ ∝ when
+m
+37. Ans ( 2 ) T
+temperature is increased, the peak emission
+wavelength of a black body shifts to lower
+wavelength.
+42. Ans ( 4 )
+a2 −b2 +c2
+V = k4πσ[ ] Centre of mass may lie on centre of gravity net
+A
+a
+= k4πσ (2C) torque of gravitational pull is zero about centre
+a2 −b2 +c2
+V B = k4πσ[ + ] of mass.
+a b
+ac Load
+= k4πσ[ ] Mechanical advantage = > 1
+b Effort
+a2 −b2 c2
+V = k4πσ[ − + ] = k4πσ(2C) ⇒ Load > Effort
+C
+a b c
+1001CMD303029230166 HS-5/11
+
+TARGET:PRE-MEDICAL 2024/03
+43. Ans ( 3 ) 47. Ans ( 2 )
+f = 20 m = 2000 cm
+1 2 2 2 0
+mgh = mv (1 + K /R )
+2 f = 2 cm
+e
+for Normal adjustment
+1 1
+⇒10 h = (100) (1+ )
+f −2000
+2 2 → M.P. = − 0 = = −1000
+f 2
+e
+10×3 15 → Distance between both lens = f 0 + f e
+⇒ h = = m
+4 2
+= 2000 + 2
+= 2002 cm
+h 15 2
+S = = . = 15 m
+sin30∘ 2 1 = 20.02 m
+→ Image is inverted and magnified
+44. Ans ( 3 )
+→ Aperture of eye piece is smaller than
+As surface area decreases so energy is released.
+objective.
+48. Ans ( 1 )
+Released energy
+Statement (C) is correct because, the magnetic
+4πR2 T[n1/3–1] n1/3 field outside the toroid is zero and they form
+= where R = r
+closed loops inside the toroid itself.
+1 1 1 1
+= 4πR3 T[ − ] = 3VT[ − ] Statement (E) is correct because we know that
+r R r R
+super conductors are materials inside which the
+45. Ans ( 1 )
+net magnetic field is always zero and they are
+–1 3 –2
+Gravitational constant = [M L T ] perfect diamagnetic.
+µ = 1 + 𝛘
+r
+–1
+Escape velocity = [LT ]
+𝛘 = –1
+µ = 0
+2 –2 r
+Gravitational potential = [L T ]
+49. Ans ( 3 )
+–2 0.5mm
+Acceleration due to gravity = [LT ] Pitch = 0.5 mm, LC = = 0.005 mm
+100
+(1) ZE : ⇒ +ve
+46. Ans ( 2 )
+ZE = + 2 div × 0.005 mm = 0.010 mm
+3 4
+Power = 10 × 10 W = 10 J/s
+(2) Measurement :
+235 MSR = 0.5 mm × 8 = 4.0 mm
+Amount of U to operate 10 kW reactor is
+CSR = 83 × 0.005 mm = 0.415 mm
+104 ×235
+=
+6.02×1023 ×200×106 ×1.6×10−19 Corrected reading = 4.0 mm + 0.415 mm –
+(+ 0.010) mm
+–7
+= 1.22 × 10 g/s
+= 4.405 mm.
+HS-6/11 1001CMD303029230166
+
+FINAL SHOT - MOCK TEST/03
+50. Ans ( 1 ) 57. Ans ( 3 )
+Tertiary alcohol immidiatly gives cloudiness
+E 1
+Figure of merit K =
+(R+G) θ
+with leucas reagent.
+2 1 10–5 58. Ans ( 3 )
+K = . = 1.9 ×
+1 (5080) 20
+4 1 10–5
+K = . = 1.9 ×
+2 (10080) 20
+61. Ans ( 3 )
+K 1 +K 2 –5
+K = = 1.9 × 10 NCERT XII, Table 12.2, Pg # 360
+2
+69. Ans ( 2 )
+SUBJECT : CHEMISTRY
+PH has least MP & BP due to no H bond wrt NH &
+3 3
+SECTION-A
+th
+Less molar weight wrt least 15 group hydrides.
+51. Ans ( 3 )
+70. Ans ( 4 )
+→ 3-Methyl-2-butanol Fact
+71. Ans ( 1 )
+52. Ans ( 4 )
+n
+No. of SI = 2 | n = 3 (Stereo centre)
+3
+= 2 = 8
+54. Ans ( 3 )
+72. Ans ( 1 )
+Due to Resonance + Hyperconjugation
+AgBr + 2Na S O → Na [Ag(S O ) ] +
+(s) 2 2 3(aq) 3 2 3 2
+55. Ans ( 1 )
+NaBr
+Stability order :- Aromatic > Non Aromatic >
+73. Ans ( 4 )
+Anti Aromatic
+Ni+2 −O −H −→−
++ 2 dmg [Ni(dmg) ]
+2
+56. Ans ( 2 )
+74. Ans ( 2 )
+d[SO 3] 40 min–1 1 min–1
+= mol = mol
+dt 80 2
+−d[O 2] 1 d[SO 3] 1 1 1 –1
+= × = × = mol min
+dt 2 dt 2 2 4
+–1
+= 8 g min
+1001CMD303029230166 HS-7/11
+
+TARGET:PRE-MEDICAL 2024/03
+75. Ans ( 1 ) 85. Ans ( 4 )
+r ∝ [C]1 [For first order reaction] NCERT (2021), Part-I, Pg # 169
+3×10−4
+r C 3 SECTION-B
+1 = 1 = =
+r 2 C 2 2×10−4 2
+87. Ans ( 1 )
+2.303 C
+k = log 1
+t −t C
+75 25 2
+–1
+k = 0.008290 min
+0.693 0.693
+t = =
+1/2 k 0.008290
+= 83.33 min
+76. Ans ( 1 )
+1 3
+Po( )+Po( ) = 550
+A 1+3 B 1+3
+⇒ 0.25 Po + 0.75 Po = 550 mm Hg ....(1)
+A B
+On adding 1 mole B
+1 4
+Po( )+Po( ) = 560
+A 1+4 B 1+4
+⇒ 0.20 Po + 0.8 Po = 560 mm Hg ....(2)
+A B
+n n
+On solving eq (1) and eq (2)
+Po = 400 mm Hg Po = 600 mm Hg
+A B
+77. Ans ( 2 )
+90. Ans ( 1 )
+NCERT XII, Part-I Pg # 74 (Edition, 2017) 35.5 W
+AgCl
+%Cℓ = × ×100
+78. Ans ( 4 ) 143.5 W org.comp
+35.5 0.5740
+1 = × ×100 = 37.57%
+Reducing power ∝
+143.5 0.3780
+SRP
+94. Ans ( 1 )
+79. Ans ( 2 )
+Fact for vanadium, Zn has fulfilled confi.
+NCERT (2021), Part-I, Pg # 32
+96. Ans ( 2 )
+80. Ans ( 4 )
+π = icRT
+NCERT (2021), Part-I, Pg # 198
+0.369
+i = = 1.5
+81. Ans ( 4 ) 0.01×0.082×300
+NCERT (2021), Part-I, Pg # 189
+98. Ans ( 2 )
+82. Ans ( 3 ) Fe + 2Fe3+ → Fe2+ + 2Fe2+
+NCERT (2021), Part-I, Pg # 175 n = 2
+ΔG° = – nFEo
+83. Ans ( 1 ) cell
+NCERT (2021), Part-I, Pg # 17 = –2 × 96500 × 1.2
+= – 231600 J
+84. Ans ( 1 )
+NCERT (2021), Part-I, Pg # 209 = –231.6 kJ
+HS-8/11 1001CMD303029230166
+
+FINAL SHOT - MOCK TEST/03
+99. Ans ( 1 ) 115. Ans ( 3 )
+NCERT-XII Pg#88
+NCERT (2021), Part-I, Pg # 221
+116. Ans ( 3 )
+100. Ans ( 4 )
+NCERT-XII Pg#90
+NCERT (2021), Part-II, Pg # 280
+117. Ans ( 1 )
+SUBJECT : BOTANY NCERT XII Pg. No. # 264
+118. Ans ( 1 )
+SECTION - A
+NCERT XII Pg. No. # 266
+101. Ans ( 2 )
+119. Ans ( 3 )
+XI NEW NCERT Pg.# 8
+NCERT XII Pg. No. # 244
+102. Ans ( 4 ) 120. Ans ( 1 )
+NCERT (XI) Pg. # 20 NCERT XII Pg. No. # 244
+103. Ans ( 3 ) 121. Ans ( 4 )
+NCERT XI, Pg.# 36 NCERT XII Pg. No. # 233
+104. Ans ( 4 ) 122. Ans ( 1 )
+NCERT (XI) Pg. # 42 NCERT XII Pg. No. # 232
+105. Ans ( 3 ) 123. Ans ( 1 )
+NCERT XI Pg. # 78 NCERT XII Pg. No. # 95
+106. Ans ( 1 ) 124. Ans ( 4 )
+NCERT-XII Pg#31 NCERT-XII Pg#106
+107. Ans ( 1 ) 125. Ans ( 2 )
+NCERT XI Pg. # 215 NCERT-XII Pg#90
+126. Ans ( 4 )
+108. Ans ( 2 )
+NCERT-XII Pg#76
+NCERT-11th Pg # 229
+127. Ans ( 4 )
+109. Ans ( 2 )
+NCERT XI Pg # 38
+NCERT-11th Pg # 230
+128. Ans ( 4 )
+110. Ans ( 3 )
+NCERT-XI, Pg. # 249 NCERT XI Pg # 24
+111. Ans ( 3 ) 129. Ans ( 4 )
+NCERT-XII Pg. # 225 NCERT XI Pg. No. # 32,33
+130. Ans ( 2 )
+112. Ans ( 3 )
+NCERT XII Pg. # 262 NCERT XI Pg. No. # 85, 86
+113. Ans ( 1 ) 131. Ans ( 2 )
+NCERT-XII Pg#153 NCERT XI Pg. No. # 93, 94, 95, 97
+114. Ans ( 2 ) 132. Ans ( 2 )
+NCERT-XII Pg#83 NCERT XI Pg. No. # 75
+1001CMD303029230166 HS-9/11
+
+TARGET:PRE-MEDICAL 2024/03
+133. Ans ( 2 ) 150. Ans ( 4 )
+NCERT XI Pg. No. # 219 NCERT XI Pg. No. # 246
+134. Ans ( 3 )
+SUBJECT : ZOOLOGY
+NCERT XI Pg. No. # 248, 249
+SECTION - A
+135. Ans ( 3 )
+NCERT XI Pg. No. # 233 151. Ans ( 2 )
+NCERT XII Pg # 160
+SECTION - B
+154. Ans ( 1 )
+136. Ans ( 3 )
+NCERT XII (English)
+XI NEW NCERT Pg.# 5
+Page-121
+137. Ans ( 3 )
+155. Ans ( 2 )
+NCERT XI, Page # 27
+NCERT Pg # 312
+138. Ans ( 3 ) 156. Ans ( 3 )
+XI NCERT Page # 40
+NCERT Pg # 51-52
+139. Ans ( 1 ) 157. Ans ( 1 )
+NCERT-11th Pg # 212
+NCERT Pg # 63
+140. Ans ( 2 ) 158. Ans ( 4 )
+NCERT-12th NCERT Pg # 310, 311
+141. Ans ( 1 )
+159. Ans ( 2 )
+NCERT XII Pg. # 235 NCERT Pg # 53
+142. Ans ( 1 )
+160. Ans ( 1 )
+NCERT-XII Pg#81
+NCERT Pg # 90, 91
+143. Ans ( 3 )
+161. Ans ( 4 )
+NCERT-XII Pg#95
+NCERT Pg # 149
+144. Ans ( 1 )
+167. Ans ( 2 )
+NCERT XII Pg. No. # 267
+NCERT Page No. # 274
+145. Ans ( 1 )
+168. Ans ( 4 )
+NCERT-XII Pg#193
+NCERT Page No. # 339
+146. Ans ( 2 ) 169. Ans ( 2 )
+NCERT-XII Pg#61
+NCERT Page No. # 50
+147. Ans ( 4 ) 170. Ans ( 1 )
+NCERT XI Pg # 96,97 NCERT Page No. # 272-273
+148. Ans ( 3 )
+171. Ans ( 4 )
+Lady finger, Cotton, Chinarose NCERT Page No. # 111-115
+149. Ans ( 3 )
+172. Ans ( 4 )
+NCERT XI Pg. No. # 213
+NCERT Page No. # 58-59
+HS-10/11 1001CMD303029230166
+
+FINAL SHOT - MOCK TEST/03
+173. Ans ( 4 ) 185. Ans ( 1 )
+NCERT Page No. # 46-48, 50-51 NCERT-XI Pg#106
+174. Ans ( 2 )
+SECTION - B
+NCERT Page No. # 50,51,52,54
+187. Ans ( 1 )
+175. Ans ( 2 )
+NCERT, Pg # 279
+NCERT Page No. # 281
+188. Ans ( 2 )
+176. Ans ( 3 )
+NCERT XII (English)
+NCERT XI, Pg. # 121
+Page-115, 117
+177. Ans ( 1 )
+189. Ans ( 3 )
+NCERT XI Pg. # 121 Fig 10.1
+NCERT Pg # 61
+178. Ans ( 4 )
+190. Ans ( 1 )
+NCERT XI Pg. # 126
+NCERT Pg # 60-61
+179. Ans ( 2 )
+191. Ans ( 2 )
+NCERT XI Pg. # 127
+NCERT Pg # 54
+180. Ans ( 3 )
+196. Ans ( 4 )
+NCERT XI Pg. # 95,96
+NCERT Page No. # 105, 303
+181. Ans ( 3 )
+197. Ans ( 2 )
+NCERT XI Pg. # 102
+NCERT Page No. # 307
+182. Ans ( 4 )
+198. Ans ( 1 )
+NCERT XI Pg. # 96,98,101
+NCERT XI Pg. # 121,122
+183. Ans ( 4 )
+199. Ans ( 2 )
+NCERT XI Pg#108
+NCERT XI Pg. # 96,98,101,102
+184. Ans ( 3 )
+200. Ans ( 3 )
+NCERT-XI Pg#106
+NCERT-XI Pg#108
+1001CMD303029230166 HS-11/11

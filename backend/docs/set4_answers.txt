@@ -1,0 +1,582 @@
+MOCK TEST
+(Academic Session : 2023 - 2024)
+TARGET : PRE-MEDICAL 2024
+Test Type : 01 Test Pattern : NEET (UG)
+ANSWER KEY
+Q. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+A. 1 2 1 2 3 1 1 4 1 4 3 2 3 4 2 3 2 4 1 2 1 4 1 1 1 2 3 2 1 3
+Q. 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60
+A. 1 3 3 4 1 3 3 3 1 1 3 3 4 1 2 2 4 2 1 2 2 1 1 3 2 2 2 4 2 1
+Q. 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90
+A. 3 2 1 3 4 4 1 1 2 2 2 4 3 1 1 4 2 4 3 1 1 3 2 3 2 4 3 1 2 1
+Q. 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120
+A. 1 4 4 2 2 2 4 2 1 3 3 1 1 2 1 2 3 2 3 2 1 2 4 1 1 2 2 2 3 1
+Q. 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150
+A. 4 2 1 3 1 4 2 3 4 1 1 1 1 1 1 3 2 1 3 2 2 2 2 2 1 2 2 2 4 1
+Q. 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180
+A. 2 3 3 4 2 1 1 3 2 3 2 3 4 2 3 2 4 3 3 2 3 3 1 4 1 4 4 1 4 4
+Q. 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200
+A. 3 1 3 3 1 3 3 4 3 3 4 4 3 3 3 3 1 2 2 1
+HINT – SHEET
+3. Ans ( 1 )
+SUBJECT : PHYSICS
+SECTION-A
+2. Ans ( 2 )
+(LT–1 ms–1
+(a) Length (L), mass (M) and velocity ) v = a t = 2 × 10 = 20
+1
+20
+are independent. also 0 = v – a t ⇒ t = = 5s
+2 3 3 4
+–1 –2 –3 distance = area under the v-t graph
+(b) Pressure (ML T ), density (ML ) and
+1 1
+–1 = ×10×2+30×20+ ×5×20
+velocity (LT ) are dependent as 2 2
+= 100 + 600 + 50 = 750 m
+∣1 −1 −2 ∣
+∣ ∣
+∣ ∣ 4. Ans ( 2 )
+∣ 1 −3 0 ∣ =1(3−0)+1(−1−0)−2(1−0)=0
+∣ ∣ Here final and initial positions are same.
+∣0 1 −1 ∣
+w = 0
+–2 –1 g
+(c) Force (MLT ), velocity (LT ) and time
+Δk = w = w + w
+all g air
+(T) are independent as 1
+m(v2 – u2 ) = 0 + w
+∣1 1 −2 ∣ 2 air
+∣ ∣ 1
+∣ ∣ ⇒ w = × 1 × (162 – 202 ) = –72 J
+∣ 0 1 −1 ∣ =1(1−0)−1(0−0)−2(0−0)=1≠0 air 2
+∣ ∣
+∣0 0 1 ∣ 5. Ans ( 3 )
+momentum → v −→ v =→ u −→ u
+(d) Force = 2 1 1 2
+time ^ → ^ ^
+−i −v = 2i −(−i)
+1
+⇒ force, momentum and time are dependent. → ^
+v = −4i m/s
+1
+1001OMD303029230151 HS-1/8
+
+TARGET:PRE-MEDICAL 2024/01
+6. Ans ( 1 ) 12. Ans ( 2 )
+m(rω2 work done at constant pressure is
+T = + g)
+max.
+W = pΔV = nR ΔT
+ω2
+30 = 0.5(2 × + 10)
+where, p is pressure, ΔV the volume change, R
+2ω2 = 50 or ω = 5 rad/sec is the gas constant, ΔT the change is
+temperature and n is the number of moles.
+7. Ans ( 1 )
+Given, n = 1, T = 127°C = 400K
+2
+T2 ∝ r3 T = 27°C = 300 K, R = 8.31 J/mol-K
+1
+∴ W = 1 × 8. 31 × (400 – 300) ⇒ W = 831J
+3/2
+T r
+1 = ( 1 ) 13. Ans ( 3 )
+T r
+2 2
+2k.k 2k
+24 K = =
+= (4)3/2 ⇒ T = 3hrs. eq 2k+k 3
+2
+T
+2 3m
+∴ T = 2π √
+8. Ans ( 4 ) 2k
+Fℓ 14. Ans ( 4 )
+Y = ; In given problem y, ℓ, Δ ℓ are
+AΔℓ 1
+U = kx2
+constants max 2
+F ∝ πr2 or F ∝ r2 1 = 1 k(0.2)2 ⇒ k = 50
+2
+F F1 = r r2 1 = 1 2π√m 2π√ 54 2π 5√ 2
+2 4 and T = ⇒ T = = sec
+2 2 k 0
+9. Ans ( 1 ) 15. Ans ( 2 )
+torque acting on dipole is given by
+Let the radius of bigger drop is R , smaller drop
+τ = pEsinθ
+is r then
+pE
+20√3 = pEsin30∘ = or pE = 40√3
+4 4 2
+πR3 = 8× ×πr3
+potential energy of dipole in external electric
+3 3
+√
+or R = 2r ...... (i) field = U = −pEcosθ = −40√3× 3 = −60J
+2
+Terminal velocity, v ∝ r2
+16. Ans ( 3 )
+v′ R2 2r 2 V 7.5×10−4
+∴ = = ( ) = 4 μ = d =
+v r2 r E 3×10−10
+–1 μ = 2.5 × 106
+or v' = 4v = 4 × 8 = 32 cm s
+17. Ans ( 2 )
+10. Ans ( 4 )
+V 2
+1 P = R ⇒ constant
+3 3 3
+10 × × 10 + 10 × 80 + 1 × 10 × T R
+2
+2 2
+P V 55
+= 4.4 × 103 × 1 × (30 – T) P2 = ( V2) ⇒ P 2 = 500 ( 220)
+1 1
+P = 31.25 watt
+T = 8.7° C 2
+18. Ans ( 4 )
+11. Ans ( 3 )
+Given m = 4A-m, 2ℓ = 8 cm, A = 1 cm2
+M m.2ℓ m
+I = = =
+V A. 2ℓ A
+4
+4
+I = = 4 × 10 A/m
+10−4
+HS-2/8 1001OMD303029230151
+
+MOCK TEST/01
+19. Ans ( 1 ) 26. Ans ( 2 )
+0(1–e–t/λ B).(A¯¯¯¯¯¯ .¯¯ B¯¯¯
+I = I ) = (A + )
+L =10 (A+B).(A¯¯¯¯ +B¯¯¯¯
+λ = = 2 = )
+R 5
+E 15 ¯ ¯
+I = 0 = = 3 = AB+AB
+0 R 5
+3(1–e–2/2
+I = ) 27. Ans ( 3 )
+= 3(1–1/e) When a charged particle (charge q, mass m)
+20. Ans ( 2 )
+enters perpendicularly in a magnetic field (B)
+V N V
+S = S = 6 ⇒ S = 6
+V N √ then, radius of the path described by it
+P P 60 2
+⇒ V = 6 × 60√2 = 360√2 volt mv
+S r = ⇒ mv = qBr
+qB
+21. Ans ( 1 )
+h
+Also de-Broglie wavelength λ =
+C 3×108 mv
+v = =
+√μ rε r √ 1×1.44 ⇒ λ = h ⇒ λ α = q pr p = 1
+= 2.5 × 108 ms–1 qBr λ p q αr α 2
+28. Ans ( 2 )
+22. Ans ( 4 )
+f = 18/3 = 6 Hz
+Work done in PV graph is Area under the B
+f = f ± f = 341 ± 6
+curve. 2 1 B
+29. Ans ( 1 )
+23. Ans ( 1 )
+1
+For grazing at AC f =
+√
+2π LC
+3 4
+sinθ = sin 90°
+2 3 30. Ans ( 3 )
+8
+sinθ = λD
+β =
+9
+d
+for ray to reach BC
+32. Ans ( 3 )
+sin θ > 8/9
+GM 3GM 4GM
+V = − − = −
+24. Ans ( 1 ) R R R
+f 33. Ans ( 3 )
+m = ........(I)
+t
+f −u 2π π
+2 ω = =
+f
+m = ( ) .........(II) 4 2
+L
+f −u
+x = Asinωt
+m 1 f −u
+t = =
+m L ( f ) f π
+x = 5 sin t
+f−u
+2
+f −( −f ) π
+3 4f 4 3 = 5 sin ( t )
+= = = 2 1
+f 3f 3
+37
+t = sec
+25. Ans ( 1 ) 1
+90
+2λ π
+sinθ = 4 = 5 sin ( t )
+2
+a 2
+2×6328×10−10 53
+θ = t = sec
+2
+2×10−4 90
+θ = 6328×10−6rad. 53 37 16 8
+t = − = = sec
+90 90 90 45
+or θ = 0.36°
+1001OMD303029230151 HS-3/8
+
+TARGET:PRE-MEDICAL 2024/01
+34. Ans ( 4 ) 40. Ans ( 1 )
+Q = (M – M ) c2 > 0
+(i) Br Kr
+Q = (M – M – 2 ) c2 > 0
+(ii) Br Se Me
+Q = (M – M ) c2 > 0
+(ii) Br Se
+Apply voltage division formula. 43. Ans ( 4 )
+(a) Concentration of electrons is much higher
+35. Ans ( 1 )
+than concentration of holes so semiconductor is
+v −f D
+m = 0 0 (1+ )
+N-type.
+f fe
+0
+(b), (c) If pentavalent impurity is added to pure
+SECTION-B
+semiconductor like silicon or germanium, then
+36. Ans ( 3 ) its electrical conductivity increases and the
+semiconductor is called N-type semiconductor.
+(d) Energy bands in solids are a consequence of
+Pauli's exclusion principle.
+44. Ans ( 1 )
+1
+K = mu2
+L
+2
+2
+1
+K = m(√ u2 −2gℓ(1−cos180o)
+H
+2
+Path of proton will be helix 1 1
+K = mu2 − m(4gℓ)
+H
+mνsin30∘ 2 2
+r = 1
+qB K −K = m(4gℓ)
+L H
+2
+1
+1.67×10−27 ×2×106 × 1
+2 = × 1 × (4 × 10 × 1) J
+r = 2
+1.6×10−19 ×0.104 = 20 J
+r = 0.1 m
+2πm 2π ×1.67×10−27 45. Ans ( 2 )
+T = =
+qB 1.6×10−19 ×0.104
+10–7
+T = 2π × sec.
+37. Ans ( 3 )
+Conservation of angular momentum about A
+For maximum range hole must be in the middle
+of ground and liq. surface.
+⇒ MvR + Iω
+38. Ans ( 3 ) 2 V
+mv R + (mR2)( 0 )
+0
+Theory Base 5 2R
+2 V
+= mV R + ( mR2)( cm)
+39. Ans ( 1 ) cm
+5 R
+uv
+f = 6V 0
+u−v V cm = .
+7
+−x(25−x)
+6 = 46. Ans ( 2 )
+−x−(25−x)
+5 4
+−25x+x2 I = MR2 ⇒ MR2 = I ......(1)
+6 = 4 5
+−x−25+x
+3
+2
+x2 −25x+150 = 0 Now I' = MR [from eq(1)]
+2
+3 4 6
+= × I ⇒ I' = I
+x = 10 cm and 15 cm
+2 5 5
+HS-4/8 1001OMD303029230151
+
+MOCK TEST/01
+47. Ans ( 4 ) 54. Ans ( 3 )
+As x is same Spliting energy (Δ ) = [Ni(NH ) ]2+ >
+0 3 6
+So T = T
+1 2 [Ni(H O) ]2+
+2 6
+2 × 3 × 2 2 × 4 × M
+( )g = ( )g
+5 4 + M 55. Ans ( 2 )
+12
+⇒ M = kg No ambidentate ligand
+7
+49. Ans ( 1 ) ∴ No linkage isomerism
+θ 1 = 90° 56. Ans ( 2 )
+θ = 45° Δ
+2 HNO −→ HNO +H O+NO
+2 3 2
+57. Ans ( 2 )
+H-bonding in HF
+58. Ans ( 4 )
+Maximum negative Δ H = Cl,
+eg
+Minimum Δ H = P (due to P3 configuration)
+eg
+59. Ans ( 2 )
+SF = Seesaw/folded square/distorted tetrahedral
+4
+μ I√2
+B = 0 (sin 90° – sin 45°) XeF = distorted octahedral
+6
+4πR
+√ √
+μ 0I 2 2 −1
+B = ( ) BrF 5 = Square pyramidal
+μπR √ 2
+PCl = Trigonal pyramidal
+μ I 5
+B = 0 (√2−1)
+4πR
+60. Ans ( 1 )
+50. Ans ( 2 )
+SP hybridisation is called diagonal
+W = CV 2 −CV 2 = C(225−100)
+2 1 hybridisation.
+W = C(125) ....(1)
+nd 61. Ans ( 3 )
+Now in 2 case
+In vapour phase of sulphur S molecule has 2
+W′ = C[(20)2 −(15)2] = C[400−225] 2
+unpaired
+W′ = C(175)
+63. Ans ( 1 )
+(2)/(1)
+x
+W′ C(175) 10 = ×100
+= x+18
+W C(125)
+10x + 180 = 100 x
+7
+W′ = W
+5
+180 = 90 x
+SUBJECT : CHEMISTRY
+2 = x
+SECTION-A
+70. Ans ( 2 )
+51. Ans ( 2 ) C H + 2H O → C H O + 6H+ + 6e–
+14 10 2 14 8 2
+Chromyl chloride test
+1×965 1
+Moles of C H O × 6 = =
+14 8 2 96500 100
+52. Ans ( 1 )
+1
+S2– test Weight of C 14H 8O 2 = 600 ×208 = 0.35 g
+1001OMD303029230151 HS-5/8
+
+TARGET:PRE-MEDICAL 2024/01
+71. Ans ( 2 ) 84. Ans ( 3 )
+5e− +MnO− +8H+ → Mn2+ +4H O
+4 2
+0.0591 1 0.0591 1
+ΔE=− log = − log
+5 [H+]8 5 (0.01)8
+= –0.189 V
+72. Ans ( 4 )
+N O has N–O–N bond
+2 5
+73. Ans ( 3 )
+(A) is not correct but (R) is correct
+85. Ans ( 2 )
+74. Ans ( 1 )
+Lassaigne test used for detection of N, S, P and
+A →
+halogen.
+75. Ans ( 1 )
+B →
+76. Ans ( 4 )
+Conditional SECTION-B
+77. Ans ( 2 ) 87. Ans ( 3 )
+CuSO (aq) + KCN (excess) → K [Cu(CN) ]
+4 3 4
+is obtained as an intermediate.
+89. Ans ( 2 )
+Metallic nature P < Si < Be < Mg < Na
+78. Ans ( 4 ) 95. Ans ( 2 )
+Ethyl alcohol, Alkan-2-ol (secondary) π = 0.05 RT
+1
+π = 0.05 RT
+Aldehyde & Ketone having group 2
+(0.05V +0.05V)
+π = RT
+3
+2V
+can give Haloform reaction
+= 0.05 RT
+79. Ans ( 3 )
+96. Ans ( 2 )
++M stabilise carbocation.
+80. Ans ( 1 ) X →
+X → CH – CHO
+3
+reagent → NaOH
+Y →
+81. Ans ( 1 )
+Sucrose doubt shows mutarotation.
+83. Ans ( 2 )
+A → CH – CHO M & N →
+3
+B → CH – CH = CH – CHO
+3
+HS-6/8 1001OMD303029230151
+
+MOCK TEST/01
+97. Ans ( 4 ) 110. Ans ( 2 )
+NCERT XI, Pg # 73 & Module
+X → 111. Ans ( 1 )
+th
+NCERT XI Pg. # 68
+119. Ans ( 3 )
+NCERT XI Pg No. # 20, 21
+Y →
+120. Ans ( 1 )
+NCERT XIth, Page : 24, Para-2.3.3
+121. Ans ( 4 )
+NCERT Page No. # 167
+Z →
+122. Ans ( 2 )
+th
+NCERT XI Pg No. # 128,129
+125. Ans ( 1 )
+98. Ans ( 2 )
+NCERT XI Pg.No. 159
+Steam distillation
+126. Ans ( 4 )
+99. Ans ( 1 )
+NCERT XII Pg.No.87, 88, 89
+127. Ans ( 2 )
+NCERT XII Pg.# 116,117
+129. Ans ( 4 )
+NCERT-XII, Page # 89
+131. Ans ( 1 )
+NCERT XII Pg.No. 261 & 262 (15.1.2)
+SUBJECT : BOTANY
+135. Ans ( 1 )
+SECTION-A
+NCERT-XII, Pg. No. 112(E), 121(H)
+102. Ans ( 1 )
+SECTION-B
+NCERT-XI Pg # 40-42
+137. Ans ( 2 )
+103. Ans ( 1 )
+th
+NCERT XI Page No. # 164,165 and 166
+NCERT XI, Pg # 35
+138. Ans ( 1 )
+104. Ans ( 2 )
+NCERT XI Pg # 207, 208,
+NCERT XIth, Page : 23, Para-2.3.1
+139. Ans ( 3 )
+106. Ans ( 2 )
+Sesbania, Lupin, Sunhemp
+NCERT XI Page No. # 163
+140. Ans ( 2 )
+108. Ans ( 2 )
+NCERT, Pg#183
+NCERT XI Pg. # 247, Para-II
+144. Ans ( 2 )
+109. Ans ( 3 )
+NCERT-XI Pg # 31, 36, 38
+NCERT Pg. 91, 93
+1001OMD303029230151 HS-7/8
+
+TARGET:PRE-MEDICAL 2024/01
+145. Ans ( 1 ) 169. Ans ( 3 )
+NCERT–XI, Pg#135 Module 8 Pg.# 73
+146. Ans ( 2 ) 170. Ans ( 2 )
+NCERT Pg.#248, Para-V NCERT XIth Pg.#335
+147. Ans ( 2 ) 171. Ans ( 3 )
+NCERT XI, Page : 92 & 96 NCERT XII Page # 46
+172. Ans ( 3 )
+SUBJECT : ZOOLOGY
+NCERT XII Page # 47
+SECTION-A
+174. Ans ( 4 )
+151. Ans ( 2 ) NCERT(XII) Pg#54/51(H) Para: 3.7
+NCERT Pg.# 49, 50, 51
+180. Ans ( 4 )
+152. Ans ( 3 ) NCERT XII (E) Pg. 138
+NCERT Pg.# 47
+182. Ans ( 1 )
+153. Ans ( 3 ) NCERT Pg # 146
+NCERT Pg.# 51
+185. Ans ( 1 )
+154. Ans ( 4 ) NCERT-XII, Pg. # (E)-208, (H)-226
+NCERT Pg.# 58
+SECTION-B
+155. Ans ( 2 )
+186. Ans ( 3 )
+NCERT Pg.# 55
+NCERT Pg.# 49,51,53
+156. Ans ( 1 )
+188. Ans ( 4 )
+NCERT Pg. # 101
+NCERT XI Pg.No.268
+157. Ans ( 1 )
+192. Ans ( 4 )
+NCERT Pg. # 103
+NCERT Pg.# 332
+163. Ans ( 4 )
+193. Ans ( 3 )
+NCERT-XI, Pg No. 263
+NCERT Pg.# 333
+164. Ans ( 2 )
+194. Ans ( 3 )
+NCERT–XI, Pg#279,280 18.1.2
+NCERT XII Page # 43
+165. Ans ( 3 )
+196. Ans ( 3 )
+NCERT–XI, Pg#284
+NCERT-XII, Pg#61
+166. Ans ( 2 )
+197. Ans ( 1 )
+NCERT-XI, [E] Pg#319, [H] Pg#319
+NCERT XII (Bio)_Pg-153
+168. Ans ( 3 )
+199. Ans ( 2 )
+NCERT Pg.# 332
+NCERT XII, Page No. # 197, Figure-11.2
+HS-8/8 1001OMD303029230151

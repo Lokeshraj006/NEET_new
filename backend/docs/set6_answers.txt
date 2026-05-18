@@ -1,0 +1,783 @@
+ONLINE TEST SERIES CONTACT PROGRAMME
+(Academic Session : 2024 - 2025)
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE
+PHASE : 1
+TARGET : Pre-Medical 2025
+Test Type :SEMI MAJOR Test Pattern :NEET (UG)
+TEST DATE : 24-11-2024
+ANSWER KEY
+Q. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+A. 2 1 3 2 2 2 2 1 4 4 3 1 2 2 3 1 1 2 2 1 2 2 4 3 2 3 3 3 4 4
+Q. 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60
+A. 4 1 1 3 2 3 3 2 2 3 3 2 1 1 1 1 3 3 1 4 4 1 2 4 1 3 1 2 3 4
+Q. 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90
+A. 1 3 4 2 4 3 2 2 4 4 1 3 1 4 3 3 2 1 1 1 3 4 3 1 1 3 4 2 1 3
+Q. 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120
+A. 1 4 1 1 4 1 1 1 1 1 1 2 2 2 2 3 2 4 4 3 1 1 2 3 3 2 1 4 4 4
+Q. 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150
+A. 1 3 1 2 2 4 4 1 3 2 1 1 3 1 1 2 1 1 2 2 4 2 1 2 1 4 2 4 3 2
+Q. 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180
+A. 1 3 3 2 4 2 3 2 3 3 3 2 3 4 4 3 4 2 4 2 3 4 4 4 3 1 3 1 4 4
+Q. 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200
+A. 2 2 2 4 3 3 1 4 3 1 1 3 4 4 1 4 3 1 1 3
+HINT – SHEET
+3. Ans( 3 )
+SUBJECT : PHYSICS
+The energy lost per unit volume of a substance
+SECTION-A in a complete cycle of magnetisation is equal to
+1. Ans( 2 ) the area of the hysteresis loop.
+4. Ans( 2 )
+Current within radius r < R :
+i ir2 F = BI ℓ+BI ℓ
+I = Iπr2 = πr2 = 1 2
+in
+πR2 R2
+→ → μ ir2
+for r < R, ∮ B ⋅dℓ=μ0Iin = 0 ⇒Parabolic
+R2
+→ →
+for r > R, ∮ B ⋅dl =μ I =μ I ⇒Constant
+0 in 0
+2. Ans( 1 )
+= Bℓ(I +I ) = BIℓ
+1 2
+5. Ans( 2 )
+NΔϕ ϕ −ϕ BA−0 BA
+Q = = 2 1 = =
+R R R R
+9610ZMD801500240001 HS-1/12
+
+Target:Pre-Medical 2025/24-11-2024
+6. Ans( 2 ) 11. Ans( 3 )
+|e| 12 2π
+L = = = 15H ω h =
+di/dt 48/60 12×60×60
+2π
+7. Ans( 2 ) ω =
+s 60
+ω 1
+h =
+a = kt
+ω 720
+s
+12. Ans( 1 )
+dv
+= kt
+dt T ∝ R2, if radius becomes half then time period
+dv = kt dt 1 24
+becomes of the previous value i.e. = 6
+4 4
+v
+hours.
+∫ dv = k∫ t dt
+Hence, the correct answer is option (a).
+u
+t2
+v−u = k 13. Ans( 2 )
+2
+kt2 Diameter = M.S.R.+(f ×L.C.)
+v = u+
+2 1mm
+Diameter = 1 mm + 42 ×
+ds kt2 100
+= u+
+142
+dt 2 Diameter = mm
+kt2 100
+∫ ds =∫ (u+ )dt 71
+2 Diameter = mm
+50
+k t3
+s = ut+ ⇒ So ; x = 71
+2 3
+14. Ans( 2 )
+kt3
+s = ut+
+6
+8. Ans( 1 )
+dm
+F = u( ) = 3000 × 4 = 12000 N
+dt
+9. Ans( 4 ) 2 2
+v' = v + 2gL = gL + 2 gL = 3gL
+dv 0.25×[(10)−(−10)] When the string is horizontal
+Force = m = = 25
+dt 0.01
+v′2
+× 20 = 500 N a = = 3g
+c
+L
+10. Ans( 4 ) 15. Ans( 3 )
+W = 0
+ext
+1 m m
+W = ΔKE = – 1 (→ v −→ v )2 OR
+int 2 (m +m ) 1 2
+1 2
+K – K
+f i
+1 5×5
+W = × (2−(−2))2
+int 2 (5+5)
+Reading = Tension of spring
+1 5
+2m m g W = − × ×16
+= 1 2 int 2 2
+m +m
+1 2 W = –20J
+int
+HS-2/12 9610ZMD801500240001
+
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE/Phase-1/24-11-2024
+16. Ans( 1 ) 20. Ans( 1 )
+When lift moves up with constant acceleration By WET
+a, then Wg + W = 0
+fr
+w – mg = ma ....(i) mg sin(30°) × 10 + W = 0
+1 fr
+W = – mg sin(30°) × 10
+fr
+1
+W = –1 × 10 × × 10 = –50 J
+fr
+2
+21. Ans( 2 )
+v = –10t + 20
+a = –10
+When lift moves down with constant F = –20
+acceleration a, then Displacement = Area under v – t curve
+mg – w = ma ....(ii) 1
+2
+= × 2 × 20 = 20 m
+2
+→
+→
+Work done F.ds = – 20 × 20 = –400 J
+OR
+WET
+W = k2 −k2
+f i
+1 1
+W = mv2 − mu2
+From eqs. (i) and (ii), we get 2 2
+here v = 0 u = 20 (By graph)
+w + w = 2 mg ....(iii)
+1 2
+22. Ans( 2 )
+When lift moves up with constant speed, its
+acceleration is zero For cylinder,
+So, w – mg = 0 K2 1
+=
+w = mg ....(iv) R2 2
+So, acceleration,
+From eqs. (iii) and (iv), we get
+gsinθ gsin60∘ g
+w 1 + w 2 = 2w ⇒ w = w 1 + 2w 2 a = 1+ K2 = 1+ 1 = √3
+R2 2
+17. Ans( 1 )
+23. Ans( 4 )
+For A
+τ 1000N −m
+α = ⇒ α = ⇒ α = 5 rad/sec2
+v = u – gt (in upward direction) I 200kg−m2
+A
+st
+For B Using 1 equation
+v = gt (in downward direction) ω = ω + αt
+B f i
+As two balls are moving in opposite direction ω = 0 + (5)(3) = 15 rad/sec
+f
+v = v + v = (u – gt) + gt = u 24. Ans( 3 )
+AB A B
+18. Ans( 2 )
+√h
+v 2 1
+e = 2 = 2 = =
+v 1 √ h 1 4 2
+19. Ans( 2 )
+F.B.D of block A
+at x = x , F = 0
+2 R = 5 + 3g
+dF
+< 0 (for stable equilibrium) = 5 + 30
+dx
+= 35 N
+9610ZMD801500240001 HS-3/12
+
+Target:Pre-Medical 2025/24-11-2024
+25. Ans( 2 ) 29. Ans( 4 )
+Capacitance of sphere is given by :
+C = 4π∈ r
+0
+Let, charge q be placed at P. If, C = 1F then radius of sphere needed :
+C 1
+r = =
+At point P forces due to 20 μC & –5μC should 4π∈ 4π×8.85×10−12
+0
+1012
+⇒ r = = 9×109m
+be in opposite direction.
+4π×8.85
+9
+9 × 10 m is very large, it is not possible to
+obtain such a large sphere. Infact earth has
+6
+radius 6.4 × 10 m only and capacitance of earth
+→
+For net force F = 0 & from coulomb's law force is 711 μF.
+kq q 20q k5q 30. Ans( 4 )
+F = 1 2 ⇒ k = ⇒ x = 5cm
+r2 (5+x)2 x2
+t2 20
+26. Ans ( 3 ) Charge, q = ∫ I.dt = ∫ (20+3t)dt
+Inside the cavity net charge is zero. t1 0
+3t2 ∣20
+∴ Q = 0 and σ = 0 = 20t+ ∣ = 1000C
+1 1 2 ∣
+0
+There is no effect of point charges +Q, –Q and 31. Ans( 4 )
+induced charge on inner surface on the outer
+In parallel combination, equivalent resistance,
+surface. R R ℓ ρ ρ ℓ
+R = 1 2 = ⋅ 1 2 [∵ R = ρ ]
+∴ Q = 0 and σ = 0 R 1 +R 2 A ρ 1 +ρ 2 A
+2 2 25×10−2 1.7×2.6×10−16
+27. Ans( 3 ) or, R = × ∴ R =
+3×10−6 4.3×10−8
+0.858mΩ
+For spherical shell
+32. Ans( 1 )
+1 Q
+E = (if r ≥ R)
+4πε 0 r2
+= 0 (if r < R)
+Force on charge in electric field, F = qE
+8−2 6
+∴ F = 0 (For r < R) I = = = 1A
+2+4 6
+1 Qq Applying Kirchhoff voltage law, KVLC to B
+F = (For r > R)
+4πε 0 r2 V C – 2 – 4 × 1 = V B
+28. Ans( 3 )
+V – V = 6V
+C B
+The circuit can be reduced to 33. Ans( 1 )
+They have high resistivity, low-temperature
+coefficient of resistance ability to attain good
+resistance values in small size.
+34. Ans( 3 )
+The equivalent capacitance of the combination
+E = K + U = 100 + 200 = 300.0 J
+is
+ΔE = ΔK + ΔU = 2.0 + 1.0 = 3.0 J
+C = C + C = 2C
+eq ΔE 3.0
+% = ×100 = 1%
+E 300.0
+HS-4/12 9610ZMD801500240001
+
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE/Phase-1/24-11-2024
+35. Ans( 2 ) 38. Ans( 2 )
+L.C. = 1 MSD – 1 VSD .....(1) By the movement of both the magnets, current
+& 1 MSD = 1 mm
+will be anticlockwise, as seen from left side, i.e.,
+χMSD = N VSD
+plate 1 will be positive and 2 will be negative.
+x
+1 VSD = MSD
+N
+Now by equation (1)
+1 x
+cm = 1mm− (1mm)
+20N N
+10 x
+mm = 1mm(1− )
+20N N
+x 1 2N −1 39. Ans ( 2 )
+= 1− =
+N 2N 2N
+x y z
+P Q c is dimensionless
+2N −1
+x = ( )
+2 –1 –2 x –3 y –1 z 0 0 0
+[ML T ] [MT ] [LT ] = [M L T ]
+SECTION-B [Mx+y L–x+z T–2x–3y–z ] = [M0 L0 T0 ]
+36. Ans( 3 )
+Comparing powers of M, L and T
+Magnetic field at centre,
+x + y = 0 ⇒ y = –x
+μ I μ I 3 μ I 3
+B = 0 ⊗+ 0 ( )⊙+ 0 ( )⊗
+2c 2b 4 2a 4 –x + z = 0 ⇒ z = x
+As per problem,
+–2x – 3y – z = 0
+μ I 1 3 3 3 1 1 1
+0 = 0 [ − + ] ⇒ [ − ] =
+2c c 4b 4a 4 b a c x and y are equal and of opposite sign
+If c = 2a,
+x and z are equal and of same sign
+3 1 1 1 5
+[ − ] = ⇒ a = b
+4 b a 2a 3 x = 1, y = –1, z = 1
+37. Ans( 3 )
+40. Ans( 3 )
+41. Ans( 3 )
+5
+Loss in P.E. = mgh = 1.8 × 10 × 10 × 50
+5
+= 900 × 10 J
+Energy used to generate power
+900×105
+= = 12500 W
+2×3600
+12500
+Number of bulbs = = 125
+100
+9610ZMD801500240001 HS-5/12
+
+Target:Pre-Medical 2025/24-11-2024
+42. Ans( 2 ) 47. Ans( 3 )
+Mass per unit length, i.e. linear mass density
+µ ∝ x ⇒ µ = λx, λ : constant
+dm = µ dx = λx dx
+Let us consider a differential element dℓ
+3
+∫ x λx dx subtending at angle dQ at the centre Q as shown
+∫ xdm 0 in the figure. Linear charge density
+x = =
+c.m. ∫ dm 3 λ = q
+∫ λx dx
+Qr
+0 Charge on the element
+3
+∫ x2dm [x 33] 3 33 dq = ( πq )dℓ
+= = 0 = = 2 m r
+∫ x dx [x2]3 33 = q (rdθ) = (q )dθ(∵ dℓ = rdθ)
+2 0 2 πr π
+Electric field at the centre O due to dq is
+43. Ans( 1 )
+1 dq 1 q
+dE = ⋅ = ⋅ dθ
+According to parallel axes theorem, 4π∈ 0 r2 4π∈ 0 πr2
+2 2 Resolving dE into two rectangular component,
+2 R 2 R
+I AB = M( ) + M(2R)2 + M( ) we find the component dE cos θ will be counter
+5 2 5 2
+balanced by another element on left portion.
+1 21
+2 2 2
+I = 4MR + M(R) = MR Hence resultant field at O is the resultant of the
+AB 5 5
+Hence, the correct answer is option (1). component dE sinθ only.
+π
+44. Ans( 1 ) q
+∴E=∫ dEsinθ=∫ sinθdθ
+4π2r2∈
+0
+Distance increase continuously. 0
+q q q
+= [−cosθ]π= (+1+1)=
+45. Ans( 1 ) 4π2r2∈ 0 4π2r2∈ 2π2r2∈
+0 0 0
+The direction of E is towards negative y-axis
+N = mg cos θ, f = mg sin θ → q ^
+∴ E = − j
+Net force applied by M on m (or m on M) : 2π2r2∈ 0
+48. Ans( 3 )
+When switch is closed then both capacitor will
+be parallel.
+C = 2C
+eq
+1 1
+Energy E = C V 2 = ×2C×V 2
+1 eq
+F = √ N2 +f2 2 2 2
+E = CV
+1
+When switch is opened charge on right capacitor
+remain CV while potential on left capacitor
+= √ (mgcosθ)2 +(mgsinθ)2 remain same.
+Dielectric K = 5
+C' = KC
+= mg C' = 5C
+1 q2
+46. Ans( 1 ) E = C′V 2 +
+2
+2 2C′
+(CV)2
+1
+⇒ E = (5C)V 2 +
+2
+2 2(5C)
+5CV 2 CV 2 13CV 2
+T = mg ⇒ T ≥ μ 10g E 2 = + ⇒ E 2 =
+2 10 5
+⇒ mg ≥ 0.20 × 10g ⇒ m ≥ 2kg E CV 2 5 E 5
+1 = = ⇒ 1 =
+E 13CV2 13 E 13
+2 2
+5
+HS-6/12 9610ZMD801500240001
+
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE/Phase-1/24-11-2024
+49. Ans( 1 ) 53. Ans( 2 )
+There are two stereo centers (n = 2)
+n 2
+No. of stereoisomer = 2 = 2 = 4
+54. Ans( 4 )
+Current is constant in the conductor, I =
+constant
+ρdx
+Resistance of element of conductor, dR =
+πr2
+iρdx
+dV = idR =
+πr2
+dV iρ
+E = = 56. Ans( 3 )
+dx πr2
+Drift velocity,
+eEτ 1
+V = As V ∝ E and E ∝
+d d
+m r2
+50. Ans( 4 )
+57. Ans( 1 )
+In Vinylic halide halogen atom bonds with
+=
+carbon atom of C C bond.
+58. Ans( 2 )
+⊕
+sp2 hybridized carbocation [CH −CH = CH]
+Equivalent resistance, 3
+R = 4Ω is very unstable, therefore CH —CH=CH—Cl
+eq 3
+8 can not give S 1 reaction.
+Current, i = = 2A N
+4 59. Ans( 3 )
+2×3 2
+Current through R , i = = A
+4 1 3+6 3 In S 1 reaction carbocation is formed. The
+N
+2/3 1 carbocation formed at bridge heat is very
+Current through R , i = = A
+2 2
+2 3 unstable due to restricted bond angle.
+So, it is inactive towards S 1
+SUBJECT : CHEMISTRY N
+60. Ans( 4 )
+SECTION-A
+51. Ans( 4 )
+Hydrazine (NH —NH ) have no carbon so
+2 2
+does not show Lassaigne’s test.
+Stronger acid than H O due to more resonating
+2
+52. Ans( 1 )
+structure of phenoxide ion.
+The most common polar and acidic support
+61. Ans( 1 )
+used is adsorption chromatography is silicagel.
+The surface silanol groups adsorb polar
+compound and work particularly well for basic
+substances. Alumina is the example of polar
+and basic adsorbent that is used in adsorption
+chromatography.
+9610ZMD801500240001 HS-7/12
+
+Target:Pre-Medical 2025/24-11-2024
+62. Ans( 3 ) 70. Ans( 4 )
+Addition of HCN to carbonyl compound is [Ma b ] type shows fac and mer.
+3 3
+nucleophilic addition reaction. 71. Ans( 1 )
+63. Ans( 4 )
+EDTA (ion)
+Aldehyde (aliphatic and aromatic) show
+reaction with Tollen’s reagent and aliphatic
+aldehydes show Fehling solution, but Ketones
+do not show there reactions.
+72. Ans( 3 )
+64. Ans( 2 )
+SiC is a covalent carbide.
+Aminobenzene and aniline are same organic
+73. Ans( 1 )
+compounds.
+65. Ans( 4 ) As we move down in a periodic table, the lower
+oxidation state becomes more stable due to inert
+KMnO has dark purple crystals.
+4
+MnO ¯ + SO → SO 2– + Mn+2 pair effect
+4 2 4
+MnO ¯ in Mn+7 has d° configuration, still it In 13th group, order of relative stability of +1
+4
+shows colour because of ligand to metal charge oxidation state is Al < Ga < In < Tl
+transfer.
+74. Ans( 4 )
+66. Ans( 3 )
+NF , CCl → No V.O.
+3 4
+Y, Ta belongs to d-block, Yb is a part of SF → Steric Hinderance
+6
+lanthanide series.
+75. Ans( 3 )
+67. Ans( 2 )
+S O−2
+2 5
+Tungsten is having the highest melting point in
+n 5
+Here = = 2.5 S – S bond will present
+the entire 5d series. m 2
+here.
+68. Ans( 2 )
+77. Ans( 2 )
+t = 2 × t
+75% 1/2
+80. Ans( 1 )
+69. Ans( 4 ) Higher the SRP, Better the oxidising agent.
+81. Ans( 3 )
+For sucrose; π = CRT ...(i)
+1
+For AB ; π = i × CRT ...(ii)
+3 2
+Divide (i) and (ii) we get
+0.24 1
+−2 3 =
+CFSE = 6× Δ 0 + Δ 0 ×4 or (–0.4 × 6 + 0.72 i
+5 5
+i = 3
+0.6 × 4)Δ = CFSE
+0
+i = 1 + (n–1)α
+−12 12
+= Δ + Δ = 0 ⇒ (–2.4 +
+0 0
+5 5 3 = 1 + (4–1)α
+2.4)Δ = 0
+0 α = 2/3
+HS-8/12 9610ZMD801500240001
+
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE/Phase-1/24-11-2024
+82. Ans( 4 ) 91. Ans( 1 )
+SPM allows only solvent molecules to pass –NH is an ortho and para directing group, in
+2
+activates benzene ring towards electrophilic
+through it.
+substitution reaction.
+83. Ans( 3 )
+P −P in 10 3×n
+o s = 2 =
+P o n 1 +in 2 50 3n +12
+84. Ans( 1 )
+Aniline does not undergo Friedel-Crafts reaction
+Protective power of lyophilic colloid
+due to salt formation with AlCl which
+3
+85. Ans( 1 )
+deactivate ring towards electrophilic substitution
+reaction.
+SECTION-B
+86. Ans( 3 )
+(I) Lucas reagent-Conc. HCl/ZnCl
+2
+(II) Dumas method-CuO/CO 92. Ans( 4 )
+2
+KMnO can act as oxidising agent in all the
+(III) Kjeldahl’s method-H SO 4
+2 4
+mediums – neutral, acidic and alkaline media.
+(IV) Hinsberg test-C H SO Cl/aq.KOH
+6 5 2 MnO ¯ → Mn+2 (acidic medium)
+4
+87. Ans ( 4 ) MnO 4¯ → MnO (neutral medium)
+2
+MnO ¯ → MnO 2– (alkaline medium)
+4 4
+93. Ans( 1 )
+88. Ans( 2 )
+94. Ans( 1 )
+89. Ans( 1 )
+2+ 8 0
+Ni (3d 4s ), NH (SFL)
+3
+90. Ans( 3 )
+Only those aldehyde which do not have α-H
+atom undergo Cannizzaro’s reaction. Hence
+–
+Unpaired e = 2
+CH CHO will not undergo Cannizzaro reaction.
+3 √n(n+2)
+So, Magnetic moment =
+= √2(2+2) = √8 = 2.83 BM
+9610ZMD801500240001 HS-9/12
+
+Target:Pre-Medical 2025/24-11-2024
+95. Ans( 4 )
+SUBJECT : BIOLOGY-I
+–
+3C – 2e bond is present in respectively.
+SECTION-A
+104. Ans( 2 )
+NCERT-XI, Pg. # 61
+105. Ans( 2 )
+NCERT-XI, Pg. # 62
+106. Ans( 3 )
+NCERT-XI, Pg. # 61,62,66
+107. Ans( 2 )
+NCERT-XI, Pg. # 61
+108. Ans( 4 )
+NCERT-XI, Pg. # 76
+96. Ans( 1 )
+109. Ans( 4 )
+2
+R = K [H ][I] [slow], ...(i)
+1 2 NCERT-XI, Pg. # 73
+[I]2
+K = ⇒ [I]2 = K [I]2 ...(ii) 111. Ans ( 1 )
+eq eq
+[I ]
+2
+NCERT-XI, Pg. # 105
+putting ii into i we get option (1)
+112. Ans( 1 )
+97. Ans( 1 )
+NCERT-XI, Pg. # 105
+Higher the SRP, Lesser the reducing power.
+115. Ans( 3 )
+98. Ans( 1 )
+NCERT Page # 139
+116. Ans( 2 )
+NCERT Page # 138
+117. Ans( 1 )
+NCERT Page # 140
+121. Ans( 1 )
+Which means it exist is oxidised form.
+99. Ans( 1 ) NCERT-XI, Pg. # 13
+125. Ans( 2 )
+i increases, So higher the elevation in Boiling
+point. NCERT-XI, Pg. # 27
+100. Ans( 1 ) 127. Ans( 4 )
+NCERT-XI, Pg. # 32
+129. Ans( 3 )
+NCERT-XI, Pg. # 94
+131. Ans( 1 )
+n 10×2×10 100×1
+grameq.
+= 200 mg eq. 100 mg eq. NCERT-XI, Pg. # 123
+132. Ans( 1 )
+M of Acid > M of Base
+eq eq
+NCERT-XI, Pg. # 126
+HS-10/12 9610ZMD801500240001
+
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE/Phase-1/24-11-2024
+162. Ans( 2 )
+SECTION-B
+NCERT XI, Pg.# 297-298
+141. Ans( 4 )
+163. Ans( 3 )
+NCERT Page # 139
+NCERT PG 291
+145. Ans( 1 )
+164. Ans( 4 )
+NCERT-XI, Pg. # 22
+New NCERT-XI, Pg. # 218
+147. Ans( 2 )
+165. Ans( 4 )
+NCERT-XI, Pg. # 88
+NCERT, Pg # 225
+148. Ans( 4 )
+166. Ans( 3 )
+NCERT-XI, Pg. # 95
+NCERT Pg#236
+149. Ans( 3 )
+167. Ans( 4 )
+NCERT-XI, Pg. # 126
+NCERT Pg. # 319, 321
+SUBJECT : BIOLOGY-II 168. Ans( 2 )
+NCERT Page # 321
+SECTION-A
+169. Ans( 4 )
+151. Ans( 1 )
+NCERT-XI, Pg # 230,231
+NCERT, Pg. # 44, Para-4.2.8
+170. Ans( 2 )
+152. Ans( 3 )
+Posterior pituitary gland is not a true endocrine
+NCERT, Pg. # 38, Para-4.1.1
+gland because it only stores and releases
+153. Ans( 3 )
+hormones.
+NCERT Page No.- 102(old) ;
+171. Ans( 3 )
+154. Ans( 2 )
+NCERT Page # 342
+NCERT Page No.- 101(old);
+172. Ans( 4 )
+155. Ans( 4 )
+NCERT Page # 333,336
+NCERT Page No. 109
+173. Ans( 4 )
+156. Ans( 2 )
+NCERT, Pg. # 339
+NCERT-XI, Pg # 189
+174. Ans( 4 )
+157. Ans( 3 )
+NCERT Page # 57
+NCERT-XI, PG. #186
+175. Ans( 3 )
+158. Ans( 2 )
+NCERT Page # 48
+NCERT-XI, PG. #190
+176. Ans( 1 )
+159. Ans( 3 )
+NCERT Page # 47
+NCERT XI Pg. # 195
+177. Ans( 3 )
+160. Ans( 3 )
+NCERT Page # 111
+NCERT Pg # 196
+178. Ans( 1 )
+161. Ans( 3 )
+NCERT Page # 276
+NCERT, Pg. # 196, Para-15.1.3.2
+9610ZMD801500240001 HS-11/12
+
+Target:Pre-Medical 2025/24-11-2024
+179. Ans( 4 ) 190. Ans( 1 )
+NCERT Page # 284 NCERT-XII, Pg. # 187
+180. Ans( 4 ) 191. Ans( 1 )
+ATP is utilizes to contract muscle (Mechanical NCERT XI Pg.# 282 - 283
+process) 192. Ans( 3 )
+181. Ans( 2 )
+NCERT Pg # 209, 210
+NCERT Page # 321 193. Ans( 4 )
+182. Ans( 2 )
+NCERT Page no 297
+NCERT Page # 339 194. Ans( 4 )
+183. Ans( 2 )
+NCERT Page No.- 105(old);
+NCERT Page # 337 195. Ans( 1 )
+184. Ans( 4 )
+NCERT XI Pg.# 236
+NCERT Page # 294 196. Ans( 4 )
+185. Ans( 3 )
+NCERT-XI Pg. # 245, 246
+NCERT Page # 236 197. Ans( 3 )
+NCERT-XI, Pg. # 243
+SECTION-B
+198. Ans( 1 )
+186. Ans( 3 )
+NCERT Page # 111
+NCERT Pg.#44-46.
+199. Ans( 1 )
+187. Ans( 1 )
+NCERT Page # 270
+NCERT, Pg. # 50, 4.2.11.7
+200. Ans( 3 )
+188. Ans( 4 )
+NCERT Page # 287,288
+NCERT, Pg. # 47, Para-4.2.11
+189. Ans( 3 )
+NCERT Pg. # 79
+HS-12/12 9610ZMD801500240001

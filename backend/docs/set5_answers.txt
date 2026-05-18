@@ -1,0 +1,566 @@
+MOCK TEST
+(Academic Session : 2023 - 2024)
+TARGET : PRE-MEDICAL 2024
+Test No. : 02 Test Pattern : NEET (UG)
+ANSWER KEY
+Q. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+A. 1 1 1 2 2 3 1 4 3 3 1 3 2 2 3 4 4 1 1 1 3 2 2 1 1 4 1 2 2 3
+Q. 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60
+A. 3 1 1 3 1 1 3 3 1 3 3 1 2 2 1 1 4 2 1 4 4 2 3 2 3 4 4 4 2 2
+Q. 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90
+A. 1 4 2 4 2 3 2 4 4 4 2 3 3 3 2 2 4 3 3 1 3 3 3 2 4 3 1 2 4 2
+Q. 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120
+A. 2 3 2 3 4 1 2 4 1 3 2 2 1 3 2 3 3 2 3 3 3 1 4 2 3 3 3 2 3 4
+Q. 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150
+A. 2 2 4 2 2 2 2 3 2 1 1 4 2 2 3 2 1 4 2 4 3 2 2 3 1 1 2 3 1 1
+Q. 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180
+A. 1 3 4 3 2 1 4 4 2 1 1 3 2 1 3 3 3 1 4 3 3 2 2 1 3 1 2 2 4 1
+Q. 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200
+A. 3 1 4 4 3 2 4 2 1 2 1 1 3 4 4 1 1 3 2 1
+HINT – SHEET
+3. Ans ( 1 )
+SUBJECT : PHYSICS
+3g d
+= g(1− )
+SECTION-A
+4 R
+1. Ans ( 1 ) d 1
+=
+F→ (3i^ +2j^ −4k^) R 4
+=
+R
+d =
+r (1, –1, 2) r (2, –1, 3)
+1 2 4
+→ → → → → →
+τ = r ×F r = r −r
+1 2 4. Ans ( 2 )
+[→ r = (i^ −j^ +2k^ )−(2i^ −j^ +3k^ ) = (−i^ −k^ )] Breaking stress
+ℓ =
+max
+→ τ = (−i^ −k^ )×(3i^ +2j^ −4k^ ) ρg
+→ ^ ^ ^ ^ 15.8×108
+τ = −2k−4j −3j +2i = = 20km
+7.9×103 ×10
+→ (2i^ −7j^ −2k^)
+τ =
+5. Ans ( 2 )
+2. Ans ( 1 )
+1
+→ r = i^ +j^ From P 1 −P 2 = 2ρ(v2 2 −v2 1)
+→ → → 1
+L = r ×mv Force F = (P −P )A = ρA(v2 −v2)
+1 2 2 2 1
+→ ^ ^ ^ ^
+L = (i +j)×4(4i +2j)
+1
+F = ×1.28×10[(140)2 −(110)2]
+^ ^ ^ ^
+= (i +j)×(16i +8j) 2
+^
+= −8k F = 48000 N
+1001OMD303029230152 HS-1/8
+
+TARGET:PRE-MEDICAL 2024/02
+6. Ans ( 3 ) 12. Ans ( 3 )
+P = Q = σT4A R = V = tan53o = 4 Ω ; r = 10–3 m
+t I 3
+(3.14×10−6)
+4 ρℓ 4 A 4
+P ∝ r2 T4 = ⇒ ρ = =
+3 A 3 ℓ 3 (0.5)
+450 r 2 T 4 16 ρ ≈ 8 × 10–6 Ω-m
+= ( ) ×( ) = = 4
+P′ 2r T/2 4
+13. Ans ( 2 )
+450
+P′ = = 112.5 watt
+4
+7. Ans ( 1 )
+Molar specific heat = M × gram specific heat
+w
+2.98
+M = = 39.7 g
+w
+0.075
+39.7
+Mass of argon atom =
+6.023×1023
+–23
+= 6.59 × 10 g
+8. Ans ( 4 )
+Q + Q + Q = 0
+1 2 3
+μR(T −T )
+2 1
+Work done (W) =
+γ−1 C (V – V ) + C (V – V ) + C (V – V ) = 0
+1 A 0 2 B 0 3 D 0
+γ–1
+TV = const
+γ−1 3µ(10 – V 0) + 2µ(25 – V 0) + 1µ(20 – V 0) = 0
+V
+T = T ( 1) = 900 K
+2 1
+V
+2 3(10 – V ) + 2(25 – V ) + 1(20 – V ) = 0
+1×2×(900−400) 0 0 0
+W = = 1500 cal
+5 −1 30 – 3V + 50 – 2V + 20 – V = 0
+3 0 0 0
+9. Ans ( 3 )
+100 – 6V = 0
+0
+Kinetic energy at mean position. 100 50
+V = V ⇒ V = V
+0 0
+6 3
+K = 1 mV 2 ⇒ V = √ 2K max 14. Ans ( 2 )
+max max max
+2 m
+N2μ Iπ
+0
+= √ 2×16 = √100 B = ℓ
+0.32
+B ∝ N2
+K = 10 m/s
+max
+15. Ans ( 3 )
+10. Ans ( 3 ) R R
+cosϕ = =
+Z
+Here λ = 2 (l – l ) √ R2 +(X −X )2
+2 1 L C
+8
+where l = 9.75 cm, l = 31.25 cm cosϕ = = 0.8
+1 2
+10
+(31.25−9.75)
+so v = 2n(l – l ) = 2 × 800 16. Ans ( 4 )
+2 1
+100
+f
+= 344 m/s M.P. = o = 5 ⇒ f = 5 f
+o e
+f
+e
+11. Ans ( 1 ) f + f = 36
+o e
+F
+ΔV = Ed = d
+q 5f + f = 36 cm ⇒ f = 6 cm
+e e e
+2000 2
+ΔV = × = 8V
+5 100 f o = 5 × 6 = 30 cm
+HS-2/8 1001OMD303029230152
+
+MOCK TEST/02
+17. Ans ( 4 ) 26. Ans ( 4 )
+2π λ λ = KMP vq hr
+Δ∅ = × = π/4
+λ 8 0 1 0 1 0 0 p –1 q 1 2 –1 r
+1+cos π [M L T ] = K [M L T ] [LT ] [M L T ]
+π
+I = I 0cos2 = I 0( 4 ) [M0 L1 T0 ] = K [Mp ] [Lq T–q ] [Mr L2r T–r ]
+8 2
+√ P + r = 0 ⇒ q + 2r = 1
+1+1/ 2
+= I ( ) = 0.85I
+0 2 0 – q – r = 0 ⇒ p = –1
+q = –1 ⇒ r = 1
+18. Ans ( 1 )
+12400 12400 p + q + r = –1 –1 +1 = –1
+V −V = −
+2 1
+λ λ
+2 1
+27. Ans ( 1 )
+19. Ans ( 1 )
+dx
+E = ΔmC2 v x = dt = 36
+dy
+20. Ans ( 1 ) v y =
+dt
+1 1 1 v = 48 – 9.8t
+= R[ − ] y
+λ n2 n2
+2 1 at t = 0 v = 48
+y
+For lyman series v 48 4
+y
+tanθ = = =
+1 v x 36 3
+= R (as n = 1, n = ∞) ...(1) 4
+λ 2 1 sinθ =
+min
+5
+For Balmer series
+28. Ans ( 2 )
+1 R
+λ′ = 4 (as n 2 = 2, n 1 = ∞) ....(2) a = F net = 200−160
+min M net 16
+2
+λ′ = 4λ = 3648 Å a = 2.5 m/s
+min
+T = (4 + 5) (g + a) = 112.5 N
+P
+21. Ans ( 3 )
+29. Ans ( 2 )
+Given combination equivalent to
+mV 2
+¯¯¯¯ ¯¯ ¯¯¯¯¯¯¯¯¯¯ ¯¯¯ ¯¯ ¯ ¯ ¯¯ ¯¯ ¯¯ ¯ ¯ ¯¯ ¯¯ ¯¯ ¯ T = B +mg = 9 mg
+y = A+B = A⋅B = A•B Bottom
+R
+mV 2
+22. Ans ( 2 ) T = T −mg
+Top
+R
+√
+V = 8gR
+B
+V 2 = V 2 −2g(2R)
+T B
+T 1
+Top
+T = 3 mg ⇒ =
+Top
+T 3
+Bottom
+30. Ans ( 3 )
+Here, R = 2.5 Ω, T = 28°C
+1 1
+R = 2.9 Ω and T = 100 °C
+2 2
+d(v2)
+Slope of line AB is = 12 = As R 2 = R 1[1 + α(T 2–T 1)]
+dx
+dv dv ∴ 2.9 = 2.5 [1 + α(100 – 28)]
+2v = 12 ⇒ a = v = 6 m/s2
+dx dx 2.9 1 2.9−2.5
+–1 = α[72] or α = ×
+23. Ans ( 2 ) 2.5 72 2.5
+1 0.4 2.22×10−3°C–1
+τ = PEsinθ = × =
+72 2.5
+1001OMD303029230152 HS-3/8
+
+TARGET:PRE-MEDICAL 2024/02
+31. Ans ( 3 ) 39. Ans ( 1 )
+I
+I′ = cos2(θ)
+2
+1 I I
+( ) = cos2(θ)
+3 2 2
+1
+cos2(θ) =
+3
+1
+cos(θ) =
+√3 −12 − 6 + 30
+−4−2+10
+3 3 3
+1 E = = = 4 volt
+θ = cos−1( ) 1 + 1 + 1 1
+√ 3 3 3 3
+32. Ans ( 1 ) 1
+⇒ R = = 1Ω
+P = h = mv ⇒ v = h 1 + 1 + 1
+3 3 3
+λ mλ
+33. Ans ( 1 ) E 4
+⇒ R = =
+Area = ℓ × b here ℓ = 3.2 ± 0.2, b = 1.2 ± 0.1 R+2 1+2
+A = 3.2 × 1.2
+4
+ΔA Δℓ Δb ⇒ I = A
+= + 3
+A ℓ b
+ΔA 0.2 0.1
+= +
+40. Ans ( 3 )
+3.84 3.2 1.2
+1mv2
+⇒ ΔA = (0.0625 + 0.083)3.84 = 0.56
+P = constant ⇒ P = 2 ⇒ V ∝ √ t
+2 t
+Area = (3.84 ± 0.56) cm
+with proper significant figure FV = P
+2
+Area = (3.8 ± 0.6) cm
+dV V
+⇒ m(V )V = P ⇒ m∫ V 2dV
+dx
+0
+SECTION-B
+x mV 3
+= P ∫ dx ⇒ = Px
+36. Ans ( 1 ) 0 3
+2 m 2 m 8mR2
+( )R2 + ( )R2 = = V ∝ x1/3
+5 2 3 2 15
+37. Ans ( 3 )
+41. Ans ( 3 )
+√ GM
+p = mν 0 = m 1 √2mV
+r r =
+i.e., p ∝ 1/√r B q
+P A = √ Rb = √ R+3R = √2 r ∝ √m
+P Ra R+R q
+B
+38. Ans ( 3 )
+42. Ans ( 1 )
+n ∝ √ T
+From ω-t graph
+Δn 1 ΔT
+⇒ =
+n 2 T 6
+α = = 2 rad/s2
+5 1 ΔT
+⇒ = 3
+500 2 T
+ΔT 2×5 a = a −αR = 6 – 2 × 2
+⇒ ×100 = ×100 P cm
+T 500
+= 2% a P = 2 m/s2
+HS-4/8 1001OMD303029230152
+
+MOCK TEST/02
+43. Ans ( 2 ) 48. Ans ( 2 )
+ℓ → extension in wire (A) As F ext = 0, the centre of mass of the system
+remain fixed. Also initial velocity of centre of
+L → initial length wire
+mass is zero.
+FL
+Y = (B) Let d be displacement of plank (right) in this
+Aℓ
+1×9.8×2 process m (2 + d) + Md – m (2 – d) = 0.
+1 2
+Y =
+3.14×(0.2×10−3)2 ×(0.80×10−3) ∴ d = 0.2m
+= 2 × 1011 N/m2 (C) Displacement of A = 2 + 0.2 = 2.2 m.
+Please note → Y is not required to calculate as (D) Displacement of B = 2 – 0.2 = 1.8 m.
+same in all option. 49. Ans ( 1 )
+(A) Balanced bridge
+ΔY ΔA Δℓ Δd Δℓ
+= + = 2 +
+2R×2R
+Y A ℓ d ℓ R = = R
+BE
+ΔY 0.01 0.05 9 2R+2R
+= 2× + = = 0.11
+Y 0.40 0.80 80
+ΔY = 0.11 Y = 0.11 × 2 × 1011 (B) R = 3R
+AF
+11 2
+= 0.22 × 10 N/m
+44. Ans ( 2 ) (C)
+dQ dQ
+AB = BC
+dt dt
+50. Ans ( 4 )
+f −f (μ −μ )mg
+s k s k
+a = = = (μ −μ )g
+s k
+m m
+a = (0.7 – 0.6) × 10 = 1 m/s2
+R 3R
+R = +R =
+eq
+2 2
+SUBJECT : CHEMISTRY
+2Bvℓ
+I =
+3R
+SECTION-A
+Bvℓ
+I = I =
+1 2
+3R
+51. Ans ( 4 )
+45. Ans ( 1 ) 8.3×103
+1 c lnk = lnA – (in absence of catalyst)
+I = ∈ ∈ E2v, v = RT
+2 0 r 0 √μ ∈ 8.3×103
+r r Slope = −
+R
+46. Ans ( 1 )
+52. Ans ( 2 )
+At anode H O → 2H+ + 1 O + 2e–
+2 2 2
+solution become acidic pH↓
+58. Ans ( 4 )
+For TIR or Just TIR H PO ⇌ 3H+ + PO3− basicity = 3
+3 4 4
+60º ≥ sin–1 1 H 3BO 3 + H 2O ⇌ B(OH)− 4 + H+ not an arhenius acid
+μ
+1 59. Ans ( 2 )
+sin60º ≥
+μ ∵ (y – x) g oxygen combine with x g of metal
+1 2
+µ ≥ ⇒ µ ≥ x
+sin60o √ 3 ∴ 8 g oxygen combine with (y−x) ×8 = E M
+1001OMD303029230152 HS-5/8
+
+TARGET:PRE-MEDICAL 2024/02
+60. Ans ( 2 ) 74. Ans ( 3 )
+62. Ans ( 4 ) Hinsberg's reagent
+Chromatography
+78. Ans ( 3 )
+MnO− MnO2−
+63. Ans ( 2 ) = purple = green
+4 4
+CrO2− = yellow Cr O2− = orange
+4 2 7
+79. Ans ( 3 )
+Due to ambidentate (NO ) ligand = linkage
+2
+Inter change of NO and Cl = ionisation isomerism
+2
+64. Ans ( 4 ) 80. Ans ( 1 )
+3+
+[Fe(H O) ] , H O is WFL
+Both (2) and (3) shows tollen's test as well as 2 6 2
+2,4-DNP test. ∴ Due to unpaired e– more paramagnetic (Fe3+ , d5 )
+3– –
+[Fe(CN) ] , CN is SFL
+65. Ans ( 2 ) 6
+∴ Electrons pair up so weak paramagnetic (Fe3+ = d5 )
+81. Ans ( 3 )
+Fe O = Basic, As O , Cr O , Al O = Amphoteric
+2 3 2 3 2 3 2 3
+Stabilised due to resonance
+82. Ans ( 3 )
+66. Ans ( 3 ) In C both bonds are π bond. (MOT)
+2
+83. Ans ( 3 )
+NaOH + Zn → NaZnO + H
+2 2
+SECTION-B
+67. Ans ( 2 )
+6CNϴ + Fe+2 → [Fe(CN) ]–4 88. Ans ( 2 )
+6
+5.6 L contains 16 g
+3[Fe(CN) ]–4 + 4Fe+3 → Fe [Fe(CN) ]
+6 4 6 3 16
+22.4 L contains × 22.4 = 64 g = M
+w
+68. Ans ( 4 ) 5.6
+SO has molecular mass = 64 g
+2
+thus value of x = 2
+93. Ans ( 2 )
+Ethylidene chloride
+69. Ans ( 4 )
+All molecular have not any symmetry so all are will show P.O.S.
+optically active.
+70. Ans ( 4 )
+97. Ans ( 2 )
+e–
+Nucleophilicity ∝ density on donar atom
+NCERT Pg. # 228,229
+∝ size of donar atom (in gas)
+1 98. Ans ( 4 )
+∝
+E.Nofatom(forperiod) Δ H : Li < B < Be < C
+i
+HS-6/8 1001OMD303029230152
+
+MOCK TEST/02
+129. Ans ( 2 )
+SUBJECT : BOTANY
+NCERT XII Pg. # 116,119,121
+SECTION-A
+133. Ans ( 2 )
+103. Ans ( 1 ) NCERT (XIIth) Pg. # 232 (E), 252 (H)
+NCERT XIth, Page : 24, Para 2.3.2 135. Ans ( 3 )
+NCERT XII Pg.No. 261 (15.1.2)
+104. Ans ( 3 )
+NCERT XIth, Page : 23, Para-2.3.1 SECTION-B
+105. Ans ( 2 )
+136. Ans ( 2 )
+NCERT XI, Pg # 32,33 NCERT-XI Pg # 30
+106. Ans ( 3 ) 137. Ans ( 1 )
+NCERT-XI Pg # 41 NCERT–XI, Pg#134
+107. Ans ( 3 ) 138. Ans ( 4 )
+NCERT-XI Pg # 135 para 8.5.5 NCERT XI Pg.No. 153
+108. Ans ( 2 ) 139. Ans ( 2 )
+NCERT XII Pg. # 28
+NCERT-XI Page No. # 165
+140. Ans ( 4 )
+111. Ans ( 3 )
+NCERT-XII Pg. # 183
+NCERT-XI Pg. # 86
+141. Ans ( 3 )
+112. Ans ( 1 )
+NCERT XII Pg.No.237
+th
+NCERT XI Pg. # 68, para-5.2.1
+142. Ans ( 2 )
+113. Ans ( 4 )
+NCERT XII Pg.No. 263 (15.1.3)
+NCERT XIth Pg.# 67, para – 5.12 + module
+143. Ans ( 2 )
+114. Ans ( 2 ) NCERT-XI Pg # 38
+NCERT XII Pg. # 35
+144. Ans ( 3 )
+117. Ans ( 3 ) NCERT-XI Page No. # 167
+NCERT XII Pg.# 119
+148. Ans ( 3 )
+122. Ans ( 2 ) NCERT-XI Pg. # 232
+NCERT-XI Pg. # 126
+150. Ans ( 1 )
+123. Ans ( 4 ) NCERT XII (E) Pg. 106 Para 6.42
+NCERT XI Pg.No.234
+SUBJECT : ZOOLOGY
+125. Ans ( 2 )
+NCERT XI, Page : 84, 86, 89, 91 SECTION-A
+126. Ans ( 2 ) 152. Ans ( 3 )
+NCERT-XIth, Pg.#81 NCERT XIth Page # 56, 57
+127. Ans ( 2 ) 153. Ans ( 4 )
+NCERT XII Pg. # 26,27 NCERT XI, Pg. No. 53
+128. Ans ( 3 ) 155. Ans ( 2 )
+NCERT XII Pg # 183 NCERT Pg. # 101
+1001OMD303029230152 HS-7/8
+
+TARGET:PRE-MEDICAL 2024/02
+159. Ans ( 2 ) 178. Ans ( 2 )
+NCERT XI Pg.No.269 NCERT XII (Bio)_Pg-148
+160. Ans ( 1 )
+182. Ans ( 1 )
++
+High pO, low H , low temp favours oxyhaemoglobin
+2 NCERT Page No. # 198, 202, 201
+formation.
+SECTION-B
+161. Ans ( 1 )
+NCERT-XI, Pg#293
+186. Ans ( 2 )
+th
+163. Ans ( 2 ) NCERT XI Page # 57
+NCERT XI Pg.No.279
+187. Ans ( 4 )
+165. Ans ( 3 ) th
+NCERT XI Page # 57
+NCERT- Pg. # 316, 317 (21.3)
+188. Ans ( 2 )
+166. Ans ( 3 )
+NCERT XI, Pg # 53 to 55
+NCERT Pg.#322
+191. Ans ( 1 )
+170. Ans ( 3 )
+th
+NCERT XI Pg.#337,338,339
+NCERT XIth Pg.#335
+193. Ans ( 3 )
+171. Ans ( 3 )
+NCERT XI pg.# 333 NCERT Pg.# 46
+172. Ans ( 2 ) 196. Ans ( 1 )
+NCERT Pg.# 46 NCERT XII (Bio)_Pg-91
+175. Ans ( 3 ) 199. Ans ( 2 )
+NCERT-XII, Para-2, Page-61 NCERT-Pg#128
+177. Ans ( 2 ) 200. Ans ( 1 )
+NCERT-XII, Pg. 152, 154, 159 NCERT Page No. # 212, 213
+HS-8/8 1001OMD303029230152

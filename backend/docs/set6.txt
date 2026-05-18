@@ -1,0 +1,1711 @@
+SUBJECT : PHYSICS
+SECTION-A 3.
+Which of the following statements is incorrect
+Attempt All 35 questions about hysteresis?
+1. (1) This effect is common to all ferromagnetic
+A cylindrical wire of radius R is carrying current
+substances.
+i uniformly distributed overt its cross-section. If
+a circular loop of radius r is taken as amperian (2) The hysteresis loop area is proportional to
+→ →
+the thermal energy developed per unit
+loop, then the variation value of ∮ B ⋅ dl over
+volume of the material.
+this loop with radius r of loop will be best
+(3) The hysteresis loop area is independent of
+represented by
+the thermal energy developed per unit
+volume of the material.
+(1) (4) The shape of the hysteresis loop is
+characteristic of the material.
+4.
+The figure shows a conducting loop ABCDA
+placed in a uniform magnetic field (strength B)
+perpendicular to its plane. The part ABC is the
+(2)
+three-fourth portion of the square of side length ℓ
+. The part ADC is a circular arc of radius R. The
+points A and C are connected to a battery which
+supply a current I to the circuit. The magnetic
+force on the loop due to the field B is : -
+(3)
+(4)
+(1) zero (2) BIℓ
+BIℓR
+(3) 2BIR (4)
+2. 1+R
+A conducting ring of mass 2 kg and radius 0.5 m is
+5.
+placed on a smooth horizontal plane. The ring A thin circular ring of area A is perpendicular to
+carries a current i = 4A. A horizontal magnetic field uniform magnetic field of induction B. A small
+B = 10T is switched on at time t = 0 as shown in cut is made in the ring and a galvanometer is
+figure. The initial angular acceleration of ring is :- connected across the ends such that the total
+resistance of circuit is R. When the ring is
+suddenly squeezed to zero area, the charge
+flowing through galvanometer is : -
+BR AB
+(1) 40π rad/sec2 (2) 20π rad/sec2 (1) (2)
+A R
+(3) 5π rad/sec2 (4) 15π rad/sec2 B2A
+(3) ABR (4)
+R2
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 1/27
+
+6. 11.
+An e.m.f. of 12 volts is induced in a given coil The ratio of angular speed of hours hand and
+when the current in it changes at the rate of 48 seconds hand of a clock is :-
+amperes per minute. The self-inductance of the (1) 1 : 1 (2) 1 : 60
+coil is : -
+(3) 1 : 720 (4) 3600 : 1
+(1) 0.25 henry (2) 15 henry
+12.
+If the radius of the earth is suddenly contracts to
+(3) 1.5 henry (4) 9.6 henry half of its present value, then the duration of day
+7. will be of
+The initial velocity of a particle is u and the
+acceleration is given by (kt), where k is a positive (1) 6 hours (2) 12 hours
+constant. The distance travelled in time t is :
+(3) 18 hours (4) 24 hours
+(1) s = ut2 + kt2 13.
+While measuring diameter of wire using
+3 screw gauge the following readings were noted.
+(2) s = ut + (kt /6)
+Main scale reading is 1mm and circular scale
+3
+(3) s = ut + (kt /2)
+reading is equal to 42 divisions. Pitch of
+2 3 screw gauge is 1mm and it has 100 divisions on
+(4) s = (ut /2) + (kt /6)
+circular Scale. The diameter of the wire is
+8.
+A rocket of mass 1000 kg exhausts gases at a x
+mm. The value of x is -
+rate of 4 kg/sec with velocity 3000 m/s. The 50
+thrust developed on the rocket is :- (1) 142 (2) 71
+(1) 12000 N (2) 120 N (3) 42 (4) 21
+14.
+(3) 800 N (4) 200 N A body crosses the topmost point of a vertical
+circle with a critical speed. Its centripetal
+9.
+A cricket ball of mass 250 g collides with a bat acceleration, when the string is horizontal will be:-
+with velocity 10 m/s and returns with the same
+(1) 6g (2) 3g
+speed within 0.01 second. The force acted on bat
+is :– (3) √10g (4) g
+15.
+Two identical 5 kg blocks are moving with same
+(1) 25 N (2) 50 N
+speed of 2 m/s towards each other along a
+(3) 250 N (4) 500 N frictionless horizontal surface. The two blocks
+collide, stick together and come to rest. Consider
+10.
+In the arrangement shown, the pulleys are fixed
+the two blocks as a system. The work done by
+and ideal, the strings are light, m 1 > m 2 and S is external and internal forces are respectively :-
+a spring balance which is itself massless. The
+(1) 0, 0 (2) 0, 20 J
+reading of S (in units of mass) is –
+(3) 0, –20 J (4) 20 J, –20 J
+16.
+The apparent weight of a person inside a lift is w
+1
+when lift moves up with a certain acceleration and is
+w when lift moves down with same acceleration
+2
+The weight of the person when lift moves up with
+constant speed is :
+1
+(1) m – m (2) (m + m )
+1 2 2 1 2 (1) w 1 +w 2 (2) w 1 −w 2
+m m 2m m 2 2
+1 2 1 2
+(3) (4)
+m 1 +m 2 m 1 +m 2 (3) 2w 1 (4) 2w 2
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 2/27 Space for Rough Work English / 24112024
+
+17. 22.
+A ball A is thrown vertically upwards with A solid cylinder is rolling down on an inclined
+speed u. At the same instant another ball B is
+plane of inclination 60°. What is its acceleration?
+dropped from height h. At times t, the speed of
+A relative to B is :-
+(1) g/3
+(1) u (2) u – 2 gt
+g/√3
+(2)
+(3) √u2 −2gh (4) u – gt
+2g
+√
+18. (3)
+A body falls from a height of 16 m and rebounds to 3
+a height of 4 m. The coefficient of restitution is :
+(4) None of these
+(1) 1 (2) 1 23.
+A constant torque of 1000 N-m turns a wheel
+4 2
+3 1 of moment of inertia 200 kg-m2 about an axis
+(3) (4)
+4 8
+19. through its centre. Its angular velocity after 3 sec
+The force acting on a body moving along x-axis
+varies with the position of the particle as shown in is : -
+the figure. The body is in stable equilibrium at -
+(1) 1 rad/sec (2) 5 rad/sec
+(3) 10 rad/sec (4) 15 rad/sec
+24.
+If masses of blocks A and B are 3 kg and 8 kg
+respectively, then normal reaction between A
+(1) x = x (2) x = x
+1 2
+and B : -
+(3) Both x and x (4) Neither x nor x
+1 2 1 2
+20.
+Find work done by friction if block reaches to
+the end with constant velocity:-
+(1) 20N (2) 30N
+(3) 35N (4) 115N
+25.
+Two particles A and B having charges 20 μC
+(1) –50 J (2) −50√3J
+and –5 μC respectively are held fixed with a
+(3) –100 J (4) None of these
+separation of 5 cm. At what position a third
+21.
+Velocity – time graph of a particle of mass 2 kg charged particle should be placed so that it does
+moving in a straight line is as shown in figure.
+not experience a net electric force?
+Work done by all the force on the particle is :-
+(1) At 5 cm from 20 μC on the left side of system
+(2) At 5 cm from –5 μC on the right side
+(1) 400 J (2) –400 J (3) At 1.25 cm from –5 μC between two charges
+(3) –200 J (4) 200 J (4) At midpoint between two charges
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 3/27
+
+26. 29. Statement 1 :
+Shown in the figure are two point charges +Q It is not possible to make a sphere
+and –Q inside the cavity of a spherical shell. of capacity 1 farad using a conducting material.
+The charges are kept near the surface of the Statement 2 :
+It is possible for earth as its radius
+cavity on opposite sides of the centre of the 6
+is 6.4 × 10 m.
+shell. If σ is the surface charge on the inner
+1
+(1) Statement 1 is true, Statement 2 is true,
+surface and Q net charge on it and σ the
+1 2
+Statement 2 is the correct explanation of
+surface charge on the outer surface and Q net
+2
+Statement 1.
+charge on it then : -
+(2) Statement 1 is false, Statement 2 is true.
+(3) Statement 1 is true, Statement 2 is true,
+Statement 2 is not the correct explanation of
+Statement 1.
+(4) Statement 1 is true, Statement 2 is false.
+(1) σ ≠ 0, Q = 0 (2) σ ≠ 0, Q = 0
+1 1 1 1
+30.
+σ = 0, Q = 0 σ ≠ 0, Q = 0 The electric current through a wire varies with
+2 2 2 2
+time as I = I + βt, where I = 20 A and β = 3
+(3) σ = 0, Q = 0 (4) σ ≠ 0, Q ≠ 0 0 0
+1 1 1 1
+A/s. The amount of electric charge crossed
+σ = 0, Q = 0 σ ≠ 0, Q ≠ 0
+2 2 2 2
+through a section of the wire in 20s is : -
+27.
+Consider the force F on a charge 'q' due to a
+(1) 1600 C (2) 800 C
+uniformly charged spherical shell of radius R
+(3) 80 C (4) 1000 C
+carrying charge Q distributed uniformly over it.
+31.
+A Copper (Cu) rod of length 25 cm and cross-
+Which one of the following statements is true
+2
+sectional area 3 mm is joined with a similar
+for F, if 'q' is placed at distance r from the centre
+Aluminium (Al) rod as shown in figure. Find the
+of the shell? resistance of the combination between the ends A
+–8
+and B. (Take Resistivity of Copper = 1.7 × 10
+1 Qq
+(1) F = for r < R 10–8
+4πε 0 R2 Ωm Resistivity of Aluminium = 2.6 × Ωm )
+1 Qq
+(2) > F > 0 for r < R
+4πε 0 R2
+1 Qq
+(3) F = for r > R (1) 2.170 mΩ (2) 1.420 mΩ
+4πε 0 r2
+(3) 0.0858 mΩ (4) 0.858 mΩ
+1 Qq
+(4) F = for all r
+4πε 0 R2 32. Two cells are connected in opposition as shown.
+28.
+The equivalent capacitance of the combination Cell E is of 8V emf and 2Ω internal resistance;
+1
+shown is : - the cell E is of 2V emf and 4Ω internal
+2
+resistance. The terminal potential difference of
+cell E is _________ V.
+2
+C
+(1) (2) 4C
+2
+5 (1) 6V (2) –8V
+(3) 2C (4) C
+3
+(3) –6V (4) 8V
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 4/27 Space for Rough Work English / 24112024
+
+33. SECTION-B
+Given below are two statements : One is
+This section will have 15 questions. Candidate
+labelled as
+can choose to attempt any 10 questions out of
+Assertion A Reason
+and the other is labelled as
+these 15 questions. In case if candidate attempts
+R
+.
+more than 10 questions, first 10 attempted
+Assertion A
+: Alloys such as constantan and questions will be considered for marking.
+manganin are used in making standard
+36.
+For c = 2a, and a < b < c, the magnetic field at
+resistance coils.
+point P will be zero when
+Reason R :
+Constantan and manganin has very
+small value of temperature coefficient of
+resistance.
+In the light of the above statements, choose the
+correct answer from the options given below.
+3
+(1) Both A and R are true and R is the correct (1) a = b (2) a = b
+5
+explanation of A.
+5 1
+(3) a = b (4) a = b
+3 3
+(2) Both A and R are true but R is NOT the
+37.
+Two magnets A and B are identical and these are
+correct explanation of A.
+arranged as shown in the figure Their length is
+(3) A is true but R is false. negligible in comparison to the separation between
+them. A magnetic needle is placed between the
+(4) A is false but R is true.
+magnets at point P which gets deflected through an
+34.
+angle θ under the influence of magnets. The ratio
+The values of kinetic energy (K) and potential
+of distance d and d will be. :-
+1 2
+energy (U) are measured as follows
+K = (100.0 ± 2.0) J and U = (200.0 ± 1.0) J
+then the percentage error in the measurement of
+mechanical energy is : (1) (2 tan θ)1/3 (2) (2 tan θ)–1/3
+1/3 –1/3
+(1) 2.5% (2) 0.5% (3) (2 cot θ) (4) (2 cot θ)
+38.
+(3) 1.0% (4) 1.5% The north and south poles of two identical
+magnets approach a coil containing a condenser,
+35.
+1
+Least count of a vernier caliper is cm. The with equal speeds from opposite sides. Then : -
+20N
+value of one division on main scale is 1mm.
+Then the number of divisions of main scale that
+coincide with N divisions of vernier scale is -
+(1) Plate 1 will be negative and plate 2 positive
+2N −1 2N −1
+( ) ( )
+(1) (2)
+20N 2 (2) Plate 1 will be positive and plate 2 negative
+2N −1
+(3) (2N −1) (4) ( ) (3) Both the plates will be positive
+2N
+(4) Both the plates will be negative
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 5/27
+
+39. 42.
+If P represents radiation pressure, c represents A rod of length 3m and its mass per unit length
+speed of light and Q represents radiation energy is directly proportional to the distance x from its
+striking a unit area per second, then non-zero
+one end. The center of gravity of the rod from
+x y z
+integers x, y and z such that P Q c is
+that end will be at
+dimensionless, can be :-
+(1) 1.5 m (2) 2 m
+(1) x = 1, y = 1, z = –1
+(3) 2.5 m (4) 3.0 m
+(2) x = 1, y = –1, z = 1
+43.
+Two spheres each of mass M and radius R/2 are
+(3) x = –1, y = 1, z = 1
+connected with massless rod of length 2R as
+(4) x = 1, y = 1, z = 1
+shown in the figure.
+40.
+A girl finds herself stuck with her back to the
+wall of a cylinder rotating about its axis. Which
+diagram correctly shows the forces acting on
+her?
+The moment of inertia of the system about an
+axis passing through the centre of one of the
+spheres and perpendicular to the rod is
+21 2
+2 2
+(1) MR (2) MR
+5 5
+(1) (2)
+5
+2
+5 MR
+(3) MR2 (4) 21
+2
+44.
+For a ball thrown vertically upwards and
+returning back to ground, which will be its
+distance-time graph.
+(3) (4)
+(1) (2)
+41.
+Water falling from a 50 m high fall is to be used
+5
+for generating electric energy. If 1.8 × 10 kg of
+water falls per hour and half the gravitational
+potential energy can be converted into electric
+(3) (4)
+energy, how many 100 W lamps can be lit :-
+(1) 75 (2) 100
+(3) 125 (4) 150
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 6/27 Space for Rough Work English / 24112024
+
+45. 48.
+In Fig. shown, the block of mass m is at rest A source of potential difference V is connected to
+relative to the wedge of mass M and the wedge the combination of two identical capacitors as
+shown in the figure. When key 'K' is closed, the
+is at rest with respect to ground. This implies
+total energy stored across the combination is E .
+that :- 1
+Now key 'K' is opened and dielectric of dielectric
+constant 5 is introduced between the plates of the
+capacitors. The total energy stored across the
+combination is now E . The ratio E /E will be : -
+2 1 2
+(1) Net force applied by m on M is mg.
+(2) Normal force applied by m on M is mg.
+1 2
+(3) Force of friction applied by m on M is mg. (1) (2)
+10 5
+(4) None of above 5 5
+(3) (4)
+46. 13 26
+The blocks A and B are arranged as shown in
+49.
+In the given figure, a battery of emf E is connected
+the figure. The pulley is frictionless. The mass
+across a conductor PQ of length 'ℓ' and different area
+of A is 10 kg. The coefficient of friction
+of cross-sections having radii r and r (r < r ).
+1 2 2 1
+between block A and horizontal surface is 0.20.
+Choose the correct option as one moves from P to Q : -
+The minimum mass of B to start the motion will
+be : -
+(1) Drift velocity of electron increases.
+(1) 2 kg (2) 0.2 kg
+(2) Electric field decreases.
+(3) 5 kg (4) 10 kg
+(3) Electron current decreases.
+47.
+A thin semi-circular ring of radius r has a
+(4) All of these.
+positive charge q distributed uniformly over it. 50.
+The current flowing through R is : -
+2
+→
+The net field E at the centre O is : -
+q ^ q ^
+j − j 2 1
+(1) 4π2ε r2 (2) 4π2ε r2 (1) A (2) A
+0 0 3 4
+q ^ q ^
+− j j 1 1
+(3) 2π2ε r2 (4) 2π2ε r2 (3) A (4) A
+0 0 2 3
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 7/27
+
+SUBJECT : CHEMISTRY
+SECTION-A 56.
+Total number of optically active compounds
+Attempt All 35 questions
+from the following is :-
+51.
+Which of the following nitrogen containing
+compound does not give Lassaigne’s test ?
+(1) Phenyl hydrazine (2) Glycine
+(3) Urea (4) Hydrazine
+(1) 4 (2) 3
+52.
+The adsorbent used in adsorption chromatography
+is/are (3) 2 (4) 6
+57.
+(1) silica gel (2) quick lime Example of Vinylic halide is :
+(3) magnesia (4) None of above
+(1) (2)
+53.
+Total No. of stereoisomer possible for the given
+structure :
+(3) (4)
+(1) 2 (2) 4
+58.
+(3) 8 (4) 6 Which among the following halide will not show
+54.
+S 1 reaction
+N
+The absolute configuration of is :
+(1) CH =CH—CH —Cl
+2 2
+=
+(2) CH —CH CH—Cl
+3
+(1) (2S, 3S) (2) (2R, 3R)
+(3)
+(3) (2R, 3S) (4) (2S, 3R)
+55. Assertion [A] :
+S 2 reaction of C H CH Br
+N 6 5 2
+occurs more readily than the S 2 reaction of (4)
+N
+CH CH Br.
+3 2
+Reason [R] : 59.
+The partially bonded unhybridized
+Which of the following compound is inactive
+p-orbital that develops in the trigonal
+bipyramidal transition state is stabilized by towards S N1 reaction
+conjugation with the phenyl ring.
+(A) (R) (R)
+(1) Both and are correct and is the
+(1) (2)
+(A).
+correct explanation of
+(A) (R) (R)
+(2) Both and are correct but is not
+(A).
+the correct explanation of
+(3) (4)
+(A) (R)
+(3) is correct but is not correct.
+(A) (R)
+(4) is not correct but is correct.
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 8/27 Space for Rough Work English / 24112024
+
+60. 64.
+Which one of the following compound will Given below are two statements :
+Statement (I) :
+readily react with dilute NaOH ? Aminobenzene and aniline are
+same organic compounds.
+Statement (II) :
+Aminobenzene and aniline are
+(1) (2) CH –CH –OH
+3 2 different organic compounds.
+In the light of the above statements, choose the
+most appropriate answer from the options given
+below.
+(3) (4)
+(1) Both Statement I and Statement II are correct
+61. (2) Statement I is correct but Statement II is
+The increasing order of acidity of the following
+incorrect
+carboxylic acid is :-
+(3) Statement I is incorrect but Statement II is correct
+(4) Both Statement I and Statement II are
+incorrect
+65.
+Which of the following characteristic property of
+KMnO is/are correct ?
+4
+(1) III < II < IV < I
+(1) KMnO forms dark purple crystals
+4
+(2) I < III < II < IV 2–
+(2) SO is oxidised to SO with KMnO in
+2 4 4
+(3) IV < II < III < I acidic medium
+(4) II < IV < III < I (3) Purple colour to MnO ¯ ion is due to charge
+4
+62. transfer
+The increasing order of the rate of HCN addition
+(4) All of these
+to compound A to D is
+66.
+A. HCHO B. CH COCH Which of the following belongs to the actinoids
+3 3
+C. PhCOCH D. PhCOPh series of elements ?
+3
+(1) Y (2) Ta
+(1) A < B < C < D
+(3) U (4) Yb
+(2) C < D < B < A
+67.
+Which element do you expect to have the highest
+(3) D < C < B < A
+melting point ?
+(4) D < B < C < A
+(1) La (2) W
+63.
+Tollen’s reagent and Fehling solutions are used
+(3) Os (4) Pt
+to distinguish between.
+68.
+Potassium dichromate reacts with potassium
+(1) Acid and Alcohol
+iodide in acidic medium. What is oxidation state
+(2) Alkane and Alcohol
+of product formed from reductant ?
+(3) n-alkane and branched alkane
+(1) +1 (2) zero
+(4) Ketones and Aldehydes
+(3) +3 (4) +5
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 9/27
+
+69. 76.
+Which of the following configurations of ions In Arrhenius equation k = Ae−Ea/RT, as
+have zero CFSE in both strong and weak field lim log K equals to :
+∞ 10
+T→
+ligands in octahedral complex ?
+(1) lnA (2) A
+8 4
+(1) d (2) d
+(3) log A (4) none of these
+10
+6 10
+(3) d (4) d
+77. Statement-1:
+Time taken for the completion of
+70.
+Facial-meridional isomerism is associated with st
+75% of a I order reaction is double that its t .
+1/2
+which one of the following complexes ? Statement-2:
+Time taken for completion of any
+st
+(1) [Pt(py) (NH ) Cl]SO fraction of a I order reaction is a constant value.
+2 3 2 4
+(2) [Cr(gly) ] (1) Statement-1 is True, Statement-2 is True;
+3
+Statement-2 is a correct explanation for
+(3) [Co(en) Cl ]Cl
+2 2 Statement-1.
+(4) [Co(NH ) Cl ]
+3 3 3 (2) Statement-1 is True, Statement-2 is True;
+71. Statement-2 is NOT a correct explanation
+Ethylene diaminetetraacetate (EDTA) ion is :
+for Statement-1.
+(1) Hexadentate ligand with four "O" and two
+(3) Statement-1 is True, Statement-2 is False.
+"N" donor atoms
+(4) Statement-1 is False, Statement-2 is True.
+(2) Unidentate ligand
+78. Statement-1:
+A catalyst provides an alternative
+(3) Bidentate ligand with two "N" donor atoms
+path to the reaction in which conversion of
+(4) Tridentate ligand with three "N" donor reactants into products take place quickly.
+Statement-2:
+atoms The catalyst forms an activated
+72. complex of lower potential energy, with the
+Which of the following is not an ionic carbide :-
+reactants by which more number of molecules
+(1) CaC (2) Al C
+2 4 3 are able to cross the barrier per unit of time.
+(3) SiC (4) Be C
+2 (1) Statement-1 is True, Statement-2 is True;
+73. Order of relative stability of +1 oxidation state Statement-2 is a correct explanation for
+Statement-1.
+in Boron family :-
+(2) Statement-1 is True, Statement-2 is True;
+(1) Al < Ga < In < Tl (2) Al > Ga > In < Tl
+Statement-2 is NOT a correct explanation
+(3) Al = Ga = In = Tl (4) Al < Ga > In < Tl for Statement-1.
+74.
+Which of the following compound does not (3) Statement-1 is True, Statement-2 is False.
+show Hydrolysis :-
+(4) Statement-1 is False, Statement-2 is True.
+(1) NF (2) CCl 79.
+3 4
+Correct statements about a voltaic (galvanic) cell
+(3) SF 6 (4) All of these include which of the following?
+75.
+Which of the following oxy acids of sulphur P. Oxidation occurs at the anode.
+contains a sulphur-sulphur single bond ? Q. Electrons flow from the cathode to the anode.
+(1) H S O (2) H S O (1) P only (2) Q only
+2 2 7 2 2 8
+(3) H S O (4) H SO (3) Both P and Q (4) Neither P nor Q
+2 2 5 2 5
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 10/27 Space for Rough Work English / 24112024
+
+80. 84.
+A gas Cl at 1 atm is bubbled through a solution The index for the gold number is
+2
+–1 –1
+containing a mixture of 1 M Br and 1 M F
+(1) Protective power of lyophilic colloid
+at 25°C.If the reduction potential order is F > Cl
+(2) Purity of gold
+> Br. then :
+– – (3) Metallic gold
+(1) Cl will oxidise Br and not F
+2
+– – (4) Electroplated gold
+(2) Cl will oxidise F and not Br
+2
+85.
+– – Phenolphthalein color in basic medium is
+(3) Cl will oxidise both Br and F
+2
+(1) Pink
+(4) Cl will reduce both Br and F
+2 2 2
+81. (2) Orange
+There is AB and sucrose solution with 0.1 M
+3
+concentration each. If osmotic pressure of AB (3) Yellow
+3
+and sucrose solution is 0.72 atm and 0.24 atm
+(4) Colourless
+respectively at same temperature. The fraction
+SECTION-B
+of AB dissociated will be :
+3
+This section will have 15 questions. Candidate
+(1) 0.25 (2) 0.50
+can choose to attempt any 10 questions out of
+(3) 0.67 (4) 0.90 these 15 questions. In case if candidate attempts
+82. more than 10 questions, first 10 attempted
+FeCl on reaction with K [Fe(CN) ] in aq.
+3 4 6
+questions will be considered for marking.
+solution gives blue colour. These are separated
+by a semipermeable membrane PQ as shown. 86.
+Match the following :
+Due to osmosis there is :
+Column-I Column-II
+(Test/Method) (Reagent)
+C H SO Cl/aq.
+6 5 2
+(I) Lucas Test (A)
+KOH
+Dumas
+(II) (B) HNO /AgNO
+(1) blue colour formation in side X 3 3
+method
+(2) blue colour formation in side Y
+Kjeldahl’s
+(III) (C) CuO/CO
+(3) blue colour formation in both of the sides X and y 2
+method
+(4) no blue colour formation
+Conc. HCl and
+83. (IV) Hinsberg test (D)
+Moles of K SO to be dissolved in 12 mol water
+2 4 ZnCl
+2
+to lower its vapour pressure by 10 mm Hg at a
+temperature at which vapour pressure of pure (E) H 2SO 4
+water is 50 mm is : (Assume complete
+(1) (I)-(D), (II)-(C), (III)-(B), (IV)-(A)
+dissociation)
+(2) (I)-(B), (II)-(D), (III)-(E), (IV)-(A)
+(1) 3 mol (2) 2 mol
+(3) (I)-(D), (II)-(C), (III)-(E), (IV)-(A)
+(3) 1 mol (4) 0.5 mol
+(4) (I)-(B), (II)-(A), (III)-(C), (IV)-(D)
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 11/27
+
+87. 90.
+Identify the product A and product B in the Cannizzaro’s reaction is not given by :
+following set of reactions.
+(1) (2)
+(3) CH —CHO (4) HCHO
+3
+(1) A = CH –CH –CH , B = CH –CH –CH 91.
+3 2 3 3 2 3 Given below are two statements :
+Statement (I) :
+The NH group in Aniline is ortho
+2
+(2) A = CH –CH –CH –OH,
+3 2 2
+and para directing and a powerful activating
+group.
+Statement (II) :
+(3) A = CH –CH –CH –OH, Aniline does not undergo Friedel-
+3 2 2
+Craft’s reaction (alkylation and acylation).
+In the light of the above statements, choose the
+(4) , B = CH 3–CH 2–CH 2–OH most appropriate answer from the options given
+below.
+88. Assertion (A) :-
+Alcohols act as both
+(1) Both Statement I and Statement II are correct
+nucleophiles and electrophiles.
+Reason (R) :- (2) Statement I is correct but Statement II is
+Alcohols react with active metal
+incorrect
+sodium, potassium and aluminium to form
+(3) Statement I is incorrect but Statement II is correct
+alkoxides and Hydrogen gas.
+(A) (R) (R) (4) Both Statement I and Statement II are
+(1) Both and are correct and is the
+(A). incorrect
+correct explanation of
+92.
+(A) (R) (R) KMnO 4 acts as an oxidizing agent in :
+(2) Both and are correct but is not
+(A).
+the correct explanation of (1) Acidic medium only
+(A) (R)
+(3) is correct but is not correct. (2) Neutral and acidic media
+(A) (R)
+(4) is not correct but is correct. (3) Neutral and alkaline media
+89.
+(4) Neutral, acidic, and alkaline media
+In Cannizzaro reaction given below :
+93. Statement-I :-
+– Geometrical isomers of the
+2PhCHO PhCH OH + PhCOO
+2
+complex [M(NH ) Br ] are optically inactive.
+3 4 2
+the slowest step is : Statement-II :
+Both geometrical isomers of
+(1) The transfer of hydride to the carbonyl [M(NH ) Br ] have plane of symmetry.
+3 4 2
+group
+(1) Both Statements are true and statement-2 is
+(2) The removal of proton from the carboxylic the correct explanation for statement-1
+group
+(2) Both Statements are true but statement-2 is
+(3) The deprotonation of PhCH OH not the correct explanation for statement-1
+2
+⊝
+(4) The attack of OH at the carboxylic (3) Statement-1 is true, statement-2 is false
+group.
+(4) Statement-1 is false, statement-2 is true
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 12/27 Space for Rough Work English / 24112024
+
+94. 98.
+Which of the following complexes has magnetic Given that,
+moment of 2.83 BM ? Eo = −0.44V; Eo = 0.77V
+Fe2+/Fe Fe3+/Fe2+
+3+
+2+ If Fe and Fe solid are kept together then :
+(1) [Ni(NH ) ]
+3 6
+3+
+3– (1) Fe increases
+(2) [CoCl ]
+6
+3+
+2– (2) Fe decreases
+(3) [Ni(CN) ]
+4
+2+ 3+
+3+ (3) Fe /Fe remains unchanged
+(4) [Cr(NH ) ]
+3 6
+95. (4) Fe2+ decreases
+3 centered 2 electron bond is present in :-
+99.
+For 0.1 m aq. solution of given electrolytes
+(1) Be H
+2 4
+correct order of their increasing order of boiling
+(2) Al (CH )
+2 3 6 point :
+(3) B H
+2 6 (1) CH COOH < HCOOH < NaCl < Na SO
+3 2 4
+(4) All of these
+(2) HCl < HCOOH < NaCl < Na SO
+2 4
+96.
+For the reaction; H (g) + I (g) → 2HI(g), the
+2 2 (3) HCOOH < CH COOH < NaCl < Na SO
+3 2 4
+rate law is Rate = k[H ][I ] .
+2 2
+(4) Na SO < NaCl < HCOOH < CH COOH
+Which of the mechanisms given is consistent 2 4 3
+100.
+with this rate law? 10 ml of 10 M H SO is mixed to 100 ml 1M
+2 4
+I II
+NaOH solution. The resultant solution will be
+I ⇌ I + I (fast) I ⇌ I + I (slow) (1) Acidic
+2 2
+H + I + I → 2HI H + I + I → 2HI
+2 2 (2) Neutral
+(slow) (fast)
+(3) Weakly alkaline
+(1) I only
+(4) Strongly alkaline
+(2) II only
+(3) Either I or II
+(4) Neither I nor II
+97.
+Electrode potential data are given below:
+Fe3+ (aq) + e– → Fe2+ (aq) ; E° = + 0.77 V
+Al3+ (aq) + 3e– → Al(s) ; E° = –1.66 V
+Br (aq) + 2e– → 2Br– (aq) ; E° = + 1.08 V
+2
+Based on the data given above reducing power
+2+ –
+of Fe , Al and Br will increase in the order :
+– 2+
+(1) Br < Fe < Al
+2+ –
+(2) Fe < Al < Br
+– 2+
+(3) Al < Br < Fe
+2+ –
+(4) Al < Fe < Br
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 13/27
+
+SUBJECT : BIOLOGY-I
+SECTION-A 106.
+Identify the incorrect statement(s) :-
+Attempt All 35 questions
+(1) In compound leaves, the leaf blade is
+101. Statement-I : divided into leaflets.
+All living organisms possess
+metabolic reactions. (2) The outer covering of endosperm separates
+Statement-II :
+Each name have two components the embryo by a proteinous layer called
+generic name and the specific epithet. aleurone layer.
+(1) Both Statement-I and Statement-II are true. (3) Ovary is one-chambered but it becomes two
+chambered due to the formation of the false
+(2) Both Statement-I and Statement-II are
+septum in tomato.
+false.
+(4) The style connects the ovary to the stigma.
+(3) Statement-I is true, but Statement-II is
+107.
+false. The type of inflorescence wherein the main axis
+has limited growth and ends in a flower is
+(4) Statement-I is false, but Statement-II is
+termed :-
+true.
+102. (1) Racemose (2) Cymose
+Who is known as the "Father of Taxonomy"?
+(3) Hypanthodium (4) Cyathium
+(1) Aristotle (2) Linnaeus
+108.
+In a monocot stem, which of the following
+(3) Darwin (4) Lamarck
+structures is absent?
+103.
+Identify the incorrect statement(s) :-
+(1) Ground tissue (2) Epidermis
+(I) Growth is a defining feature of living
+organisms. (3) Vascular bundles (4) Cambium
+(II) All living organisms show cellular 109. Statement-I :
+When xylem and phloem within a
+organization.
+vascular bundle are arranged in an alternate
+(III) Reproduction is a defining characteristic of
+manner along the different radii, the arrangement
+all living organisms.
+is called radial such as in stem.
+(IV) All living organisms exhibit metabolism. Statement-II :
+The conjoint vascular bundles
+(1) I and II (2) III only usually have the phloem located only on the
+outer side of xylem.
+(3) II and IV (4) I, II, and III
+104. (1) Both Statement-I and Statement-II are
+In which type of phyllotaxy each node bear two
+correct.
+leaves?
+(2) Statement-I is correct but Statement-II is
+(1) Alternate (2) Opposite
+incorrect.
+(3) Whorled (4) Spiral
+(3) Both Statement-I and Statement-II are
+105.
+Which part of a flower develops into fruit?
+incorrect.
+(1) Ovule (2) Ovary
+(4) Statement-I is incorrect but Statement-II is
+(3) Petal (4) Anther correct.
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 14/27 Space for Rough Work English / 24112024
+
+110. 115.
+Identify the correct statement :- Identify the incorrect statement about Z scheme :-
+(1) Initiation of lateral roots and vascular (1) Z shaped is formed when all the carriers are
+cambium during the secondary growth placed in sequence on a redox potential
+takes place in hypodermal cells. scale.
+(2) The pith is small or inconspicuous in (2) PS I are excited when they receive red light
+monocot root. of wavelength 700 nm.
+(3) As compared to the monocot root, dicot
+(3) PS II absorbs 680 nm of blue light causing
+root have fewer xylem bundles.
+electrons to become excited.
+(4) The tangential as well as radial walls of the
+(4) Addition of electron (downhill) reduces
+endodermal cells have a deposition of + +
+NADP to NADPH + H
+water-impermeable, waxy material suberin
+116.
+_______________ is the synthesis of ATP from
+in the form of conjunctive tissue.
+ADP and inorganic phosphate in the presence of
+111.
+The four elements called "Big-four" which make
+light.
+up 95% of all elements found in a living system
+are :- (1) Phosphorylation
+(1) C, H, O, N (2) Photo phosphorylation
+(2) C, H, O, P (3) Light reaction
+(3) C, H, O, S (4) Dark reaction
+117.
+(4) C, N, O, P Photophosphorylation occurs due to cyclic flows
+112. of electrons when only PS I is functional in :-
+Macromolecules are :-
+(1) Nucleic acids, proteins and polysaccharides (1) Stroma lamellae (2) Grana lamellae
+(2) Nucleic acids and monosaccharides (3) Stroma (4) Lumen
+118.
+(3) Amino acids and polysaccharides Which of the following is a first product of the
+Calvin cycle?
+(4) Amino acids, lipids and nucleotides
+(1) Glucose
+113.
+Fructose is a ketose sugar and also called :-
+(2) Sucrose
+(1) An aldose (2) Fruit sugar
+(3) ATP
+(3) Cane sugar (4) Corn sugar
+(4) Glyceraldehyde-3-phosphate
+114.
+Invert sugar is mixture of :-
+119.
+How many ATP are formed in ETS from
+(1) Maltose and fructose
+reduced NAD generated in one turn cycle of
+(2) Glucose and galactose krebs' cycle?
+(3) Glucose and fructose (1) 3 (2) 6
+(4) All of the above (3) 12 (4) 9
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 15/27
+
+120. 123.
+Chemiosmotic hypothesis of ATP synthesis in The unicellular eukaryotic organisms were placed in :-
+respiration based on :-
+(1) Protista (2) Monera
+(1) Proton gradient between lumen and stroma.
+(3) Fungi (4) Animalia
+(2) Proton gradient between matrix and inner 124.
+Fungi differ from algae in having :-
+membrane.
+(1) Mainly cellulosic cell wall
+(3) Proton gradient between matrix and inner
+(2) Mainly cell wall of chitin
+membrane space.
+(3) Unicellular nonjacketed sex organ
+(4) Proton gradient between matrix and inter
+membrane space. (4) Starch as reserve food
+121. 125.
+What is shown in the figure :- Match the following :-
+Column-I Column-II
+(i) Phaeophyceae (A) Fucoxanthin
+(ii) Cyanophyceae (B) Phycoerythrin
+(iii) Rhodophyceae (C) Chl a, b
+(iv) Diatoms (D) Chrysolaminarin
+(1) i–A, ii–B, iii–C, iv–D
+(2) i–A, ii–C, iii–B, iv–D
+(1) A → Heterocyst, B → Mucilaginous sheath (3) i–C, ii–B, iii–A, iv–D
+(2) A → Akinete, B → Filament (4) i–B, ii–A, iii–D, iv–C
+126.
+(3) A → Akinete, B → Hormogonia Characteristic of angiosperms which distinguish
+them from gymnosperms :-
+(4) A → Akinete, B → Trichome
+(1) Presence of fruits and flowers
+122.
+Match the column and find the correct answer :-
+(2) Double fertilization and triploid endosperm
+Column-I Column-II
+formed after double fertilization
+(A) Streptomyces (i) Food poisoning
+(3) Companion cells in phloem and vessels in xylem
+Source of
+(B) Rhizobium (ii) (4) All of the above
+antibiotics
+127.
+Selaginella and Salvinia are considered to
+(C) Nitrosomonas (iii) Nitogen fixation represent a significant step toward evolution of
+seed habit because :-
+(D) Acetobacter (iv) Nitrification
+(1) Female gametophyte is free and gets
+(v) Vinegar synthesis
+dispersed like seeds.
+(1) A–iv, B–v, C–i, D–iii
+(2) Female gametophyte lacks archegonia.
+(2) A–v, B–i, C–iii, D–iv (3) Megaspores possess endosperm and embryo
+surrounded by seed coat.
+(3) A–ii, B–iii, C–iv, D–v
+(4) Embryo develops in female gametophyte
+(4) A–iv, B–iii, C–i, D–v
+which is retained on parent sporophyte.
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 16/27 Space for Rough Work English / 24112024
+
+128. 131.
+Assertion : In disjunction (separation) of sister chromatids at
+In Eukaryotic cells there is an
+anaphase :-
+extensive compartmentalisation of cytoplasm.
+(1) Centromere moves first and arms trail behind.
+Reason :
+There is a presence of membrane
+(2) Arms move first and centromere trails behind.
+bound organelles in eukaryotic cells.
+(3) Any of the above cases.
+(1) Assertion and Reason are correct and (4) Centromere does not move in anaphase.
+Reason is the correct explanation 132.
+The sequence of substages of prophase-I are :-
+of Assertion.
+(1) Leptotene — Zygotene — Pachytene —
+(2) Assertion and Reason are correct and
+Reason is not the correct explanation Diplotene — Diakinesis
+of Assertion.
+(2) Leptotene — Zygotene — Pachytene —
+(3) Assertion is correct and Reason is
+Diakinesis — Diplotene
+incorrect.
+(3) Leptotene — Zygotene — Pachytene —
+(4) Assertion is incorrect and Reason is
+correct. Diakinesis
+129.
+Which statement is not correct about integral
+(4) Leptotene — Pachytene — Diplotene —
+and peripheral proteins :-
+Zygotene — Diakinesis
+(1) They are considered as a membrane protein. 133.
+The phenomenon of apical dominance can be
+(2) They are classified based on ease of
+overcome by exogenous application of :-
+extraction.
+(1) ABA (2) Gibberellins
+(3) Peripharal proteins lie on the surface of
+(3) Cytokinins (4) Ethylene
+membrane while integral proteins are
+134.
+The first natural cytokinin of plants is :-
+partially buried in the membrane.
+(1) Zeatin
+(4) Peripharal proteins lie on the surface while
+(2) Kinetin
+integral proteins are partially or totally
+(3) Dihydrooxyzeatin
+buried in the membrane.
+(4) Riboxylzeatin
+130.
+What is the cause of cell division?
+135.
+Bakanae disease in japan was due to a fungus
+(1) Increase in surface area/volume ratio due to
+known as :-
+growth of cell.
+(1) Gibberella fujikori
+(2) Nucleo-cytoplasmic ratio decreases due to
+increase in size of cell. (2) Aspergillus flavus
+(3) Disturbance in lipid and protein ratio. (3) Both (1) and (2)
+(4) All of the above (4) Plasmopara viticola
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 17/27
+
+SECTION-B 139.
+Amino acids usually exist in the form of Zwitter
+This section will have 15 questions. Candidate ions. This means that they consist of :-
+can choose to attempt any 10 questions out of
+(1) The basic NH group and acidic COOH
+2
+these 15 questions. In case if candidate attempts
+group.
+more than 10 questions, first 10 attempted
++ –
+(2) The basic NH group and acidic COO
+questions will be considered for marking. 3
+group.
+136. Assertion :
+Nomenclature provides each – –
+(3) Basic COO group and acidic NH group.
+3
+organism a scientific name.
+Reason : (4) None of the above
+Scientific names are universally
+140.
+accepted. Cellulose in plant cell wall is made up of :-
+(1) Both Assertion and Reason are true, and (1) Unbranched chain of glucose molecules
+Reason is the correct explanation of Assertion. linked by α, 1→6 glycosidic bond.
+(2) Both Assertion and Reason are true, but Reason (2) Unbranched chain of glucose molecules
+is not the correct explanation of Assertion. linked by β, 1→4 glycosidic bond.
+(3) Assertion is true, but Reason is false. (3) Branched chain of glucose molecules linked
+by α, →6 glycosidic bond in straight chain
+(4) Assertion is false, but Reason is true.
+& β →1,4 at the site of branching.
+137.
+Out of four aestivations of petals given below,
+which one is found in Malvaceae :- (4) Branched chains have α →1,4 bond
+and β →1,6 glycosidic bonds both.
+141.
+Which statement is incorrect with respect of
+splitting of water :-
+(1) Splitting of water is associated with PS II
++
+(1) 1 (2) 2 (2) Water is splits into 2H , [O] and electrons
+(3) 3 (4) 4 (3) Oxygen is one of the net products of
+138. Statement-I : splitting of water
+Sclerenchyma cells are dead at
+maturity. (4) Splitting of water process occurs on the
+Statement-II :
+Sclerenchyma cells have lignified outer side of the membrane of thylakoid
+cell walls that provide rigidity. 142.
++
+Pyruvic acid + CoA + NAD
+(1) Both Statement-I and Statement-II are
++
+correct. Acetyl CoA + CO + NADH + H
+2
+A is →
+(2) Statement-I is correct but Statement-II is
+incorrect. (1) Coenzyme A
++2
+(3) Both Statement-I and Statement-II are (2) Mg
+incorrect. +
+(3) K
+(4) Only Statement-II is correct.
+(4) ATP
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 18/27 Space for Rough Work English / 24112024
+
+143. 147. Assertion :
+Match the following and select the correct The cell wall provides a strong
+combination from the options given below :- structural support to prevent the bacterium from
+Column-I Column-II bursting or collapsing.
+(Kingdom (Class) Reason : Cell envelope including cell wall act
+together as a single protective unit.
+(A) Plantae (1) Archaebacteria
+(1) Assertion and Reason are correct and Reason
+(B) Fungi (2) Euglenoids
+is the correct explanation of Assertion.
+(C) Protista (3) Phycomycetes
+(2) Assertion and Reason are correct and Reason
+(D) Monera (4) Algae
+is not the correct explanation of Assertion.
+(1) A–4, B–3, C–2, D–1 (3) Assertion is correct and Reason is incorrect.
+(2) A–1, B–2, C–3, D–4 (4) Assertion is incorrect and Reason is correct.
+148.
+(3) A–3, B–4, C–2, D–1 Which is not a function of endoplasmic reticulum :
+(4) A–2, B–3, C–4, D–1 (1) Endoplasmic reticulum form endoskeleton of cell
+144.
+Mycorrhizae are symbiotic association of fungi (2) Endoplasmic reticulum is the major site for
+with roots of higher plants. these are useful for synthesis of lipid.
+plants due to their following attribute.
+(3) Endoplasmic reticulum is concerned with
+(1) Fixing atmospheric nitrogen. detoxification of drugs, pollutants and steroids.
+(2) Enhancing absorption of nutrients from (4) Endoplasmic reticulum perform the function
+soil. of packaging material.
+149.
+(3) Killing atmospheric nitrogen in nearby Bivalents are formed in :-
+area.
+(1) Diplotene (2) Pachytene
+(4) Providing susceptibility against abiotic
+(3) Zygotene (4) Interkinesis
+stress.
+150.
+Go through the following figure :-
+145.
+Select the mismatch :-
+(1) Pinus – Coralloid roots
+(2) Cycas – Unbranched stem
+(3) Salvinia – Heterosporous
+(4) Equisetum – Homosporous
+146.
+Which one is wrongly matched?
+Choose the correct labelling.
+(1) Unicellular organism — Chlorella (i) (ii) (iii)
+(2) Gemma cups — Marchantia (1) Log phase Exponential phase Stationary phase
+(3) Biflagellate zoospores — Brown algae (2) Lag phase Exponential phase Stationary phase
+(4) Uniflagellate gametes — Polysiphonia (3) Exponential phase Log phase Stationary phase
+(4) Stationary phase Exponential phase Log phase
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 19/27
+
+SUBJECT : BIOLOGY-II
+SECTION-A 156.
+All of the following factors are favourable for
+Attempt All 35 questions dissociation of oxyhaemoglobin at tissues level,
+except :
+151.
+Body covered by calcareous shell and
+(1) High pCO
+2
+unsegmented with distinct head, muscular foot
+(2) Lower temperature
+and visceral hump is seen in :-
+(3) Low pO
+2
+(1) Mollusca (2) Echinodermata
++
+(4) Higher H concentration
+(3) Hemichordata (4) Chordata
+157.
+Mark the correct pair of muscles involved in the
+152.
+Incomplete digestive system that has a single
+normal breathing in humans -
+opening to outside of body that serves as both
+(1) External and internal intercostal muscles
+mouth and anus is present in member of which
+(2) Diaphragm and abdominal muscles
+phylum ?
+(3) Diaphragm and external intercostal muscles
+(1) Porifera (2) Coelentrata
+(4) Diaphragm, external and internal intercostal
+(3) Platyhelminthes (4) Aschelminthes
+muscles
+153. Compound epithelium is found in all except : 158. Respiratory process is regulated by certain
+(1) Dry surfaces of skin specialized centres in the brain. One of the
+following listed centres can reduce the
+(2) Moist surface of vagina
+inspiratory duration upon stimulation –
+(3) Inner lining of arteries
+(1) Medullary inspiratory centre
+(4) Moist surface of buccal cavity.
+(2) Pneumotaxic centre
+154.
+Simple squamous epithelium
+(3) Chemosynthetic centre
+(1) Is absent in thin part of loop of Henle
+(4) Apneustic centre
+(2) Is found in the walls of blood vessels and 159.
+How many Antigen is present on the surface of
+air sacs of lungs
+RBC in blood group AB positive ?
+(3) Has no role in filtration
+(1) One (2) Two
+(4) All are incorrect
+(3) Three (4) Four
+155.
+Cuboidal epithelium with brush border of 160.
+Fibrins are formed by conversion of ______ in
+microvilli is found in :- ______ by the enzyme _______.
+(1) Eustachian tube (1) Fibrinogen, Serum, Thrombokinase
+(2) Lining of intestine (2) Prothrombin, Plasma, Thrombin
+(3) Ducts of salivary gland (3) Fibrinogen, Plasma, Thrombin
+(4) Proximal convoluted tubule of nephron (4) Prothrombin, blood, Thrombokinase
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 20/27 Space for Rough Work English / 24112024
+
+161. 165.
+Rh antibodies from Rh -ve mother can be fatal Which of the following is correct statement ?
+to :-
+(1) Sternum is a flat bone on the dorsal side
+(1) 1st Rh ⊕ child
+(2) The spinal cord protects the
+(2) Subsequent foetus which is Rh ⊖ ve vertebrae column
+(3) Subsequent foetus which is Rh ⊕ ve
+(3) Cervical vertebrae are seven in all mammals
+(4) Not fatal to any foetus
+with no exception
+162.
+Which one of the following statement is correct ?
+(4) Vertebrae column serves as the point of
+(1) Adult human excretes, on an average 3 to
+attachment for the musculature of the back
+3-5 litres of urine per day
+166.
+The cerebrum wraps around a structure called
+(2) In micturition relaxation of urethral
+sphincter cause release of urine ___. Which is major coordinating centre for
+(3) Analysis of urine have least important role sensory and motor signaling.
+in clinical diagnosis of metabolic disorders
+(1) Hypothalamus (2) Corpus callosum
+(4) Urine is slightly basic in nature
+(3) Thalamus (4) Epithalamus
+163.
+Match the column I with column II 167.
+Find out the incorrect statement from the options
+Column-I Column-II
+given below :-
+A Nephridia I Prawn
+(1) Neurotransmitter bind to their specific
+B Malpighian tubules II Earthworm
+receptors, present on the post synaptic
+C Green glands III Cockroach membrane.
+(2) A canal called the cerebral aqueduct
+(1) A - I, B - II, C - III
+possesses through the midbrain.
+(2) A - III, B - II, C - I
+(3) Association areas of brain are responsible for
+(3) A - II, B - III, C - I
+complex functions like intersensory association,
+(4) A - II, B - I, C - III
+memory and communication.
+164.
+Which of the following is incorrect statement
+(4) Electrical synapses pass electrical signal
+about cardiac muscles?
+between cells with the use of Ach.
+(1) Found in heart and intestine
+168. correct
+Select the statement w.r.t brain stem
+(2) Based on appearance, cardiac muscles are
+(1) It connects two cerebellar hemispheres
+non-striated
+(2) It includes midbrain and parts of hindbrain
+(3) They are voluntary in nature as the nervous
+system does not control their activities
+(3) Neural structure responsible for maintaining
+directly
+temperature of body
+(4) All are incorrect
+(4) It includes midbrain and complete hindbrain
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 21/27
+
+169. 173.
+Which of the following statement is false ? Erythropoietin hormone which stimulates
+erythropoiesis is secreted by :-
+(1) The endocrine system provides chemical
+integration through hormones. (1) β cells of pancreas
+(2) The neural system provides an organised (2) cells of Neurohypophysis
+network of point-to-point connections for
+(3) Red bone marrow
+quick coordination.
+(4) Juxta glomerular cells of kidneys
+(3) In our body neural system and endocrine
+174.
+In amphibians, respiration occurs through -
+system jointly coordinate and integrate all
+(1) Gills
+the activities of the organs so that they
+function in a synchronised fashion. (2) Lungs
+(4) In Hydra a brain is present along with a (3) Skin
+number of ganglia and neural tissue.
+(4) All of these
+170. not
+The posterior pituitary gland is a 'true' 175.
+The following statement are associated with the
+endocrine gland because occurrence of notochord. Identify the incorrect
+statement.
+(1) It is provided with a duct
+(1) It is present only in larval tail in ascidians.
+(2) It only stores and releases hormones
+(2) It is replaced by a vertebral column in adult
+(3) It is under the regulation of hypothalamus
+frog.
+(4) It secretes enzymes
+(3) It is absent throughout the life in humans
+171.
+Which of the following hormones can play a
+from the very beginning.
+significant role in osteoporosis?
+(4) It is present throughout life in Amphioxus.
+(1) ADH 176.
+Refer the figures A, B and C and choose the
+(2) Aldosterone correct option which shows animals that regulate
+buoyancy with the help of air bladder.
+(3) Parathyroid hormone
+(4) Prolactin
+172. Statement I:
+Oxytocin is called milk ejecting
+hormone.
+StatementII
+: Epinephrine is a catecholamine.
+(1) Both statements I and II are incorrect
+(2) Statement I is correct but statement II is
+(1) A and B
+incorrect
+(2) A and C
+(3) Statement I is incorrect but statement II is
+(3) B and C
+correct
+(4) Both statements I and II are correct (4) All of the above
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 22/27 Space for Rough Work English / 24112024
+
+177. 180.
+The following figure shows the external features During muscle contraction.
+of cockroach with few structures labelled as A,
+(1) Chemical energy is changed to electrical
+B, C, D, and E. Identify A to E .
+energy.
+(2) Mechanical energy is changed to chemical
+energy.
+(3) Chemical energy is changed to physical
+energy.
+(4) Chemical energy is changed to mechanical
+energy.
+181. ‘X’ ‘Y’
+is an important part of which lies at the
+base of the structure which is a major
+(1) A- Mesothorax, B-Pronotum, C-Metathorax,
+coordinating centre for sensory and motor
+D-Tegmina, E-Anal style
+signalling. It contains a number of centre which
+(2) `A- Pronotum, B-Metathorax, C-Mesothorax- control body temperature, urge for eating and
+Tegmina, E-Sterna drinking.
+X Y
+Identify and from the options given below -
+(3) A- Pronotum, B-Mesothorax, C-Metathorax,
+D-Tegmina, E-Anal cerci (1) X -Cerebellum; Y – Hindbrain
+(4) A- Pronotum, B-Mesothorax, C-Metathorax, (2) X -Hypothalamus; Y - Forebrain
+D-Tegmina, E-Anal style
+(3) X -Corpora quadrigemina; Y – Midbrain
+178. __(i)__
+Most oxygen is carried by the blood .
+(4) X -Pituitary gland; Y – Forebrain
+Most carbon dioxide is carried by the blood
+__(ii)__ 182.
+. In hormone action, if receptor molecules are
+removed from target organ, the target organ will -
+(1) (i) attached to haemoglobin, (ii) in the form
+of bicarbonate ions. (1) Continue to respond to hormone.
+(2) (i) dissolved in plasma, (ii) dissolved in (2) Not respond to hormone.
+plasma.
+(3) Continue to respond but requires higher
+(3) (i) in the form of H+ ions, (ii) in the form of concentration.
+bicarbonate ions.
+(4) Continue to respond but in the opposite way.
+(4) (i) attached to haemoglobin, (ii) attached to 183.
+Hormones involved in carbohydrate metabolism
+haemoglobin.
+are -
+179.
+Contraction of the ventricle in the heart begins
+(1) Insulin, glucagon, epinephrine and calcitonin
+by the command from -
+(2) Insulin, glucagon, epinephrine and
+(1) Purkinje fibres
+glucocorticoids
+(2) AV node
+(3) Insulin, glucagon, cortisol and melatonin
+(3) Chordae tendinae
+(4) Insulin, glucagon, norepinephrine and
+(4) SA node melatonin
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 23/27
+
+184. 187. Statement-1 :-
+If Henle’s loop were absent from mammalian The skin of Aves is unique in
+nephron which of the following event is to be possessing hairs.
+expected? Statement-2 :-
+Most unique mammalian
+(1) There will be no urine formation. character is presence of mammary glands.
+Statement 1 Statement 2
+(2) There will be hardly any change in the (1) is incorrect but is
+quality and quantity of urine formed. correct.
+(3) The urine will be more concentrated. (2) Both Statement 1 and Statement 2 are
+(4) The urine will be more dilute. incorrect.
+Statement 1 Statement 2
+185. (3) Both and are
+Which of the following statement is incorrect?
+correct.
+(1) Counter-current flow of blood in vasa recta
+Statement 1 Statement 2
+helps to retain the reabsorbed sodium in the (4) is correct but is
+renal medulla. incorrect.
+(2) Glomerular filtrate is protein free plasma. 188.
+Given below are some statements :
+(3) Vasa recta carry glomerular filtrate from I. Members of this class are ectoparasite on some
+distal convoluted tubule to the collecting duct.
+fishes.
+(4) Glomerular filtrate in Bowman’s capsule is II. Bearing 6-15 pairs of gill slits.
+isotonic to the plasma.
+III. Circular mouth without jaw.
+SECTION-B
+IV. Member of this class are marine but migrate
+This section will have 15 questions. Candidate
+for spawning to fresh water.
+can choose to attempt any 10 questions out of
+How many statements belong to class
+these 15 questions. In case if candidate attempts
+cyclostomata ?
+more than 10 questions, first 10 attempted
+questions will be considered for marking. (1) Only two (2) Only three
+186. (3) Only one (4) All four
+Read the following terminology of column-I &
+189.
+II and identify their correct match :- Which of the following statements is correct for
+Column-I Column-II the organism shown in the given figure.
+(A) Dorsal hollow nerve cord (i) Echinodermata
+(B) Stomochord (ii) Porifera
+(C) Radial symmetry (iii) Platyhelminthes
+(D) Feather like gills (iv) Annelida
+(v) Chordata
+(vi) Mollusca
+(vii) Hemichordata (1) It does not shows sexual dimorphism
+(1) (A)-(v), (B)-(vii), (C)-(ii), (D)-(iv) (2) Body divisible into Head, Trunk and Tail
+(2) (A)-(v), (B)-(vii), (C)-(vi), (D)-(ii) (3) Tadpole undergoes metamorphosis to form
+the adult.
+(3) (A)-(v), (B)-(vii), (C)-(i), (D)-(vi)
+(4) Female lays 20000–22000 ova at a time
+(4) (A)-(vii), (B)-(v), (C)-(iii), (D)-(i)
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 24/27 Space for Rough Work English / 24112024
+
+190. 194.
+Match the following columns
+Place pO pCO
+2 2
+A Alveoli P 95 I 40
+B Oxy. Blood Q 40 II 45
+C Tissue R 104 III 40
+(1) A - R - I, B - P - III, C - Q - II
+Where among the following, one can find the
+(2) A - P - II, B - Q - I, C - R - III
+given tissue
+(3) A - Q - I, B - P - II, C - R - III
+(1) Stomach, intestine, heart
+(4) A - R - III, B - Q - II, C - P - I
+(2) Intestine, stomach, biceps
+191.
+Find out the correct statement about human
+rd
+(3) Anterior 1/3 of oesophagus, diaphragm
+circulatory system ?
+(4) Stomach, uterus, urinary bladder
+(1) Opening between right atrium and right
+195.
+ventricle is guarded by tricuspid valve Match the list-I with list-II :-
+List-I List-II
+(2) Heart is ectodermally derived organ
+(3) Not all vertebrates posses muscular chambered Site of information
+Somatic
+heart A. processing and I.
+neural system
+(4) All molluscs have closed network of blood control
+vessels
+Relays impulses from
+192. In which one of the following options Column I Autonomic
+B. the CNS to skeletal II.
+is correctly matched with Column II? neural system
+muscles
+Column
+ColumnI
+II
+Comprises of all the
+Reabsorption of glucose, amino acids, nerves of the body Central
+(1) Passive C. III.
+Na+
+associated with the neural system
+(2) Reabsorption of urea Active CNS
+(3) Tubular secretion of H+ Active
+Transmits impulses
+Peripheral
+Conditional reabsorption of Na+ and D. from the CNS to the IV.
+(4) PCT
+water neural system
+involuntary organs
+193.
+Which of the given regulatory mechanisms can be
+observed once there is an increase in volume of body
+Choose the correct answer from the option given
+fluid ?
+below :-
+a. Osmoreceptors on hypothalamus switch off
+b. Vasopressin from neurohypophysis is released (1) A-(III), B-(I), C-(IV), D-(II)
++
+c. Aldosterone causes reabsorption of Na and water
+(2) A-(III), B-(II), C-(IV), D-(I)
+d. Constriction of blood vessels occur
+(3) A-(IV), B-(I), C-(II), D-(III)
+(1) a, c only (2) b, c, d only
+(4) A-(I), B-(II), C-(III), D-(IV)
+(3) a, d only (4) Only a
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Space for Rough Work Page 25/27
+
+196. 199.
+How many statement are correct regarding Thoracic chamber is formed (A) by the vertebral
+hormones produced by β cells of "islet of column, (B) by the sternum, (C) by the ribs and
+Langerhans" :- on the (D) side by the dome shaped diaphragm.
+(a) It is a peptide hormone. Identify A, B, C and D.
+(b) It mainly act on hepatocytes and enhance cellular
+(1) A – dorsally, B – ventrally, C – laterally,
+glucose uptake and utilisation.
+(c) Stimulate conversion of glucose to glycogen. D – lower
+(d) Deficiency of this hormone causes diabetes
+(2) A – ventrally, B – laterally, C – dorsally,
+mellitus.
+D – upper
+(1) (a), (b) is correct but (c), (d) are incorrect.
+(3) A – laterally, B - ventrally, C – dorsally, D
+(2) (a), (b), (c) are correct but (d) is incorrect. – lower
+(3) (a), (b) is incorrect but (c), (d) is correct. (4) A – dorsally, B - laterally, C – ventrally, D
+(4) (a), (b), (c) and (d) are correct. – upper
+197. 200.
+Read the following statements. Which one of the following statements is correct
+Statement I :
+Parathyroid hormone acts on bones regarding blood pressure?
+and structure the process of bone resorption.
+(1) 190/110 mmHg may harm vital organs like
+StatementII:
+Parathyroid hormone also stimulates
+brain and kidney.
+2+
+reabsorption of Ca by the renal tubules and
+(2) 130/90 mmHg is considered high and
+2+
+increases Ca absorption from the digested food.
+requires treatment.
+(1) Statement I is correct, but Statement II is incorrect.
+(3) 120/80 mmHg is considered an ideal blood
+(2) Statement I is incorrect, but Statement II is correct.
+pressure.
+(3) Both statement I and II are correct. (4) 105/50 mmHg makes one very active.
+(4) Both statement I and II are incorrect.
+198.
+The diagram given below represents the
+reproductive organ of male cockroach. Choose
+the correct labelling of the part of marked as A,
+B, C and D.
+(1) A – 8th sternum, B - Anal cercus, C - 10th
+tergum, D - Anal style
+(2) A - 10th tergum, B - Anal cercus, C - Anal
+style, D - 8th sternum
+(3) A - Anal style, B - Anal cercus, C - 10th
+tergum, D- 8th sternum
+(4) A - Anal cercus, B - 8th sternum, C - 10th
+tergum, D - Anal style
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+Page 26/27 Space for Rough Work English / 24112024
+
+MAJOR TEST SERIES - ENTHUSE + LEADER COURSE_PHASE - 1 9610ZMD801500240001
+English / 24112024 Page 27/27

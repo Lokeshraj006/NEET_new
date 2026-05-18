@@ -1,0 +1,695 @@
+FINAL SHOT - MOCK TEST
+(Academic Session : 2023 - 2024)
+TARGET : PRE-MEDICAL 2024
+Test No. : 01 Test Pattern : NEET (UG)
+ANSWER KEY
+Q. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+A. 4 1 2 3 1 2 1 1 2 3 2 4 3 1 3 1 2 2 3 1 3 4 3 4 3 2 2 2 3 2
+Q. 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60
+A. 4 3 2 2 2 4 2 1 3 3 2 2 4 3 1 4 2 2 4 2 1 4 1 4 3 1 4 3 3 2
+Q. 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90
+A. 3 3 4 4 1 4 4 4 2 4 3 1 1 2 4 3 2 2 1 1 1 2 4 2 1 2 4 4 1 3
+Q. 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120
+A. 4 3 2 2 3 4 3 4 2 2 2 4 2 3 4 4 2 1 3 2 4 3 4 1 1 3 3 2 1 2
+Q. 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150
+A. 2 1 4 4 1 3 1 2 1 4 2 1 1 4 2 3 3 3 3 2 4 4 3 3 1 3 2 1 3 4
+Q. 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180
+A. 1 4 4 2 2 4 2 4 4 2 2 2 1 3 1 4 3 2 2 1 2 3 2 1 2 4 4 3 3 3
+Q. 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200
+A. 4 3 4 3 2 3 3 1 3 1 3 2 4 1 4 4 4 2 2 2
+HINT – SHEET
+2. Ans ( 1 )
+SUBJECT : PHYSICS
+SECTION - A Given e = E sin ωt
+0
+1. Ans ( 4 )
+i = I sin (ωt + ϕ)
+0
+ϕ −ϕ
+emf e = f i ϕ = NBA
+i
+Δt
+So phase difference = ϕ
+(−NBA−NBA) 2NBA
+e = – =
+t t power factor = cosϕ
+By formula
+2×35×102×10−4×π× 0.5×0.5×10−6
+=
+0.1
+Average power (P ) = V I cosϕ
+av rms rms
+= 5.5 µV
+E I E I
+= 0 × 0 cosϕ = 0 0 cosϕ
+√ √ 2
+2 2
+1001CMD303029230163 HS-1/11
+
+TARGET:PRE-MEDICAL 2024/01
+3. Ans ( 2 ) 10. Ans ( 3 )
+For points inside the wire Efficiency of carnot engine
+μ 0Ir η = (1− T 2)
+B = (r ⩽ R)
+T
+2πR2 1
+It depends on temperature of source & sink.
+For points outside the wire
+μ I 11. Ans ( 2 )
+B = 0 (r ⩾ R)
+2πr
+(V ) = (V )
+rms Ne rn NH3
+according to the question
+μ0 2I π( aa 2/2)
+B √3RT = √ 3R(290)
+= = 2 : 1
+20 17
+B′ μ0I
+2π(4a)
+20×290
+4. Ans ( 3 ) T = = 341.1K
+17
+18
+i = = 3A
+4+2
+12. Ans ( 4 )
+2 2
+P = i R = 3 (4) = 36W
+(μ +μ )RT
+1 2 mix
+P =
+mix
+V
+5. Ans ( 1 ) mix
+(0.1+0.2)×8.3×200
+S(6)
+=
+4 =
+100×10−6
+S+6
+⇒ S = 12Ω = 4.98 × 106 Pascal
+6. Ans ( 2 )
+13. Ans ( 3 )
+The current though N = 3A
+A spaceship is a vehicle that travels through
+ΔV across 1Ω = i R space. When spaceship enters earth's
+= 3(1) = 3 V atmosphere, it experiences air friction due to
+which it will catch fire, if proper precaution will
+7. Ans ( 1 )
+R = (2πr) × 24 not be taken. Also, temperature of upper
+R R
+R atmosphere is low,
+2 2
+R = = = 1.2πΩ
+eq
+R + R 4
+2 2 14. Ans ( 1 )
+8. Ans ( 1 ) m−e(2m) 1
+V = V = 0 ⇒ e =
+1 m+2m 2
+q = cV
+i
+15. Ans ( 3 )
+V
+V =
+C Tension is maximum at lowest point.
+2
+cV q
+q = = 1 16. Ans ( 1 )
+f
+2 2
+For convex lens, if forms a real image
+9. Ans ( 2 )
+x = A sin ωt |u| + |v| ≥ 4f,
+v = Aω cos ωt for |u| = 2f, |v| = 2f
+a = –Aω2 sin ωt = –ω2 x So |u| + |v| = 4f.
+HS-2/11 1001CMD303029230163
+
+FINAL SHOT - MOCK TEST/01
+17. Ans ( 2 ) 24. Ans ( 4 )
+L
+1 Kx2 = 1 m [u2 −(u )2 ] g = 4π2 T2
+2 2 2
+Δg ΔL 2ΔT
+∴ = +
+g L T
+3u2
+⇒ Kx2 = m
+25. Ans ( 3 )
+4
+√ 3mu2 u √3m
+⇒ x = = .
+4k 2 k
+18. Ans ( 2 )
+Using parallel axis theorem
+1
+By using s = ut + at2
+2
+1
+2
+3.3 = u(0.2) + (10) (0.2)
+2
+ML2
+⇒ 33 = 2u + 2
+I = I +
+x 0 4
+31 ms–1
+⇒ u = = 15.5
+2
+19. Ans ( 3 )
+gsinθ 3 26. Ans ( 2 )
+a = = g sin θ
+1 1+ 2 5 √ 2h
+3 t =
+a
+a = g sin θ rel
+2
+In second case a = a + g
+a 3 rel
+1
+=
+a 5
+2 Hence t > t
+1 2
+27. Ans ( 2 )
+20. Ans ( 1 )
+F 3
+I = = = 50 N/kg
+g
+m 60×10−3
+21. Ans ( 3 )
+1
+U = (force)(elongation)
+2
+1 1
+= (Mg)ℓ = Mgℓ
+2 2
+22. Ans ( 4 ) N = 200 cos 30°
+ABsinθ = ABcosθ = 100 √3
+tanθ = 1 = 173 N
+1
+θ = 45° f = μ N = × 173
+SL s
+4
+23. Ans ( 3 ) f = 43.25
+SL
+MV 2 ML2T−2
+= = ML2T−3 = Power f = 100 – 60 = 40 N < f
+T T req sL
+1001CMD303029230163 HS-3/11
+
+TARGET:PRE-MEDICAL 2024/01
+28. Ans ( 2 ) 35. Ans ( 2 )
+235U +1 n →89 Kr+144 Ba+31n+Q ¯¯¯¯ ¯¯ ¯¯¯¯¯¯¯¯¯¯ ¯¯¯ ¯¯ ¯
+92 0 36 56 0 Y = A+B
+29. Ans ( 3 ) ¯¯¯¯ ¯¯¯¯
+¯¯¯¯ ¯¯¯¯
+= A. B = A. B = AND gate
+2
+E = mc
+–3 16 A B Y
+= 0.5 × 10 × 9 × 10
+13
+= 4.5 × 10 J 0 0 0
+30. Ans ( 2 )
+0 1 0
+γ−decay
+XA −−−−−→ ZA
+Z Z
+1 0 0
+Due to gamma emission, there is no change in
+1 1 1
+mass number ana atomic number.
+31. Ans ( 4 ) SECTION - B
+X240 → Y 120 +Z120 given binding energy per
+36. Ans ( 4 )
+nucleon of X, Y & Z are 7.6 MeV, 8.5 MeV & E 20
+I = ⇒ E = IAt = ×20×10−4 ×60
+At 10−4
+8.5 MeV respectively.
+3
+= 24 × 10 J
+Gain in binding energy is :-
+37. Ans ( 2 )
+Q = Binding Energy of products – Binding
+R
+energy of reactants Since ℓ = 2πR = n(2πr) ⇒ r =
+n
+= (120 × 8.5 × 2) – (240 × 7.6) MeV = 216 MeV
+2μ I μ I
+For two turn B = 0 and B = 4( 0 )
+2R/2 2R
+32. Ans ( 3 )
+β+ α β−
+A ZX −→ Z−1B → Z−3C −→ Z−2D μ 0I n2B
+For n turn ⇒ B′ = n2( ) ⇒ B′ =
+2R 4
+β+
+decreases atomic number by 1
+38. Ans ( 1 )
+α decreases atomic number by 2
+Net field at O due to whole ring = O
+–
+β increases atomic number by 1
+33. Ans ( 2 )
+Path difference for nth max = nλ = 6λ
+39. Ans ( 3 )
+34. Ans ( 2 )
+R = V = tan53o = 4 Ω ; r = 10–3 m
+For P type I 3
+(3.14×10−6)
+4 ρℓ 4 A 4
+Holes are majority & trivalent atoms are the = ⇒ ρ = =
+3 A 3 ℓ 3 (0.5)
+dopants. ρ ≈ 8 × 10–6 Ω-m
+HS-4/11 1001CMD303029230163
+
+FINAL SHOT - MOCK TEST/01
+40. Ans ( 3 ) 45. Ans ( 1 )
+Root mean sqaure speed, 100 w = (50 × 12 ) (2/1) ⇒ w = 1 rad/s
+d d
+v 2
+√3RT √3RT w = = = 2 rad/s
+V rms = = m r 1
+M m
+1 w = w – w = 2 –(–1) = 3
+Pressure exerted by gas P = (nm)ν¯2 md m d
+3
+2π 2π
+⇒ = 3 ⇒ T = s
+1 T md 3
+⇒ P = ρν¯2 md
+3
+46. Ans ( 4 )
+3
+Average kinetic energy K.E. = KT
+2
+Total internal energy of 1 mole of a
+monoatomic ⇒ 3 2RT v = 2r2(σ−ρ)g ⇒ v 1 = ( r 1 )2 (σ 1 −ρ)
+T
+9η v 2 r 2 (σ 2 −ρ)
+41. Ans ( 2 )
+2
+P V = Constant
+2 = (1 )2 ( 8ρ 2 −0.1ρ 2 ) = 79
+( nRT ) ×V = Constant 2 ρ 2 −0.1ρ 2 36
+V
+2
+T
+= Constant 47. Ans ( 2 )
+V
+∴ T < T ⇒ V < V
+1 2 1 2
+42. Ans ( 2 )
+Case-I : frequency can be 496 or 504 Hz
+Case-II : frequency can be
+1510−2 1510+2
+,
+3 3
+Netforce
+a =
+: 502.6 ; 504 Hz
+Totalmass
+60−(18+60sin30∘)
+504 Hz satisfy both cases = = 2ms−2
+6
+FBD of 1kg
+43. Ans ( 4 )
+P = P ⇒ (1 + 3) (20i^ +25j^ −12k^ )
+i f
+= 1(100i^ +35j^ +8k^ ) + 3→ v
+^ ^ ^
+−20i +65j −56k
+⇒ → v = m/s
+3
+44. Ans ( 3 )
+60 – 15 – N = 3 × 2
+πd(2F )
+0
+W = 3F × 2d +
+0 4 45 – N = 6
+π
+= F 0d (6+ 2) N = 39 N
+1001CMD303029230163 HS-5/11
+
+TARGET:PRE-MEDICAL 2024/01
+48. Ans ( 2 ) 50. Ans ( 2 )
+hc
+If no shunt KE = − ϕ
+1
+λ
+hc 2hc
+10–6 KE = − ϕ = − ϕ
+I = 9 × 60 μA = 540 × A 2
+λ/2 λ
+6
+= 540×10−6 KE = 3KE
+2 1
+11000+G
+1000
+G = ⇒ 2hc − ϕ = 3(hc − ϕ)
+9
+λ λ
+RS 1000 11000s
+G = ⇒ =
+hc
+R−S 9 11000−s ⇒ 2ϕ =
+λ
+S = 110 Ω
+hc
+⇒ ϕ =
+2λ
+49. Ans ( 4 )
+at A Snell's law SUBJECT : CHEMISTRY
+SECTION-A
+1 × sin 60° = µ sin(90° – θ )
+C
+51. Ans ( 1 )
+1
+th
+= μ cosθ ...(1) NCERT XII Pg. # 318 (Example 10.7)
+C
+√
+2
+52. Ans ( 4 )
+th
+NCERT XII Pg. # 347
+53. Ans ( 1 )
+th
+NCERT XII Pg. # 348
+54. Ans ( 4 )
+th
+NCERT XII Pg. # 382
+55. Ans ( 3 )
+NCERT Pg.#421,422
+For second surface
+56. Ans ( 1 )
+1
+= sinθ ...(2) NCERT Pg. # 399
+C
+μ
+Accourding to (1) and (2)
+57. Ans ( 4 )
+NCERT Pg.#442 table 14.3
+sin2θ cos2θ
++ = 1
+C C
+59. Ans ( 3 )
+cosθ = √ 1 − sin2θ put in (1)
+C C
+Zn and Mn has equal metallic radius
+√ √
+3 1 3
+= μ × √1 − ⇒ = √μ2 − 1
+2 μ2 2 63. Ans ( 4 )
+√7 NCERT Pg. # 319
+3 7
+√ + 1 = μ ⇒ μ = = √
+4 2 4
+HS-6/11 1001CMD303029230163
+
+FINAL SHOT - MOCK TEST/01
+64. Ans ( 4 ) 77. Ans ( 2 )
+TheoriticalM.w. 170
+NCERT Pg. # 324 i = = = 1.214
+ObservedM.w. 140
+i = 1 + (n – 1) α
+69. Ans ( 2 )
+NCERT XI PART-1 Pg.#18 1.214 = 1 + (2 – 1) α ⇒ α = 0.214 = 21.4 %
+70. Ans ( 4 ) 78. Ans ( 2 )
+th
+NCERT XI Part-1 Pg.#161
+For uncatalysed reaction k = Ae−Ea/RT
+1
+71. Ans ( 3 ) (Ea−8314)
+For uncatalysed reaction k 2 = Ae− RT
+th
+NCERT XI Part-1 Pg. # 51, 70, 46, 63
+k eRE Ta−(Ea− R8 T314)
+2 =
+k
+1
+72. Ans ( 1 ) 8314 2
+= e RT = e = 7.38
+By law of equivalence
+79. Ans ( 1 )
+(No.ofg−eq)Na SO = (No.ofg−eq)kMnO
+2 3 4 1 1
+Rate law = r = k[A] [B]
+n 1 ×n f = n 2 ×n f its a second order reaction so unit of rate
+1 2
+–1 –1
+15 constant will be L mol sec
+n × 2 = 3 × 5 ⇒ n = = 7.5
+1 1 2
+84. Ans ( 2 )
+73. Ans ( 1 )
+if R.S. are not identical then single bond aquires
+th|
+NCERT XI Part-I Pg. # 41,50
+more single bond character and double bond
+74. Ans ( 2 ) character.
+th
+NCERT, XI , Part - I Pg.#187, 208, 211, 212
+85. Ans ( 1 )
+75. Ans ( 4 )
+CH –CH
+3 3
+(NV) = 20×0.25 = 5
+StrongAcid
+SECTION-B
+(NV) = 30×0.2 = 6
+Strongbase
+86. Ans ( 2 )
+∵ (NV) > (NV)
+SB SA NCERT XIIth Pg. # 345
+⇓
+87. Ans ( 4 )
+Glucose and Fructose both gives tollen's test.
+solution will be basic
+(NV) −(NV)
+[OH−] = SB SA 91. Ans ( 4 )
+V
+T NCERT Pg. # 319
+6−5 1
+= = = 0.02 N
+50 50
+92. Ans ( 3 )
+NCERT Pg.#123
+1001CMD303029230163 HS-7/11
+
+TARGET:PRE-MEDICAL 2024/01
+93. Ans ( 2 ) SUBJECT : BOTANY
+th
+NCERT XI Part - 1 Pg. # 220
+SECTION - A
+94. Ans ( 2 ) 101. Ans ( 2 )
+NCERT XIth Part-I Pg.#175 NCERT XII, Pg # 75
+102. Ans ( 4 )
+96. Ans ( 4 )
+NCERT XII, Pg # 112
+P = PoX +PoX
+T A A B B
+103. Ans ( 2 )
+P = Po(1−X )+PoX
+T A B B B NCERT XII, Pg # 73
+P = Po −PoX +PoX
+T A A B B B 104. Ans ( 3 )
+NCERT XII, Pg # 98
+P = Po +X (Po −Po)
+T A B B A
+105. Ans ( 4 )
+600 = 450 + X B (700 – 450) NCERT XII, Pg # 89
+150 = X × (250) 106. Ans ( 4 )
+B
+150 NCERT XII, Pg # 122
+X = = 0.6
+B
+250
+107. Ans ( 2 )
+Now,
+NCERT XI, Pg. # 38
+PoX = Y .P
+B B B T 108. Ans ( 1 )
+NCERT XI, Pg. # 33
+700 × 0.6 = Y × 600
+B
+109. Ans ( 3 )
+⇒ Y B = 0.7 NCERT XI, Pg # 32
+97. Ans ( 3 ) 110. Ans ( 2 )
+NCERT XII, Pg. # 28
+1 [A 0] 1 (A o) ℓn10
+k = ℓn ⇒ t = ℓn =
+90%
+t [At] k (Ao) k 111. Ans ( 4 )
+10
+th
+NCERT-XII , Pg.# 111
+2.303
+(1) t 90%= 112. Ans ( 3 )
+k
+NCERT XI, Pg # 84, 88
+2.303×log2 113. Ans ( 4 )
+(2) t =
+1/2
+k NCERT XI, Pg # 89, 90, 91, 92, 93
+114. Ans ( 1 )
+(1) t
+1/2
+t 90% = = 3.3t 1/2 NCERT XI, Pg # 75
+(2) log2
+115. Ans ( 1 )
+100. Ans ( 2 ) NCERT XI, Pg # 213
+116. Ans ( 3 )
+NCERT XI Pg # 229, 231, 233
+HS-8/11 1001CMD303029230163
+
+FINAL SHOT - MOCK TEST/01
+117. Ans ( 3 )
+132. Ans ( 1 )
+NCERT XI Pg # 246
+NCERT XII, Pg. # 249
+118. Ans ( 2 )
+133. Ans ( 1 )
+NCERT XII (Pg = 235)
+NCERT-XII Pg. # 255
+119. Ans ( 1 )
+134. Ans ( 4 )
+NCERT XII (Pg - 233)
+NCERT XI, Pg.#231
+120. Ans ( 2 )
+135. Ans ( 2 )
+NCERT, Pg. # 84
+NCERT XII, Pg. # 81
+121. Ans ( 2 ) SECTION - B
+NCERT XII, Pg. # 92
+136. Ans ( 3 )
+NCERT XII, Pg # 110
+122. Ans ( 1 )
+NCERT, Pg. # 94, 95 137. Ans ( 3 )
+NCERT XI, Pg.# 35
+123. Ans ( 4 )
+NCERT XI Pg. No. # 75 138. Ans ( 3 )
+NCERT XI, Pg # 31
+124. Ans ( 4 )
+NCERT XI Pg. # 23, 24 139. Ans ( 3 )
+NCERT XI, Pg. # 19, 24
+125. Ans ( 1 )
+NCERT XI, Pg. # 14 140. Ans ( 2 )
+NCERT XI, Pg. # 11
+126. Ans ( 3 )
+NCERT-XI, Pg.# 30
+141. Ans ( 4 )
+NCERT XI, Pg # 75, 78, 79
+127. Ans ( 1 )
+NCERT-XI, Pg.# 247
+142. Ans ( 4 )
+128. Ans ( 2 ) NCERT XI Pg # 219
+NCERT XI, Pg. # 98
+143. Ans ( 3 )
+129. Ans ( 1 ) NCERT XI Pg # 250
+NCERT XII, Pg. # 22
+144. Ans ( 3 )
+130. Ans ( 4 ) NCERT XII Pg. # 242
+NCERT XII Pg. No. # 213
+145. Ans ( 1 )
+131. Ans ( 2 ) NCERT XII Page No. 242
+NCERT XII, Pg # 207
+146. Ans ( 3 )
+NCERT XII, Pg. # 221
+1001CMD303029230163 HS-9/11
+
+TARGET:PRE-MEDICAL 2024/01
+147. Ans ( 2 ) 165. Ans ( 1 )
+NCERT XII, Pg. # 224, 225, 226 NCERT Pg.#199
+148. Ans ( 1 ) 166. Ans ( 4 )
+NCERT XI, Pg. # 212 NCERT Pg.#196
+149. Ans ( 3 ) 167. Ans ( 3 )
+NCERT XII, Pg. # 152, 153 NCERT Pg.#211
+150. Ans ( 4 ) 168. Ans ( 2 )
+NCERT, Pg. # 98, 99 NCERT Pg.#202
+169. Ans ( 2 )
+SUBJECT : ZOOLOGY
+NCERT Pg.#212
+SECTION - A
+170. Ans ( 1 )
+151. Ans ( 1 ) NCERT Pg.#212
+NCERT-XII, Pg. # 58, 59
+171. Ans ( 2 )
+th
+152. Ans ( 4 ) NCERT XI Pg. No. # 312
+NCERT, Pg. # 339
+172. Ans ( 3 )
+153. Ans ( 4 ) NCERT XII Pg. No.# 60
+NCERT, Pg. # 105
+173. Ans ( 2 )
+154. Ans ( 2 ) NCERT XII Pg. No. # 51
+NCERT, Pg. # 50, 51, 52, 53
+174. Ans ( 1 )
+155. Ans ( 2 ) NCERT Pg. No. # 63
+NCERT, Pg. # 274
+175. Ans ( 2 )
+156. Ans ( 4 ) NCERT Pg. No. # 60-61
+NCERT, Pg. # 281
+176. Ans ( 4 )
+157. Ans ( 2 ) NCERT - XII Pg. No. # 54 - 55
+NCERT, Pg. # 272
+177. Ans ( 4 )
+159. Ans ( 4 ) NCERT XI Pg # 310-311
+NCERT, Pg. # 49, 50, 51, 54
+178. Ans ( 3 )
+160. Ans ( 2 ) NCERT XII Pg. No. # 53
+NCERT, Pg. # 49, 51, 52, 54
+179. Ans ( 3 )
+161. Ans ( 2 ) NCERT XII Pg. No. # 211
+NCERT, Pg. # 307, 308
+180. Ans ( 3 )
+162. Ans ( 2 ) NCERT - XII Pg. No. # 147 - 149
+NCERT Pg.#201
+181. Ans ( 4 )
+163. Ans ( 1 ) NCERT Pg.# 146
+NCERT Pg.#202
+182. Ans ( 3 )
+164. Ans ( 3 ) NCERT Pg.# 138
+NCERT Pg.#198
+HS-10/11 1001CMD303029230163
+
+FINAL SHOT - MOCK TEST/01
+183. Ans ( 4 ) 193. Ans ( 4 )
+NCERT-XII, Pg.# 201 NCERT Page no. 332
+184. Ans ( 3 ) 194. Ans ( 1 )
+NCERT Pg.# 168 NCERT–XI, Pg. # 50
+185. Ans ( 2 ) 195. Ans ( 4 )
+NCERT Pg. # 108 NCERT (XI) Pg # 274
+196. Ans ( 4 )
+SECTION - B
+NCERT(XIIth) Pg # 152
+186. Ans ( 3 )
+197. Ans ( 4 )
+NCERT, Pg. # 108
+During oogenesis M-I division start before birth
+187. Ans ( 3 )
+& complete during reproductive age means
+NCERT Pg. # 106
+during each menstrual cycle just prior to
+188. Ans ( 1 ) ovulation.
+NCERT-XII, Pg.# 213 अ डजनन के दौरान  थम अ  स ू ी िवभाजन ज म से पवू  
+श ु होता ह ै और अ त   येक मािसक च  के दौरान
+189. Ans ( 3 )
+अ डो सग  से ठीक पवू   होता ह।ै
+NCERT Pg. No. # 22
+198. Ans ( 2 )
+190. Ans ( 1 )
+nd
+NCERT-XI, Pg No.102, II para
+NCERT, Pg. # 108, 109
+199. Ans ( 2 )
+191. Ans ( 3 )
+NCERT XI Pg.# 143
+Module, Pg. # 14, 15
+200. Ans ( 2 )
+192. Ans ( 2 )
+NCERT-XI, Page#146
+NCERT (XI) Pg. # 279; para-2
+1001CMD303029230163 HS-11/11

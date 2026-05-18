@@ -1,0 +1,1785 @@
+No. :
+Test Booklet Code AGAJHA
+M4
+This Booklet contains 28 pages.
+Do not open this Test Booklet until you are asked to do so.
+Important Instructions :
+1. The Answer Sheet is inside this Test Booklet. When you are directed to open the Test Booklet, take out the
+Answer Sheet and fill in the particulars on OFFICE Copy carefully with blue/black ball point pen only.
+2. The test is of 3 hours duration and the Test Booklet contains 200 multiple-choice questions (four options
+with a single correct answer) from Physics, Chemistry and Biology (Botany and Zoology). 50 questions
+in each subject are divided into two Sections (A and B) as per details given below :
+(a) Section A shall consist of 35 (Thirty-five) Questions in each subject (Question Nos – 1 to 35,
+51 to 85, 101 to 135 and 151 to 185). All questions are compulsory.
+(b) Section B shall consist of 15 (Fifteen) questions in each subject (Question Nos – 36 to 50, 86 to 100,
+136 to 150 and 186 to 200). In Section B, a candidate needs to attempt any 10 (Ten) questions out
+of 15 (Fifteen) in each subject.
+Candidates are advised to read all 15 questions in each subject of Section B before they start
+attempting the question paper. In the event of a candidate attempting more than ten questions, the first
+ten questions answered by the candidate shall be evaluated.
+3. Each question carries 4 marks. For each correct response, the candidate will get 4 marks. For each
+incorrect response, one mark will be deducted from the total scores. The maximum marks are 720.
+4. Use Blue/Black Ball Point Pen only for writing particulars on this page/marking responses on Answer
+Sheet.
+5. Rough work is to be done in the space provided for this purpose in the Test Booklet only.
+6. On completion of the test, the candidate must hand over the Answer Sheet (ORIGINAL and OFFICE
+Copy) to the Invigilator before leaving the Room/Hall. The candidates are allowed to take away this Test
+Booklet with them.
+M4
+7. The CODE for this Booklet is . Make sure that the CODE printed on the Original Copy of
+the Answer Sheet is the same as that on this Test Booklet. In case of discrepancy, the candidate should
+immediately report the matter to the Invigilator for replacement of both the Test Booklet and the Answer Sheet.
+8. The candidates should ensure that the Answer Sheet is not folded. Do not make any stray marks on the
+Answer Sheet. Do not write your Roll No. anywhere else except in the specified space in the Test Booklet/
+Answer Sheet.
+9. Use of white fluid for correction is NOT permissible on the Answer Sheet.
+10. Each candidate must show on-demand his/her Admit Card to the Invigilator.
+11. No candidate, without special permission of the centre Superintendent or Invigilator, would leave his/her seat.
+12. The candidates should not leave the Examination Hall without handing over their Answer Sheet to the
+Invigilator on duty and sign (with time) the Attendance Sheet twice. Cases, where a candidate has not
+signed the Attendance Sheet second time, will be deemed not to have handed over the Answer
+Sheet and dealt with as an Unfair Means case.
+13. Use of Electronic/Manual Calculator is prohibited.
+14. The candidates are governed by all Rules and Regulations of the examination with regard to their conduct in
+the Examination Room/Hall. All cases of unfair means will be dealt with as per the Rules and Regulations
+of this examination.
+15. No part of the Test Booklet and Answer Sheet shall be detached under any circumstances.
+16. The candidates will write the Correct Test Booklet Code as given in the Test Booklet/Answer Sheet in the
+Attendance Sheet.
+Name of the Candidate (in Capitals) :
+Roll Number : in figures
+: in words
+Centre of Examination (in Capitals) :
+Candidate’s Signature : Invigilator’s Signature :
+Facsimile signature stamp of
+Centre Superintendent :
+
+M4 2
+5. Find the value of the angle of emergence from the
+Section - A (Physics)
+prism. Refractive index of the glass is 3.
+1. Consider the following statements (A) and (B)
+and identify the correct answer.
+(A) A zener diode is connected in reverse bias,
+when used as a voltage regulator.
+(B) The potential barrier of p-n junction lies
+between 0.1 V to 0.3 V.
+(1) (A) and (B) both are correct.
+(1) 608
+(2) (A) and (B) both are incorrect.
+(2) 308
+(3) (A) is correct and (B) is incorrect. (3) 458
+(4) 908
+(4) (A) is incorrect but (B) is correct.
+6. A dipole is placed in an electric field as shown. In
+2. A capacitor of capacitance ‘C’, is connected across which direction will it move ?
+an ac source of voltage V, given by
+V=V sinωt
+0
+The displacement current between the plates of
+the capacitor, would then be given by :
+(1) I =V ωCcosωt
+d 0
+V
+0
+I = cosωt
+(2) d
+ωC
+(1) towards the left as its potential energy will
+V increase.
+0
+I = sinωt
+(3) d (2) towards the right as its potential energy will
+ωC
+decrease.
+(4) I =V ωCsinωt
+d 0 (3) towards the left as its potential energy will
+decrease.
+3. A body is executing simple harmonic motion with (4) towards the right as its potential energy will
+frequency ‘n’, the frequency of its potential energy increase.
+is :
+7. Match Column - I and Column - II and choose
+(1) n
+the correct match from the given choices.
+(2) 2n Column - I Column - II
+1
+(3) 3n nmv2
+(A) Root mean square (P)
+3
+(4) 4n
+speed of gas molecules
+3 RT
+4. The equivalent capacitance of the combination (B) Pressure exerted (Q)
+M
+shown in the figure is :
+by ideal gas
+5
+(C) Average kinetic energy (R) RT
+2
+of a molecule
+3
+(D) Total internal energy (S) k BT
+2
+of 1 mole of a
+diatomic gas
+(1) 3C
+(1) (A) - (R), (B) - (P), (C) - (S), (D) - (Q)
+(2) 2C
+(2) (A) - (Q), (B) - (R), (C) - (S), (D) - (P)
+(3) C/2 (3) (A) - (Q), (B) - (P), (C) - (S), (D) - (R)
+(4) 3C/2 (4) (A) - (R), (B) - (Q), (C) - (P), (D) - (S)
+
+3 M4
+8. A convex lens ‘A’ of focal length 20 cm and a concave 12. The velocity of a small ball of mass M and density
+lens ‘B’ of focal length 5 cm are kept along the d, when dropped in a container filled with glycerine
+same axis with a distance ‘d’ between them. If a becomes constant after some time. If the density
+parallel beam of light falling on ‘A’ leaves ‘B’ as a d
+of glycerine is , then the viscous force acting on
+parallel beam, then the distance ‘d’ in cm will be :
+2
+the ball will be :
+(1) 25
+Mg
+(2) 15 (1)
+2
+(3) 50
+(2) Mg
+(4) 30 3
+(3) Mg
+2
+9. If force [F], acceleration [A] and time [T] are
+(4) 2Mg
+chosen as the fundamental physical quantities.
+Find the dimensions of energy. 13. For a plane electromagnetic wave propagating in
+x-direction, which one of the following combination
+(1) [F] [A] [T]
+gives the correct possible directions for electric
+(2) [F] [A] [T2] field (E) and magnetic field (B) respectively ?
+(3) [ F ] [ A ] [ T−1 ] (1) ∧ j+k∧ ∧ j+k∧
+,
+(4) [ F ] [ A−1 ] [ T ] ∧ ∧ ∧ ∧
+(2) −j+k, −j−k
+∧ ∧ ∧ ∧
+10. A cup of coffee cools from 908C to 808C in t minutes, (3) j+k, −j−k
+when the room temperature is 208C. The time
+∧ ∧ ∧ ∧
+taken by a similar cup of coffee to cool from 808C (4) −j+k, −j+k
+to 608C at a room temperature same at 208C is :
+14. Column - I gives certain physical terms associated
+13
+t with flow of current through a metallic conductor.
+(1)
+10
+Column - II gives some mathematical relations
+involving electrical quantities. Match
+13
+(2) t Column - I and Column - II with appropriate
+5
+relations.
+10 Column - I Column - II
+t
+(3)
+13 m
+(A) Drift Velocity (P) ne2
+5 ρ
+t
+(4)
+13
+(B) Electrical Resistivity (Q) nev
+d
+eE
+11. A particle is released from height S from the (C) Relaxation Period (R) τ
+surface of the Earth. At a certain height its kinetic m
+energy is three times its potential energy. The
+E
+height from the surface of earth and the speed of (D) Current Density (S)
+J
+the particle at that instant are respectively :
+(1) (A)-(R), (B)-(S), (C)-(P), (D)-(Q)
+S 3gS
+(1) , (2) (A)-(R), (B)-(S), (C)-(Q), (D)-(P)
+4 2 (3) (A)-(R), (B)-(P), (C)-(S), (D)-(Q)
+(4) (A)-(R), (B)-(Q), (C)-(S), (D)-(P)
+S 3gS
+(2) ,
+4 2 15. A spring is stretched by 5 cm by a force 10 N. The
+time period of the oscillations when a mass of 2 kg
+S 3gS is suspended by it is :
+(3) ,
+2 2 (1) 0.0628 s
+(2) 6.28 s
+S 3gS
+(4) , (3) 3.14 s
+4 2
+(4) 0.628 s
+
+M4 4
+16. A parallel plate capacitor has a uniform electric 20. An inductor of inductance L, a capacitor of
+→ capacitance C and a resistor of resistance ‘R’ are
+field ‘E’ in the space between the plates. If the
+connected in series to an ac source of potential
+distance between the plates is ‘d’ and the area of
+difference ‘V’ volts as shown in figure.
+each plate is ‘A’, the energy stored in the capacitor
+is : (ε =permittivity of free space) Potential difference across L, C and R is 40 V,
+0
+10 V and 40 V, respectively. The amplitude of
+1
+(1) 2ε 0E2 current flowing through LCR series circuit is
+10 2 A. The impedance of the circuit is :
+(2) ε EAd
+0
+1
+(3) ε 0E2Ad
+2
+E2Ad
+(4) ε
+0
+17. An infinitely long straight conductor carries a (1) 4 2 Ω
+current of 5 A as shown. An electron is moving
+with a speed of 105 m/s parallel to the conductor. (2) 5 2 Ω
+The perpendicular distance between the electron
+(3) 4 Ω
+and the conductor is 20 cm at an instant.
+Calculate the magnitude of the force experienced (4) 5 Ω
+by the electron at that instant.
+21. The escape velocity from the Earth’s surface is v.
+The escape velocity from the surface of another
+planet having a radius, four times that of Earth
+and same mass density is :
+(1) v
+(2) 2 v
+4×10−20 (3) 3 v
+(1) N
+8π×10−20 (4) 4 v
+(2) N
+4π×10−20
+(3) N
+22. A screw gauge gives the following readings when
+8×10−20
+(4) N
+used to measure the diameter of a wire
+18. A lens of large focal length and large aperture is Main scale reading : 0 mm
+best suited as an objective of an astronomical Circular scale reading : 52 divisions
+telescope since :
+Given that 1 mm on main scale corresponds to
+(1) a large aperture contributes to the quality
+100 divisions on the circular scale. The diameter
+and visibility of the images.
+of the wire from the above data is :
+(2) a large area of the objective ensures better
+(1) 0.52 cm
+light gathering power.
+(2) 0.026 cm
+(3) a large aperture provides a better resolution.
+(3) 0.26 cm
+(4) all of the above.
+(4) 0.052 cm
+A
+19. A radioactive nucleus X undergoes spontaneous
+Z
+23. Water falls from a height of 60 m at the rate of
+decay in the sequence
+15 kg/s to operate a turbine. The losses due to
+A
+ZX →Z−1B→Z−3C→Z−2D, where Z is the frictional force are 10% of the input energy. How
+much power is generated by the turbine ?
+atomic number of element X. The possible decay
+(g=10 m/s2)
+particles in the sequence are :
+(1) α, β−, β+ (1) 10.2 kW
+(2) α, β+, β− (2) 8.1 kW
+(3) β+, α, β− (3) 12.3 kW
+(4) β−, α, β+ (4) 7.0 kW
+
+5 M4
+24. A small block slides down on a smooth inclined 27. In a potentiometer circuit a cell of EMF 1.5 V gives
+plane, starting from rest at time t=0. Let S n be balance point at 36 cm length of wire. If another
+the distance travelled by the block in the interval cell of EMF 2.5 V replaces the first cell, then at
+S
+n what length of the wire, the balance point occurs ?
+t=n−1 to t=n. Then, the ratio is :
+S
+n+1 (1) 60 cm
+2n−1
+(1) (2) 21.6 cm
+2n
+(3) 64 cm
+2n−1
+(2) 2n+1 (4) 62 cm
+2n+1
+28. Two charged spherical conductors of radius R and
+(3) 2n−1 1
+R are connected by a wire. Then the ratio of
+2
+2n surface charge densities of the spheres (σ /σ ) is :
+1 2
+(4) 2n−1 R
+1
+(1)
+25. Polar molecules are the molecules : R
+2
+(1) having zero dipole moment.
+(2) acquire a dipole moment only in the presence R 2
+of electric field due to displacement of (2) R
+1
+charges.
+(3) acquire a dipole moment only when magnetic
+R 
+field is absent. 1
+(3)  
+(4) having a permanent electric dipole moment. R 2
+26. A thick current carrying cable of radius ‘R’ carries
+R2
+current ‘I’ uniformly distributed across its
+1
+cross-section. The variation of magnetic field B(r) (4) R2
+due to the cable with the distance ‘r’ from the axis 2
+of the cable is represented by :
+29. An electromagnetic wave of wavelength ‘λ’ is
+incident on a photosensitive surface of negligible
+work function. If ‘m’ mass is of photoelectron
+emitted from the surface has de-Broglie wavelength
+(1)
+λ , then :
+d
+λ=2m
+λ 2
+(1)   d
+ hc 
+=2mc
+λ λ2
+(2) d  
+ h 
+(2) λ=2mc
+λ 2
+(3)   d
+ h 
+λ=2h
+λ 2
+(4)   d
+mc
+30. The electron concentration in an n-type
+(3) semiconductor is the same as hole concentration
+in a p-type semiconductor. An external field
+(electric) is applied across each of them. Compare
+the currents in them.
+(1) current in n-type=current in p-type.
+(2) current in p-type > current in n-type.
+(3) current in n-type > current in p-type.
+(4)
+(4) No current will flow in p-type, current will
+only flow in n-type.
+
+M4 6
+31. The number of photons per second on an average Section - B (Physics)
+emitted by the source of monochromatic light of
+wavelength 600 nm, when it delivers the power of
+3.3×10−3 watt will be : (h=6.6×10−34 Js)
+(1) 1018 36. Two conducting circular loops of radii R and R
+1 2
+(2) 1017 are placed in the same plane with their centres
+coinciding. If R > > R , the mutual inductance M
+(3) 1016 1 2
+between them will be directly proportional to :
+(4) 1015
+R
+1
+32. If E and G respectively denote energy and
+(1)
+E R 2
+gravitational constant, then has the dimensions
+G
+of :
+R
+[M2 [L−1 [T0 2
+(1) ] ] ]
+(2)
+R
+[L−1 [T−1 1
+(2) [M] ] ]
+0 0
+(3) [M] [L ] [T ]
+2
+(4) [M2 ] [L−2 ] [T−1 ] R 1
+(3)
+R
+2
+33. The effective resistance of a parallel connection that
+consists of four wires of equal length, equal area of
+2
+R
+cross-section and same material is 0.25 Ω. What 2
+(4)
+will be the effective resistance if they are connected R 1
+in series ?
+(1) 0.25 Ω
+(2) 0.5 Ω
+37. In the product
+(3) 1 Ω
+(4) 4 Ω
+( )
+→ → →
+F=q v×B
+34. The half-life of a radioactive nuclide is 100 hours.
+( )
+→ ∧ ∧ ∧
+The fraction of original activity that will remain
+=qv× Bi+Bj+B0k
+after 150 hours would be :
+(1) 1/2
+→ ∧ ∧ ∧
+1 For q=1 and v=2i+4 j+6k and
+(2)
+2 2
+→ ∧ ∧ ∧
+F=4i−20 j+12k
+2
+(3)
+3 →
+What will be the complete expression for B ?
+2
+(4)
+3 2
+∧ ∧ ∧
+(1) −8i−8j−6k
+35. A nucleus with mass number 240 breaks into two
+fragments each of mass number 120, the binding
+∧ ∧ ∧
+energy per nucleon of unfragmented nuclei is (2) −6i−6 j−8k
+7.6 MeV while that of fragments is 8.5 MeV. The
+total gain in the Binding Energy in the process is :
+(1) 0.9 MeV ∧ ∧ ∧
+(3) 8i+8 j−6k
+(2) 9.4 MeV
+(3) 804 MeV
+∧ ∧ ∧
+(4) 216 MeV (4) 6i+6 j−8k
+
+7 M4
+38. For the given circuit, the input digital signals are 40. A uniform rod of length 200 cm and mass 500 g is
+applied at the terminals A, B and C. What would balanced on a wedge placed at 40 cm mark. A
+be the output at the terminal y ? mass of 2 kg is suspended from the rod at 20 cm
+and another unknown mass ‘m’ is suspended from
+the rod at 160 cm mark as shown in the figure.
+Find the value of ‘m’ such that the rod is in
+2
+equilibrium. (g=10 m/s )
+1
+(1) kg
+2
+1
+(2) kg
+3
+1
+(3) kg
+6
+1
+(4) kg
+12
+41. A point object is placed at a distance of 60 cm from
+a convex lens of focal length 30 cm. If a plane
+mirror were put perpendicular to the principal axis
+of the lens and at a distance of 40 cm from it, the
+final image would be formed at a distance of :
+(1)
+(2)
+(3)
+(1) 20 cm from the lens, it would be a real
+image.
+(4) (2) 30 cm from the lens, it would be a real
+image.
+(3) 30 cm from the plane mirror, it would be a
+virtual image.
+39. A series LCR circuit containing 5.0 H inductor,
+(4) 20 cm from the plane mirror, it would be a
+80 µF capacitor and 40 Ω resistor is connected to
+virtual image.
+230 V variable frequency ac source. The angular
+frequencies of the source at which power
+2
+42. A car starts from rest and accelerates at 5 m/s .
+transferred to the circuit is half the power at the
+At t=4 s, a ball is dropped out of a window by a
+resonant angular frequency are likely to be :
+person sitting in the car. What is the velocity and
+acceleration of the ball at t=6 s ?
+(1) 25 rad/s and 75 rad/s 2
+(Take g=10 m/s )
+2
+(1) 20 m/s, 5 m/s
+(2) 50 rad/s and 25 rad/s
+(2) 20 m/s, 0
+(3) 46 rad/s and 54 rad/s (3) 20 2 m/s, 0
+(4) 20 2 m/s, 10 m/s2
+(4) 42 rad/s and 58 rad/s
+
+M4 8
+43. Twenty seven drops of same size are charged at 47. A particle moving in a circle of radius R with a
+220 V each. They combine to form a bigger drop. uniform speed takes a time T to complete one
+Calculate the potential of the bigger drop. revolution.
+(1) 660 V
+If this particle were projected with the same speed
+at an angle ‘θ’ to the horizontal, the maximum
+(2) 1320 V
+height attained by it equals 4R. The angle of
+(3) 1520 V projection, θ, is then given by :
+(4) 1980 V
+1
+ 2  2
+θ=cos−1gT
+
+(1)
+ π2 R
+44. A uniform conducting wire of length 12a and 
+resistance ‘R’ is wound up as a current carrying
+coil in the shape of,
+1
+θ=cos−1 π2 R 2
+(i) an equilateral triangle of side ‘a’. 
+(2)
+ 2 
+gT 
+(ii) a square of side ‘a’.
+The magnetic dipole moments of the coil in each
+1
+case respectively are : θ=sin−1 π2 R 2
+
+(3)
+ 2 
+gT 
+3Ia2 Ia2
+(1) and 3
+2 2
+(2) 3 Ia and Ia 1
+ 2 2
+(3) 3 Ia2 and 4 Ia2 (4) θ=sin−1  2 πg 2T  
+R 
+2 2
+(4) 4 Ia and 3 Ia
+45. A ball of mass 0.15 kg is dropped from a height 48. A particle of mass ‘m’ is projected with a velocity
+10 m, strikes the ground and rebounds to the same v=kV (k < 1) from the surface of the earth.
+e
+height. The magnitude of impulse imparted to
+the ball is (g=10 m/s2) nearly :
+(V =escape velocity)
+e
+(1) 0 kg m/s
+The maximum height above the surface reached
+(2) 4.2 kg m/s by the particle is :
+(3) 2.1 kg m/s
+2
+ k 
+R
+(4) 1.4 kg m/s (1)  
+1−k
+46. A step down transformer connected to an ac mains 2
+ k 
+supply of 220 V is made to operate at 11 V, 44 W (2) R  
+1+k
+lamp. Ignoring power losses in the transformer,
+what is the current in the primary circuit ?
+R2k
+(1) 0.2 A
+(3)
+1+k
+(2) 0.4 A
+Rk2
+(3) 2 A
+(4) 1−k2
+(4) 4 A
+
+9 M4
+49. Three resistors having resistances r , r and r Section - A (Chemistry)
+1 2 3
+are connected as shown in the given circuit. The
+i 51. Which one among the following is the correct option
+3
+ratio of currents in terms of resistances used for right relationship between C and C for one
+i P V
+1
+mole of ideal gas ?
+in the circuit is :
+(1) C +C =R
+P V
+(2) C −C =R
+P V
+(3) C =RC
+P V
+(4) C =RC
+V P
+52. The correct option for the number of body centred
+unit cells in all 14 types of Bravais lattice unit
+cells is :
+(1) 7
+(2) 5
+r (3) 2
+1
+(1) r +r (4) 3
+2 3
+53. Noble gases are named because of their inertness
+towards reactivity. Identify an incorrect
+r
+2 statement about them.
+(2) r 2+r 3 (1) Noble gases are sparingly soluble in water.
+(2) Noble gases have very high melting and
+boiling points.
+r
+1 (3) Noble gases have weak dispersion forces.
+(3) r +r
+1 2 (4) Noble gases have large positive values of
+electron gain enthalpy.
+r 54. The major product formed in dehydrohalogenation
+2
+(4) r +r reaction of 2-Bromo pentane is Pent-2-ene. This
+1 3
+product formation is based on ?
+(1) Saytzeff’s Rule
+(2) Hund’s Rule
+(3) Hofmann Rule
+50. From a circular ring of mass ‘M’ and radius ‘R’ an (4) Huckel’s Rule
+arc corresponding to a 908 sector is removed. The
+55. The compound which shows metamerism is :
+moment of inertia of the remaining part of the ring
+(1) C H
+about an axis passing through the centre of the 5 12
+ring and perpendicular to the plane of the ring is (2) C 3H 8O
+‘K’ times ‘MR2 ’. Then the value of ‘K’ is : (3) C 3H 6O
+(4) C H O
+4 10
+3 56. BF 3 is planar and electron deficient compound.
+(1) Hybridization and number of electrons around the
+4
+central atom, respectively are :
+(1) sp3 and 4
+7 (2) sp3 and 6
+(2) 8 (3) sp2 and 6
+(4) sp2 and 8
+1 57. The right option for the statement “Tyndall effect
+(3) is exhibited by”, is :
+4
+(1) NaCl solution
+(2) Glucose solution
+1 (3) Starch solution
+(4)
+8 (4) Urea solution
+
+M4 10
+58. Among the following alkaline earth metal halides, 61. Which one of the following polymers is prepared
+one which is covalent and soluble in organic by addition polymerisation ?
+solvents is :
+(1) Calcium chloride
+(2) Strontium chloride (1) Teflon
+(3) Magnesium chloride
+(4) Beryllium chloride
+(2) Nylon-66
+59. Which one of the following methods can be used to
+obtain highly pure metal which is liquid at room
+temperature ? (3) Novolac
+(1) Electrolysis
+(2) Chromatography
+(4) Dacron
+(3) Distillation
+(4) Zone refining
+60. For a reaction A→B, enthalpy of reaction is
+mol−1
+−4.2 kJ and enthalpy of activation is
+mol−1
+9.6 kJ . The correct potential energy profile
+for the reaction is shown in option.
+62. The major product of the following chemical
+reaction is :
+(1)
+(1)
+(2)
+(2)
+(3)
+(3)
+(4)
+(4)
+
+11 M4
+63. Choose the correct option for graphical 66. The maximum temperature that can be achieved
+representation of Boyle’s law, which shows a graph in blast furnace is :
+of pressure vs. volume of a gas at different
+(1) upto 1200 K
+temperatures :
+(2) upto 2200 K
+(3) upto 1900 K
+(4) upto 5000 K
+67. The following solutions were prepared by dissolving
+(1) 10 g of glucose (C 6H 12O 6) in 250 ml of water (P 1),
+10 g of urea (CH N O) in 250 ml of water (P ) and
+4 2 2
+10 g of sucrose (C H O ) in 250 ml of
+12 22 11
+water (P ). The right option for the decreasing
+3
+order of osmotic pressure of these solutions is :
+(1) P > P > P
+2 1 3
+(2) P > P > P
+1 2 3
+(3) P > P > P
+2 3 1
+(4) P > P > P
+3 1 2
+(2) 68. Zr (Z=40) and Hf (Z=72) have similar atomic and
+ionic radii because of :
+(1) belonging to same group
+(2) diagonal relationship
+(3) lanthanoid contraction
+(4) having similar chemical properties
+69. The molar conductance of NaCl, HCl and
+CH COONa at infinite dilution are 126.45, 426.16
+3
+and 91.0 S cm2 mol−1 respectively. The molar
+(3)
+conductance of CH COOH at infinite dilution is.
+3
+Choose the right option for your answer.
+(1) 201.28 S cm2 mol−1
+(2) 390.71 S cm2 mol−1
+(3) 698.28 S cm2 mol−1
+(4) 540.48 S cm2 mol−1
+70. Right option for the number of tetrahedral and
+octahedral voids in hexagonal primitive unit cell
+are :
+(4)
+(1) 8, 4
+(2) 6, 12
+(3) 2, 1
+(4) 12, 6
+71. A particular station of All India Radio, New Delhi,
+64. Dihedral angle of least stable conformer of ethane broadcasts on a frequency of 1,368 kHz (kilohertz).
+is : The wavelength of the electromagnetic radiation
+(1) 1208 emitted by the transmitter is : [speed of light,
+c=3.0×108 ms−1]
+(2) 1808
+(1) 219.3 m
+(3) 608
+(2) 219.2 m
+(4) 08
+(3) 2192 m
+(4) 21.92 cm
+65. An organic compound contains 78% (by wt.) carbon
+and remaining percentage of hydrogen. The right 72. Ethylene diaminetetraacetate (EDTA) ion is :
+option for the empirical formula of this compound (1) Hexadentate ligand with four “O” and two
+is : [Atomic wt. of C is 12, H is 1] “N” donor atoms
+(1) CH (2) Unidentate ligand
+(2) CH (3) Bidentate ligand with two “N” donor atoms
+2
+(4) Tridentate ligand with three “N” donor
+(3) CH
+3
+atoms
+(4) CH
+4
+
+M4 12
+73. The correct sequence of bond enthalpy of ‘C–X’ bond 78. Statement I :
+is :
+Acid strength increases in the order given as
+(1) CH 3−F < CH 3−Cl < CH 3−Br < CH 3−I HF << HCl << HBr << HI.
+(2) CH 3−F > CH 3−Cl > CH 3−Br > CH 3−I Statement II :
+(3) CH −F < CH −Cl > CH −Br > CH −I
+3 3 3 3 As the size of the elements F, Cl, Br, I increases
+(4) CH 3−Cl > CH 3−F > CH 3−Br > CH 3−I down the group, the bond strength of HF, HCl,
+HBr and HI decreases and so the acid strength
+74. The pK of dimethylamine and pK of acetic acid
+b a increases.
+are 3.27 and 4.77 respectively at T (K). The correct
+In the light of the above statements, choose the
+option for the pH of dimethylammonium acetate
+correct answer from the options given below.
+solution is :
+(1) Both Statement I and Statement II are
+(1) 8.50
+true.
+(2) 5.50
+(2) Both Statement I and Statement II are
+(3) 7.75
+false.
+(4) 6.25
+(3) Statement I is correct but Statement II
+75. The structures of beryllium chloride in solid state is false.
+and vapour phase, are : (4) Statement I is incorrect but
+(1) Chain and dimer, respectively Statement II is true.
+(2) Linear in both
+79. Identify the compound that will react with Hinsberg’s
+(3) Dimer and Linear, respectively
+reagent to give a solid which dissolves in alkali.
+(4) Chain in both
+76. Given below are two statements :
+(1)
+Statement I :
+Aspirin and Paracetamol belong to the class of
+narcotic analgesics. (2)
+Statement II :
+Morphine and Heroin are non-narcotic analgesics. (3)
+In the light of the above statements, choose the
+correct answer from the options given below.
+(1) Both Statement I and Statement II are (4)
+true.
+(2) Both Statement I and Statement II are
+false.
+(3) Statement I is correct but Statement II 80. What is the IUPAC name of the organic compound
+is false. formed in the following chemical reaction ?
+(4) Statement I is incorrect but
+(i) C2 H 5M gB r , d ry E th er
+Statement II is true. Acetone  → Product
++
+(ii) H2O, H
+77. Match List - I with List - II. (1) 2-methyl propan-2-ol
+List - I List - II (2) pentan-2-ol
+(a) PCl 5 (i) Square pyramidal (3) pentan-3-ol
+(b) SF 6 (ii) Trigonal planar (4) 2-methyl butan-2-ol
+(c) BrF (iii) Octahedral
+5
+81. Which of the following reactions is the metal
+(d) BF (iv) Trigonal bipyramidal
+3
+displacement reaction ? Choose the right option.
+Choose the correct answer from the options given
+∆
+below. (1) 2KClO →2KCl+3O
+3 2
+(1) (a)-(iv), (b)-(iii), (c)-(i), (d)-(ii) ∆
+(2) Cr O +2Al→Al O +2Cr
+2 3 2 3
+(2) (a)-(ii), (b)-(iii), (c)-(iv), (d)-(i)
+(3) Fe+2HCl → FeCl +H ↑
+(3) (a)-(iii), (b)-(i), (c)-(iv), (d)-(ii) 2 2
+(4) (a)-(iv), (b)-(iii), (c)-(ii), (d)-(i) (4) 2Pb(NO 3) 2 → 2PbO+4NO 2+O 2↑
+
+13 M4
+82. The correct structure of 2,6-Dimethyl-dec-4-ene Section - B (Chemistry)
+is :
+(1) 86. Match List - I with List - II.
+List - I List - II
+(a) 2SO (g)+O (g) → (i) Acid rain
+(2) 2 2
+2SO (g)
+3
+(b) HOCl(g)hν → (ii) Smog
+i i
+(3) OH+Cl
+(c) CaCO +H SO → (iii) Ozone
+3 2 4
+CaSO +H O+CO depletion
+4 2 2
+(4)
+(d) NO 2(g)hν → (iv) Tropospheric
+NO(g)+O(g) pollution
+83. The incorrect statement among the following
+is : Choose the correct answer from the options given
+below.
+(1) Actinoid contraction is greater for element
+to element than Lanthanoid contraction.
+(1) (a)-(i), (b)-(ii), (c)-(iii), (d)-(iv)
+(2) Most of the trivalent Lanthanoid ions are
+colorless in the solid state.
+(2) (a)-(ii), (b)-(iii), (c)-(iv), (d)-(i)
+(3) Lanthanoids are good conductors of heat and
+electricity.
+(3) (a)-(iv), (b)-(iii), (c)-(i), (d)-(ii)
+(4) Actinoids are highly reactive metals,
+especially when finely divided. (4) (a)-(iii), (b)-(ii), (c)-(iv), (d)-(i)
+84. The RBC deficiency is deficiency disease of :
+(1) Vitamin B 12 NaOH, + ?
+87. CH CH COO−Na+→CH CH +
+3 2 Heat 3 3
+(2) Vitamin B
+6
+Na CO .
+2 3
+(3) Vitamin B
+1
+(4) Vitamin B Consider the above reaction and identify the
+2
+missing reagent/chemical.
+85. Tritium, a radioactive isotope of hydrogen, emits
+(1) B H
+which of the following particles ? 2 6
+(1) Beta (β−)
+(2) Red Phosphorus
+(2) Alpha (α)
+(3) CaO
+(3) Gamma (γ)
+(4) Neutron (n) (4) DIBAL-H
+
+M4 14
+88. The product formed in the following chemical 91. The reagent ‘R’ in the given sequence of chemical
+reaction is : reaction is :
+(1) H O
+2
+(2) CH CH OH
+3 2
+(3) HI
+(1) (4) CuCN/KCN
+92. Choose the correct option for the total pressure
+(in atm.) in a mixture of 4 g O and 2 g H confined
+2 2
+in a total volume of one litre at 08C is :
+[Given R=0.082 L atm mol−1K−1, T=273 K]
+(2)
+(1) 2.518
+(2) 2.602
+(3) 25.18
+(4) 26.02
+(3) 93. Which of the following molecules is non-polar in
+nature ?
+(1) POCl
+3
+(2) CH O
+2
+(3) SbCl
+5
+(4) NO
+(4) 2
+94. In which one of the following arrangements the
+given sequence is not strictly according to the
+89. Match List - I with List - II. properties indicated against it ?
+List - I List - II (1) HF < HCl : Increasing acidic
+(a) [Fe(CN) ]3− (i) 5.92 BM < HBr < HI strength
+6
+(b) [Fe(H 2O) 6]3+ (ii) 0 BM (2) H 2O < H 2S : Increasing pK a
+(c) [Fe(CN) ]4− (iii) 4.90 BM < H 2Se < H 2Te values
+6
+(d) [Fe(H O) ]2+ (iv) 1.73 BM (3) NH 3 < PH 3 : Increasing
+2 6
+< AsH < SbH acidic character
+3 3
+Choose the correct answer from the options given
+(4) CO < SiO : Increasing
+below. 2 2
+< SnO < PbO oxidizing power
+2 2
+(1) (a)-(iv), (b)-(ii), (c)-(i), (d)-(iii)
+(2) (a)-(ii), (b)-(iv), (c)-(iii), (d)-(i) 95. The correct option for the value of vapour pressure
+(3) (a)-(i), (b)-(iii), (c)-(iv), (d)-(ii) of a solution at 458C with benzene to octane in
+molar ratio 3 : 2 is :
+(4) (a)-(iv), (b)-(i), (c)-(ii), (d)-(iii)
+[At 458C vapour pressure of benzene is
+90. From the following pairs of ions which one is not 280 mm Hg and that of octane is 420 mm Hg.
+an iso-electronic pair ? Assume Ideal gas]
+(1) O2−, F− (1) 160 mm of Hg
+(2) Na+, Mg2+ (2) 168 mm of Hg
+(3) Mn2+, Fe3+ (3) 336 mm of Hg
+(4) Fe2+, Mn2+ (4) 350 mm of Hg
+
+15 M4
+96. The molar conductivity of 0.007 M acetic acid is 99. The intermediate compound ‘X’ in the following
+cm2 mol−1
+20 S . What is the dissociation chemical reaction is :
+constant of acetic acid ? Choose the correct option.
+Λ(cid:1) = 350 S cm2 mol−1 
++
+ H 
+ Λ(cid:1) =50 S cm2 mol−1
+ CH3COO− 
+(1)
+1.75×10−4 L−1
+(1) mol
+2.50×10−4 L−1
+(2) mol
+1.75×10−5 L−1
+(3) mol
+(2)
+2.50×10−5 L−1
+(4) mol
+ 1
+97. The slope of Arrhenius Plot ln k v/s  of first
+ T
+3
+order reaction is −5×10 K. The value of E of
+a (3)
+the reaction is. Choose the correct option for your
+answer.
+JK−1 mol−1
+[Given R=8.314 ]
+mol−1
+(1) 41.5 kJ
+(4)
+mol−1
+(2) 83.0 kJ
+mol−1
+(3) 166 kJ
+100. For irreversible expansion of an ideal gas under
+mol−1
+(4) −83 kJ
+isothermal condition, the correct option is :
+(1) ∆U=0, ∆S =0
+total
+98. Match List - I with List - II.
+(2) ∆U≠0, ∆S ≠0
+total
+List - I List - II
+(3) ∆U=0, ∆S ≠0
+total
+(4) ∆U≠0, ∆S =0
+total
+(a) (i) Hell-Volhard-
+Zelinsky reaction
+Section - A (Biology : Botany)
+101. In the equation GPP−R=NPP
+R represents :
+(b) (ii) Gattermann-Koch
+(1) Radiant energy
+reaction
+(2) Retardation factor
+(3) Environment factor
+(c) R−CH −OH (iii) Haloform
+2 (4) Respiration losses
++R'COOH reaction
+Con c. H 2SO 102. Inspite of interspecific competition in nature,
+ 4→
+which mechanism the competing species might
+(d) R−CH COOH (iv) Esterification have evolved for their survival ?
+2
+(1) Resource partitioning
+(i) X 2/ Re d P
+→
+(2) Competitive release
+(ii) H2O
+(3) Mutualism
+Choose the correct answer from the options given
+(4) Predation
+below.
+103. Amensalism can be represented as :
+(1) (a)-(iv), (b)-(i), (c)-(ii), (d)-(iii)
+(1) Species A (−) ; Species B (0)
+(2) (a)-(iii), (b)-(ii), (c)-(i), (d)-(iv)
+(2) Species A (+) ; Species B (+)
+(3) (a)-(i), (b)-(iv), (c)-(iii), (d)-(ii)
+(3) Species A (−) ; Species B (−)
+(4) (a)-(ii), (b)-(iii), (c)-(iv), (d)-(i) (4) Species A (+) ; Species B (0)
+
+M4 16
+104. Match List - I with List - II. 109. Which of the following is an incorrect
+statement ?
+List - I List - II
+(1) Mature sieve tube elements possess a
+Cells with active cell Vascular
+(a) (i) conspicuous nucleus and usual cytoplasmic
+division capacity tissues
+organelles.
+Tissue having all cells
+Meristematic (2) Microbodies are present both in plant and
+(b) similar in structure (ii)
+tissue animal cells.
+and function
+(3) The perinuclear space forms a barrier
+Tissue having
+(c) (iii) Sclereids between the materials present inside the
+different types of cells
+nucleus and that of the cytoplasm.
+Dead cells with highly
+(4) Nuclear pores act as passages for proteins
+(d) thickened walls and (iv) Simple tissue
+and RNA molecules in both directions
+narrow lumen
+between nucleus and cytoplasm.
+Select the correct answer from the options given
+below. 110. A typical angiosperm embryo sac at maturity is :
+(a) (b) (c) (d) (1) 8-nucleate and 7-celled
+(2) 7-nucleate and 8-celled
+(1) (ii) (iv) (i) (iii)
+(3) 7-nucleate and 7-celled
+(2) (iv) (iii) (ii) (i)
+(4) 8-nucleate and 8-celled
+(3) (i) (ii) (iii) (iv)
+(4) (iii) (ii) (iv) (i) 111. The plant hormone used to destroy weeds in a field
+is :
+105. The production of gametes by the parents, (1) IAA
+formation of zygotes, the F and F plants, can be
+1 2 (2) NAA
+understood from a diagram called :
+(3) 2, 4-D
+(1) Bullet square
+(4) IBA
+(2) Punch square
+112. Which of the following algae produce Carrageen ?
+(3) Punnett square
+(1) Green algae
+(4) Net square
+(2) Brown algae
+(3) Red algae
+106. DNA strands on a gel stained with ethidium
+bromide when viewed under UV radiation, appear (4) Blue-green algae
+as :
+113. Mutations in plant cells can be induced by :
+(1) Yellow bands
+(1) Kinetin
+(2) Bright orange bands
+(2) Infrared rays
+(3) Dark red bands
+(3) Gamma rays
+(4) Bright blue bands (4) Zeatin
+107. Gemmae are present in : 114. Match List - I with List - II.
+(1) Mosses List - I List - II
+(2) Pteridophytes (a) Protoplast fusion (i) Totipotency
+(3) Some Gymnosperms (b) Plant tissue culture (ii) Pomato
+(4) Some Liverworts (c) Meristem culture (iii) Somaclones
+(d) Micropropagation (iv) Virus free plants
+108. Plants follow different pathways in response to
+Choose the correct answer from the options given
+environment or phases of life to form different
+below.
+kinds of structures. This ability is called :
+(a) (b) (c) (d)
+(1) Elasticity
+(1) (iii) (iv) (ii) (i)
+(2) Flexibility
+(2) (ii) (i) (iv) (iii)
+(3) Plasticity (3) (iii) (iv) (i) (ii)
+(4) Maturity (4) (iv) (iii) (ii) (i)
+
+17 M4
+115. Which of the following stages of meiosis involves 122. Complete the flow chart on central dogma.
+division of centromere ?
+(1) Metaphase I
+(1) (a)-Replication; (b)-Transcription;
+(2) Metaphase II
+(c)-Transduction; (d)-Protein
+(3) Anaphase II
+(2) (a)-Translation; (b)-Replication;
+(4) Telophase II
+(c)-Transcription; (d)-Transduction
+(3) (a)-Replication; (b)-Transcription;
+116. Match List - I with List - II.
+(c)-Translation; (d)-Protein
+List - I List - II
+(4) (a)-Transduction; (b)-Translation;
+(a) Lenticels (i) Phellogen (c)-Replication; (d)-Protein
+(b) Cork cambium (ii) Suberin deposition
+123. Which of the following statements is not correct ?
+(c) Secondary cortex (iii) Exchange of gases (1) Pyramid of biomass in sea is generally
+(d) Cork (iv) Phelloderm inverted.
+Choose the correct answer from the options given (2) Pyramid of biomass in sea is generally
+below. upright.
+(a) (b) (c) (d) (3) Pyramid of energy is always upright.
+(1) (iv) (i) (iii) (ii) (4) Pyramid of numbers in a grassland
+ecosystem is upright.
+(2) (iii) (i) (iv) (ii)
+124. Which of the following algae contains mannitol as
+(3) (ii) (iii) (iv) (i)
+reserve food material ?
+(4) (iv) (ii) (i) (iii)
+(1) Ectocarpus
+117. The site of perception of light in plants during (2) Gracilaria
+photoperiodism is : (3) Volvox
+(1) Shoot apex (4) Ulothrix
+(2) Stem 125. During the purification process for recombinant
+(3) Axillary bud DNA technology, addition of chilled ethanol
+(4) Leaf precipitates out :
+(1) RNA
+118. Which of the following plants is monoecious ? (2) DNA
+(1) Carica papaya (3) Histones
+(2) Chara (4) Polysaccharides
+(3) Marchantia polymorpha 126. The factor that leads to Founder effect in a
+(4) Cycas circinalis population is :
+(1) Natural selection
+119. When the centromere is situated in the middle of
+(2) Genetic recombination
+two equal arms of chromosomes, the chromosome
+(3) Mutation
+is referred as :
+(4) Genetic drift
+(1) Metacentric
+127. Match List - I with List - II.
+(2) Telocentric
+List - I List - II
+(3) Sub-metacentric
+More attraction in
+(4) Acrocentric (a) Cohesion (i)
+liquid phase
+120. Which of the following is not an application of PCR Mutual attraction
+(Polymerase Chain Reaction) ? (b) Adhesion (ii) among water
+(1) Molecular diagnosis molecules
+(2) Gene amplification Water loss in liquid
+(c) Surface tension (iii)
+(3) Purification of isolated protein phase
+(4) Detection of gene mutation Attraction towards
+(d) Guttation (iv)
+polar surfaces
+121. Genera like Selaginella and Salvinia produce two Choose the correct answer from the options given
+kinds of spores. Such plants are known as : below.
+(1) Homosorus (a) (b) (c) (d)
+(2) Heterosorus (1) (ii) (iv) (i) (iii)
+(3) Homosporous (2) (iv) (iii) (ii) (i)
+(4) Heterosporous (3) (iii) (i) (iv) (ii)
+(4) (ii) (i) (iv) (iii)
+
+M4 18
+128. Diadelphous stamens are found in : 134. The amount of nutrients, such as carbon, nitrogen,
+(1) China rose phosphorus and calcium present in the soil at any
+(2) Citrus given time, is referred as :
+(3) Pea (1) Climax
+(4) China rose and citrus (2) Climax community
+(3) Standing state
+129. Which of the following are not secondary
+(4) Standing crop
+metabolites in plants ?
+(1) Morphine, codeine 135. The first stable product of CO 2 fixation in sorghum
+(2) Amino acids, glucose is :
+(3) Vinblastin, curcumin (1) Pyruvic acid
+(4) Rubber, gums (2) Oxaloacetic acid
+(3) Succinic acid
+130. Match List - I with List - II.
+(4) Phosphoglyceric acid
+List - I List - II
+Primary constriction in Section - B (Biology : Botany)
+(a) Cristae (i)
+chromosome
+Disc-shaped sacs in 136. Which of the following statements is incorrect ?
+(b) Thylakoids (ii)
+Golgi apparatus (1) Both ATP and NADPH+H+ are
+Infoldings in synthesized during non-cyclic
+(c) Centromere (iii)
+photophosphorylation.
+mitochondria
+Flattened membranous (2) Stroma lamellae have PS I only and lack
+NADP reductase.
+(d) Cisternae (iv) sacs in stroma of
+(3) Grana lamellae have both PS I and PS II.
+plastids
+(4) Cyclic photophosphorylation involves both
+Choose the correct answer from the options given
+PS I and PS II.
+below.
+(a) (b) (c) (d) 137. Identify the correct statement.
+(1) (iv) (iii) (ii) (i) (1) In capping, methyl guanosine triphosphate
+(2) (i) (iv) (iii) (ii) is added to the 39 end of hnRNA.
+(3) (iii) (iv) (i) (ii) (2) RNA polymerase binds with Rho factor to
+(4) (ii) (iii) (iv) (i) terminate the process of transcription in
+bacteria.
+131. When gene targetting involving gene amplification
+(3) The coding strand in a transcription unit is
+is attempted in an individual’s tissue to treat
+copied to an mRNA.
+disease, it is known as :
+(4) Split gene arrangement is characteristic of
+(1) Biopiracy
+prokaryotes.
+(2) Gene therapy
+(3) Molecular diagnosis 138. Match Column - I with Column - II.
+(4) Safety testing Column - I Column - II
+132. The term used for transfer of pollen grains from (a) (i) Brassicaceae
+anthers of one plant to stigma of a different plant
+which, during pollination, brings genetically (b) (ii) Liliaceae
+different types of pollen grains to stigma, is :
+(1) Xenogamy (c) (iii) Fabaceae
+(2) Geitonogamy
+(3) Chasmogamy (d) (iv) Solanaceae
+(4) Cleistogamy
+Select the correct answer from the options given
+below.
+133. Which of the following is a correct sequence of
+steps in a PCR (Polymerase Chain Reaction) ? (a) (b) (c) (d)
+(1) Denaturation, Annealing, Extension (1) (iii) (iv) (ii) (i)
+(2) Denaturation, Extension, Annealing (2) (i) (ii) (iii) (iv)
+(3) Extension, Denaturation, Annealing (3) (ii) (iii) (iv) (i)
+(4) Annealing, Denaturation, Extension (4) (iv) (ii) (i) (iii)
+
+19 M4
+139. Select the correct pair. 143. Match List - I with List - II.
+(1) Large colorless empty - Subsidiary cells List - I List - II
+cells in the epidermis
+Proteins are
+of grass leaves (a) S phase (i)
+synthesized
+(2) In dicot leaves, vascular - Conjunctive (b) G2 phase (ii) Inactive phase
+bundles are surrounded tissue
+Interval between
+by large thick-walled
+(c) Quiescent stage (iii) mitosis and initiation
+cells
+of DNA replication
+(3) Cells of medullary rays - Interfascicular
+that form part of cambium (d) G1 phase (iv) DNA replication
+cambial ring
+Choose the correct answer from the options given
+below.
+(4) Loose parenchyma cells - Spongy
+rupturing the epidermis parenchyma (a) (b) (c) (d)
+and forming a lens-
+(1) (iii) (ii) (i) (iv)
+shaped opening in bark
+(2) (iv) (ii) (iii) (i)
+140. In the exponential growth equation (3) (iv) (i) (ii) (iii)
+N =N ert, e represents : (4) (ii) (iv) (iii) (i)
+t o
+(1) The base of number logarithms 144. Which of the following statements is correct ?
+(2) The base of exponential logarithms (1) Fusion of two cells is called Karyogamy.
+(2) Fusion of protoplasms between two motile
+(3) The base of natural logarithms
+on non-motile gametes is called plasmogamy.
+(4) The base of geometric logarithms
+(3) Organisms that depend on living plants are
+called saprophytes.
+141. What is the role of RNA polymerase III in the (4) Some of the organisms can fix atmospheric
+process of transcription in eukaryotes ? nitrogen in specialized cells called sheath
+cells.
+(1) Transcribes rRNAs (28S, 18S and 5.8S)
+(2) Transcribes tRNA, 5s rRNA and snRNA 145. Which of the following statements is incorrect ?
+(3) Transcribes precursor of mRNA (1) During aerobic respiration, role of oxygen is
+limited to the terminal stage.
+(4) Transcribes only snRNAs
+(2) In ETC (Electron Transport Chain), one
+molecule of NADH+H+ gives rise to
+142. Plasmid pBR322 has PstI restriction enzyme site 2 ATP molecules, and one FADH 2 gives rise
+within gene ampR that confers ampicillin to 3 ATP molecules.
+resistance. If this enzyme is used for inserting a
+(3) ATP is synthesized through complex V.
+gene for β-galactoside production and the
+(4) Oxidation-reduction reactions produce
+recombinant plasmid is inserted in an E.coli strain
+proton gradient in respiration.
+(1) it will not be able to confer ampicillin
+resistance to the host cell.
+146. In some members of which of the following pairs
+of families, pollen grains retain their viability for
+(2) the transformed cells will have the ability
+months after release ?
+to resist ampicillin as well as produce
+β-galactoside. (1) Poaceae ; Rosaceae
+(3) it will lead to lysis of host cell. (2) Poaceae ; Leguminosae
+(3) Poaceae ; Solanaceae
+(4) it will be able to produce a novel protein with
+dual ability. (4) Rosaceae ; Leguminosae
+
+M4 20
+147. Match Column - I with Column - II. Section - A (Biology : Zoology)
+Column - I Column - II
+151. Which one of the following organisms bears hollow
+(a) Nitrococcus (i) Denitrification
+and pneumatic long bones ?
+Conversion of
+(b) Rhizobium (ii) (1) Neophron
+ammonia to nitrite
+Conversion of nitrite (2) Hemidactylus
+(c) Thiobacillus (iii)
+to nitrate (3) Macropus
+Conversion of (4) Ornithorhynchus
+(d) Nitrobacter (iv) atmospheric nitrogen
+to ammonia 152. Chronic auto immune disorder affecting neuro
+Choose the correct answer from options given muscular junction leading to fatigue, weakening
+below. and paralysis of skeletal muscle is called as :
+(a) (b) (c) (d) (1) Arthritis
+(1) (ii) (iv) (i) (iii)
+(2) Muscular dystrophy
+(2) (i) (ii) (iii) (iv)
+(3) Myasthenia gravis
+(3) (iii) (i) (iv) (ii)
+(4) Gout
+(4) (iv) (iii) (ii) (i)
+148. Now a days it is possible to detect the mutated 153. Which one of the following is an example of
+gene causing cancer by allowing radioactive probe Hormone releasing IUD ?
+to hybridise its complimentary DNA in a clone of (1) CuT
+cells, followed by its detection using
+(2) LNG 20
+autoradiography because :
+(3) Cu 7
+(1) mutated gene partially appears on a
+photographic film. (4) Multiload 375
+(2) mutated gene completely and clearly
+154. Which of the following characteristics is incorrect
+appears on a photographic film.
+with respect to cockroach ?
+(3) mutated gene does not appear on a
+photographic film as the probe has no (1) A ring of gastric caeca is present at the
+complimentarity with it. junction of midgut and hind gut.
+(4) mutated gene does not appear on (2) Hypopharynx lies within the cavity enclosed
+photographic film as the probe has by the mouth parts.
+complimentarity with it. (3) In females, 7th-9th sterna together form a
+149. DNA fingerprinting involves identifying differences genital pouch.
+in some specific regions in DNA sequence, called (4) 10th abdominal segment in both sexes, bears
+as : a pair of anal cerci.
+(1) Satellite DNA
+(2) Repetitive DNA 155. Select the favourable conditions required for the
+(3) Single nucleotides formation of oxyhaemoglobin at the alveoli.
+(4) Polymorphic DNA (1) High pO , low pCO , less H+, lower
+2 2
+temperature
+150. Match List - I with List - II.
+(2) Low pO , high pCO , more H+, higher
+List - I List - II 2 2
+temperature
+(a) Protein (i) C=C double bonds
+(3) High pO , high pCO , less H+, higher
+Unsaturated 2 2
+(b) (ii) Phosphodiester bonds temperature
+fatty acid
+(4) Low pO , low pCO , more H+, higher
+(c) Nucleic acid (iii) Glycosidic bonds 2 2
+temperature
+(d) Polysaccharide (iv) Peptide bonds
+Choose the correct answer from the options given
+156. Sphincter of oddi is present at :
+below.
+(1) Ileo-caecal junction
+(a) (b) (c) (d)
+(1) (iv) (i) (ii) (iii) (2) Junction of hepato-pancreatic duct and
+(2) (i) (iv) (iii) (ii) duodenum
+(3) (ii) (i) (iv) (iii) (3) Gastro-oesophageal junction
+(4) (iv) (iii) (i) (ii) (4) Junction of jejunum and duodenum
+
+21 M4
+157. The organelles that are included in the 162. Which of the following statements wrongly
+endomembrane system are : represents the nature of smooth muscle ?
+(1) Endoplasmic reticulum, Mitochondria, (1) These muscle have no striations
+Ribosomes and Lysosomes
+(2) They are involuntary muscles
+(2) Endoplasmic reticulum, Golgi complex, (3) Communication among the cells is
+Lysosomes and Vacuoles performed by intercalated discs
+(3) Golgi complex, Mitochondria, Ribosomes and (4) These muscles are present in the wall of
+Lysosomes blood vessels
+(4) Golgi complex, Endoplasmic reticulum,
+Mitochondria and Lysosomes 163. Match the following :
+List - I List - II
+158. Match List - I with List - II.
+(a) Physalia (i) Pearl oyster
+List - I List - II (b) Limulus (ii) Portuguese Man of War
+(a) Metamerism (i) Coelenterata (c) Ancylostoma (iii) Living fossil
+(b) Canal system (ii) Ctenophora (d) Pinctada (iv) Hookworm
+(c) Comb plates (iii) Annelida Choose the correct answer from the options given
+(d) Cnidoblasts (iv) Porifera below.
+(a) (b) (c) (d)
+Choose the correct answer from the options given
+(1) (ii) (iii) (i) (iv)
+below.
+(2) (iv) (i) (iii) (ii)
+(a) (b) (c) (d)
+(3) (ii) (iii) (iv) (i)
+(1) (iv) (iii) (i) (ii)
+(4) (i) (iv) (iii) (ii)
+(2) (iii) (iv) (i) (ii)
+(3) (iii) (iv) (ii) (i) 164. Succus entericus is referred to as :
+(4) (iv) (i) (ii) (iii) (1) Pancreatic juice
+(2) Intestinal juice
+159. A specific recognition sequence identified by
+(3) Gastric juice
+endonucleases to make cuts at specific positions
+(4) Chyme
+within the DNA is :
+(1) Degenerate primer sequence
+165. Which of the following is not an objective of
+(2) Okazaki sequences Biofortification in crops ?
+(3) Palindromic Nucleotide sequences (1) Improve protein content
+(4) Poly(A) tail sequences (2) Improve resistance to diseases
+(3) Improve vitamin content
+160. Which of the following RNAs is not required for
+(4) Improve micronutrient and mineral content
+the synthesis of protein ?
+(1) mRNA 166. Veneral diseases can spread through :
+(2) tRNA (a) Using sterile needles
+(3) rRNA (b) Transfusion of blood from infected person
+(4) siRNA (c) Infected mother to foetus
+(d) Kissing
+161. The partial pressures (in mm Hg) of oxygen (O 2) (e) Inheritance
+and carbon dioxide (CO ) at alveoli (the site of
+2 Choose the correct answer from the options given
+diffusion) are :
+below.
+(1) pO =104 and pCO =40
+2 2 (1) (a), (b) and (c) only
+(2) pO 2=40 and pCO 2=45 (2) (b), (c) and (d) only
+(3) pO 2=95 and pCO 2=40 (3) (b) and (c) only
+(4) pO 2=159 and pCO 2=0.3 (4) (a) and (c) only
+
+M4 22
+167. With regard to insulin choose correct options. 173. Read the following statements.
+(a) C-peptide is not present in mature insulin. (a) Metagenesis is observed in Helminths.
+(b) The insulin produced by rDNA technology (b) Echinoderms are triploblastic and coelomate
+has C-peptide. animals.
+(c) The pro-insulin has C-peptide. (c) Round worms have organ-system level of
+(d) A-peptide and B-peptide of insulin are body organization.
+interconnected by disulphide bridges. (d) Comb plates present in ctenophores help in
+Choose the correct answer from the options given digestion.
+below. (e) Water vascular system is characteristic of
+(1) (b) and (d) only Echinoderms.
+(2) (b) and (c) only Choose the correct answer from the options given
+(3) (a), (c) and (d) only below.
+(4) (a) and (d) only (1) (c), (d) and (e) are correct
+(2) (a), (b) and (c) are correct
+168. The fruit fly has 8 chromosomes (2n) in each cell. (3) (a), (d) and (e) are correct
+During interphase of Mitosis if the number of
+(4) (b), (c) and (e) are correct
+chromosomes at G phase is 8, what would be the
+1
+number of chromosomes after S phase ? 174. Dobson units are used to measure thickness of :
+(1) 8 (1) CFCs
+(2) 16 (2) Stratosphere
+(3) 4 (3) Ozone
+(4) 32 (4) Troposphere
+169. Which is the “Only enzyme” that has “Capability” 175. During the process of gene amplification using
+to catalyse Initiation, Elongation and Termination PCR, if very high temperature is not maintained
+in the process of transcription in prokaryotes ? in the beginning, then which of the following steps
+(1) DNA dependent DNA polymerase of PCR will be affected first ?
+(2) DNA dependent RNA polymerase (1) Annealing
+(3) DNA Ligase (2) Extension
+(4) DNase (3) Denaturation
+(4) Ligation
+170. In a cross between a male and female, both
+heterozygous for sickle cell anaemia gene, what 176. Identify the incorrect pair.
+percentage of the progeny will be diseased ?
+(1) Alkaloids - Codeine
+(1) 50%
+(2) Toxin - Abrin
+(2) 75%
+(3) Lectins - Concanavalin A
+(3) 25%
+(4) Drugs - Ricin
+(4) 100%
+177. Persons with ‘AB’ blood group are called as
+171. For effective treatment of the disease, early
+“Universal recipients”. This is due to :
+diagnosis and understanding its pathophysiology
+is very important. Which of the following (1) Absence of antigens A and B on the surface
+molecular diagnostic techniques is very useful for of RBCs
+early detection ?
+(2) Absence of antigens A and B in plasma
+(1) Western Blotting Technique
+(3) Presence of antibodies, anti-A and anti-B,
+(2) Southern Blotting Technique
+on RBCs
+(3) ELISA Technique
+(4) Absence of antibodies, anti-A and anti-B, in
+(4) Hybridization Technique
+plasma
+172. Which stage of meiotic prophase shows
+178. Which one of the following belongs to the family
+terminalisation of chiasmata as its distinctive
+Muscidae ?
+feature ?
+(1) Fire fly
+(1) Leptotene
+(2) Grasshopper
+(2) Zygotene
+(3) Diakinesis (3) Cockroach
+(4) Pachytene (4) House fly
+
+23 M4
+179. The centriole undergoes duplication during : 184. Match List - I with List - II.
+(1) S-phase List - I List - II
+(2) Prophase Entry of sperm through
+(a) Vaults (i)
+Cervix is blocked
+(3) Metaphase
+(b) IUDs (ii) Removal of Vas deferens
+(4) G phase
+2
+Phagocytosis of sperms
+(c) Vasectomy (iii)
+within the Uterus
+180. Receptors for sperm binding in mammals are
+present on : (d) Tubectomy (iv) Removal of fallopian tube
+(1) Corona radiata
+Choose the correct answer from the options given
+below.
+(2) Vitelline membrane
+(a) (b) (c) (d)
+(3) Perivitelline space
+(1) (iv) (ii) (i) (iii)
+(4) Zona pellucida
+(2) (i) (iii) (ii) (iv)
+(3) (ii) (iv) (iii) (i)
+181. Which enzyme is responsible for the conversion of
+inactive fibrinogens to fibrins ? (4) (iii) (i) (iv) (ii)
+(1) Thrombin
+185. If Adenine makes 30% of the DNA molecule, what
+(2) Renin will be the percentage of Thymine, Guanine and
+Cytosine in it ?
+(3) Epinephrine
+(1) T : 20 ; G : 30 ; C : 20
+(4) Thrombokinase
+(2) T : 20 ; G : 20 ; C : 30
+(3) T : 30 ; G : 20 ; C : 20
+182. Match List - I with List - II.
+(4) T : 20 ; G : 25 ; C : 25
+List - I List - II
+(a) Aspergillus niger (i) Acetic Acid
+Section - B (Biology : Zoology)
+(b) Acetobacter aceti (ii) Lactic Acid
+(c) Clostridium butylicum (iii) Citric Acid
+186. Which of the following secretes the hormone,
+(d) Lactobacillus (iv) Butyric Acid relaxin, during the later phase of pregnancy ?
+(1) Graafian follicle
+Choose the correct answer from the options given
+below. (2) Corpus luteum
+(a) (b) (c) (d) (3) Foetus
+(1) (iii) (i) (iv) (ii) (4) Uterus
+(2) (i) (ii) (iii) (iv)
+187. Identify the types of cell junctions that help to stop
+(3) (ii) (iii) (i) (iv)
+the leakage of the substances across a tissue and
+facilitation of communication with neighbouring
+(4) (iv) (ii) (i) (iii)
+cells via rapid transfer of ions and molecules.
+(1) Gap junctions and Adhering junctions,
+183. Erythropoietin hormone which stimulates R.B.C.
+respectively.
+formation is produced by :
+(2) Tight junctions and Gap junctions,
+(1) Alpha cells of pancreas respectively.
+(2) The cells of rostral adenohypophysis (3) Adhering junctions and Tight junctions,
+respectively.
+(3) The cells of bone marrow
+(4) Adhering junctions and Gap junctions,
+(4) Juxtaglomerular cells of the kidney
+respectively.
+
+M4 24
+188. Which one of the following statements about 192. Which of the following is not a step in Multiple
+Histones is wrong ? Ovulation Embryo Transfer Technology
+(MOET) ?
+(1) Histones are organized to form a unit of
+8 molecules. (1) Cow is administered hormone having LH
+(2) The pH of histones is slightly acidic. like activity for super ovulation
+(3) Histones are rich in amino acids - Lysine (2) Cow yields about 6-8 eggs at a time
+and Arginine.
+(3) Cow is fertilized by artificial insemination
+(4) Histones carry positive charge in the side
+(4) Fertilized eggs are transferred to surrogate
+chain.
+mothers at 8-32 cell stage
+189. Which of these is not an important component of
+193. Statement I :
+initiation of parturition in humans ?
+(1) Increase in estrogen and progesterone ratio The codon ‘AUG’ codes for methionine and
+phenylalanine.
+(2) Synthesis of prostaglandins
+Statement II :
+(3) Release of Oxytocin
+(4) Release of Prolactin ‘AAA’ and ‘AAG’ both codons code for the amino
+acid lysine.
+190. Match List - I with List - II. In the light of the above statements, choose the
+correct answer from the options given below.
+List - I List - II
+(1) Both Statement I and Statement II are
+(a) Allen's Rule (i) Kangaroo rat
+true
+Physiological
+(b) (ii) Desert lizard (2) Both Statement I and Statement II are
+adaptation
+false
+Behavioural
+(c) (iii) Marine fish at depth
+(3) Statement I is correct but Statement II
+adaptation
+is false
+Biochemical
+(d) (iv) Polar seal
+adaptation (4) Statement I is incorrect but
+Statement II is true
+Choose the correct answer from the options given
+below.
+194. Match List - I with List - II.
+(a) (b) (c) (d)
+(1) (iv) (ii) (iii) (i) List - I List - II
+(2) (iv) (i) (iii) (ii) (a) Scapula (i) Cartilaginous joints
+(3) (iv) (i) (ii) (iii) (b) Cranium (ii) Flat bone
+(c) Sternum (iii) Fibrous joints
+(4) (iv) (iii) (ii) (i)
+(d) Vertebral column (iv) Triangular flat bone
+191. Match List - I with List - II.
+Choose the correct answer from the options given
+List - I List - II below.
+Haemophilus (a) (b) (c) (d)
+(a) Filariasis (i)
+influenzae (1) (i) (iii) (ii) (iv)
+(b) Amoebiasis (ii) Trichophyton
+(2) (ii) (iii) (iv) (i)
+(c) Pneumonia (iii) Wuchereria bancrofti
+(3) (iv) (ii) (iii) (i)
+(d) Ringworm (iv) Entamoeba histolytica
+(4) (iv) (iii) (ii) (i)
+Choose the correct answer from the options given
+below.
+195. The Adenosine deaminase deficiency results into :
+(a) (b) (c) (d)
+(1) Dysfunction of Immune system
+(1) (iv) (i) (iii) (ii)
+(2) Parkinson’s disease
+(2) (iii) (iv) (i) (ii)
+(3) Digestive disorder
+(3) (i) (ii) (iv) (iii)
+(4) Addison’s disease
+(4) (ii) (iii) (i) (iv)
+
+25 M4
+196. Assertion (A) : 199. During muscular contraction which of the
+A person goes to high altitude and experiences following events occur ?
+‘altitude sickness’ with symptoms like breathing (a) ‘H’ zone disappears
+difficulty and heart palpitations.
+(b) ‘A’ band widens
+Reason (R) :
+(c) ‘I’ band reduces in width
+Due to low atmospheric pressure at high altitude,
+the body does not get sufficient oxygen. (d) Myosine hydrolyzes ATP, releasing the ADP
+In the light of the above statements, choose the and Pi
+correct answer from the options given below. (e) Z-lines attached to actins are pulled inwards
+(1) Both (A) and (R) are true and (R) is the
+Choose the correct answer from the options given
+correct explanation of (A)
+below.
+(2) Both (A) and (R) are true but (R) is not the
+(1) (a), (c), (d), (e) only
+correct explanation of (A)
+(2) (a), (b), (c), (d) only
+(3) (A) is true but (R) is false
+(4) (A) is false but (R) is true (3) (b), (c), (d), (e) only
+(4) (b), (d), (e), (a) only
+197. Match List - I with List - II.
+List - I List - II 200. Following are the statements about prostomium
+Selection of resistant of earthworm.
+Adaptive varieties due to excessive (a) It serves as a covering for mouth.
+(a) (i)
+radiation use of herbicides and
+(b) It helps to open cracks in the soil into which
+pesticides
+it can crawl.
+Convergent Bones of forelimbs in Man
+(b) (ii) (c) It is one of the sensory structures.
+evolution and Whale
+Divergent Wings of Butterfly and (d) It is the first body segment.
+(c) (iii)
+evolution Bird Choose the correct answer from the options given
+Evolution by below.
+(d) anthropo- (iv) Darwin Finches
+(1) (a), (b) and (c) are correct
+genic action
+(2) (a), (b) and (d) are correct
+Choose the correct answer from the options given
+below. (3) (a), (b), (c) and (d) are correct
+(a) (b) (c) (d) (4) (b) and (c) are correct
+(1) (iv) (iii) (ii) (i)
+(2) (iii) (ii) (i) (iv)
+(3) (ii) (i) (iv) (iii)
+(4) (i) (iv) (iii) (ii)
+- o 0 o -
+198. Following are the statements with reference to
+‘lipids’.
+(a) Lipids having only single bonds are called
+unsaturated fatty acids.
+(b) Lecithin is a phospholipid.
+(c) Trihydroxy propane is glycerol.
+(d) Palmitic acid has 20 carbon atoms including
+carboxyl carbon.
+(e) Arachidonic acid has 16 carbon atoms.
+Choose the correct answer from the options given
+below.
+(1) (a) and (b) only
+(2) (c) and (d) only
+(3) (b) and (c) only
+(4) (b) and (e) only
+
+M4 26
+Space For Rough Work
+
+27 M4
+Space For Rough Work
+
+M4 28
+Space For Rough Work
