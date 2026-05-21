@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../core/constants/app_colors.dart';
 
 class ProblemOfDay extends StatefulWidget {
   final Map problem;
@@ -13,45 +16,67 @@ class _ProblemOfDayState extends State<ProblemOfDay> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(14),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Container(padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4), decoration: BoxDecoration(color: Colors.green.shade50, borderRadius: BorderRadius.circular(8)), child: Text(widget.problem['subject'], style: const TextStyle(color: Colors.green))),
-                const SizedBox(width: 8),
-                const Text('Problem of the Day', style: TextStyle(fontWeight: FontWeight.w700)),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Text(widget.problem['question'], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
-            const SizedBox(height: 12),
-            Column(
-              children: List.generate(widget.problem['options'].length, (i) {
-                final opt = widget.problem['options'][i];
-                return Container(
-                  margin: const EdgeInsets.symmetric(vertical: 6),
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 14), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                    onPressed: () => setState(() => selected = i),
-                    child: Row(
-                      children: [
-                        Icon(selected == i ? Icons.radio_button_checked : Icons.radio_button_unchecked, color: selected == i ? Colors.green : Colors.grey),
-                        const SizedBox(width: 12),
-                        Expanded(child: Text(opt)),
-                      ],
-                    ),
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: const [
+          BoxShadow(color: Color(0x12000000), blurRadius: 22, offset: Offset(0, 10)),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                decoration: BoxDecoration(
+                  color: AppColors.primarySoft,
+                  borderRadius: BorderRadius.circular(999),
+                ),
+                child: Text(widget.problem['subject'], style: GoogleFonts.poppins(color: AppColors.primary, fontWeight: FontWeight.w700, fontSize: 12)),
+              ),
+              const SizedBox(width: 10),
+              Text('Problem of the Day', style: GoogleFonts.poppins(fontWeight: FontWeight.w800)),
+            ],
+          ),
+          const SizedBox(height: 12),
+          Text(widget.problem['question'], style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700)),
+          const SizedBox(height: 12),
+          ...List.generate(widget.problem['options'].length, (i) {
+            final opt = widget.problem['options'][i];
+            final isSelected = selected == i;
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: InkWell(
+                onTap: () => setState(() => selected = i),
+                borderRadius: BorderRadius.circular(18),
+                child: Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: isSelected ? AppColors.primarySoft : Colors.transparent,
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(color: isSelected ? AppColors.primary : AppColors.border),
                   ),
-                );
-              }),
-            ),
-            const SizedBox(height: 8),
-            Align(alignment: Alignment.centerRight, child: ElevatedButton(onPressed: () {}, child: const Text('View Solution')))
-          ],
-        ),
+                  child: Row(
+                    children: [
+                      Icon(isSelected ? Icons.radio_button_checked : Icons.radio_button_off, color: isSelected ? AppColors.primary : AppColors.textSecondary),
+                      const SizedBox(width: 12),
+                      Expanded(child: Text(opt, style: GoogleFonts.poppins(fontWeight: FontWeight.w600))),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }),
+          Align(
+            alignment: Alignment.centerRight,
+            child: FilledButton(onPressed: () {}, child: const Text('View Solution')),
+          ),
+        ],
       ),
     );
   }

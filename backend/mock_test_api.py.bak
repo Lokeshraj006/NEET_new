@@ -91,25 +91,31 @@ _mock_test_bg_threads: Dict[int, Thread] = {}
 @lru_cache(maxsize=1)
 def _fixed_set_paths() -> Dict[int, Dict[str, Path]]:
     mapping: Dict[int, Dict[str, Path]] = {}
+    if NEW_MOCK_TEST_PDF.exists():
+        for set_id in range(1, MOCK_TEST_SET_COUNT + 1):
+            mapping[set_id] = {"paper": NEW_MOCK_TEST_PDF}
+        return mapping
+
     for set_id in range(1, MOCK_TEST_SET_COUNT + 1):
         paper = DOCS_DIR / f"set{set_id}.txt"
         alt_paper = DOCS_DIR / f"mocktest_set{set_id}.txt"
         answer = DOCS_DIR / f"set{set_id}_answers.txt"
+        # Accept alternate file naming (some ingested PDFs use `mocktest_set{n}.txt`).
         if not paper.exists() and alt_paper.exists():
             paper = alt_paper
-        if paper.exists():
-            mapping[set_id] = {"paper": paper}
-            if answer.exists():
-                mapping[set_id]["answer"] = answer
-                
-    if NEW_MOCK_TEST_PDF.exists():
-        for set_id in range(1, MOCK_TEST_SET_COUNT + 1):
-            if set_id not in mapping:
-                mapping[set_id] = {"paper": NEW_MOCK_TEST_PDF}
+        if paper.exists() and answer.exists():
+            mapping[set_id] = {"paper": paper, "answer": answer}
     return mapping
 
 
-
+def _parse_fixed_set_answers(answer_text: str) -> List[int]:
+    answers: List[int] = []
+    for match in re.finditer(r"(?m)^\s*A\.\s*([1-4 ]+)\s*$", answer_text):
+        row = match.group(1)
+        for token in row.split():
+            if token in {"1", "2", "3", "4"}:
+                answers.append(int(token) - 1)
+    return answers
 
 
 def _subject_for_fixed_question(index: int) -> str:
@@ -220,66 +226,45 @@ def _mock_test_pdf_page_texts(split_columns: bool = False) -> List[str]:
 
 @lru_cache(maxsize=1)
 def _mock_test_pdf_set_ranges() -> List[Dict[str, int]]:
-    return [
-        {"set_id": 1, "start_page": 1, "end_page": 20, "answer_page": 28},
-        {"set_id": 2, "start_page": 48, "end_page": 71, "answer_page": 79},
-        {"set_id": 3, "start_page": 98, "end_page": 118, "answer_page": 120},
-        {"set_id": 4, "start_page": 146, "end_page": 167, "answer_page": 169},
-        {"set_id": 5, "start_page": 1, "end_page": 20, "answer_page": 28},
-        {"set_id": 6, "start_page": 48, "end_page": 71, "answer_page": 79},
-        {"set_id": 7, "start_page": 1, "end_page": 20, "answer_page": 28},
-        {"set_id": 8, "start_page": 48, "end_page": 71, "answer_page": 79},
-    ]
+    page_texts = _mock_test_pdf_page_texts(split_columns=False)
+    if not page_texts:
+        return []
+
+    ranges: List[Dict[str, int]] = []
+    start_page = 1
+    for page_number, page_text in enumerate(page_texts, start=1):
+        if not _is_mock_test_answer_key_page(page_text):
+            continue
+        if page_number > start_page:
+            ranges.append(
+                {
+                    "set_id": len(ranges) + 1,
+                    "start_page": start_page,
+                    "end_page": page_number - 1,
+                    "answer_page": page_number,
+                }
+            )
+        start_page = page_number + 1
+        if len(ranges) >= MOCK_TEST_SET_COUNT:
+            break
+
+    total_pages = len(page_texts)
+    if len(ranges) < MOCK_TEST_SET_COUNT and start_page <= total_pages:
+        ranges.append(
+            {
+                "set_id": len(ranges) + 1,
+                "start_page": start_page,
+                "end_page": total_pages,
+                "answer_page": 0,
+            }
+        )
+    return ranges[:MOCK_TEST_SET_COUNT]
 
 
 def _parse_fixed_set_answers(answer_text: str) -> Dict[int, int]:
     answers: Dict[int, int] = {}
-    
-    # 1. Try legacy Q./A. row logic first
-    q_lines = []
-    a_lines = []
-    for line in answer_text.splitlines():
-        stripped = line.strip()
-        if stripped.startswith("Q."):
-            q_lines.append(stripped[2:].strip().split())
-        elif stripped.startswith("A."):
-            a_lines.append(stripped[2:].strip().split())
-            
-    if q_lines and a_lines:
-        for q_row, a_row in zip(q_lines, a_lines):
-            for q_num, ans in zip(q_row, a_row):
-                try:
-                    answers[int(q_num)] = int(ans) - 1
-                except ValueError:
-                    pass
-        if answers:
-            return answers
-            
-    # 2. Try explanation-based format: 1. Option (2) is correct
-    matches = re.findall(r"(?mi)(\d{1,3})\.\s*Option\s*\(?([a-d1-4])\)?\s*is", answer_text)
-    if len(matches) >= 50:
-        for num_str, ans_str in matches:
-            answers[int(num_str)] = _answer_token_to_index(ans_str)
-        return answers
-        
-    # 3. Try table-based number format: 1 1 Electronic Devices or 74. 1 Properties
-    matches = re.findall(r"\b(\d{1,3})\s*\.?\s+([1-4])\b", answer_text)
-    if len(matches) >= 50:
-        for num_str, ans_str in matches:
-            num = int(num_str)
-            if 1 <= num <= 200:
-                answers[num] = int(ans_str) - 1
-        return answers
-        
-    # 4. Try table-based letter format: 1 (b) 41 (a)
-    matches = re.findall(r"\b(\d{1,3})\s*\(?([a-d])\)?\b", answer_text.lower())
-    if len(matches) >= 50:
-        for num_str, ans_str in matches:
-            num = int(num_str)
-            if 1 <= num <= 200:
-                answers[num] = _answer_token_to_index(ans_str)
-        return answers
-
+    for match in re.finditer(r"(?mi)(\d{1,3})\s*[\.)]?\s*\(?([a-d1-4])\)?", answer_text):
+        answers[int(match.group(1))] = _answer_token_to_index(match.group(2))
     return answers
 
 
@@ -386,99 +371,37 @@ def _parse_fixed_set_questions(page_entries: List[Dict], answers: Dict[int, int]
 
     for page_entry in page_entries:
         page_number = int(page_entry.get("page_number") or 0)
-        raw_text = str(page_entry.get("text") or "")
-        
-        # Clean text starting from first SECTION match to exclude instruction page
-        match = re.search(r"(?i)SECTION\s*-\s*[A-D]", raw_text)
-        if match:
-            raw_text = raw_text[match.start():]
-            
-        page_text = _clean_fixed_set_text(raw_text)
+        page_text = _clean_fixed_set_text(str(page_entry.get("text") or ""))
         if not page_text:
             continue
         page_image = str(page_entry.get("image") or "")
         page_has_visuals = bool(page_entry.get("has_visuals")) and bool(page_image)
         question_starts = _extract_question_blocks(page_text)
-        
         for number, block in question_starts:
             if number in seen_numbers:
                 continue
             if not block:
                 continue
-                
-            # Robust option extraction
-            option_matches = list(re.finditer(r"[\(\[]([A-Da-d1-4])[\)\]]", block))
-            if not option_matches:
-                continue
-                
-            target_indices = []
-            normalized = []
-            for m in option_matches:
-                tok = m.group(1).upper()
-                if tok == '1': tok = 'A'
-                elif tok == '2': tok = 'B'
-                elif tok == '3': tok = 'C'
-                elif tok == '4': tok = 'D'
-                normalized.append(tok)
-                
-            d_idx = -1
-            for i in range(len(normalized) - 1, -1, -1):
-                if normalized[i] == 'D':
-                    d_idx = i
-                    break
-                    
-            if d_idx != -1:
-                c_idx = -1
-                for i in range(d_idx - 1, -1, -1):
-                    if normalized[i] == 'C':
-                        c_idx = i
-                        break
-                if c_idx != -1:
-                    b_idx = -1
-                    for i in range(c_idx - 1, -1, -1):
-                        if normalized[i] == 'B':
-                            b_idx = i
-                            break
-                    if b_idx != -1:
-                        a_idx = -1
-                        for i in range(b_idx - 1, -1, -1):
-                            if normalized[i] == 'A':
-                                a_idx = i
-                                break
-                        if a_idx != -1:
-                            target_indices = [a_idx, b_idx, c_idx, d_idx]
-
-            if not target_indices:
-                if len(option_matches) >= 4:
-                    target_indices = list(range(len(option_matches) - 4, len(option_matches)))
-                else:
-                    continue
-                    
-            options = []
-            selected_matches = [option_matches[i] for i in target_indices]
-            for idx, match_obj in enumerate(selected_matches):
-                start = match_obj.end()
-                end = selected_matches[idx+1].start() if idx+1 < len(selected_matches) else len(block)
-                opt_val = block[start:end].strip()
-                if idx == 3:
-                    opt_val = re.split(r"(?i)FINAL SHOT|1001CMD|Oswaal|NEET|Page \d+", opt_val)[0].strip()
-                options.append(_normalize_multiline_text(opt_val))
-
-            if len(options) != 4:
-                continue
-
-            question_text = block[:selected_matches[0].start()].strip()
+            option_matches = list(
+                re.finditer(
+                    r"(?ms)^\s*[\(\[]?([A-Da-d1-4])\s*[\)\].:-]\s*(.*?)(?=^\s*[\(\[]?[A-Da-d1-4]\s*[\)\].:-]\s*|\Z)",
+                    block,
+                )
+            )
+            options = [_normalize_multiline_text(m.group(2)) for m in option_matches[:4]]
+            if len(options) < 4:
+                alt_options = re.findall(
+                    r"(?ms)^\s*[\(\[]?([A-Da-d1-4])\s*[\)\].:-]\s*(.*?)(?=^\s*[\(\[]?[A-Da-d1-4]\s*[\)\].:-]\s*|\Z)",
+                    block,
+                )
+                options = [_normalize_multiline_text(opt) for _, opt in alt_options[:4]]
+            question_text = block
+            if option_matches:
+                question_text = block[:option_matches[0].start()].strip()
             question_text = re.sub(r"^\s*(?:Q\.\s*)?\d{1,3}\.\s*", "", question_text, count=1).strip()
-            
-            # Bilingual clean up
-            mid_pattern = rf"\b{number}\.\s+"
-            parts = re.split(mid_pattern, question_text)
-            if len(parts) > 1:
-                question_text = parts[-1].strip()
-                
             question_text = _normalize_multiline_text(question_text)
 
-            if not _looks_like_fixed_question(question_text, options):
+            if len(options) != 4 or not _looks_like_fixed_question(question_text, options):
                 continue
 
             norm_q = question_text.strip().lower()
@@ -509,86 +432,6 @@ def _parse_fixed_set_questions(page_entries: List[Dict], answers: Dict[int, int]
                 "hash": hashlib.sha1(f"set{set_id}:{number}:{question_text}".encode("utf-8")).hexdigest()[:16],
             })
     return questions
-
-
-def _split_bilingual_line(line: str) -> str:
-    stripped = line.rstrip('\n').rstrip('\r')
-    if not stripped:
-        return ""
-    matches = list(re.finditer(r"\b\d{1,3}\.\s+", stripped))
-    if len(matches) > 1:
-        return stripped[matches[-1].start():]
-    elif len(matches) == 1:
-        if matches[0].start() > 5:
-            return stripped[matches[0].start():]
-    last_dev_idx = -1
-    for i in range(len(stripped) - 1, -1, -1):
-        val = ord(stripped[i])
-        if 0x0900 <= val <= 0x097F or val == 0:
-            last_dev_idx = i
-            break
-    if last_dev_idx != -1:
-        return stripped[last_dev_idx + 1:].strip()
-    if len(stripped) < 10 and ' ' in stripped:
-        mid = len(stripped) // 2
-        return stripped[mid:].strip()
-    if stripped.count("(1)") > 1 or stripped.count("(2)") > 1 or stripped.count("(3)") > 1 or stripped.count("(4)") > 1:
-        mid = len(stripped) // 2
-        return stripped[mid:].strip()
-    return stripped
-
-
-def _get_cleanliness_score(q: Dict) -> float:
-    score = 0.0
-    q_text = q.get("question", "")
-    options = q.get("options", [])
-    if len(options) == 4 and all(opt.strip() for opt in options):
-        score += 20.0
-        if all(len(opt.strip()) > 1 for opt in options):
-            score += 10.0
-    if "\x00" not in q_text and all("\x00" not in opt for opt in options):
-        score += 10.0
-    if not re.search(r"[\u0900-\u097F]", q_text) and not any(re.search(r"[\u0900-\u097F]", opt) for opt in options):
-        score += 10.0
-    q_len = len(q_text)
-    if 40 <= q_len <= 300:
-        score += 5.0
-    elif 20 <= q_len <= 600:
-        score += 3.0
-    if len(options) == 4:
-        opt_lens = [len(opt) for opt in options]
-        max_opt_len = max(opt_lens)
-        if max_opt_len < 100:
-            score += 5.0
-    if q_text.strip() and q_text.strip()[-1] in "?:.":
-        score += 5.0
-    return score
-
-
-def _filter_clean_35_questions(questions: List[Dict]) -> List[Dict]:
-    by_subject: Dict[str, List[Dict]] = {
-        "Physics": [],
-        "Chemistry": [],
-        "Botany": [],
-        "Zoology": []
-    }
-    for q in questions:
-        subj = q.get("subject")
-        if subj in by_subject:
-            by_subject[subj].append(q)
-    for subj in by_subject:
-        by_subject[subj].sort(key=_get_cleanliness_score, reverse=True)
-    targets = {
-        "Physics": 9,
-        "Chemistry": 9,
-        "Botany": 9,
-        "Zoology": 8
-    }
-    selected_questions: List[Dict] = []
-    for subj, limit in targets.items():
-        sub_list = by_subject[subj]
-        selected_questions.extend(sub_list[:limit])
-    return selected_questions
 
 
 @lru_cache(maxsize=8)
@@ -628,27 +471,14 @@ def _load_fixed_set_bundle(set_id: int) -> Dict:
                     )
                 answer_page = int(range_info.get("answer_page") or 0)
                 if 0 < answer_page <= len(pdf.pages):
-                    if answer_page == 28:
-                        ans_texts = [_extract_pdf_page_text(pdf.pages[p - 1], split_columns=True) for p in range(28, min(48, len(pdf.pages) + 1))]
-                        answer_text = "\n".join(ans_texts)
-                    elif answer_page == 79:
-                        ans_texts = [_extract_pdf_page_text(pdf.pages[p - 1], split_columns=True) for p in range(79, min(98, len(pdf.pages) + 1))]
-                        answer_text = "\n".join(ans_texts)
-                    elif answer_page == 120:
-                        ans_texts = [_extract_pdf_page_text(pdf.pages[p - 1], split_columns=True) for p in range(120, min(126, len(pdf.pages) + 1))]
-                        answer_text = "\n".join(ans_texts)
-                    else:
-                        answer_text = _extract_pdf_page_text(pdf.pages[answer_page - 1], split_columns=True)
+                    answer_text = _extract_pdf_page_text(pdf.pages[answer_page - 1], split_columns=True)
         except Exception:
             raise HTTPException(status_code=500, detail=f"Unable to parse mock test set {set_id}.")
         if not page_entries:
             raise HTTPException(status_code=500, detail=f"Unable to parse mock test set {set_id}.")
         answers = _parse_fixed_set_answers(answer_text)
     else:
-        raw_paper_text = paper_path.read_text(encoding="utf-8", errors="ignore")
-        paper_lines = raw_paper_text.splitlines()
-        cleaned_lines = [_split_bilingual_line(line) for line in paper_lines]
-        paper_text = "\n".join(cleaned_lines)
+        paper_text = paper_path.read_text(encoding="utf-8", errors="ignore")
         answer_path = paths.get("answer")
         answer_text = answer_path.read_text(encoding="utf-8", errors="ignore") if answer_path and answer_path.exists() else ""
         answers = _parse_fixed_set_answers(answer_text)
@@ -661,9 +491,6 @@ def _load_fixed_set_bundle(set_id: int) -> Dict:
             }
         ]
     questions = _parse_fixed_set_questions(page_entries, answers, set_id)
-    if not questions:
-        raise HTTPException(status_code=500, detail=f"Unable to parse mock test set {set_id}.")
-    questions = _filter_clean_35_questions(questions)
     if not questions:
         raise HTTPException(status_code=500, detail=f"Unable to parse mock test set {set_id}.")
     return {

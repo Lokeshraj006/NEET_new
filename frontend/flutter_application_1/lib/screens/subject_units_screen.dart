@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'package:flutter_application_1/core/constants/app_colors.dart';
+import 'package:flutter_application_1/core/widgets/info_card.dart';
 import 'package:flutter_application_1/screens/unit_quiz_screen.dart';
+import 'package:flutter_application_1/widgets/bottom_nav.dart';
 
 class UnitNode {
   final String title;
@@ -54,58 +59,111 @@ class SubjectUnitsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(
+        title: Text(
+          title,
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
+        ),
+      ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
-        itemCount: units.length,
+        itemCount: units.length + 1,
         itemBuilder: (context, index) {
-          final unit = units[index];
-          return Card(
-            margin: const EdgeInsets.only(bottom: 10),
-            child: ListTile(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-              title: Text(
-                unit.title,
-                style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+          if (index == 0) {
+            return InfoCard(
+              child: Text(
+                allowStartQuiz
+                    ? 'Choose a unit and jump directly into a focused quiz.'
+                    : 'Browse the chapter tree and open the next level from here.',
+                style: GoogleFonts.poppins(
+                  fontSize: 13.5,
+                  height: 1.45,
+                  color: AppColors.textSecondary,
+                ),
               ),
-              trailing: unit.hasChildren
-                  ? const Icon(Icons.chevron_right)
-                  : (allowStartQuiz
-                      ? IconButton(
-                          icon: const Icon(Icons.quiz_outlined),
-                          tooltip: 'Start unit quiz',
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (_) => UnitQuizScreen(subject: title.replaceAll(' Units', '').trim(), unitTitle: unit.title)));
-                          },
-                        )
-                      : const Icon(Icons.chevron_right)),
-              onTap: () {
-                if (unit.hasChildren) {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => SubjectUnitsScreen(
-                        title: unit.title,
-                        units: unit.children,
-                        allowStartQuiz: allowStartQuiz,
+            );
+          }
+
+          final unit = units[index - 1];
+          return Padding(
+            padding: const EdgeInsets.only(top: 12),
+            child: InfoCard(
+              padding: const EdgeInsets.all(16),
+              child: ListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(
+                  unit.title,
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15,
+                  ),
+                ),
+                subtitle: unit.hasChildren
+                    ? Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: Text(
+                          'Tap to open sub-topics',
+                          style: GoogleFonts.poppins(
+                            fontSize: 12,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                      )
+                    : null,
+                trailing: unit.hasChildren
+                    ? const Icon(Icons.chevron_right_rounded)
+                    : (allowStartQuiz
+                        ? FilledButton.tonalIcon(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => UnitQuizScreen(
+                                    subject: title.replaceAll(' Units', '').trim(),
+                                    unitTitle: unit.title,
+                                  ),
+                                ),
+                              );
+                            },
+                            icon: const Icon(Icons.quiz_rounded),
+                            label: const Text('Quiz'),
+                          )
+                        : const Icon(Icons.chevron_right_rounded)),
+                onTap: () {
+                  if (unit.hasChildren) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => SubjectUnitsScreen(
+                          title: unit.title,
+                          units: unit.children,
+                          allowStartQuiz: allowStartQuiz,
+                        ),
                       ),
-                    ),
-                  );
-                } else if (allowStartQuiz) {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => UnitQuizScreen(
-                        subject: title.replaceAll(' Units', '').trim(),
-                        unitTitle: unit.title,
+                    );
+                  } else if (allowStartQuiz) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => UnitQuizScreen(
+                          subject: title.replaceAll(' Units', '').trim(),
+                          unitTitle: unit.title,
+                        ),
                       ),
-                    ),
-                  );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Open Mock Test > Explore Quizzes to start a quiz.')));
-                }
-              },
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Open Mock Test > Explore Quizzes to start a quiz.'),
+                      ),
+                    );
+                  }
+                },
+              ),
             ),
           );
         },
+      ),
+      bottomNavigationBar: BottomNav(
+        selectedIndex: 1,
+        onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
       ),
     );
   }

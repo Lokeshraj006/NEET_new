@@ -7,6 +7,7 @@ from typing import List, Dict, Optional, Tuple
 import os
 import requests
 import re
+import time
 import traceback
 
 try:
@@ -590,9 +591,7 @@ def synthesize_answer(query: str, history: List[Dict], retrieved: List[Dict], de
 
     if api_key:
         try:
-            print(f"[DEBUG] Using MISTRAL_API_KEY: {api_key[:20]}...")
             raw = call_mistral_generate(api_key, prompt)
-            print(f"[DEBUG] RAW MISTRAL RESPONSE:\n{raw}\n[END RAW]")
             return format_mistral_response(raw, query=query, detailed=detailed)
         except Exception as e:
             print(f"[DEBUG] Mistral API failed: {type(e).__name__}: {str(e)[:300]}")
@@ -644,62 +643,109 @@ def get_mistral_api_key():
     return os.environ.get('MISTRAL_API_KEY', '').strip()
 
 
+def _mistral_model_candidates() -> List[str]:
+    primary = os.environ.get('MISTRAL_MODEL', 'mistral-small-latest').strip() or 'mistral-small-latest'
+    fallback_raw = os.environ.get('MISTRAL_FALLBACK_MODELS', '').strip()
+    fallback = [part.strip() for part in fallback_raw.split('||') if part.strip()]
+    models: List[str] = []
+    for item in [primary, *fallback]:
+        if item not in models:
+            models.append(item)
+    return models
+
+
+def _parse_retry_attempts() -> int:
+    raw = os.environ.get('MISTRAL_RETRY_ATTEMPTS', '2').strip()
+    try:
+        value = int(raw)
+    except ValueError:
+        value = 2
+    return max(1, min(value, 4))
+
+
 def call_mistral_generate(api_key: str, prompt: str) -> str:
     if not api_key:
         raise RuntimeError('Missing MISTRAL_API_KEY')
 
     base_url = os.environ.get('MISTRAL_API_URL', 'https://api.mistral.ai/v1/chat/completions')
-    model_name = os.environ.get('MISTRAL_MODEL', 'mistral-small-latest')
     headers = {
         'Authorization': f'Bearer {api_key}',
         'Content-Type': 'application/json'
     }
-    body = {
-        'model': model_name,
-        'messages': [
-            {'role': 'user', 'content': prompt}
-        ],
-        'temperature': 0.2,
-        'max_tokens': MISTRAL_MAX_TOKENS
-    }
+    models = _mistral_model_candidates()
+    retry_attempts = _parse_retry_attempts()
+    last_error = 'unknown_error'
 
-    try:
-        resp = requests.post(base_url, headers=headers, json=body, timeout=60)
-        if resp.status_code == 200:
-            data = resp.json()
-            if isinstance(data, dict):
-                for key in ('text', 'response', 'generated_text', 'output'):
-                    if key in data and isinstance(data[key], str):
-                        text = data[key].strip()
-                        if len(text) > 1000:
-                            text = text[:1000] + '...'
-                        return text
-                if 'choices' in data and isinstance(data['choices'], list) and data['choices']:
-                    c0 = data['choices'][0]
-                    if isinstance(c0, dict):
-                        message = c0.get('message')
-                        if isinstance(message, dict):
-                            content = message.get('content')
-                            if isinstance(content, str) and content.strip():
-                                txt = content.strip()
-                                if len(txt) > 1000:
-                                    txt = txt[:1000] + '...'
-                                return txt
+    for model_name in models:
+        for attempt in range(retry_attempts):
+            body = {
+                'model': model_name,
+                'messages': [
+                    {'role': 'user', 'content': prompt}
+                ],
+                'temperature': 0.2,
+                'max_tokens': MISTRAL_MAX_TOKENS
+            }
 
-                if 'choices' in data and isinstance(data['choices'], list) and data['choices']:
-                    c0 = data['choices'][0]
-                    if isinstance(c0, dict):
-                        txt = c0.get('text') or c0.get('message') or c0.get('output')
-                        if isinstance(txt, str):
-                            txt = txt.strip()
-                            if len(txt) > 1000:
-                                txt = txt[:1000] + '...'
-                            return txt
-            return resp.text.strip()[:1000]
-        else:
-            raise RuntimeError(f'Mistral API failed: {resp.status_code} {resp.text[:200]}')
-    except Exception as e:
-        raise RuntimeError(f'Mistral API error: {type(e).__name__}: {str(e)[:300]}')
+            try:
+                resp = requests.post(base_url, headers=headers, json=body, timeout=60)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    if isinstance(data, dict):
+                        for key in ('text', 'response', 'generated_text', 'output'):
+                            if key in data and isinstance(data[key], str):
+                                text = data[key].strip()
+                                if len(text) > 1000:
+                                    text = text[:1000] + '...'
+                                return text
+                        if 'choices' in data and isinstance(data['choices'], list) and data['choices']:
+                            c0 = data['choices'][0]
+                            if isinstance(c0, dict):
+                                message = c0.get('message')
+                                if isinstance(message, dict):
+                                    content = message.get('content')
+                                    if isinstance(content, str) and content.strip():
+                                        txt = content.strip()
+                                        if len(txt) > 1000:
+                                            txt = txt[:1000] + '...'
+                                        return txt
+
+                        if 'choices' in data and isinstance(data['choices'], list) and data['choices']:
+                            c0 = data['choices'][0]
+                            if isinstance(c0, dict):
+                                txt = c0.get('text') or c0.get('message') or c0.get('output')
+                                if isinstance(txt, str):
+                                    txt = txt.strip()
+                                    if len(txt) > 1000:
+                                        txt = txt[:1000] + '...'
+                                    return txt
+                    return resp.text.strip()[:1000]
+
+                body_preview = resp.text[:200]
+                is_capacity_429 = (
+                    resp.status_code == 429
+                    and (
+                        'service_tier_capacity_exceeded' in body_preview
+                        or 'capacity exceeded' in body_preview.lower()
+                    )
+                )
+                last_error = f'{resp.status_code} {body_preview}'
+                if is_capacity_429 and attempt + 1 < retry_attempts:
+                    time.sleep(0.8 * (attempt + 1))
+                    continue
+
+                if is_capacity_429:
+                    break
+
+                raise RuntimeError(f'Mistral API failed: {last_error}')
+            except Exception as e:
+                last_error = f'{type(e).__name__}: {str(e)[:300]}'
+                if attempt + 1 < retry_attempts:
+                    time.sleep(0.8 * (attempt + 1))
+                    continue
+                break
+
+    raise RuntimeError(f'Mistral API unavailable after retries/models: {last_error}')
 
 
 def build_answer_payload(query: str, history: List[Dict], retrieved: List[Dict], reply: str):

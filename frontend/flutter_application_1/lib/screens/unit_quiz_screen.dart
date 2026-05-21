@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'package:flutter_application_1/core/constants/app_colors.dart';
+import 'package:flutter_application_1/core/widgets/custom_button.dart';
+import 'package:flutter_application_1/core/widgets/info_card.dart';
 import 'package:flutter_application_1/screens/quiz_in_progress.dart';
 import 'package:flutter_application_1/services/mock_test_service.dart';
+import 'package:flutter_application_1/widgets/bottom_nav.dart';
 
 class UnitQuizScreen extends StatefulWidget {
   final String subject;
@@ -20,41 +25,98 @@ class _UnitQuizScreenState extends State<UnitQuizScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.unitTitle, style: GoogleFonts.poppins(fontWeight: FontWeight.w700)), backgroundColor: Colors.white, foregroundColor: Colors.black, elevation: 0),
+      appBar: AppBar(
+        title: Text(
+          widget.unitTitle,
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('Quiz for ${widget.unitTitle}', style: GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w800)),
-          const SizedBox(height: 12),
-          if (_attempt != null)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: Text('Attempt $_attempt of ${_attemptsAllowed ?? 5}', style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black54)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            InfoCard(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Quiz for ${widget.unitTitle}',
+                    style: GoogleFonts.poppins(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Focused NEET practice for ${widget.subject}.',
+                    style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+                  if (_attempt != null) ...[
+                    const SizedBox(height: 12),
+                    Text(
+                      'Attempt $_attempt of ${_attemptsAllowed ?? 5}',
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
+                  ],
+                ],
+              ),
             ),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: const Color(0xFFF5F5F5),
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: const Color(0xFFE6E6E6)),
+            const SizedBox(height: 14),
+            InfoCard(
+              child: Row(
+                children: [
+                  Container(
+                    width: 54,
+                    height: 54,
+                    decoration: BoxDecoration(
+                      color: AppColors.primarySoft,
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    child: const Icon(Icons.schedule_rounded, color: AppColors.primary),
+                  ),
+                  const SizedBox(width: 14),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Duration',
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        '$_fixedMinutes minutes',
+                        style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('Duration', style: GoogleFonts.poppins(fontSize: 13, color: Colors.black54)),
-              const SizedBox(height: 4),
-              Text('$_fixedMinutes minutes', style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w700)),
-            ]),
-          ),
-          const SizedBox(height: 18),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
+            const Spacer(),
+            CustomButton(
+              label: 'START QUIZ',
               onPressed: _startQuiz,
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.black, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)), padding: const EdgeInsets.symmetric(vertical: 16)),
-              child: Text('START QUIZ', style: GoogleFonts.poppins(fontWeight: FontWeight.w700)),
             ),
-          ),
-        ]),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNav(
+        selectedIndex: 1,
+        onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
       ),
     );
   }

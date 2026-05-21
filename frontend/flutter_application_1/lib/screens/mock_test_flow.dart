@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element, unused_field, unnecessary_null_comparison, unused_local_variable, unnecessary_brace_in_string_interps, curly_braces_in_flow_control_structures, private_type_in_public_api, library_private_types_in_public_api
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math' as math;
@@ -9,15 +11,35 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:flutter_application_1/core/constants/app_colors.dart';
+import 'package:flutter_application_1/widgets/bottom_nav.dart';
 import 'package:flutter_application_1/screens/quizzes_screen.dart';
 import 'package:flutter_application_1/services/mock_test_service.dart';
 
-const Color _kPrimary = Color(0xFF4F46B5);
-const Color _kPrimarySoft = Color(0xFFF0EDFF);
-const Color _kBackground = Color(0xFFEAF4FF);
-const Color _kSurface = Colors.white;
+const Color _kPrimary = AppColors.primary;
+const Color _kPrimarySoft = AppColors.primarySoft;
+const Color _kBackground = AppColors.background;
+const Color _kSurface = AppColors.surface;
 const String _draftKey = 'mock_test_active_draft_v2';
 const String _resultKey = 'mock_test_last_result_v2';
+
+class _MockTestSection {
+  final String name;
+  final int startIndex;
+  final int endIndex;
+
+  const _MockTestSection({
+    required this.name,
+    required this.startIndex,
+    required this.endIndex,
+  });
+
+  int get count => endIndex >= startIndex ? endIndex - startIndex + 1 : 0;
+
+  bool contains(int index) => index >= startIndex && index <= endIndex;
+
+  int localNumber(int index) => contains(index) ? index - startIndex + 1 : 0;
+}
 
 class MockTestResultArgs {
   final MockTestBundle bundle;
@@ -40,30 +62,19 @@ class _MockTestDraft {
   final List<int?> answers;
   final Set<int> marked;
   final int currentIndex;
-  final DateTime startedAt;
   final Duration duration;
   final bool isPaused;
+  final int? remainingSeconds;
 
   const _MockTestDraft({
     required this.bundle,
     required this.answers,
     required this.marked,
     required this.currentIndex,
-    required this.startedAt,
     required this.duration,
     this.isPaused = false,
+    this.remainingSeconds,
   });
-
-  int get remainingSeconds => math.max(
-    0,
-    duration.inSeconds - DateTime.now().difference(startedAt).inSeconds,
-  );
-  Duration get elapsed => Duration(
-    seconds: math.min(
-      duration.inSeconds,
-      DateTime.now().difference(startedAt).inSeconds,
-    ),
-  );
 
   Map<String, dynamic> toJson() => {
     'bundle': {
@@ -87,9 +98,9 @@ class _MockTestDraft {
     'answers': answers.map((value) => value).toList(),
     'marked': marked.toList(),
     'currentIndex': currentIndex,
-    'startedAt': startedAt.toIso8601String(),
     'durationSeconds': duration.inSeconds,
     'isPaused': isPaused,
+    'remainingSeconds': remainingSeconds,
   };
 
   static _MockTestDraft? fromJson(Map<String, dynamic>? json) {
@@ -127,21 +138,19 @@ class _MockTestDraft {
       0,
       int.tryParse('${json['currentIndex'] ?? 0}') ?? 0,
     );
-    final startedAt =
-        DateTime.tryParse((json['startedAt'] ?? '').toString()) ??
-        DateTime.now();
     final durationSeconds =
         int.tryParse('${json['durationSeconds'] ?? 3 * 60 * 60}') ??
         3 * 60 * 60;
     final isPaused = json['isPaused'] == true;
+    final remainingSeconds = int.tryParse('${json['remainingSeconds'] ?? ''}');
     return _MockTestDraft(
       bundle: bundle,
       answers: answers,
       marked: marked,
       currentIndex: currentIndex.clamp(0, math.max(0, questions.length - 1)),
-      startedAt: startedAt,
       duration: Duration(seconds: durationSeconds),
       isPaused: isPaused,
+      remainingSeconds: remainingSeconds,
     );
   }
 }
@@ -210,6 +219,15 @@ class _MockTestPracticeScreenState extends State<MockTestPracticeScreen> {
 
     return Scaffold(
       backgroundColor: background,
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_rounded),
+          onPressed: () => Navigator.of(context).maybePop(),
+        ),
+        title: Text('Mock Tests', style: GoogleFonts.poppins(fontWeight: FontWeight.w800)),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(18),
@@ -224,6 +242,10 @@ class _MockTestPracticeScreenState extends State<MockTestPracticeScreen> {
           ),
         ),
       ),
+      bottomNavigationBar: BottomNav(
+        selectedIndex: 1,
+        onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
+      ),
     );
   }
 }
@@ -233,14 +255,15 @@ class MockTestSetPickerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sets = List.generate(6, (index) => index + 1);
+    final sets = List.generate(8, (index) => index + 1);
     return Scaffold(
-      backgroundColor: const Color(0xFFEAF4FF),
+      backgroundColor: const Color(0xFFF0FDF4),
       appBar: AppBar(
-        title: Text(
-          'Full Mock Tests',
-          style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_rounded),
+          onPressed: () => Navigator.of(context).maybePop(),
         ),
+        title: Text('Mock Test Sets', style: GoogleFonts.poppins(fontWeight: FontWeight.w800)),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -273,6 +296,10 @@ class MockTestSetPickerScreen extends StatelessWidget {
             );
           },
         ),
+      ),
+      bottomNavigationBar: BottomNav(
+        selectedIndex: 1,
+        onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
       ),
     );
   }
@@ -332,22 +359,12 @@ class _SetCard extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'Mock Test Set $setId',
+              'Set $setId',
               style: GoogleFonts.poppins(
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
               ),
               overflow: TextOverflow.fade,
-            ),
-            const SizedBox(height: 6),
-            // allow small text to shrink/wrap to avoid overflow on tiny devices
-            Flexible(
-              child: Text(
-                'Open rules, then start instantly.',
-                style: GoogleFonts.poppins(color: Colors.black54, fontSize: 12),
-                softWrap: true,
-                overflow: TextOverflow.ellipsis,
-              ),
             ),
           ],
         ),
@@ -419,7 +436,7 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEAF4FF),
+      backgroundColor: const Color(0xFFF0FDF4),
       appBar: AppBar(
         title: Text(
           'Set ${widget.setId} Rules',
@@ -568,11 +585,18 @@ class MockTestScreen extends StatefulWidget {
 }
 
 class _MockTestScreenState extends State<MockTestScreen> {
+  static const int _sectionPageSize = 10;
+  static const int _fullMockQuestionLimit = 180;
+
+  late MockTestBundle _bundle;
+  late List<_MockTestSection> _sections;
   late List<int?> _answers;
   late Set<int> _marked;
   late int _currentIndex;
-  late DateTime _startedAt;
   late Duration _duration;
+  late int _remainingSeconds;
+  int _activeSectionIndex = 0;
+  int _sectionPage = 0;
   bool _isPaused = false;
   Timer? _timer;
   bool _submitting = false;
@@ -581,45 +605,143 @@ class _MockTestScreenState extends State<MockTestScreen> {
   int get _answered => _answers.where((answer) => answer != null).length;
   int get _remaining => _answers.length - _answered;
   int get _markedCount => _marked.length;
-  int get _remainingSeconds => math.max(
-    0,
-    _duration.inSeconds - DateTime.now().difference(_startedAt).inSeconds,
-  );
   double get _progress => _answers.isEmpty ? 0 : _answered / _answers.length;
+  MockQuestion get _currentQuestion => _bundle.questions[_currentIndex];
+  _MockTestSection get _activeSection => _sections[_activeSectionIndex];
+
+  List<_MockTestSection> _buildSections(List<MockQuestion> questions) {
+    if (questions.isEmpty) return const [];
+    final sections = <_MockTestSection>[];
+    var sectionStart = 0;
+    var sectionName = questions.first.subject.trim().isEmpty
+        ? 'Section 1'
+        : questions.first.subject.trim();
+
+    for (var index = 1; index < questions.length; index += 1) {
+      final currentName = questions[index].subject.trim().isEmpty
+          ? 'Section ${sections.length + 2}'
+          : questions[index].subject.trim();
+      if (currentName == sectionName) {
+        continue;
+      }
+      sections.add(
+        _MockTestSection(
+          name: sectionName,
+          startIndex: sectionStart,
+          endIndex: index - 1,
+        ),
+      );
+      sectionStart = index;
+      sectionName = currentName;
+    }
+
+    sections.add(
+      _MockTestSection(
+        name: sectionName,
+        startIndex: sectionStart,
+        endIndex: questions.length - 1,
+      ),
+    );
+    return sections;
+  }
+
+  MockTestBundle _trimBundle(MockTestBundle bundle) {
+    final questions = bundle.questions
+        .take(_fullMockQuestionLimit)
+        .toList(growable: false);
+    return MockTestBundle(
+      sessionId: bundle.sessionId,
+      questions: questions,
+      attempt: bundle.attempt,
+      attemptsAllowed: bundle.attemptsAllowed,
+    );
+  }
+
+  void _syncSectionForIndex(int index) {
+    if (_sections.isEmpty) return;
+    final sectionIndex = _sections.indexWhere(
+      (section) => section.contains(index),
+    );
+    if (sectionIndex < 0) return;
+    _activeSectionIndex = sectionIndex;
+    final section = _sections[sectionIndex];
+    _sectionPage = math.max(
+      0,
+      (index - section.startIndex) ~/ _sectionPageSize,
+    );
+  }
+
+  void _jumpToQuestion(int index) {
+    if (index < 0 || index >= _answers.length) return;
+    setState(() {
+      _currentIndex = index;
+      _syncSectionForIndex(index);
+    });
+    _saveDraft();
+  }
+
+  void _switchSection(int sectionIndex) {
+    if (sectionIndex < 0 || sectionIndex >= _sections.length) return;
+    setState(() {
+      _activeSectionIndex = sectionIndex;
+      _sectionPage = 0;
+      _currentIndex = _sections[sectionIndex].startIndex;
+    });
+    _saveDraft();
+  }
+
+  List<int> _visibleQuestionIndexes() {
+    if (_sections.isEmpty) return const [];
+    final section = _sections[_activeSectionIndex];
+    final start = section.startIndex + (_sectionPage * _sectionPageSize);
+    final end = math.min(section.endIndex, start + _sectionPageSize - 1);
+    if (start > end) return const [];
+    return [for (var index = start; index <= end; index++) index];
+  }
+
+  int get _sectionQuestionNumber => _activeSection.localNumber(_currentIndex);
+  int get _sectionPageCount => _activeSection.count == 0
+      ? 1
+      : ((_activeSection.count - 1) ~/ _sectionPageSize) + 1;
 
   @override
   void initState() {
     super.initState();
     final draft = widget.draft;
-    _answers = List<int?>.filled(widget.bundle.questions.length, null);
+    _bundle = _trimBundle(draft?.bundle ?? widget.bundle);
+    _sections = _buildSections(_bundle.questions);
+    _answers = List<int?>.filled(_bundle.questions.length, null);
     _marked = <int>{};
     _currentIndex = 0;
-    _startedAt = DateTime.now();
     _duration = const Duration(hours: 3);
+    _remainingSeconds = _duration.inSeconds;
     if (draft != null) {
       _answers = List<int?>.from(draft.answers);
+      while (_answers.length < _bundle.questions.length) {
+        _answers.add(null);
+      }
+      if (_answers.length > _bundle.questions.length) {
+        _answers = _answers
+            .take(_bundle.questions.length)
+            .toList(growable: false);
+      }
       _marked = {...draft.marked};
       _currentIndex = draft.currentIndex.clamp(
         0,
-        math.max(0, widget.bundle.questions.length - 1),
+        math.max(0, _bundle.questions.length - 1),
       );
-      _startedAt = draft.startedAt;
       _duration = draft.duration;
+      _remainingSeconds = (draft.remainingSeconds ?? _duration.inSeconds).clamp(
+        0,
+        _duration.inSeconds,
+      );
       _isPaused = draft.isPaused;
     }
-    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      if (!mounted) return;
-      if (_isPaused) {
-        setState(() {});
-        return;
-      }
-      final remaining = _remainingSeconds;
-      setState(() {});
-      if (remaining <= 0 && !_autoSubmitted && !_submitting) {
-        _autoSubmitted = true;
-        _submit(auto: true);
-      }
-    });
+    _sections = _buildSections(_bundle.questions);
+    _syncSectionForIndex(_currentIndex);
+    if (!_isPaused) {
+      _startTimer();
+    }
     _saveDraft();
   }
 
@@ -629,16 +751,39 @@ class _MockTestScreenState extends State<MockTestScreen> {
     super.dispose();
   }
 
+  void _startTimer() {
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (!mounted || _isPaused || _submitting) {
+        return;
+      }
+      if (_remainingSeconds <= 0) {
+        if (!_autoSubmitted) {
+          _autoSubmitted = true;
+          _submit(auto: true);
+        }
+        return;
+      }
+      setState(() {
+        _remainingSeconds = math.max(0, _remainingSeconds - 1);
+      });
+      if (_remainingSeconds <= 0 && !_autoSubmitted && !_submitting) {
+        _autoSubmitted = true;
+        _submit(auto: true);
+      }
+    });
+  }
+
   Future<void> _saveDraft() async {
     final prefs = await SharedPreferences.getInstance();
     final draft = _MockTestDraft(
-      bundle: widget.bundle,
+      bundle: _bundle,
       answers: _answers,
       marked: _marked,
       currentIndex: _currentIndex,
-      startedAt: _startedAt,
       duration: _duration,
       isPaused: _isPaused,
+      remainingSeconds: _remainingSeconds,
     );
     await prefs.setString(_draftKey, jsonEncode(draft.toJson()));
   }
@@ -657,10 +802,10 @@ class _MockTestScreenState extends State<MockTestScreen> {
       _resultKey,
       jsonEncode({
         'bundle': {
-          'sessionId': widget.bundle.sessionId,
-          'attempt': widget.bundle.attempt,
-          'attemptsAllowed': widget.bundle.attemptsAllowed,
-          'questions': widget.bundle.questions
+          'sessionId': _bundle.sessionId,
+          'attempt': _bundle.attempt,
+          'attemptsAllowed': _bundle.attemptsAllowed,
+          'questions': _bundle.questions
               .map(
                 (q) => {
                   'subject': q.subject,
@@ -704,19 +849,23 @@ class _MockTestScreenState extends State<MockTestScreen> {
     setState(() {
       _isPaused = !_isPaused;
     });
+    if (_isPaused) {
+      _timer?.cancel();
+      _timer = null;
+    } else {
+      _startTimer();
+    }
     _saveDraft();
   }
 
   void _prev() {
     if (_currentIndex == 0) return;
-    setState(() => _currentIndex -= 1);
-    _saveDraft();
+    _jumpToQuestion(_currentIndex - 1);
   }
 
   void _next({bool submitIfLast = false}) {
     if (_currentIndex < _answers.length - 1) {
-      setState(() => _currentIndex += 1);
-      _saveDraft();
+      _jumpToQuestion(_currentIndex + 1);
       return;
     }
     if (submitIfLast) {
@@ -742,14 +891,17 @@ class _MockTestScreenState extends State<MockTestScreen> {
     }
 
     setState(() => _submitting = true);
-    final elapsed = _duration - Duration(seconds: _remainingSeconds);
+    _timer?.cancel();
+    _timer = null;
+    final elapsedSeconds = _duration.inSeconds - _remainingSeconds;
+    final elapsed = Duration(seconds: math.max(0, elapsedSeconds));
     Map<String, dynamic> result = {};
     try {
-      if (widget.bundle.sessionId.startsWith('fixed_set_')) {
+      if (_bundle.sessionId.startsWith('fixed_set_')) {
         result = {'status': 'ok', 'mode': 'fixed_set'};
       } else {
         result = await MockTestService().submitAnswers(
-          sessionId: widget.bundle.sessionId,
+          sessionId: _bundle.sessionId,
           answers: _answers,
           marked: _marked,
         );
@@ -766,7 +918,7 @@ class _MockTestScreenState extends State<MockTestScreen> {
     Navigator.of(context).pushReplacementNamed(
       '/mock-test/result',
       arguments: MockTestResultArgs(
-        bundle: widget.bundle,
+        bundle: _bundle,
         answers: _answers,
         marked: _marked,
         elapsed: elapsed,
@@ -779,7 +931,7 @@ class _MockTestScreenState extends State<MockTestScreen> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final background = isDark ? const Color(0xFF0A1220) : _kBackground;
-    final currentQuestion = widget.bundle.questions[_currentIndex];
+    final currentQuestion = _currentQuestion;
     final minutes = (_remainingSeconds ~/ 60).toString().padLeft(2, '0');
     final seconds = (_remainingSeconds % 60).toString().padLeft(2, '0');
 
@@ -833,10 +985,12 @@ class _MockTestScreenState extends State<MockTestScreen> {
               child: Column(
                 children: [
                   TestHeader(
+                    onBack: () => Navigator.of(context).popUntil(
+                          (route) => route.settings.name == '/mock-test/start' || route.isFirst),
                     timerText: '$minutes:$seconds',
                     answered: _answered,
                     total: _answers.length,
-                    subject: currentQuestion.subject,
+                    subject: _activeSection.name,
                     currentIndex: _currentIndex,
                     onEndTest: _submit,
                     isPaused: _isPaused,
@@ -846,6 +1000,7 @@ class _MockTestScreenState extends State<MockTestScreen> {
                   Expanded(
                     child: LayoutBuilder(
                       builder: (context, constraints) {
+                        final paletteIndexes = _visibleQuestionIndexes();
                         if (constraints.maxWidth >= 1100) {
                           return Row(
                             children: [
@@ -862,10 +1017,41 @@ class _MockTestScreenState extends State<MockTestScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
+                                      Wrap(
+                                        spacing: 10,
+                                        runSpacing: 10,
+                                        children: List.generate(
+                                          _sections.length,
+                                          (index) {
+                                            final section = _sections[index];
+                                            final isSelected =
+                                                index == _activeSectionIndex;
+                                            return ChoiceChip(
+                                              selected: isSelected,
+                                              label: Text(
+                                                '${section.name} • ${section.count}',
+                                                style: GoogleFonts.poppins(
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                              onSelected: (_) =>
+                                                  _switchSection(index),
+                                              selectedColor: _kPrimary,
+                                              backgroundColor: Colors.white,
+                                              labelStyle: TextStyle(
+                                                color: isSelected
+                                                    ? Colors.white
+                                                    : Colors.black87,
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                      const SizedBox(height: 16),
                                       ProgressHeader(
                                         title: 'NEET Mock Test - Full Syllabus',
                                         subtitle:
-                                            'Section: ${currentQuestion.subject} • Question ${_currentIndex + 1} of ${_answers.length}',
+                                            '${_activeSection.name} • Question ${_sectionQuestionNumber} of ${_activeSection.count}',
                                         progress: _progress,
                                         answered: _answered,
                                         total: _answers.length,
@@ -873,8 +1059,15 @@ class _MockTestScreenState extends State<MockTestScreen> {
                                       const SizedBox(height: 16),
                                       QuestionCard(
                                         question: currentQuestion,
+                                        sectionName: _activeSection.name,
+                                        questionNumber: _sectionQuestionNumber,
+                                        sectionCount: _activeSection.count,
                                         selectedIndex: _answers[_currentIndex],
                                         currentIndex: _currentIndex,
+                                        isMarked: _marked.contains(
+                                          _currentIndex,
+                                        ),
+                                        onToggleMark: _toggleMark,
                                         onSelect: _selectOption,
                                         isDark: isDark,
                                       ),
@@ -884,12 +1077,8 @@ class _MockTestScreenState extends State<MockTestScreen> {
                                         remaining: _remaining,
                                         marked: _markedCount,
                                         onPrevious: _prev,
-                                        onToggleMark: _toggleMark,
                                         onSaveNext: () =>
                                             _next(submitIfLast: true),
-                                        isMarked: _marked.contains(
-                                          _currentIndex,
-                                        ),
                                         isLast:
                                             _currentIndex ==
                                             _answers.length - 1,
@@ -915,13 +1104,37 @@ class _MockTestScreenState extends State<MockTestScreen> {
                                     18,
                                   ),
                                   child: QuestionPalette(
+                                    sections: _sections,
+                                    activeSectionIndex: _activeSectionIndex,
+                                    sectionPage: _sectionPage,
                                     currentIndex: _currentIndex,
                                     answers: _answers,
                                     marked: _marked,
-                                    onTap: (index) {
-                                      setState(() => _currentIndex = index);
-                                      _saveDraft();
-                                    },
+                                    onTap: _jumpToQuestion,
+                                    onSectionTap: _switchSection,
+                                    onPreviousPage: _sectionPage == 0
+                                        ? null
+                                        : () {
+                                            setState(() {
+                                              _sectionPage = math.max(
+                                                0,
+                                                _sectionPage - 1,
+                                              );
+                                            });
+                                            _saveDraft();
+                                          },
+                                    onNextPage:
+                                        _sectionPage >= _sectionPageCount - 1
+                                        ? null
+                                        : () {
+                                            setState(() {
+                                              _sectionPage = math.min(
+                                                _sectionPageCount - 1,
+                                                _sectionPage + 1,
+                                              );
+                                            });
+                                            _saveDraft();
+                                          },
                                     isDark: isDark,
                                   ),
                                 ),
@@ -935,10 +1148,39 @@ class _MockTestScreenState extends State<MockTestScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Wrap(
+                                spacing: 10,
+                                runSpacing: 10,
+                                children: List.generate(_sections.length, (
+                                  index,
+                                ) {
+                                  final section = _sections[index];
+                                  final isSelected =
+                                      index == _activeSectionIndex;
+                                  return ChoiceChip(
+                                    selected: isSelected,
+                                    label: Text(
+                                      '${section.name} • ${section.count}',
+                                      style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                    onSelected: (_) => _switchSection(index),
+                                    selectedColor: _kPrimary,
+                                    backgroundColor: Colors.white,
+                                    labelStyle: TextStyle(
+                                      color: isSelected
+                                          ? Colors.white
+                                          : Colors.black87,
+                                    ),
+                                  );
+                                }),
+                              ),
+                              const SizedBox(height: 14),
                               ProgressHeader(
                                 title: 'NEET Mock Test - Full Syllabus',
                                 subtitle:
-                                    'Section: ${currentQuestion.subject} • Question ${_currentIndex + 1} of ${_answers.length}',
+                                    '${_activeSection.name} • Question ${_sectionQuestionNumber} of ${_activeSection.count}',
                                 progress: _progress,
                                 answered: _answered,
                                 total: _answers.length,
@@ -946,20 +1188,49 @@ class _MockTestScreenState extends State<MockTestScreen> {
                               const SizedBox(height: 14),
                               QuestionCard(
                                 question: currentQuestion,
+                                sectionName: _activeSection.name,
+                                questionNumber: _sectionQuestionNumber,
+                                sectionCount: _activeSection.count,
                                 selectedIndex: _answers[_currentIndex],
                                 currentIndex: _currentIndex,
+                                isMarked: _marked.contains(_currentIndex),
+                                onToggleMark: _toggleMark,
                                 onSelect: _selectOption,
                                 isDark: isDark,
                               ),
                               const SizedBox(height: 14),
                               QuestionPalette(
+                                sections: _sections,
+                                activeSectionIndex: _activeSectionIndex,
+                                sectionPage: _sectionPage,
                                 currentIndex: _currentIndex,
                                 answers: _answers,
                                 marked: _marked,
-                                onTap: (index) {
-                                  setState(() => _currentIndex = index);
-                                  _saveDraft();
-                                },
+                                onTap: _jumpToQuestion,
+                                onSectionTap: _switchSection,
+                                onPreviousPage: _sectionPage == 0
+                                    ? null
+                                    : () {
+                                        setState(() {
+                                          _sectionPage = math.max(
+                                            0,
+                                            _sectionPage - 1,
+                                          );
+                                        });
+                                        _saveDraft();
+                                      },
+                                onNextPage:
+                                    _sectionPage >= _sectionPageCount - 1
+                                    ? null
+                                    : () {
+                                        setState(() {
+                                          _sectionPage = math.min(
+                                            _sectionPageCount - 1,
+                                            _sectionPage + 1,
+                                          );
+                                        });
+                                        _saveDraft();
+                                      },
                                 isDark: isDark,
                               ),
                               const SizedBox(height: 14),
@@ -968,9 +1239,7 @@ class _MockTestScreenState extends State<MockTestScreen> {
                                 remaining: _remaining,
                                 marked: _markedCount,
                                 onPrevious: _prev,
-                                onToggleMark: _toggleMark,
                                 onSaveNext: () => _next(submitIfLast: true),
-                                isMarked: _marked.contains(_currentIndex),
                                 isLast: _currentIndex == _answers.length - 1,
                               ),
                               const SizedBox(height: 14),
@@ -985,6 +1254,12 @@ class _MockTestScreenState extends State<MockTestScreen> {
                         );
                       },
                     ),
+                  ),
+                  const SizedBox(height: 12),
+                  // ensure bottom navigation is visible during mock test
+                  BottomNav(
+                    selectedIndex: 1,
+                    onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
                   ),
                   if (_isPaused)
                     Container(
@@ -1129,11 +1404,15 @@ class ResultAnalyticsPage extends StatelessWidget {
     );
     final background = Theme.of(context).brightness == Brightness.dark
         ? const Color(0xFF09111F)
-        : const Color(0xFFEAF4FF);
+        : const Color(0xFFF0FDF4);
 
     return Scaffold(
       backgroundColor: background,
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_rounded),
+          onPressed: () => Navigator.of(context).maybePop(),
+        ),
         title: Text(
           'Mock Test Result',
           style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
@@ -1177,9 +1456,9 @@ class ResultAnalyticsPage extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
-                onPressed: () => Navigator.of(
-                  context,
-                ).pushNamedAndRemoveUntil('/mock-test/start', (route) => false),
+                onPressed: () => Navigator.of(context).popUntil(
+                  (route) => route.settings.name == '/mock-test/start' || route.isFirst,
+                ),
                 icon: const Icon(Icons.arrow_back),
                 label: Text(
                   'Back to Mock Tests',
@@ -1197,6 +1476,10 @@ class ResultAnalyticsPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNav(
+        selectedIndex: 1,
+        onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
       ),
     );
   }
@@ -1302,6 +1585,7 @@ _MockTestMetrics _buildMetrics(
 }
 
 class TestHeader extends StatelessWidget {
+  final VoidCallback onBack;
   final String timerText;
   final int answered;
   final int total;
@@ -1314,6 +1598,7 @@ class TestHeader extends StatelessWidget {
 
   const TestHeader({
     super.key,
+    required this.onBack,
     required this.timerText,
     required this.answered,
     required this.total,
@@ -1343,6 +1628,12 @@ class TestHeader extends StatelessWidget {
       ),
       child: Row(
         children: [
+          IconButton(
+            onPressed: onBack,
+            icon: const Icon(Icons.arrow_back_rounded),
+            tooltip: 'Back',
+          ),
+          const SizedBox(width: 4),
           Container(
             width: 44,
             height: 44,
@@ -1550,7 +1841,7 @@ class ProgressHeader extends StatelessWidget {
             child: LinearProgressIndicator(
               value: progress,
               minHeight: 10,
-              backgroundColor: const Color(0xFFE9E7F3),
+              backgroundColor: const Color(0xFFDCFCE7),
               valueColor: const AlwaysStoppedAnimation(_kPrimary),
             ),
           ),
@@ -1582,16 +1873,26 @@ class ProgressHeader extends StatelessWidget {
 
 class QuestionCard extends StatelessWidget {
   final MockQuestion question;
+  final String sectionName;
+  final int questionNumber;
+  final int sectionCount;
   final int? selectedIndex;
   final int currentIndex;
+  final bool isMarked;
+  final VoidCallback onToggleMark;
   final ValueChanged<int> onSelect;
   final bool isDark;
 
   const QuestionCard({
     super.key,
     required this.question,
+    required this.sectionName,
+    required this.questionNumber,
+    required this.sectionCount,
     required this.selectedIndex,
     required this.currentIndex,
+    required this.isMarked,
+    required this.onToggleMark,
     required this.onSelect,
     required this.isDark,
   });
@@ -1600,6 +1901,7 @@ class QuestionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final surface = isDark ? const Color(0xFF111A2A) : _kSurface;
     final border = isDark ? const Color(0xFF223047) : const Color(0xFFE5E7EB);
+    final hasQuestionImage = question.questionImageBase64.trim().isNotEmpty;
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -1617,20 +1919,55 @@ class QuestionCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Wrap(
-            spacing: 10,
-            runSpacing: 8,
-            crossAxisAlignment: WrapCrossAlignment.center,
+          Row(
             children: [
-              _SubjectBadge(subject: question.subject),
-              _TinyBadge(
-                text: 'Q${currentIndex + 1}',
-                color: _kPrimarySoft,
-                textColor: _kPrimary,
+              Expanded(
+                child: Wrap(
+                  spacing: 10,
+                  runSpacing: 8,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    _SubjectBadge(subject: sectionName),
+                    _TinyBadge(
+                      text: 'Q$questionNumber / $sectionCount',
+                      color: _kPrimarySoft,
+                      textColor: _kPrimary,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 12),
+              FilledButton.tonalIcon(
+                onPressed: onToggleMark,
+                icon: Icon(
+                  isMarked ? Icons.bookmark : Icons.bookmark_border,
+                  size: 18,
+                ),
+                label: Text(
+                  isMarked ? 'Marked' : 'Mark for Review',
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ],
           ),
           const SizedBox(height: 16),
+          if (hasQuestionImage) ...[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(18),
+              child: Container(
+                width: double.infinity,
+                color: const Color(0xFFF8FAFC),
+                padding: const EdgeInsets.all(10),
+                child: Image.memory(
+                  base64Decode(question.questionImageBase64),
+                  fit: BoxFit.contain,
+                  alignment: Alignment.center,
+                  errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+          ],
           Text(
             question.question,
             style: GoogleFonts.poppins(
@@ -1686,7 +2023,7 @@ class OptionButton extends StatelessWidget {
         duration: const Duration(milliseconds: 180),
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: selected ? const Color(0xFFF5F3FF) : Colors.transparent,
+          color: selected ? const Color(0xFFF0FDF4) : Colors.transparent,
           borderRadius: BorderRadius.circular(18),
           border: Border.all(
             color: selected ? _kPrimary : borderColor,
@@ -1734,24 +2071,42 @@ class OptionButton extends StatelessWidget {
 }
 
 class QuestionPalette extends StatelessWidget {
+  final List<_MockTestSection> sections;
+  final int activeSectionIndex;
+  final int sectionPage;
   final int currentIndex;
   final List<int?> answers;
   final Set<int> marked;
   final ValueChanged<int> onTap;
+  final ValueChanged<int> onSectionTap;
+  final VoidCallback? onPreviousPage;
+  final VoidCallback? onNextPage;
   final bool isDark;
 
   const QuestionPalette({
     super.key,
+    required this.sections,
+    required this.activeSectionIndex,
+    required this.sectionPage,
     required this.currentIndex,
     required this.answers,
     required this.marked,
     required this.onTap,
+    required this.onSectionTap,
+    required this.onPreviousPage,
+    required this.onNextPage,
     required this.isDark,
   });
 
   @override
   Widget build(BuildContext context) {
     final surface = isDark ? const Color(0xFF111A2A) : _kSurface;
+    final activeSection = sections[activeSectionIndex];
+    final visibleStart = activeSection.startIndex + (sectionPage * 10);
+    final visibleEnd = math.min(activeSection.endIndex, visibleStart + 9);
+    final visibleIndexes = visibleStart <= visibleEnd
+        ? [for (var index = visibleStart; index <= visibleEnd; index++) index]
+        : <int>[];
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -1769,18 +2124,41 @@ class QuestionPalette extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Question Palette',
-                style: GoogleFonts.poppins(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w800,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Question Palette',
+                      style: GoogleFonts.poppins(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      '${activeSection.name} • ${visibleStart - activeSection.startIndex + 1}-${visibleEnd - activeSection.startIndex + 1} of ${activeSection.count}',
+                      style: GoogleFonts.poppins(color: Colors.black54),
+                    ),
+                  ],
                 ),
               ),
-              const Spacer(),
-              Text(
-                '${answers.length} Questions',
-                style: GoogleFonts.poppins(color: Colors.black54),
+              const SizedBox(width: 10),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: onPreviousPage,
+                    icon: const Icon(Icons.chevron_left),
+                    tooltip: 'Previous 10',
+                  ),
+                  IconButton(
+                    onPressed: onNextPage,
+                    icon: const Icon(Icons.chevron_right),
+                    tooltip: 'Next 10',
+                  ),
+                ],
               ),
             ],
           ),
@@ -1791,24 +2169,25 @@ class QuestionPalette extends StatelessWidget {
               return GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: answers.length,
+                itemCount: visibleIndexes.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: crossAxisCount,
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
                 ),
                 itemBuilder: (context, index) {
-                  final isCurrent = index == currentIndex;
-                  final isAnswered = answers[index] != null;
-                  final isMarked = marked.contains(index);
+                  final questionIndex = visibleIndexes[index];
+                  final isCurrent = questionIndex == currentIndex;
+                  final isAnswered = answers[questionIndex] != null;
+                  final isMarked = marked.contains(questionIndex);
                   Color bg = isDark ? const Color(0xFF0F172A) : Colors.white;
                   Color border = isDark
                       ? const Color(0xFF2B3750)
                       : const Color(0xFFD4D4DD);
                   Color text = isDark ? Colors.white : Colors.black87;
                   if (isAnswered) {
-                    bg = const Color(0xFF4F46B5);
-                    border = const Color(0xFF4F46B5);
+                    bg = const Color(0xFF14532D);
+                    border = const Color(0xFF14532D);
                     text = Colors.white;
                   }
                   if (isMarked) {
@@ -1822,7 +2201,7 @@ class QuestionPalette extends StatelessWidget {
                     text = _kPrimary;
                   }
                   return InkWell(
-                    onTap: () => onTap(index),
+                    onTap: () => onTap(questionIndex),
                     borderRadius: BorderRadius.circular(14),
                     child: AnimatedContainer(
                       duration: const Duration(milliseconds: 180),
@@ -1833,7 +2212,7 @@ class QuestionPalette extends StatelessWidget {
                         border: Border.all(color: border, width: 1.2),
                       ),
                       child: Text(
-                        '${index + 1}',
+                        '${activeSection.localNumber(questionIndex)}',
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w800,
                           color: text,
@@ -1850,9 +2229,9 @@ class QuestionPalette extends StatelessWidget {
             spacing: 12,
             runSpacing: 10,
             children: const [
-              _LegendChip(color: Color(0xFF4F46B5), label: 'Answered'),
+              _LegendChip(color: Color(0xFF14532D), label: 'Answered'),
               _LegendChip(color: Color(0xFFF59E0B), label: 'Marked'),
-              _LegendChip(color: Color(0xFFF0EDFF), label: 'Current'),
+              _LegendChip(color: Color(0xFFDCFCE7), label: 'Current'),
               _LegendChip(color: Color(0xFFD4D4DD), label: 'Unanswered'),
             ],
           ),
@@ -1867,9 +2246,7 @@ class BottomControls extends StatelessWidget {
   final int remaining;
   final int marked;
   final VoidCallback onPrevious;
-  final VoidCallback onToggleMark;
   final VoidCallback onSaveNext;
-  final bool isMarked;
   final bool isLast;
 
   const BottomControls({
@@ -1878,9 +2255,7 @@ class BottomControls extends StatelessWidget {
     required this.remaining,
     required this.marked,
     required this.onPrevious,
-    required this.onToggleMark,
     required this.onSaveNext,
-    required this.isMarked,
     required this.isLast,
   });
 
@@ -1912,20 +2287,6 @@ class BottomControls extends StatelessWidget {
             ),
             SizedBox(
               width: compact ? double.infinity : null,
-              child: OutlinedButton.icon(
-                onPressed: onToggleMark,
-                icon: Icon(
-                  isMarked ? Icons.bookmark : Icons.bookmark_border,
-                  size: 18,
-                ),
-                label: Text(
-                  isMarked ? 'Unmark' : 'Mark for Review',
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ),
-            SizedBox(
-              width: compact ? double.infinity : null,
               child: ElevatedButton(
                 onPressed: onSaveNext,
                 style: ElevatedButton.styleFrom(
@@ -1948,13 +2309,7 @@ class BottomControls extends StatelessWidget {
           if (compact) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                controls[0],
-                const SizedBox(height: 10),
-                controls[1],
-                const SizedBox(height: 10),
-                controls[2],
-              ],
+              children: [controls[0], const SizedBox(height: 10), controls[1]],
             );
           }
 
@@ -1963,8 +2318,6 @@ class BottomControls extends StatelessWidget {
               Expanded(child: controls[0]),
               const SizedBox(width: 10),
               Expanded(child: controls[1]),
-              const SizedBox(width: 10),
-              Expanded(child: controls[2]),
             ],
           );
         },
@@ -2248,7 +2601,7 @@ class _ResultHero extends StatelessWidget {
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xFFEEF2FF), Colors.white],
+          colors: [Color(0xFFDCFCE7), Colors.white],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -2349,35 +2702,40 @@ class _StatsGrid extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final crossAxisCount = constraints.maxWidth > 720 ? 4 : 2;
-        return GridView.count(
+        final mainAxisExtent = constraints.maxWidth > 720 ? 132.0 : 122.0;
+        final cards = [
+          StatCard(
+            label: 'Percentile',
+            value: '${metrics.percentile.toStringAsFixed(1)}%',
+            color: _kPrimary,
+          ),
+          StatCard(
+            label: 'Accuracy',
+            value: '${metrics.accuracy.toStringAsFixed(0)}%',
+            color: const Color(0xFF0F766E),
+          ),
+          StatCard(
+            label: 'Rank Estimate',
+            value: '~${metrics.rankEstimate}',
+            color: const Color(0xFFB45309),
+          ),
+          StatCard(
+            label: 'Time Taken',
+            value: _formatDuration(metrics.elapsed),
+            color: Colors.black87,
+          ),
+        ];
+        return GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          crossAxisCount: crossAxisCount,
-          mainAxisSpacing: 12,
-          crossAxisSpacing: 12,
-          childAspectRatio: 1.8,
-          children: [
-            StatCard(
-              label: 'Percentile',
-              value: '${metrics.percentile.toStringAsFixed(1)}%',
-              color: _kPrimary,
-            ),
-            StatCard(
-              label: 'Accuracy',
-              value: '${metrics.accuracy.toStringAsFixed(0)}%',
-              color: const Color(0xFF0F766E),
-            ),
-            StatCard(
-              label: 'Rank Estimate',
-              value: '~${metrics.rankEstimate}',
-              color: const Color(0xFFB45309),
-            ),
-            StatCard(
-              label: 'Time Taken',
-              value: _formatDuration(metrics.elapsed),
-              color: Colors.black87,
-            ),
-          ],
+          itemCount: cards.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            mainAxisSpacing: 12,
+            crossAxisSpacing: 12,
+            mainAxisExtent: mainAxisExtent,
+          ),
+          itemBuilder: (context, index) => cards[index],
         );
       },
     );
@@ -2436,10 +2794,12 @@ class StatCard extends StatelessWidget {
           Text(
             value,
             style: GoogleFonts.poppins(
-              fontSize: 22,
+              fontSize: 20,
               fontWeight: FontWeight.w800,
               color: color,
             ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),
@@ -2767,7 +3127,7 @@ class _SubjectAnalysis extends StatelessWidget {
                     child: LinearProgressIndicator(
                       value: percent,
                       minHeight: 10,
-                      backgroundColor: const Color(0xFFE9E7F8),
+                      backgroundColor: const Color(0xFFDCFCE7),
                       valueColor: const AlwaysStoppedAnimation(_kPrimary),
                     ),
                   ),
@@ -3023,7 +3383,7 @@ class _PracticeHeroCard extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [Color(0xFFFFFFFF), Color(0xFFEFF3FF)],
+          colors: [Color(0xFFFFFFFF), Color(0xFFF0FDF4)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -3059,12 +3419,7 @@ class _PracticeHeroCard extends StatelessWidget {
               fontWeight: FontWeight.w800,
             ),
           ),
-          const SizedBox(height: 8),
-          Text(
-            '180 questions • 3 hours • full NEET syllabus • AI-generated from your backend token',
-            style: GoogleFonts.poppins(color: Colors.black54),
-            textAlign: TextAlign.center,
-          ),
+
           const SizedBox(height: 18),
           SizedBox(
             width: double.infinity,

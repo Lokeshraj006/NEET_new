@@ -1,0 +1,397 @@
+Total pages: 198
+Page 1: len=5689 lines=47 letter_matches=24 has_ans_key=False is_ans_key=False
+  Titles: ['NEET         (UG)', 'PAPER                th                           F3', '07     May     2023']
+Page 2: len=7512 lines=79 letter_matches=68 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 6. The ratio of frequencies of fundamental harmonic Q. 15. Light travels a distance x in time t in air and 10x', 'produced by an open pipe to that of closed pipe in time t in another denser medium. What is the']
+Page 3: len=7296 lines=77 letter_matches=54 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', 'Q. 23. The temperature of a gas is −50° C. To what Statement II: If the monochromatic source is', 'temperature the gas should be heated so that the replaced by another monochromatic source of']
+Page 4: len=6375 lines=67 letter_matches=68 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 37. For the following logic circuit, the truth table is π2 π2', '(3) − m s-2    (4)   m s-2']
+Page 5: len=5791 lines=63 letter_matches=29 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', '(1) 3 × 10−3 °C−1 (2) 3 × 10−2 °C−1 \uf8eb8\uf8f6             \uf8eb3\uf8f6', '(3) 3 × 10−1 °C−1 (4) 3 × 10−4 °C−1 (3) \uf8ed\uf8ec 3\uf8f8\uf8f7 qK (4) \uf8ed\uf8ec 8\uf8f8\uf8f7 qK']
+Page 6: len=8093 lines=88 letter_matches=54 has_ans_key=False is_ans_key=True
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 56. The given compound            In the light of the above statements, choose the', 'CH = CH–CH–CH CH               correct answer from the options given below:']
+Page 7: len=8254 lines=88 letter_matches=50 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', 'Choose the most appropriate answer from the If the formula of the compound is A B , then the', 'options given below:             value of x + y is in option']
+Page 8: len=6800 lines=73 letter_matches=28 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 78. Identify product (A) in the following reaction: (2) H C = CH – C ≡ CH', 'O                              (3)']
+Page 9: len=7734 lines=86 letter_matches=43 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', 'B. Sulphuric acid II. Two S-OH, One    2', 'C. Pyrosulphuric acid III. Two S-OH, Four (2) OH']
+Page 10: len=6714 lines=74 letter_matches=45 has_ans_key=False is_ans_key=True
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '(3) ∆H + ∆U = ∆nR', '(4) ∆H = ∆U −∆n RT               (v)            (vi)']
+Page 11: len=8294 lines=90 letter_matches=40 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', 'Q. 106. Given below are two statements: One is labelled as (2) Statement I is correct but Statement II false.', 'Assertion A and the other is labelled as Reason R: (3) Statement I is incorrect but Statement II is']
+Page 12: len=9735 lines=107 letter_matches=47 has_ans_key=False is_ans_key=True
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 120. How many ATP and NADPH are required for the (3) Statement I is incorrect but Statement II is', 'synthesis of one molecule of glucose during calvin correct.']
+Page 13: len=8424 lines=93 letter_matches=38 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', 'Amplification of gene of interest using PCR.', 'Choose the correct answer from the options given']
+Page 14: len=7430 lines=80 letter_matches=31 has_ans_key=False is_ans_key=True
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Assertion A: A flower is defined as modified shoot about Klinefelter’s Syndrome?', 'wherein the shoot apical meristem changes to A. This disorder was first described by Langdon']
+Page 15: len=6992 lines=74 letter_matches=32 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', 'Q. 152. In which blood corpuscles, the HIV undergoes Q. 158. Given below are statements: one is labelled as', 'replication and produces progeny viruses? Assertion A and the other is labelled as Reason R.']
+Page 16: len=7931 lines=87 letter_matches=25 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '(2) Motility', 'B. Iris  II. External layer of eye']
+Page 17: len=7358 lines=80 letter_matches=31 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', 'Q. 173. Given below are two statements: Choose the correct answer from the options give', 'List I        List II']
+Page 18: len=7307 lines=80 letter_matches=24 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Reason R: In the absence of fertilization, the corpus', 'C. Fungi and root of III. Mutualism']
+Page 19: len=7432 lines=82 letter_matches=37 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', 'Choose the correct answer from the options given prevent diuresis.', 'below:                           C. ANF causes vasodilation.']
+Page 20: len=5208 lines=30 letter_matches=6 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 198. Which one of the following is the sequenate on D. M line is considered as functional of', 'corresponding coding strand, if the sequence on contraction called sarcomere.']
+Page 21: len=5126 lines=56 letter_matches=228 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', 'Booklet Batch RollNumber                       Test Center', 'A 10+1 S 0 0 0 0 0 0 0 0 0']
+Page 22: len=5112 lines=46 letter_matches=37 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) Mock Test 15Sample Question Papers', "Topic's Name               Chapter Name", '1    2   Acceleration         Kinematics']
+Page 23: len=5134 lines=45 letter_matches=37 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', "Topic's Name               Chapter Name", '37   1   Logic Gate           Semiconductors']
+Page 24: len=5153 lines=43 letter_matches=38 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) Mock Test 15 Sample Question Papers', "Topic's Name               Chapter Name", '72   4   Octahedral Void      Solid State']
+Page 25: len=5100 lines=43 letter_matches=39 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', "Topic's Name               Chapter Name", '109   4   Glycolysis           Respiration in Plant']
+Page 26: len=5112 lines=43 letter_matches=37 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) Mock Test 15Sample Question Papers', "Topic's Name               Chapter Name", '147   2   Biotic interactions  Ecosystem']
+Page 27: len=5102 lines=22 letter_matches=18 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', "Topic's Name               Chapter Name", '184   1   Diagnostic techniques Biotechnology and its Applications']
+Page 28: len=6771 lines=69 letter_matches=17 has_ans_key=True is_ans_key=False
+  Titles: ['NEET        (UG)', '7th May  2023 Paper', 'ANSWERS     WITH    EXPLANATION']
+Page 29: len=6558 lines=72 letter_matches=32 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', '8. Option (4) is correct.              Red     2     102', 'Explanation:                      Orange  3     103']
+Page 30: len=7454 lines=82 letter_matches=21 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '16. Option (2) is correct.       20. Option (4) is correct.', 'Explanation:                     Explanation: According to gauss law of']
+Page 31: len=7208 lines=78 letter_matches=18 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', '(where symbols have their usual meanings)', '⇒        T’ = 16 T']
+Page 32: len=6353 lines=70 letter_matches=19 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '0       0         0        37. Option (1) is correct.', 'Explanation:']
+Page 33: len=7112 lines=80 letter_matches=28 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', '41. Option (1) is correct.       44. Option (3) is correct.', 'E                 Explanation:']
+Page 34: len=7425 lines=82 letter_matches=27 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Applying equation of motion             3Kq', '\uf072 s=u\uf072 t+1 a\uf072                      8×10−2']
+Page 35: len=6586 lines=59 letter_matches=17 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', '1                   56. Option (2) is correct.', 'P = nRT = constant        Explanation:']
+Page 36: len=6475 lines=71 letter_matches=13 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'forces of attraction and repulsion between the ∴ Both Assertion and Reason are correct but', 'molecule.                         reason in not correct explanation of Assertion.']
+Page 37: len=5925 lines=63 letter_matches=11 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', '75. Option (1) is correct.          when nucleoside is attached to position 5’ to the', 'phosphoric acid.']
+Page 38: len=5393 lines=49 letter_matches=21 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Reason: Activation energy in defined as the Step (v) balance H atom by adding H⊕ ions', 'minimum energy which must be supplied to the opposite site']
+Page 39: len=5161 lines=57 letter_matches=19 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', '97. Option (2) is correct.', 'Explanation: A + B \ue083 C + D']
+Page 40: len=8696 lines=93 letter_matches=11 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Section A                 RNA polymerase II helps in the transcription of', 'hnRNAs (precursor of mRNA).']
+Page 41: len=6869 lines=72 letter_matches=19 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', 'which humus is degraded to release inorganic ATP used = 3×6 = 18 molecules', 'nutrients. Leaching is the process in which water- NADPH used = 2×6 = 12 molecules']
+Page 42: len=8003 lines=83 letter_matches=17 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'sized column of water up to 130 meters high.', 'Transpiration is also known as a process that']
+Page 43: len=7640 lines=80 letter_matches=17 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', 'the attraction of water molecules to polar surfaces. non technical term for all tissues exterior to the', 'Surface tension involves the attraction of water vascular cambium. Bark includes periderm and']
+Page 44: len=7639 lines=81 letter_matches=7 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'water body. Eutrophication is a process in which ileo-caecal valve prevents the backflow of the', 'water bodies become nutrient rich. Releasing faecal matter.']
+Page 45: len=7491 lines=78 letter_matches=9 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', '169. Option (4) is correct.         enzymatic activity because proteins are denatured', 'Explanation:                     by heat. A competitive inhibitor is structurally']
+Page 46: len=7118 lines=72 letter_matches=5 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '184. Option (1) is correct.      190. Option (2) is correct.', 'Explanation: Conventional methods of diagnosis Explanation: Thyroid hormones play an important']
+Page 47: len=5213 lines=22 letter_matches=1 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2023', 'the hypothalamus regulates sexual behaviour, 199. Option (1) is correct.', 'expression of excitement, pleasure, rage, fear, etc. Explanation: Muscle bundles are joined together']
+Page 48: len=5993 lines=51 letter_matches=31 has_ans_key=False is_ans_key=False
+  Titles: ['NNEEEETT     ((UUGG))', 'SSOOLLVVEEDD', '((RRee--EExxaammiinnaattiioonn))']
+Page 49: len=5714 lines=46 letter_matches=22 has_ans_key=False is_ans_key=False
+  Titles: ['NEET        (UG)', 'PAPER                th                           Q3', '17    July    2022']
+Page 50: len=5328 lines=55 letter_matches=28 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 4. As the temperature increases, the electrical', 'resistance :']
+Page 51: len=6276 lines=68 letter_matches=54 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '(1) 104 A/m2  (2) 106 A/m2  Q. 18. The dimensions [MLT–2 A–2] belong to the :', '(3) 10–5 A/m2 (4) 105 A/m2       (1) magnetic flux']
+Page 52: len=5620 lines=59 letter_matches=49 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 24. A biconvex lens has radii of curvature, 20 cm Q. 30. Two resistors of resistance, 100 Ω and 200 Ω are', 'each. If the refractive index of the material of connected in parallel in an electrical circuit.']
+Page 53: len=5961 lines=64 letter_matches=40 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'Q. 33. A light ray falls on a glass surface of refractive (3) A B C (4) A B C', 'index 3, at an angle 60°. The angle between 0 0 1 0  0 0']
+Page 54: len=5838 lines=63 letter_matches=38 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '(1) 4.5 × 10–6 J (2) 3.25 × 10–6 J Q. 45. The area of a rectangular field (in m2) of length', '(3) 2.25 × 10–6 J (4) 1.5 × 10–6 J 55.3 m and breadth 25 m after rounding off']
+Page 55: len=6742 lines=73 letter_matches=32 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'Choose the correct answer from the options (3) a linearly increasing function of distance', 'given below :                       r upto the boundary of the wire and then']
+Page 56: len=7488 lines=81 letter_matches=31 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'In the light of the above statements, choose 0.80 V, respectively.', 'the most appropriate answer from the options On the basis of standard electrode potential,']
+Page 57: len=6898 lines=75 letter_matches=18 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'Choose the correct answer from the options dipole-dipole interactions.', 'given below :                    Statements II :']
+Page 58: len=7229 lines=80 letter_matches=34 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'List-I       List-II            [Given pK of CH COOH = 4.57]', '(Hydrides)    (Nature)           (1) 5.57      (2) 3.57']
+Page 59: len=9715 lines=109 letter_matches=53 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'Q. 78. Given below are half cell reactions : (2) The oxidation number of K in KO is +4.', 'MnO4– + 8H++ 5e– → Mn2++ 4H 2O,  (3) Ionisation enthalpy of alkali metals']
+Page 60: len=7594 lines=84 letter_matches=44 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Choose the correct answer from the option O CH 3', 'given below :                    (1)']
+Page 61: len=6629 lines=73 letter_matches=42 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '(1) 1-bromo-5-chloro-4-methylhexan-3-ol (C) [Ni(en) ]2+', '(2) 6-bromo-2-chloro-4-methylhexan-4-ol (1) (A) > (B) > (C)']
+Page 62: len=7647 lines=84 letter_matches=29 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'intercellular spaces and wall of the (2) (b), (c) Only', 'cells.                        (3) (d), (e) Only']
+Page 63: len=6835 lines=74 letter_matches=31 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '(4) Natality                        incorrect', 'Q. 115. Which of the following is not true regarding (3) Statement I is correct but Statement II']
+Page 64: len=7962 lines=88 letter_matches=27 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'no chance for cross pollination  (3) Both genetic mapping and DNA finger-', 'In the light of the above statements, choose printing']
+Page 65: len=6345 lines=69 letter_matches=26 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '(3) C Thalamus', '(d) Iron   (iv) Functions in splitting  "']
+Page 66: len=6904 lines=75 letter_matches=25 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '(d) Cycas (iv) Dominant haploid leafy (d) Telocentric (iv) Centromere slightly', 'gametophyte alternating chromosome  away from  the']
+Page 67: len=6898 lines=73 letter_matches=35 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '(2) lower its water potential    (4) not affect the water potential at all', '(3) make its water potential zero']
+Page 68: len=7801 lines=85 letter_matches=26 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 164. If the length of a DNA molecule is 1.1 metres, options give below :', 'what will be the approximate number of base (1) Both Statement I and Statement II are']
+Page 69: len=7374 lines=80 letter_matches=38 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'The release of sperms into the seminiferous recognise specific sequence to cut DNA', 'tubules is called spermiation.   known as palindromic nucleotide sequence.']
+Page 70: len=7233 lines=77 letter_matches=25 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '(1) Only z gene will get transcribed given below :', '(2) z, y, a genes will be transcribed (1) (a)-(iv), (b)-(iii), (c)-(i), (d)-(ii)']
+Page 71: len=7972 lines=88 letter_matches=29 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'ovulation and   (1) 20 cells', 'Implantation    (2) 40 cells']
+Page 72: len=5147 lines=56 letter_matches=227 has_ans_key=False is_ans_key=True
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Booklet Batch RollNumber                     Test Center', 'A 10+1 S 0 0 0 0 0 0 0 0 0']
+Page 73: len=5224 lines=43 letter_matches=37 has_ans_key=True is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', "Q. No.              Topic's Name              Chapter's Name", 'SECTION-A (PHYSICS)']
+Page 74: len=5241 lines=46 letter_matches=38 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'SECTION-B (PHYSICS)', '36    1   Oscillations              Oscillations and Waves']
+Page 75: len=5178 lines=53 letter_matches=33 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '73    1   pH                        Equilibrium', '74    3   Quantitative estimation of nitrogen Organic Chemistry Some Basic Principles and']
+Page 76: len=5320 lines=57 letter_matches=34 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'The DNA, Search For Genetic Material RNA', '106    2                             Molecular Basis of Inheritance']
+Page 77: len=5188 lines=48 letter_matches=39 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '140    2   Sex determination and Genetic Disorders Principle of Inheritance and Variation', '141    1   Population and its Attributes Organisms and populations']
+Page 78: len=5126 lines=26 letter_matches=23 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '178    4   Digestive Glands          Digestion And Absorption', '179    1   Restriction Enzymes       Biotechnology : Principles And Processes']
+Page 79: len=6643 lines=69 letter_matches=13 has_ans_key=True is_ans_key=False
+  Titles: ['NEET        (UG)', '17   July 2022  Paper', 'ANSWERS     WITH    EXPLANATION']
+Page 80: len=7336 lines=82 letter_matches=25 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '2 → Adiabatic           As,       I = MK2', '3 → Isothermal                        I']
+Page 81: len=7544 lines=85 letter_matches=49 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '19. Option (4) is correct.       25. Option (3) is correct.', 'Explanation: The potential drop will be Explanation: As,']
+Page 82: len=6575 lines=72 letter_matches=20 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '29. Option (2) is correct.                    i = 60°', 'Explanation: Given:']
+Page 83: len=7587 lines=86 letter_matches=39 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '⇒       0.1n = 1              40. Option (3) is correct.', '1                   Explanation: According to the question,']
+Page 84: len=6075 lines=67 letter_matches=30 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '44. Option (3) is correct.          Explanation: The dimensional formula for', 'Explanation: As, R = R A1/3      required parts are as follow:']
+Page 85: len=6591 lines=70 letter_matches=22 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '54. Option (1) is correct.', 'Explanation: As per IUPAC, notation for 1']
+Page 86: len=7776 lines=86 letter_matches=29 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '62. Option (4) is correct.       70. Option (1) is correct.', 'Explanation: Thermosetting polymers are Explanation: MgH is ionic in nature.']
+Page 87: len=7745 lines=87 letter_matches=38 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '74. Option (3) is correct.          So, weight of pure CaCO = 1.25 g', "Explanation: The Kjeldahl's method for the WeightofpureCaCO"]
+Page 88: len=7278 lines=80 letter_matches=58 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'In O +, the electronic configuration is:', '2                                     [O ] = 19.2×10−64']
+Page 89: len=8106 lines=92 letter_matches=68 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '91. Option (2) is correct.          1 mole of O contains 32 g of O', '2           2']
+Page 90: len=6376 lines=68 letter_matches=27 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Nernst equation:               (C)      (A)         (B)', '2.303RT [Ni2+]    99. Option (1) is correct.']
+Page 91: len=7015 lines=76 letter_matches=20 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '108. Option (2) is correct.          through chemiosmosis, which is the main', 'Explanation: The flowers of the plants such molecule used by the cell as energy. Electron']
+Page 92: len=7680 lines=83 letter_matches=19 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '124. Option (3) is correct.      133. Option (2) is correct.', 'Explanation: Electrostatic precipitator is the Explanation: Ex-situ conservation is the']
+Page 93: len=6462 lines=69 letter_matches=16 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '141. Option (1) is correct.          group of mobile genetic elements and can', 'Explanation: The interaction in which one jump into different places of the genome,']
+Page 94: len=7576 lines=82 letter_matches=19 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '155. Option (2) is correct.      163. Option (2) is correct.', 'Explanation: The process of breakdown of Explanation: White fibrous cartilage is']
+Page 95: len=7403 lines=81 letter_matches=10 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '171. Option (1) is correct.          performs partial digestion of complex', 'Explanation:                     carbohydrates, controls bacterial population']
+Page 96: len=5722 lines=61 letter_matches=6 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Lactational amenorrhoea is a period of', 'absence of menstrual cycle and ovulation']
+Page 97: len=5130 lines=11 letter_matches=2 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '199. Option (4) is correct.            100% Colourblind progeny.', 'Explanation: If a colourblind female (XcXc) 200. Option (2) is correct.']
+Page 98: len=6372 lines=56 letter_matches=30 has_ans_key=False is_ans_key=False
+  Titles: ['NEET        (UG)', '(Re-Examination)', 'PAPER                                             U6']
+Page 99: len=5945 lines=59 letter_matches=44 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'In the light of the above statements, choose the (4) secondary rainbow is due to single internal', 'most appropriate answer from the options given reflection and is formed above the primary']
+Page 100: len=5721 lines=61 letter_matches=46 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'plate is halved. If C is its initial capacitance, its', 'final capacitance is equal to:']
+Page 101: len=8286 lines=90 letter_matches=45 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'Q. 25. Given below are two statements: one is labelled as', '(c)            (iii) Restoring force of']
+Page 102: len=6113 lines=66 letter_matches=44 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 34. The physical quantity that has the same', 'dimensional formula as pressure is:']
+Page 103: len=7487 lines=82 letter_matches=62 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'Q. 43. Three vessels of equal capacity have gases at and steel are held at 100°C and 0°C respectively.', 'the same temperature and pressure. The first The temperature at the junction is, nearly:']
+Page 104: len=9017 lines=102 letter_matches=43 has_ans_key=False is_ans_key=False
+  Titles: ['(iii) NaOH and CaO,D (3:1)']
+Page 105: len=7610 lines=83 letter_matches=78 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '(3) Both X and Y are alkali metals. Q. 66. Na B O \uf8e7h\uf8e7eat\uf8e7→ X + NaBO', '(4) Both X and Y are alkaline earth metals. 2 4 7 2']
+Page 106: len=10342 lines=119 letter_matches=28 has_ans_key=False is_ans_key=False
+  Titles: ['(i) (CHCO)O, pyridine', 'NH   (i) (CH3CO)2O, pyridine', '2  (ii) LiAI3 H 2']
+Page 107: len=7818 lines=86 letter_matches=68 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'electrophilic substitution, however due to the Q. 84. Match the regents (List-I) with the product (List-', 'more pronounced resonance effect, the halogen II) obtained from phenol.']
+Page 108: len=7147 lines=77 letter_matches=48 has_ans_key=False is_ans_key=True
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 88. For a chemical reaction        most appropriate answer from the options given', '4A + 3B → 6C + 9D                below:']
+Page 109: len=5552 lines=60 letter_matches=34 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'In the light of the above statements, choose the', 'most appropriate answer from the options given']
+Page 110: len=6441 lines=68 letter_matches=22 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '(1) Both Statement I and Statement II are correct', '(b) Anthocyanin (ii) Polysaccharide']
+Page 111: len=7367 lines=80 letter_matches=41 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'Reason (R) :                Q. 119. In general the egg apparatus of embryo sac in', 'Some restriction enzymes cut the strand of DNA angiosperm consists of :']
+Page 112: len=7239 lines=78 letter_matches=32 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '(1) A significant reduction in the current rate of (3) Transaminase', 'biodiversity loss.               (4) Glutamate dehydrogenase']
+Page 113: len=7010 lines=74 letter_matches=41 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'Choose the correct answer from the options (1) (a) and (b) only', 'given below :                    (2) (a), (b) and (c) only']
+Page 114: len=6672 lines=70 letter_matches=31 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '(1) (a) Cellulase (b) Protease   Choose the correct answer from the options', '(2) (a) Cellulase (b) Chitinase  given below :']
+Page 115: len=7474 lines=81 letter_matches=24 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'Q. 161. According to the sliding filament theory: (a) It includes ERV, TV and IRV', '(1) Actin and myosin filaments slide over each (b) Total volume of air a person can inspire after']
+Page 116: len=8136 lines=87 letter_matches=32 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 171. Panspermia, an idea that is still a favourite for Q. 178. Choose the correct statement about a muscular', 'some astronomers, means :        tissue :']
+Page 117: len=7511 lines=82 letter_matches=33 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '(c) They bear 6-15 pairs of gills. What will be the possible phenotypes of the', '(d) They migrate to deep sea for spawning. offsprings ?']
+Page 118: len=7478 lines=80 letter_matches=27 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 190. Match List - I with List - II (a) Angiotensin II activates the cortex of adrenal', 'gland to release aldosterone.']
+Page 119: len=5141 lines=56 letter_matches=228 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'Booklet Batch RollNumber                     Test Center', 'A 10+1 S 0 0 0 0 0 0 0 0 0']
+Page 120: len=5231 lines=45 letter_matches=36 has_ans_key=True is_ans_key=True
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', "Q. No.              Topic's Name              Chapter's Name", 'SECTION-A (PHYSICS)']
+Page 121: len=5250 lines=47 letter_matches=40 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'SECTION-B (PHYSICS)', '36    4   Electromagnetic Induction Electromagnetic Induction and Alternating']
+Page 122: len=5182 lines=46 letter_matches=36 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '74.   1   Properties of group-17 elements Some p-Block Elements Principles and Process', '75.   3   Isomerism in coordination compounds Coordination Compounds']
+Page 123: len=5170 lines=44 letter_matches=43 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '109    2   Description of Some Important Families Morphology of flowering plants', '110    3   Successions               Ecosystem']
+Page 124: len=5137 lines=45 letter_matches=42 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', "150    3   Mendel's breeding experiment Principles of inheritance and variation", 'SECTION-A (ZOOLOGY)']
+Page 125: len=5119 lines=12 letter_matches=12 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '191    4   Excretion in cockroach    Excretory products and their elimination', '192    3   Mutation theory of evolution. Evolution']
+Page 126: len=7216 lines=75 letter_matches=31 has_ans_key=True is_ans_key=False
+  Titles: ['NEET        (UG)', '(Re-examination)', '4   September   2022  Paper']
+Page 127: len=7455 lines=83 letter_matches=41 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'K.E. = hn – f                           \uf8ebA\uf8f6', 'eV 0 = 4.2 eV – 2.2 eV                ε 0\uf8ec \uf8ed 2\uf8f7 \uf8f8 εA C']
+Page 128: len=7732 lines=85 letter_matches=49 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '21. Option (3) is correct.          x-axis, hence centre of mass will move with', 'Explanation:                     same speed in x-direction before and after the']
+Page 129: len=6987 lines=78 letter_matches=35 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '32. Option (1) is correct.', 'Explanation: Power,']
+Page 130: len=6997 lines=78 letter_matches=21 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'ν                45. Option (3) is correct.', 'frequency, f =']
+Page 131: len=6389 lines=70 letter_matches=33 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'RR               Hence,', '4R+R               K  2.4×1039×9.1×10−31×1.67×10−27']
+Page 132: len=5142 lines=10 letter_matches=1 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '55. Option (2) is correct.', 'Explanation:']
+Page 133: len=7032 lines=80 letter_matches=27 has_ans_key=False is_ans_key=False
+  Titles: ['OH             OH', 'OH  (i) NOOH   OH', '2          COOH']
+Page 134: len=7850 lines=86 letter_matches=50 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '62. Option (2) is correct.          Across the period Z increases but nitrogen has', 'Explanation:                     half-filled orbital which makes it more stable.']
+Page 135: len=5527 lines=57 letter_matches=14 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '73. Option (2) is correct.', 'Explanation: Density =']
+Page 136: len=5472 lines=55 letter_matches=15 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'the electrophilic substitution. But because of more strong resonance effect, the halogen stabilies the carbocation', 'at ortho- and para- position.']
+Page 137: len=5996 lines=67 letter_matches=32 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '87. Option (4) is correct.', 'Explanation: Since, the striking photon has energy']
+Page 138: len=6184 lines=65 letter_matches=37 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '94. Option (1) is correct.', '97. Option (4) is correct.']
+Page 139: len=8530 lines=91 letter_matches=16 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'Section A              108. Option (1) is correct.', 'Explanation: DNA polymerase can read template']
+Page 140: len=6747 lines=70 letter_matches=19 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'H+ accumulation Lumen of thylakoid can be separated on Agarose gel with the help of', '(Inside chloroplast)  electrode and can be visualised with the help of']
+Page 141: len=8241 lines=88 letter_matches=29 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '130. Option (3) is correct.         It is simplest yet generally non-Functional', 'Explanation: The Rhizome is underground stem structure of proteins.']
+Page 142: len=7319 lines=79 letter_matches=11 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '147. Option (3) is correct.         • Productivity of oceans = 55 billion tonnes', 'Explanation: The order of events during prophase 150. Option (3) is correct.']
+Page 143: len=7821 lines=84 letter_matches=10 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', 'These all are methods of Asexual reproduction.', 'Malpighian — Main excretory structure']
+Page 144: len=7340 lines=77 letter_matches=12 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '→ Thus 200 million spermatocytes are required prophase I of Meiosi I, during which 4 chromatids', 'to produce 400 million spermatozoa. can be observed on a single centromere.']
+Page 145: len=5282 lines=44 letter_matches=6 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2022', '→ Mutations are sudden aberration/change Explanation: Chromosome with 4 sister chromatids', 'that arise in the population thus they are are not present during Metaphase.']
+Page 146: len=5574 lines=45 letter_matches=13 has_ans_key=False is_ans_key=False
+  Titles: ['NNEEEETT            SOLVED            PAPER', '((UUGG))                       2021', 'Time : 3 Hours                                        Max. Marks : 720']
+Page 147: len=7094 lines=78 letter_matches=38 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'the conductor. The perpendicular distance (a) 216 MeV (b) 0.9 MeV', 'between the electron and the conductor is']
+Page 148: len=6656 lines=72 letter_matches=31 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 14. A particle is released from height S from (a) 90° (b) 60°', 'the surface of the Earth. At a certain height']
+Page 149: len=7033 lines=77 letter_matches=33 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', "Q. 23. The escape velocity from the Earth's surface Q. 27. A radioactive nucleus AXundergoes sponta-", 'is V. The escape velocity from the surface of']
+Page 150: len=7030 lines=77 letter_matches=28 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '(a) No current will flow in p-type, current passing through the centre of the ring and', 'will only flow in n-type      perpendicular to the plane of the ring is ‘K’']
+Page 151: len=6908 lines=76 letter_matches=49 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 't  t   t   t  t   t      Q. 42. Three resistors having resistances r , r and r', '1   2  3   4   6  6                                1 2  3']
+Page 152: len=6767 lines=73 letter_matches=44 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '(a) 42 rad/s and 58 rad/s           F\uf072 = 4ˆ i −20ˆ j+12kˆ', '(b) 25 rad/s and 75 rad/s                                 \uf072']
+Page 153: len=6036 lines=66 letter_matches=26 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'Q. 56. The correct option for the number of body Q. 63. Dihedral angle of least stable conformer of', 'centred unit cells in all 14 types of Bravais ethane is']
+Page 154: len=8777 lines=97 letter_matches=43 has_ans_key=False is_ans_key=True
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 71. A particular station of All India Radio, New Q. 76. Match List-I with List-II.', 'Delhi broadcasts on a frequency of 1,368 kHz']
+Page 155: len=7761 lines=87 letter_matches=18 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', '(c) Noble gases have very high melting and (c) CH – F > CH – Cl > CH – Br > CH – I', '3     3      3     3']
+Page 156: len=7048 lines=77 letter_matches=29 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 85. Which of the following reactions is the metal O', 'displacement reaction? Choose the right']
+Page 157: len=8184 lines=92 letter_matches=47 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'Q. 92. The intermediate compound ‘X’ in the     O', 'following chemical reaction is']
+Page 158: len=6930 lines=75 letter_matches=7 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Section A                 from anthers of one plant to stigma of a', 'different plant which, during pollination,']
+Page 159: len=6488 lines=72 letter_matches=15 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'Q. 112. Diadelphous stamens are found in', '(b) Thylakoids (ii) Disc-shaped sacs']
+Page 160: len=6657 lines=73 letter_matches=12 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '(a) Pyramid of numbers in a grassland', '(b) Adhesion (ii) Mutual attractor']
+Page 161: len=7255 lines=80 letter_matches=15 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'that form part', 'of cambial ring']
+Page 162: len=6454 lines=71 letter_matches=15 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Choose the correct answer from the options with dual ability.', 'given below.                     (b) It will not be able to confer ampicillin']
+Page 163: len=6884 lines=77 letter_matches=9 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'Q. 153. Which is the “Only enzyme” that has “Capa- Q. 158. Match List-I with List-II', 'bility” to catalyse Initiation, Elongation and']
+Page 164: len=7850 lines=87 letter_matches=15 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Choose the correct answer from the options (c) T : 20 ; G : 20 ; C : 30', 'given below.                     (d) T : 30 ; G : 20 ; C : 20']
+Page 165: len=7660 lines=85 letter_matches=18 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'Q. 174. Read the following statements. (a) juxtaglomerular cells of the kidney.', '(a) Metagenesis is observed in Helminths. (b) alpha cells of pancreas.']
+Page 166: len=7223 lines=79 letter_matches=4 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Q. 187. Following are the statements about prosto-', 'List-I       List-II']
+Page 167: len=7016 lines=78 letter_matches=5 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'Q. 194. Match List-I with List-II     (d) Adhering junctions and Tight junctions,', 'respectively.']
+Page 168: len=5147 lines=56 letter_matches=226 has_ans_key=False is_ans_key=True
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Booklet Batch RollNumber                     Test Center', 'A 10+1 S 0 0 0 0 0 0 0 0 0']
+Page 169: len=5099 lines=43 letter_matches=201 has_ans_key=True is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', '1   (b)      41   (a)      81   (a)      121  (b)      161 (d)', '2   (b)      42   (c)      82   (c)      122 (d)       162 (b)']
+Page 170: len=7315 lines=69 letter_matches=40 has_ans_key=True is_ans_key=True
+  Titles: ['NNEEEETT            SOLVED            PAPER', '((UUGG))                       2021', 'ANSWERS      WITH   EXPLANATIONS']
+Page 171: len=7415 lines=83 letter_matches=65 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'neAV              Final temperature (T 2) = 80°C', '⇒           J =']
+Page 172: len=6759 lines=73 letter_matches=79 has_ans_key=False is_ans_key=True
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Hence, zener diode works as a voltage The potential energy of the particle executing', 'regulator.                              1']
+Page 173: len=6100 lines=68 letter_matches=41 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'Hence, the required fraction of original', '⇒        u = 1(cid:30) (cid:28)(cid:31) 0A(cid:27) (cid:25)(cid:24) E·d(cid:23)2']
+Page 174: len=6665 lines=73 letter_matches=16 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'From the given condition,                    [MLT−2L2]', '1 mv2 = 3 mgh                            [M2]']
+Page 175: len=7858 lines=87 letter_matches=49 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', '19. Option (c) is correct.          Distance covered in the duration nth second', 'Potential energy of electric dipole n']
+Page 176: len=7431 lines=83 letter_matches=35 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '23. Option (a) is correct.                   I 0 = 10 2A', "Escape velocity from Earth's surface = V=V V rms = V R2 (cid:31)(V L (cid:30)V C)2"]
+Page 177: len=7571 lines=85 letter_matches=47 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', '2×3.14                             d', '⇒        T =     s               Density of glycerine =']
+Page 178: len=7677 lines=86 letter_matches=38 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '31. Option (d) is correct.                    R', 'Given,                                     R']
+Page 179: len=6926 lines=78 letter_matches=55 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'de-broglie wavelength =λ         Now, taking the integration of both side', 'Now, applying photoelectric equation,     3(cid:31)']
+Page 180: len=7078 lines=79 letter_matches=61 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '39. Option (a) is correct.', '1  1   1   2(cid:30)3']
+Page 181: len=7346 lines=82 letter_matches=66 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', '41. Option (a) is correct.                      i r +i r', '⇒        i = 3 3 3 2']
+Page 182: len=8350 lines=94 letter_matches=53 has_ans_key=False is_ans_key=True
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '44. Option (b) is correct.          Capacitance of capacitor (C) = 80 µF', 'Given,                           Resistance of resistor (R) = 40 Ω']
+Page 183: len=7047 lines=79 letter_matches=68 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'For larger drop,', '1 Q                           i j  k']
+Page 184: len=7661 lines=83 letter_matches=39 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '51. Option (c) is correct.          So, from molarity of the given solution,', "From Kohlrausch's law, Λo of weak acid can osmotic pressure of the solution will be"]
+Page 185: len=7473 lines=83 letter_matches=29 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'Nitrogen atom contains lone pair of electrons 64. Option (a) is correct.', 'while oxygen carries negative charge which']
+Page 186: len=8153 lines=91 letter_matches=37 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '69. Option (b) is correct.                  O      H', 'Out of three isotopes of Hydrogen : Protium, S—Cl + H—N—CH']
+Page 187: len=7489 lines=84 letter_matches=29 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', '78. Option (b) is correct.          F to I. Hence bond lengths from C – F to C – I', 'In a periodic table, among haloacids of increases.']
+Page 188: len=6179 lines=67 letter_matches=40 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '87. Option (d) is correct.', '(a) 2SO (g) + O (g)→ 2SO (g)        (iv) Tropospheric pollution']
+Page 189: len=7434 lines=83 letter_matches=52 has_ans_key=False is_ans_key=True
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', '93. Option (d) is correct.', '(b) [Fe(H O) ]3+ 5  Weak  5.92']
+Page 190: len=7767 lines=84 letter_matches=29 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '99. Option (d) is correct.       100. Option (c) is correct.', 'MassofO  4  1   (cid:30)                        + –']
+Page 191: len=8583 lines=93 letter_matches=10 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'The process of binding primer to single from human urine. Auxins can be natural', 'strand templet DNA is called annealing. and synthetic. Indole-3-acetic acid (IAA)']
+Page 192: len=7852 lines=82 letter_matches=13 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '118. Option (a) is correct.           which is again surrounded by mesophyll', 'The amount of biomass or organic matter cells. Bundle sheaths have large chloroplasts']
+Page 193: len=6815 lines=70 letter_matches=15 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'the amplification of the target gene in an plants free from viruses. Micropropagation', 'individual’s tissue to treat disease. is used to obtain somaclones.']
+Page 194: len=8463 lines=90 letter_matches=24 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'N = Population density at time zero 146. Option (b) is correct.', 'r= Intrinsic rate of natural increase and Nitrococcus oxidizes ammonia to nitrite, and']
+Page 195: len=6839 lines=70 letter_matches=9 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', '152. Option (c) is correct.           of the Islet of Langerhans. It is synthesized', 'The intestinal mucosa contains goblet cells. as pro-insulin. It has C-peptide. In the initial']
+Page 196: len=6333 lines=66 letter_matches=6 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', '167. Option (c) is correct.       172. Option (d) is correct.', 'The membranous organelles are different in Polymerase chain reaction includes three steps']
+Page 197: len=8005 lines=87 letter_matches=7 has_ans_key=False is_ans_key=False
+  Titles: ['NEET (UG) SOLVED PAPER : 2021', 'hepatopancreatic ampulla. The sphincter of 185. Option (d) is correct.', 'Oddi is a muscular structure located at the Diakinesis is the last stage of meiotic prophase']
+Page 198: len=6161 lines=64 letter_matches=7 has_ans_key=False is_ans_key=False
+  Titles: ['Oswaal NEET (UG) 10 Mock Test Papers', 'Behavioural adaptation can be seen in the also be called trihydroxy propane. Several', 'desert lizard.                   lipids have both glycerol and fatty acids.']

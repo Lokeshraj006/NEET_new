@@ -1,4 +1,6 @@
 import 'dart:async';
+// ignore_for_file: prefer_final_fields, dead_code, dead_null_aware_expression, deprecated_member_use, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_application_1/services/mock_test_service.dart';

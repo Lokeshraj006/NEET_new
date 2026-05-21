@@ -5,8 +5,17 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
+  static final ValueNotifier<String?> nameNotifier = ValueNotifier<String?>(null);
+  static final ValueNotifier<String?> emailNotifier = ValueNotifier<String?>(null);
+  static final ValueNotifier<String?> photoNotifier = ValueNotifier<String?>(null);
+
   static const String _envBaseUrl = String.fromEnvironment(
     'AUTH_BASE_URL',
+    defaultValue: '',
+  );
+
+  static const String _legacyChatBaseUrl = String.fromEnvironment(
+    'CHAT_BASE_URL',
     defaultValue: '',
   );
 
@@ -19,8 +28,11 @@ class AuthService {
   static String _clean(String url) => url.endsWith('/') ? url.substring(0, url.length - 1) : url;
 
   static List<String> _candidateBaseUrls() {
+    final explicit = _envBaseUrl.trim().isNotEmpty
+        ? _envBaseUrl.trim()
+        : _legacyChatBaseUrl.trim();
     final urls = <String>[
-      _clean(_envBaseUrl.trim().isNotEmpty ? _envBaseUrl.trim() : _platformDefaultBaseUrl()),
+      _clean(explicit.isNotEmpty ? explicit : _platformDefaultBaseUrl()),
     ];
     const legacyIp = 'http://10.65.205.248:8000';
     final platformDefault = _clean(_platformDefaultBaseUrl());
@@ -35,14 +47,18 @@ class AuthService {
     return urls;
   }
 
-  static Future<http.Response> _postWithFallback(String path, Map<String, dynamic> payload) async {
+  static Future<http.Response> _postWithFallback(
+    String path,
+    Map<String, dynamic> payload, {
+    Map<String, String> headers = const {},
+  }) async {
     Object? lastConnectionError;
     for (final candidate in _candidateBaseUrls()) {
       try {
         return await http
             .post(
               Uri.parse('$candidate$path'),
-              headers: {'Content-Type': 'application/json'},
+              headers: {'Content-Type': 'application/json', ...headers},
               body: jsonEncode(payload),
             )
             .timeout(const Duration(seconds: 60));
@@ -73,6 +89,33 @@ class AuthService {
     return data;
   }
 
+  static Future<Map<String, dynamic>> updateProfile({
+    required String name,
+    String? currentPassword,
+    String? newPassword,
+  }) async {
+    final token = await getToken();
+    if (token == null || token.isEmpty) {
+      throw Exception('You are not logged in.');
+    }
+
+    final payload = <String, dynamic>{
+      'name': name,
+      if (currentPassword != null && currentPassword.isNotEmpty) 'current_password': currentPassword,
+      if (newPassword != null && newPassword.isNotEmpty) 'new_password': newPassword,
+    };
+
+    final res = await _postWithFallback(
+      '/profile',
+      payload,
+      headers: {'Authorization': 'Bearer $token'},
+    );
+    final data = jsonDecode(res.body);
+    if (res.statusCode != 200) throw Exception(data['detail'] ?? 'Profile update failed.');
+    await _saveSession(data);
+    return data;
+  }
+
   static Future<String?> uploadPhoto(File photo) async {
     final email = await getEmail();
     if (email == null) return null;
@@ -89,6 +132,7 @@ class AuthService {
         final photo64 = data['photo'] as String;
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('photo', photo64);
+        photoNotifier.value = photo64;
         return photo64;
       } on SocketException catch (e) {
         lastConnectionError = e;
@@ -106,7 +150,14 @@ class AuthService {
     await prefs.setString('token', data['token'] ?? '');
     await prefs.setString('name', data['name'] ?? '');
     await prefs.setString('email', data['email'] ?? '');
-    if (data['photo'] != null) await prefs.setString('photo', data['photo']);
+    if (data['photo'] != null) {
+      await prefs.setString('photo', data['photo']);
+    } else {
+      await prefs.remove('photo');
+    }
+    nameNotifier.value = data['name'] as String?;
+    emailNotifier.value = data['email'] as String?;
+    photoNotifier.value = data['photo'] as String?;
   }
 
   static Future<bool> isLoggedIn() async {
@@ -117,6 +168,9 @@ class AuthService {
   static Future<void> logout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
+    nameNotifier.value = null;
+    emailNotifier.value = null;
+    photoNotifier.value = null;
   }
 
   static Future<String?> getName() async {
