@@ -5,12 +5,23 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
-  static final ValueNotifier<String?> nameNotifier = ValueNotifier<String?>(null);
-  static final ValueNotifier<String?> emailNotifier = ValueNotifier<String?>(null);
-  static final ValueNotifier<String?> photoNotifier = ValueNotifier<String?>(null);
+  static final ValueNotifier<String?> nameNotifier = ValueNotifier<String?>(
+    null,
+  );
+  static final ValueNotifier<String?> emailNotifier = ValueNotifier<String?>(
+    null,
+  );
+  static final ValueNotifier<String?> photoNotifier = ValueNotifier<String?>(
+    null,
+  );
 
   static const String _envBaseUrl = String.fromEnvironment(
     'AUTH_BASE_URL',
+    defaultValue: '',
+  );
+
+  static const String _envBaseUrlTypo = String.fromEnvironment(
+    'AUTH_BASE_URl',
     defaultValue: '',
   );
 
@@ -25,11 +36,14 @@ class AuthService {
     return 'http://127.0.0.1:8000';
   }
 
-  static String _clean(String url) => url.endsWith('/') ? url.substring(0, url.length - 1) : url;
+  static String _clean(String url) =>
+      url.endsWith('/') ? url.substring(0, url.length - 1) : url;
 
   static List<String> _candidateBaseUrls() {
     final explicit = _envBaseUrl.trim().isNotEmpty
         ? _envBaseUrl.trim()
+        : _envBaseUrlTypo.trim().isNotEmpty
+        ? _envBaseUrlTypo.trim()
         : _legacyChatBaseUrl.trim();
     final urls = <String>[
       _clean(explicit.isNotEmpty ? explicit : _platformDefaultBaseUrl()),
@@ -40,7 +54,9 @@ class AuthService {
     if (!urls.contains(platformDefault)) urls.add(platformDefault);
     if (!urls.contains(legacyIp)) urls.add(legacyIp);
 
-    if (!kIsWeb && !Platform.isAndroid && !urls.contains('http://localhost:8000')) {
+    if (!kIsWeb &&
+        !Platform.isAndroid &&
+        !urls.contains('http://localhost:8000')) {
       urls.add('http://localhost:8000');
     }
 
@@ -73,18 +89,34 @@ class AuthService {
     );
   }
 
-  static Future<Map<String, dynamic>> register(String name, String email, String password) async {
-    final res = await _postWithFallback('/register', {'name': name, 'email': email, 'password': password});
+  static Future<Map<String, dynamic>> register(
+    String name,
+    String email,
+    String password,
+  ) async {
+    final res = await _postWithFallback('/register', {
+      'name': name,
+      'email': email,
+      'password': password,
+    });
     final data = jsonDecode(res.body);
-    if (res.statusCode != 200) throw Exception(data['detail'] ?? 'Registration failed.');
+    if (res.statusCode != 200)
+      throw Exception(data['detail'] ?? 'Registration failed.');
     await _saveSession(data);
     return data;
   }
 
-  static Future<Map<String, dynamic>> login(String email, String password) async {
-    final res = await _postWithFallback('/login', {'email': email, 'password': password});
+  static Future<Map<String, dynamic>> login(
+    String email,
+    String password,
+  ) async {
+    final res = await _postWithFallback('/login', {
+      'email': email,
+      'password': password,
+    });
     final data = jsonDecode(res.body);
-    if (res.statusCode != 200) throw Exception(data['detail'] ?? 'Login failed.');
+    if (res.statusCode != 200)
+      throw Exception(data['detail'] ?? 'Login failed.');
     await _saveSession(data);
     return data;
   }
@@ -101,8 +133,10 @@ class AuthService {
 
     final payload = <String, dynamic>{
       'name': name,
-      if (currentPassword != null && currentPassword.isNotEmpty) 'current_password': currentPassword,
-      if (newPassword != null && newPassword.isNotEmpty) 'new_password': newPassword,
+      if (currentPassword != null && currentPassword.isNotEmpty)
+        'current_password': currentPassword,
+      if (newPassword != null && newPassword.isNotEmpty)
+        'new_password': newPassword,
     };
 
     final res = await _postWithFallback(
@@ -111,7 +145,8 @@ class AuthService {
       headers: {'Authorization': 'Bearer $token'},
     );
     final data = jsonDecode(res.body);
-    if (res.statusCode != 200) throw Exception(data['detail'] ?? 'Profile update failed.');
+    if (res.statusCode != 200)
+      throw Exception(data['detail'] ?? 'Profile update failed.');
     await _saveSession(data);
     return data;
   }
@@ -122,13 +157,17 @@ class AuthService {
     Object? lastConnectionError;
     for (final candidate in _candidateBaseUrls()) {
       try {
-        final req = http.MultipartRequest('POST', Uri.parse('$candidate/upload-photo'));
+        final req = http.MultipartRequest(
+          'POST',
+          Uri.parse('$candidate/upload-photo'),
+        );
         req.fields['email'] = email;
         req.files.add(await http.MultipartFile.fromPath('photo', photo.path));
         final res = await req.send();
         final body = await res.stream.bytesToString();
         final data = jsonDecode(body);
-        if (res.statusCode != 200) throw Exception(data['detail'] ?? 'Upload failed.');
+        if (res.statusCode != 200)
+          throw Exception(data['detail'] ?? 'Upload failed.');
         final photo64 = data['photo'] as String;
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('photo', photo64);

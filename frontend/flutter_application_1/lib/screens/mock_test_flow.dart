@@ -742,7 +742,7 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12),
                     child: Text(
-                      'Failed to load set ${widget.setId}. Check the extracted PDF text.',
+                      'Failed to load set ${widget.setId}: $_error',
                       style: GoogleFonts.poppins(
                         color: Colors.red.shade800,
                         fontWeight: FontWeight.w600,
