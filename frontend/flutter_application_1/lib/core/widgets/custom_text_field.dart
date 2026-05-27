@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/constants/app_colors.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
   final TextInputType keyboardType;
@@ -27,19 +28,60 @@ class CustomTextField extends StatelessWidget {
   });
 
   @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  late final FocusNode _focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode()..addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      keyboardType: keyboardType,
-      obscureText: obscureText,
-      readOnly: readOnly,
-      textInputAction: textInputAction,
-      onSubmitted: onSubmitted,
-      maxLines: maxLines,
-      decoration: InputDecoration(
-        hintText: hintText,
-        prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
+    final focused = _focusNode.hasFocus;
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 220),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: focused
+        ? [BoxShadow(color: AppColors.primary.withValues(alpha: 0.14), blurRadius: 18, offset: const Offset(0, 8))]
+            : null,
+      ),
+      child: TextField(
+        focusNode: _focusNode,
+        controller: widget.controller,
+        keyboardType: widget.keyboardType,
+        obscureText: widget.obscureText,
+        readOnly: widget.readOnly,
+        textInputAction: widget.textInputAction,
+        onSubmitted: widget.onSubmitted,
+        maxLines: widget.maxLines,
+        decoration: InputDecoration(
+          hintText: widget.hintText,
+          prefixIcon: widget.prefixIcon,
+          suffixIcon: widget.suffixIcon,
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Colors.transparent),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: AppColors.primary.withValues(alpha: 0.9), width: 1.6),
+          ),
+        ),
       ),
     );
   }

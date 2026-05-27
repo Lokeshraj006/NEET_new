@@ -38,6 +38,24 @@ curl -X POST http://localhost:8000/admin/reindex
 
 If you change the PDF set, re-run ingestion and then call `/admin/reindex` again so the page index stays in sync.
 
+Mock test PDF pipeline
+----------------------
+
+The production extraction pipeline lives in `backend/mock_test_pipeline/`.
+
+- It uses LlamaParse for markdown extraction and PyMuPDF for diagram/image extraction.
+- It writes cleaned JSON bundles to `backend/mock_test_pipeline/output/`.
+- It saves extracted diagram images to `backend/mock_test_pipeline/images/`.
+
+Run it with:
+
+```
+python -m backend.mock_test_pipeline.main --pdf backend/pdfs/Online_NEET_UG_10_Mock_Test_Solved_Paper_1.pdf
+```
+
+Set `LLAMAPARSE_API_KEY` in `backend/mock_test_pipeline/.env` or in your shell before running the pipeline.
+`LLAMAPARSE_CONFIG_ID` defaults to `cfg-ahf8ebkvgv7o3ak3b9tnup6dytkb`.
+
 Session memory
 ---------------
 

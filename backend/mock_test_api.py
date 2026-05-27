@@ -1,19 +1,23 @@
 from __future__ import annotations
 
 import base64
+import csv
 import io
 import hashlib
 import json
 import os
+import uuid
+
 import random
 import re
-import uuid
+from mock_test_pipeline.extract_images import encode_image_base64
 from collections import deque
 from dataclasses import dataclass
 from datetime import datetime
 from functools import lru_cache
 from pathlib import Path
 from threading import Lock, Thread
+from mock_test_pipeline.extract_images import encode_image_base64
 from typing import Dict, List, Optional
 
 import requests
@@ -38,11 +42,12 @@ router = APIRouter(prefix="/mock-test", tags=["mock-test"])
 BASE_DIR = Path(__file__).parent
 DOCS_DIR = BASE_DIR / "docs"
 PDFS_DIR = BASE_DIR / "pdfs"
+MYSQL_UPLOADS_DIR = Path(r"C:\ProgramData\MySQL\MySQL Server 9.7\Uploads")
 TOTAL_QUESTIONS = 180
 TOTAL_MARKS = 720
 DURATION_SECONDS = 3 * 60 * 60
 MOCK_TEST_ATTEMPTS_ALLOWED = 5
-SUBJECT_QUOTAS = {"Physics": 45, "Chemistry": 45, "Biology": 90}
+SUBJECT_QUOTAS = {"Physics": 45, "Chemistry": 45, "Botany": 45, "Zoology": 45}
 UNIT_QUIZ_COUNT = 10
 UNIT_QUIZ_DURATION = 10 * 60
 UNIT_QUIZ_VARIANTS = 5
@@ -58,8 +63,12 @@ VALID_QUESTION_TYPES = {
 }
 
 MOCK_TEST_CACHE_TARGET = 5
-MOCK_TEST_SET_COUNT = 8
+MOCK_TEST_SET_COUNT = 2
 NEW_MOCK_TEST_PDF = PDFS_DIR / "Online_NEET_UG_10_Mock_Test_Solved_Paper_1.pdf"
+PIPELINE_DIR = BASE_DIR / "mock_test_pipeline"
+PIPELINE_OUTPUT_DIR = PIPELINE_DIR / "output"
+PIPELINE_IMAGES_DIR = PIPELINE_DIR / "images"
+_CID_PATTERN = re.compile(r"\(cid:\d+\)")
 LEGACY_MOCK_TEST_DOCS = {
     "mocktest_set1.txt",
     "set1.txt",
@@ -77,6 +86,290 @@ LEGACY_MOCK_TEST_DOCS = {
 }
 
 
+def _mysql_upload_set_path(set_id: int) -> Optional[Path]:
+    csv_path = MYSQL_UPLOADS_DIR / f"neet_set{set_id}.csv"
+    return csv_path if csv_path.exists() else None
+
+
+def _answer_letter_to_index(value: object) -> int:
+    token = str(value or "").strip().upper()
+    if token in {"A", "1"}:
+        return 0
+    if token in {"B", "2"}:
+        return 1
+    if token in {"C", "3"}:
+        return 2
+    if token in {"D", "4"}:
+        return 3
+    return 0
+
+
+def _is_valid_option_set(options: List[str]) -> bool:
+    if len(options) != 4:
+        return False
+    normalized = [re.sub(r"\s+", " ", option).strip().lower() for option in options]
+    if any(not option for option in normalized):
+        return False
+    if len(set(normalized)) != 4:
+        return False
+    return True
+
+
+def _extract_inline_options(question_text: str) -> List[str]:
+    options: List[str] = []
+    current_option: List[str] = []
+    pattern = re.compile(r"^\s*(?:\(?\s*([A-Da-d1-4])\s*\)?[\).:-])\s*(.+)$")
+
+    for raw_line in question_text.replace("\r\n", "\n").replace("\r", "\n").splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        match = pattern.match(line)
+        if match:
+            if current_option:
+                options.append(_clean_text(" ".join(current_option)))
+            current_option = [match.group(2) or ""]
+            continue
+        if current_option:
+            current_option.append(line)
+
+    if current_option:
+        options.append(_clean_text(" ".join(current_option)))
+
+    seen = set()
+    deduped: List[str] = []
+    for option in options:
+        cleaned = _clean_text(option)
+        normalized = re.sub(r"\s+", " ", cleaned).strip().lower()
+        if not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        deduped.append(cleaned)
+        if len(deduped) == 4:
+            break
+    return deduped
+
+
+def _normalize_fixed_question(question: Dict) -> Optional[Dict]:
+    entry = dict(question)
+    question_text = _clean_text(entry.get("question", ""))
+    if not question_text:
+        return None
+
+    raw_options = entry.get("options", [])
+    options: List[str] = []
+    if isinstance(raw_options, list):
+        options = [_clean_text(option) for option in raw_options]
+    options = [option for option in options if option]
+    if not _is_valid_option_set(options):
+        options = _extract_inline_options(question_text)
+    if not _is_valid_option_set(options):
+        return None
+
+    answer_index = _answer_index_from_value(entry.get("answer_index", entry.get("correct_answer", 0)))
+    if answer_index < 0 or answer_index >= len(options):
+        answer_index = 0
+
+    hash_value = _clean_text(entry.get("hash", ""))
+    if not hash_value:
+        hash_value = hashlib.sha1(
+            f"{question_text}|{'|'.join(options[:4])}".encode("utf-8")
+        ).hexdigest()[:16]
+
+    normalized = dict(entry)
+    normalized["question"] = question_text
+    normalized["options"] = options[:4]
+    normalized["answer_index"] = answer_index
+    normalized["correct_answer"] = _answer_letter_from_index(answer_index)
+    normalized["hash"] = hash_value
+    normalized["subject"] = _clean_text(normalized.get("subject", "")) or "NEET"
+    normalized["unit"] = _clean_text(normalized.get("unit", "")) or f"Set {normalized.get('set_id', '')}"
+    normalized["question_image_base64"] = _clean_text(
+        normalized.get("question_image_base64", normalized.get("question_image", ""))
+    )
+    return normalized
+
+
+def _finalize_fixed_set_questions(set_id: int, questions: List[Dict]) -> List[Dict]:
+    reference_hashes: set[str] = set()
+    if set_id == 2:
+        try:
+            reference_bundle = _load_fixed_set_bundle(1)
+            reference_questions = reference_bundle.get("questions", []) if isinstance(reference_bundle, dict) else []
+            reference_hashes = {
+                _clean_text(item.get("hash", ""))
+                for item in reference_questions
+                if isinstance(item, dict) and _clean_text(item.get("hash", ""))
+            }
+        except Exception:
+            reference_hashes = set()
+
+    finalized: List[Dict] = []
+    seen_hashes = set(reference_hashes)
+
+    for question in questions:
+        normalized = _normalize_fixed_question(question)
+        if not normalized:
+            continue
+        qhash = _clean_text(normalized.get("hash", ""))
+        if not qhash or qhash in seen_hashes:
+            continue
+        seen_hashes.add(qhash)
+        finalized.append(normalized)
+
+    if len(finalized) < TOTAL_QUESTIONS:
+        seed = f"fixed-set-{set_id}"
+        fallback_questions = _build_mock_test_fallback_questions(
+            0,
+            f"fixed-set-{set_id}",
+            seed,
+            list(seen_hashes),
+            set(seen_hashes),
+        )
+        for question in fallback_questions:
+            normalized = _normalize_fixed_question(question)
+            if not normalized:
+                continue
+            qhash = _clean_text(normalized.get("hash", ""))
+            if not qhash or qhash in seen_hashes:
+                continue
+            seen_hashes.add(qhash)
+            finalized.append(normalized)
+            if len(finalized) == TOTAL_QUESTIONS:
+                break
+
+    if len(finalized) < TOTAL_QUESTIONS:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Unable to prepare mock test set {set_id} with 180 valid unique questions.",
+        )
+
+    return finalized[:TOTAL_QUESTIONS]
+
+
+def _load_questions_from_csv(csv_path: Path, set_id: int) -> Dict:
+    try:
+        with csv_path.open("r", encoding="utf-8-sig", newline="") as handle:
+            reader = csv.reader(handle)
+            header: List[str] = []
+            for row in reader:
+                if not row:
+                    continue
+                normalized = [cell.strip() for cell in row]
+                if normalized and normalized[0].lower() == "qno":
+                    header = normalized
+                    break
+            if not header:
+                raise ValueError("Missing CSV header row")
+            index_map = {name: index for index, name in enumerate(header)}
+            questions: List[Dict] = []
+            for row in reader:
+                if not row:
+                    continue
+                if len(row) < len(header):
+                    row = list(row) + [""] * (len(header) - len(row))
+                question_text = _clean_text(row[index_map.get("question", -1)]) if index_map.get("question", -1) >= 0 else ""
+                options = [
+                    _clean_text(row[index_map.get("optionA", -1)]) if index_map.get("optionA", -1) >= 0 else "",
+                    _clean_text(row[index_map.get("optionB", -1)]) if index_map.get("optionB", -1) >= 0 else "",
+                    _clean_text(row[index_map.get("optionC", -1)]) if index_map.get("optionC", -1) >= 0 else "",
+                    _clean_text(row[index_map.get("optionD", -1)]) if index_map.get("optionD", -1) >= 0 else "",
+                ]
+                if not question_text or not any(option.strip() for option in options):
+                    continue
+                if not _is_valid_option_set(options):
+                    continue
+                qno = int(str(row[index_map.get("qno", -1)]).strip() or 0) if index_map.get("qno", -1) >= 0 else 0
+                subject = _clean_text(row[index_map.get("subject", -1)]) if index_map.get("subject", -1) >= 0 else ""
+                topic = _clean_text(row[index_map.get("topic", -1)]) if index_map.get("topic", -1) >= 0 else ""
+                questions.append(
+                    {
+                        "number": qno,
+                        "subject": subject,
+                        "unit": topic,
+                        "question": question_text,
+                        "options": options,
+                        "answer_index": _answer_letter_to_index(
+                            row[index_map.get("correctAnswer", -1)] if index_map.get("correctAnswer", -1) >= 0 else "A"
+                        ),
+                        "explanation": "",
+                        "hash": hashlib.sha1(
+                            f"csv_set_{set_id}:{qno}:{question_text}".encode("utf-8")
+                        ).hexdigest()[:16],
+                        "question_image_base64": "",
+                        "source_page": None,
+                    }
+                )
+    except Exception as error:
+        raise HTTPException(status_code=500, detail=f"Unable to parse mock test set {set_id} from CSV: {error}")
+
+    if not questions:
+        raise HTTPException(status_code=500, detail=f"Unable to parse mock test set {set_id} from CSV.")
+
+    questions.sort(key=lambda item: item.get("number", 0))
+    for question in questions:
+        question.pop("number", None)
+    questions = _finalize_fixed_set_questions(set_id, questions)
+
+    return {
+        "set_id": set_id,
+        "title": f"Mock Test Set {set_id}",
+        "total_questions": len(questions),
+        "total_marks": len(questions) * 4,
+        "duration_seconds": DURATION_SECONDS,
+        "questions": questions,
+        "rules": [
+            "+4 for each correct answer",
+            "-1 for each wrong answer",
+            "0 for unattempted questions",
+            "Pause and resume are supported during the test",
+        ],
+    }
+
+
+def _load_questions_from_text_set(paper_path: Path, answer_path: Path, set_id: int) -> Dict:
+    try:
+        paper_text = paper_path.read_text(encoding="utf-8", errors="ignore")
+        answer_text = answer_path.read_text(encoding="utf-8", errors="ignore")
+    except Exception as error:
+        raise HTTPException(status_code=500, detail=f"Unable to parse mock test set {set_id} from text files: {error}")
+
+    answers = _parse_fixed_set_answers(answer_text)
+    if not answers:
+        raise HTTPException(status_code=500, detail=f"Unable to parse mock test set {set_id} answer key.")
+
+    page_entries = [
+        {
+            "page_number": 1,
+            "text": paper_text,
+            "has_visuals": False,
+            "image": "",
+        }
+    ]
+    questions = _parse_fixed_set_questions(page_entries, answers, set_id)
+    if len(questions) < TOTAL_QUESTIONS:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Unable to parse mock test set {set_id}. Expected {TOTAL_QUESTIONS} questions, found {len(questions)}.",
+        )
+
+    questions = _finalize_fixed_set_questions(set_id, questions[:TOTAL_QUESTIONS])
+    return {
+        "set_id": set_id,
+        "title": f"Mock Test Set {set_id}",
+        "total_questions": len(questions),
+        "total_marks": len(questions) * 4,
+        "duration_seconds": DURATION_SECONDS,
+        "questions": questions,
+        "rules": [
+            "+4 for each correct answer",
+            "-1 for each wrong answer",
+            "0 for unattempted questions",
+            "Pause and resume are supported during the test",
+        ],
+    }
+
+
 @dataclass
 class MockTestCacheEntry:
     session_id: str
@@ -92,20 +385,22 @@ _mock_test_bg_threads: Dict[int, Thread] = {}
 def _fixed_set_paths() -> Dict[int, Dict[str, Path]]:
     mapping: Dict[int, Dict[str, Path]] = {}
     for set_id in range(1, MOCK_TEST_SET_COUNT + 1):
-        paper = DOCS_DIR / f"set{set_id}.txt"
-        alt_paper = DOCS_DIR / f"mocktest_set{set_id}.txt"
-        answer = DOCS_DIR / f"set{set_id}_answers.txt"
-        if not paper.exists() and alt_paper.exists():
-            paper = alt_paper
-        if paper.exists():
-            mapping[set_id] = {"paper": paper}
-            if answer.exists():
-                mapping[set_id]["answer"] = answer
-                
-    if NEW_MOCK_TEST_PDF.exists():
-        for set_id in range(1, MOCK_TEST_SET_COUNT + 1):
-            if set_id not in mapping:
-                mapping[set_id] = {"paper": NEW_MOCK_TEST_PDF}
+        csv_path = PDFS_DIR / f"neet_set{set_id}.csv"
+        if csv_path.exists():
+            mapping[set_id] = {"paper": csv_path}
+            continue
+
+        csv_path = _mysql_upload_set_path(set_id)
+        # Prefer CSV uploads from MySQL's upload directory when present.
+        if csv_path is not None:
+            mapping[set_id] = {"paper": csv_path}
+            # Do not override CSV with docs text files when both exist.
+            continue
+        text_path = DOCS_DIR / f"set{set_id}.txt"
+        answer_path = DOCS_DIR / f"set{set_id}_answers.txt"
+        if text_path.exists() and answer_path.exists():
+            mapping[set_id] = {"paper": text_path, "answer": answer_path}
+            continue
     return mapping
 
 
@@ -113,13 +408,77 @@ def _fixed_set_paths() -> Dict[int, Dict[str, Path]]:
 
 
 def _subject_for_fixed_question(index: int) -> str:
-    if index <= 50:
+    if index <= 45:
         return "Physics"
-    if index <= 100:
+    if index <= 90:
         return "Chemistry"
-    if index <= 150:
+    if index <= 135:
         return "Botany"
     return "Zoology"
+
+
+def _pipeline_set_path(set_id: int) -> Path:
+    return PIPELINE_OUTPUT_DIR / f"mock_test_set_{set_id}.json"
+
+
+def _selected_pipeline_set_id(seed: str, offset: int = 0) -> int:
+    digest = hashlib.sha1(f"{seed}:{offset}".encode("utf-8")).hexdigest()
+    return (int(digest[:8], 16) % MOCK_TEST_SET_COUNT) + 1
+
+
+def _load_pipeline_bundle(set_id: int) -> Optional[Dict]:
+    path = _pipeline_set_path(set_id)
+    if not path.exists():
+        return None
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    if not isinstance(payload, dict):
+        return None
+    return payload
+
+
+def _flatten_pipeline_bundle(payload: Dict) -> List[Dict]:
+    questions = payload.get("questions", [])
+    if isinstance(questions, list) and questions:
+        return [_sanitize_pipeline_question(item) for item in questions if isinstance(item, dict)]
+    subjects = payload.get("subjects", [])
+    if isinstance(subjects, list):
+        flattened: List[Dict] = []
+        for subject in subjects:
+            if not isinstance(subject, dict):
+                continue
+            items = subject.get("questions", [])
+            if isinstance(items, list):
+                flattened.extend(_sanitize_pipeline_question(item) for item in items if isinstance(item, dict))
+        return flattened
+    return []
+
+
+def _normalize_pipeline_text(value: object) -> str:
+    text = str(value or "")
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    text = text.replace("\x00", " ").replace("\u00a0", " ")
+    text = _CID_PATTERN.sub(" ", text)
+    text = re.sub(r"\s*-\n\s*", "", text)
+    text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"\s*\n\s*", "\n", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
+def _sanitize_pipeline_question(question: Dict) -> Dict:
+    entry = dict(question)
+    entry["question"] = _normalize_pipeline_text(entry.get("question", ""))
+    options = entry.get("options", [])
+    if isinstance(options, list):
+        entry["options"] = [_normalize_pipeline_text(option) for option in options]
+    entry["explanation"] = _normalize_pipeline_text(entry.get("explanation", ""))
+
+    entry.pop("diagram_images", None)
+    entry.pop("question_image", None)
+    return entry
 
 
 def _answer_token_to_index(token: str) -> int:
@@ -176,7 +535,7 @@ def _page_has_visual_content(page) -> bool:
         return False
 
 
-def _render_pdf_page_image_base64(page, *, resolution: int = 110) -> str:
+def _render_pdf_page_image_base64(page, *, resolution: int = 180) -> str:
     if fitz is None:
         return ""
     try:
@@ -453,6 +812,10 @@ def _parse_fixed_set_questions(page_entries: List[Dict], answers: Dict[int, int]
                     target_indices = list(range(len(option_matches) - 4, len(option_matches)))
                 else:
                     continue
+
+            selected_labels = [normalized[index] for index in target_indices]
+            if selected_labels != ["A", "B", "C", "D"]:
+                continue
                     
             options = []
             selected_matches = [option_matches[i] for i in target_indices]
@@ -464,7 +827,7 @@ def _parse_fixed_set_questions(page_entries: List[Dict], answers: Dict[int, int]
                     opt_val = re.split(r"(?i)FINAL SHOT|1001CMD|Oswaal|NEET|Page \d+", opt_val)[0].strip()
                 options.append(_normalize_multiline_text(opt_val))
 
-            if len(options) != 4:
+            if not _is_valid_option_set(options):
                 continue
 
             question_text = block[:selected_matches[0].start()].strip()
@@ -505,7 +868,8 @@ def _parse_fixed_set_questions(page_entries: List[Dict], answers: Dict[int, int]
                 "topic": f"Set {set_id}",
                 "concept_key": f"fixed_set_{set_id}",
                 "source_page": page_number,
-                "question_image": page_image,
+                                "question_image": encode_image_base64(page_image) if page_image and os.path.isfile(page_image) else (page_image if isinstance(page_image, str) and page_image.startswith('data:') else ""),
+
                 "hash": hashlib.sha1(f"set{set_id}:{number}:{question_text}".encode("utf-8")).hexdigest()[:16],
             })
     return questions
@@ -597,6 +961,35 @@ def _load_fixed_set_bundle(set_id: int) -> Dict:
     if not paths:
         raise HTTPException(status_code=404, detail=f"Mock test set {set_id} not found.")
     paper_path = paths["paper"]
+    answer_path = paths.get("answer")
+    if paper_path.suffix.lower() == ".txt" and answer_path is not None:
+        return _load_questions_from_text_set(paper_path, answer_path, set_id)
+    if paper_path.suffix.lower() == ".csv":
+        return _load_questions_from_csv(paper_path, set_id)
+    if paper_path.suffix.lower() == ".json":
+        try:
+            payload = json.loads(paper_path.read_text(encoding="utf-8"))
+        except Exception:
+            raise HTTPException(status_code=500, detail=f"Unable to parse mock test set {set_id}.")
+        questions = _flatten_pipeline_bundle(payload)
+        if not questions:
+            raise HTTPException(status_code=500, detail=f"Unable to parse mock test set {set_id}.")
+        questions = _finalize_fixed_set_questions(set_id, questions)
+        return {
+            "set_id": set_id,
+            "title": payload.get("title") or f"Mock Test Set {set_id}",
+            "total_questions": len(questions),
+            "total_marks": len(questions) * 4,
+            "duration_seconds": int(payload.get("duration_seconds", DURATION_SECONDS) or DURATION_SECONDS),
+            "subjects": payload.get("subjects", []),
+            "questions": questions,
+            "rules": [
+                "+4 for each correct answer",
+                "-1 for each wrong answer",
+                "0 for unattempted questions",
+                "Pause and resume are supported during the test",
+            ],
+        }
     if paper_path.suffix.lower() == ".pdf":
         set_ranges = _mock_test_pdf_set_ranges()
         range_info = next((item for item in set_ranges if item["set_id"] == set_id), None)
@@ -664,8 +1057,7 @@ def _load_fixed_set_bundle(set_id: int) -> Dict:
     if not questions:
         raise HTTPException(status_code=500, detail=f"Unable to parse mock test set {set_id}.")
     questions = _filter_clean_35_questions(questions)
-    if not questions:
-        raise HTTPException(status_code=500, detail=f"Unable to parse mock test set {set_id}.")
+    questions = _finalize_fixed_set_questions(set_id, questions)
     return {
         "set_id": set_id,
         "title": f"Mock Test Set {set_id}",
@@ -1352,6 +1744,13 @@ def _build_mock_test_questions(
     excluded_hashes: List[str],
     history_hashes: set[str],
 ) -> List[Dict]:
+    pipeline_set_id = _selected_pipeline_set_id(seed)
+    pipeline_payload = _load_pipeline_bundle(pipeline_set_id)
+    if pipeline_payload:
+        pipeline_questions = _flatten_pipeline_bundle(pipeline_payload)
+        if pipeline_questions:
+            return pipeline_questions[:TOTAL_QUESTIONS]
+
     count = TOTAL_QUESTIONS
     quotas = SUBJECT_QUOTAS.copy()
     all_questions: List[Dict] = []
@@ -1423,6 +1822,13 @@ def _build_mock_test_fallback_questions(
     """Fast fallback-only paper builder that avoids LLM calls.
     Uses the syllabus units and fallback generators to assemble a full paper quickly.
     """
+    pipeline_set_id = _selected_pipeline_set_id(seed, offset=1)
+    pipeline_payload = _load_pipeline_bundle(pipeline_set_id)
+    if pipeline_payload:
+        pipeline_questions = _flatten_pipeline_bundle(pipeline_payload)
+        if pipeline_questions:
+            return pipeline_questions[:TOTAL_QUESTIONS]
+
     count = TOTAL_QUESTIONS
     quotas = SUBJECT_QUOTAS.copy()
     all_questions: List[Dict] = []
@@ -1497,14 +1903,23 @@ def _pop_mock_test_cache(user_id: int) -> Optional[MockTestCacheEntry]:
 
 
 def _load_user_history(user_id: int) -> set[str]:
-    db, cursor = _get_db_cursor()
+    db = None
+    cursor = None
     try:
+        db, cursor = _get_db_cursor()
         cursor.execute("SELECT question_hash FROM mock_test_question_history WHERE user_id = %s", (user_id,))
         rows = cursor.fetchall() or []
         return {str(row.get("question_hash", "")) for row in rows if str(row.get("question_hash", "")).strip()}
+    except Exception:
+        return set()
     finally:
-        cursor.close()
-        db.close()
+        try:
+            if cursor is not None:
+                cursor.close()
+            if db is not None:
+                db.close()
+        except Exception:
+            pass
 
 
 def _count_mock_test_attempts(user_id: int) -> int:
@@ -1519,21 +1934,30 @@ def _count_mock_test_attempts(user_id: int) -> int:
 
 
 def _load_concept_history(user_id: int) -> set[str]:
-    db, cursor = _get_db_cursor()
+    db = None
+    cursor = None
     try:
+        db, cursor = _get_db_cursor()
         cursor.execute("SELECT concept_key FROM unit_quiz_question_history WHERE user_id = %s", (user_id,))
         rows = cursor.fetchall() or []
         return {str(row.get("concept_key", "")).strip() for row in rows if str(row.get("concept_key", "")).strip()}
     except Exception:
         return set()
     finally:
-        cursor.close()
-        db.close()
+        try:
+            if cursor is not None:
+                cursor.close()
+            if db is not None:
+                db.close()
+        except Exception:
+            pass
 
 
 def _history_by_subject(user_id: int) -> Dict[str, set[str]]:
-    db, cursor = _get_db_cursor()
+    db = None
+    cursor = None
     try:
+        db, cursor = _get_db_cursor()
         cursor.execute("SELECT question_hash, subject FROM mock_test_question_history WHERE user_id = %s", (user_id,))
         rows = cursor.fetchall() or []
         result = {"Physics": set(), "Chemistry": set(), "Biology": set()}
@@ -1543,9 +1967,16 @@ def _history_by_subject(user_id: int) -> Dict[str, set[str]]:
             if subject in result and qhash:
                 result[subject].add(qhash)
         return result
+    except Exception:
+        return {"Physics": set(), "Chemistry": set(), "Biology": set()}
     finally:
-        cursor.close()
-        db.close()
+        try:
+            if cursor is not None:
+                cursor.close()
+            if db is not None:
+                db.close()
+        except Exception:
+            pass
 
 
 def _question_is_unique(

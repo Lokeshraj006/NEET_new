@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:flutter_application_1/core/constants/app_colors.dart';
 import 'package:flutter_application_1/core/widgets/custom_button.dart';
 import 'package:flutter_application_1/core/widgets/custom_text_field.dart';
 import 'package:flutter_application_1/core/widgets/info_tile.dart';
 import 'package:flutter_application_1/widgets/bottom_nav.dart';
 import 'package:flutter_application_1/services/auth_service.dart';
+import 'package:flutter_application_1/screens/login_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -152,11 +154,50 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onPressed: _saving ? null : _save,
               loading: _saving,
             ),
+            const SizedBox(height: 18),
+            Center(
+              child: TextButton(
+                onPressed: () async {
+                  final confirm = await showDialog<bool>(
+                    context: context,
+                    builder: (c) => AlertDialog(
+                      title: const Text('Sign out'),
+                      content: const Text('Do you want to sign out from this device?'),
+                      actions: [
+                        TextButton(onPressed: () => Navigator.of(c).pop(false), child: const Text('Cancel')),
+                        TextButton(onPressed: () => Navigator.of(c).pop(true), child: const Text('Sign out')),
+                      ],
+                    ),
+                  );
+                  if (!context.mounted) return;
+                  if (confirm == true) {
+                    await AuthService.logout();
+                    if (!context.mounted) return;
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (_) => const LoginScreen()),
+                      (_) => false,
+                    );
+                  }
+                },
+                style: TextButton.styleFrom(
+                  foregroundColor: AppColors.primary,
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                  minimumSize: Size.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  textStyle: GoogleFonts.poppins(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                child: const Text('Sign out'),
+              ),
+            ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNav(
-        selectedIndex: 3,
+        selectedIndex: 4,
         onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
       ),
     );

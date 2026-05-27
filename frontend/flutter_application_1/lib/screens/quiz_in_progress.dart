@@ -166,9 +166,22 @@ class _QuizInProgressState extends State<QuizInProgress> {
     final questions = widget.questions!;
     if (_currentIndex < 0 || _currentIndex >= questions.length) return const SizedBox();
     final q = questions[_currentIndex];
+    final questionImageBase64 = q.questionImageBase64?.trim();
     return SingleChildScrollView(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text('Q${_currentIndex + 1}. ${q.question}', style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600)),
+          if (questionImageBase64 != null && questionImageBase64.isNotEmpty) ...[
+            const SizedBox(height: 12),
+            Image.memory(
+              base64Decode(
+                questionImageBase64.contains(',')
+                    ? questionImageBase64.split(',').last
+                    : questionImageBase64,
+              ),
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image, size: 100, color: Colors.grey),
+            ),
+          ],
         const SizedBox(height: 12),
             ...List.generate(q.options.length, (idx) {
               final selected = _answers[_currentIndex] == idx;

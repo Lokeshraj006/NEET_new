@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../constants/app_colors.dart';
@@ -59,6 +59,50 @@ class ChatBubble extends StatelessWidget {
     return spans;
   }
 
+  Future<void> _showCopyMenu(
+    BuildContext context,
+    LongPressStartDetails details,
+  ) async {
+    final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
+    final position = RelativeRect.fromRect(
+      Rect.fromLTWH(
+        details.globalPosition.dx,
+        details.globalPosition.dy,
+        0,
+        0,
+      ),
+      Offset.zero & overlay.size,
+    );
+
+    final action = await showMenu<String>(
+      context: context,
+      position: position,
+      items: [
+        PopupMenuItem<String>(
+          value: 'copy',
+          child: Text(
+            'Copy',
+            style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+          ),
+        ),
+      ],
+    );
+
+    if (action != 'copy') return;
+
+    await Clipboard.setData(ClipboardData(text: text));
+    if (!context.mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Message copied',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+        ),
+        duration: const Duration(seconds: 1),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final bubbleColor = isUser ? AppColors.primary : AppColors.surface;
@@ -94,41 +138,44 @@ class ChatBubble extends StatelessWidget {
               avatar,
               const SizedBox(width: 8),
             ],
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 180),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width * 0.72,
-              ),
-              decoration: BoxDecoration(
-                color: bubbleColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(22),
-                  topRight: const Radius.circular(22),
-                  bottomLeft: Radius.circular(isUser ? 22 : 8),
-                  bottomRight: Radius.circular(isUser ? 8 : 22),
+            GestureDetector(
+              onLongPressStart: (details) => _showCopyMenu(context, details),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 180),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width * 0.72,
                 ),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Color(0x0E000000),
-                    blurRadius: 16,
-                    offset: Offset(0, 8),
+                decoration: BoxDecoration(
+                  color: bubbleColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: const Radius.circular(22),
+                    topRight: const Radius.circular(22),
+                    bottomLeft: Radius.circular(isUser ? 22 : 8),
+                    bottomRight: Radius.circular(isUser ? 8 : 22),
                   ),
-                ],
-              ),
-              child: RichText(
-                text: TextSpan(
-                  style: GoogleFonts.poppins(
-                    color: textColor,
-                    fontSize: 14,
-                    height: 1.45,
-                  ),
-                  children: _messageSpans(
-                    text,
-                    GoogleFonts.poppins(
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x0E000000),
+                      blurRadius: 16,
+                      offset: Offset(0, 8),
+                    ),
+                  ],
+                ),
+                child: RichText(
+                  text: TextSpan(
+                    style: GoogleFonts.poppins(
                       color: textColor,
                       fontSize: 14,
                       height: 1.45,
+                    ),
+                    children: _messageSpans(
+                      text,
+                      GoogleFonts.poppins(
+                        color: textColor,
+                        fontSize: 14,
+                        height: 1.45,
+                      ),
                     ),
                   ),
                 ),

@@ -1,0 +1,182 @@
+﻿NEET 2025 Practice Paper — SET 1 (All 180 Questions),,,,,,,,
+qno,subject,topic,question,optionA,optionB,optionC,optionD,correctAnswer
+1,Physics,Kinematics,A particle moves along X-axis such that its position is x = 3t² − 2t + 5. The acceleration of the particle at t = 2s is:,6 m/s²,12 m/s²,4 m/s²,8 m/s²,A
+2,Physics,Laws of Motion,"A block of mass 5 kg is placed on a rough incline of angle 30°. If μ = 0.4, the net force on the block along the incline is (g=10 m/s²):",5 N down,8.2 N down,7.4 N down,3.5 N up,B
+3,Physics,Work Energy Power,A spring of force constant 800 N/m is compressed by 10 cm. The potential energy stored in it is:,4 J,8 J,40 J,0.4 J,A
+4,Physics,Rotational Motion,A solid cylinder and a hollow cylinder of same mass and radius roll down a frictionless incline. Which reaches the bottom first?,Hollow cylinder,Solid cylinder,Both simultaneously,Depends on inclination,B
+5,Physics,Gravitation,The escape velocity from the surface of Earth is 11.2 km/s. The escape velocity from a planet of same mass but double the radius is:,5.6 km/s,22.4 km/s,7.9 km/s,11.2 km/s,A
+6,Physics,Properties of Matter,"A steel wire of length 2m and cross-section 10⁻⁶ m² is stretched by 1mm. If Y = 2×10¹¹ Pa, the force applied is:",100 N,200 N,50 N,150 N,A
+7,Physics,Thermodynamics,"In an adiabatic process, the work done by gas equals:",Zero,Increase in internal energy,Decrease in internal energy,Heat absorbed,C
+8,Physics,Kinetic Theory,The rms speed of oxygen molecules at 0°C is approximately (M = 32 g/mol):,461 m/s,831 m/s,331 m/s,181 m/s,A
+9,Physics,Oscillations,"A simple pendulum of length 1m has time period T on Earth. On moon (g = 1.6 m/s²), its time period is:",2.48 s,1.57 s,3.14 s,6.28 s,A
+10,Physics,Waves,Two sound waves have intensities I and 4I. The difference in their sound levels is:,3 dB,6 dB,10 dB,20 dB,B
+11,Physics,Electrostatics,"Three charges +q, +q, −q are placed at corners of an equilateral triangle of side a. The potential at centroid is:",kq/a,zero,3kq/a,kq/√3a,B
+12,Physics,Electrostatics,"The electric field between plates of a parallel plate capacitor with plate separation d and voltage V is uniform. If a dielectric of constant K is inserted, the capacitance becomes:",C/K,KC,C+K,C−K,B
+13,Physics,Current Electricity,"In a Wheatstone bridge P/Q = R/S, if P = 100Ω, Q = 200Ω, R = 300Ω, the value of S for balance is:",150 Ω,600 Ω,100 Ω,450 Ω,B
+14,Physics,Current Electricity,A cell of EMF 2V and internal resistance 0.5Ω is connected to an external resistance of 1.5Ω. The terminal voltage is:,1.5 V,2 V,1 V,0.5 V,A
+15,Physics,Magnetism,"A proton moving with velocity v enters a uniform magnetic field B perpendicularly. The radius of its circular path is (mass m, charge e):",mv/eB,eB/mv,mB/ev,ev/mB,A
+16,Physics,Magnetism,Two long parallel wires carry currents 2A and 4A in opposite directions separated by 0.1m. The force per unit length between them is:,1.6×10⁻⁵ N/m repulsive,1.6×10⁻⁵ N/m attractive,3.2×10⁻⁵ N/m repulsive,8×10⁻⁶ N/m attractive,A
+17,Physics,EMI,"A circular coil of 100 turns, area 10⁻² m², is rotated at 50 Hz in a field B = 0.1T. The peak EMF induced is:",π V,2π V,5π V,10π V,C
+18,Physics,AC Circuits,"In an LCR series circuit at resonance, the impedance equals:",Zero,R only,√(R²+X²),XL+XC,B
+19,Physics,Optics,A convex lens of focal length 20 cm forms a real image at 60 cm from the lens. The object distance is:,30 cm,40 cm,25 cm,15 cm,A
+20,Physics,Optics,Critical angle for a medium of refractive index √2 is:,30°,45°,60°,90°,B
+21,Physics,Wave Optics,"In Young's double slit experiment, the fringe width is β. If the slit separation is doubled, fringe width becomes:",2β,β/2,β/4,4β,B
+22,Physics,Wave Optics,The resolving power of a microscope increases when:,Wavelength of light increases,Numerical aperture decreases,Wavelength decreases,Refractive index of medium decreases,C
+23,Physics,Modern Physics,The work function of sodium is 2.3 eV. The threshold wavelength for photoelectric emission is approximately:,540 nm,340 nm,440 nm,640 nm,A
+24,Physics,Modern Physics,The de Broglie wavelength of an electron accelerated through 100 V is approximately:,0.123 nm,1.23 nm,12.3 nm,0.0123 nm,A
+25,Physics,Atoms,"In Bohr's model, the radius of 3rd orbit of hydrogen is (r₁ = 0.529 Å):",4.76 Å,9 × 0.529 Å,3 × 0.529 Å,6 × 0.529 Å,A
+26,Physics,Nuclei,The binding energy per nucleon is maximum for:,Iron (Fe-56),Uranium (U-238),Helium (He-4),Carbon (C-12),A
+27,Physics,Semiconductors,"In a p-n junction diode under forward bias, the width of depletion layer:",Increases,Decreases,Remains same,First increases then decreases,B
+28,Physics,Semiconductors,"The forbidden energy gap in a conductor, semiconductor and insulator follow the order:",C > S > I,I > S > C,S > C > I,C = S < I,B
+29,Physics,Communication,The frequency range used for satellite communication is:,HF (3-30 MHz),MF (300-3000 kHz),SHF (3-30 GHz),VLF (3-30 kHz),C
+30,Physics,Kinematics,A projectile is launched at 45° with initial speed u. The horizontal range is:,u²/g,2u²/g,u²/2g,√2 u²/g,A
+31,Physics,Laws of Motion,A 10 kg block on a frictionless surface is pushed by a force F = 30 N at angle 30° below horizontal. The normal reaction is:,98 N,113 N,83 N,100 N,B
+32,Physics,Fluid Mechanics,"According to Bernoulli's theorem, in streamline flow of an ideal fluid, the sum of pressure, kinetic energy per unit volume and potential energy per unit volume is:",Variable,Constant,Zero,Maximum at narrowest point,B
+33,Physics,Thermodynamics,"In a Carnot engine, the efficiency is 40% and the sink temperature is 300K. The source temperature is:",500 K,400 K,420 K,600 K,A
+34,Physics,Electrostatics,A charge Q is distributed uniformly over a thin spherical shell of radius R. The electric field inside the shell at distance r < R is:,KQ/r²,KQ/R²,Zero,KQr/R³,C
+35,Physics,Current Electricity,"Three resistors 2Ω, 3Ω and 6Ω are connected in parallel. The equivalent resistance is:",1 Ω,11 Ω,1/11 Ω,6 Ω,A
+36,Physics,Magnetism,The magnetic moment of a current loop of area A and current I is:,IA,I/A,A/I,I²A,A
+37,Physics,EMI,Lenz's law is a consequence of the law of conservation of:,Charge,Energy,Momentum,Mass,B
+38,Physics,Optics,A ray of light travels from glass (n=1.5) to water (n=1.33). The critical angle is:,62.7°,41.8°,48.8°,56.2°,A
+39,Physics,Modern Physics,Compton shift Δλ = (h/m₀c)(1−cosθ). The maximum shift occurs when θ equals:,0°,45°,90°,180°,D
+40,Physics,Nuclei,Half life of a radioactive element is 10 days. Time for 87.5% decay is:,20 days,30 days,40 days,50 days,B
+41,Physics,Waves,The speed of sound in air is 340 m/s. A source emitting 500 Hz moves towards a stationary observer at 34 m/s. Observed frequency is:,550 Hz,455 Hz,500 Hz,476 Hz,A
+42,Physics,Oscillations,"For a particle in SHM, the ratio of kinetic energy to total energy when displacement is half the amplitude is:",01-Apr,03-Apr,01-Feb,1/√2,B
+43,Physics,Properties of Matter,The excess pressure inside a soap bubble of radius R and surface tension T is:,2T/R,4T/R,T/R,T/2R,B
+44,Physics,Rotational Motion,"A ring, a disc and a sphere all of same mass and radius roll without slipping. The one with greatest moment of inertia about its own axis is:",Ring,Disc,Sphere,All equal,A
+45,Physics,Electrostatics,Two point charges +4q and −q are separated by distance d. The neutral point (where E=0) is located:,Between the charges,At d/3 from −q outside,At 2d from +4q outside,At d from −q outside on far side,B
+46,Chemistry,Atomic Structure,The number of radial nodes in 3p orbital is:,0,1,2,3,B
+47,Chemistry,Chemical Bonding,The hybridization and geometry of XeF₄ is:,"sp³d², octahedral","sp³d², square planar","sp³d, trigonal bipyramidal","sp³, tetrahedral",B
+48,Chemistry,Chemical Bonding,Bond order of O₂⁻ (superoxide ion) is:,1.5,2.5,2,1,A
+49,Chemistry,States of Matter,"At STP, equal volumes of all gases contain equal number of molecules. This is:",Boyle's Law,Charles' Law,Avogadro's Hypothesis,Dalton's Law,C
+50,Chemistry,Thermodynamics,"For a spontaneous process at constant T and P, the Gibbs free energy change ΔG must be:",Positive,Zero,Negative,Equal to enthalpy,C
+51,Chemistry,Equilibrium,"For the reaction N₂ + 3H₂ ⇌ 2NH₃, Kp and Kc are related as:",Kp = Kc(RT)²,Kp = Kc(RT)⁻²,Kp = Kc(RT),Kp = Kc,B
+52,Chemistry,Redox Reactions,Oxidation state of Cr in K₂Cr₂O₇ is:,3,6,7,4,B
+53,Chemistry,Solutions,The van't Hoff factor for Al₂(SO₄)₃ assuming complete dissociation is:,3,4,5,6,C
+54,Chemistry,Electrochemistry,Standard electrode potential of SHE (Standard Hydrogen Electrode) is:,1 V,0 V,-1 V,0.5 V,B
+55,Chemistry,Chemical Kinetics,"For a first order reaction, the time required for 99% completion is approximately:",2 × t₁/₂,3.32 × t₁/₂,6.64 × t₁/₂,10 × t₁/₂,C
+56,Chemistry,Surface Chemistry,Adsorption of gases on solids is generally:,Endothermic,Exothermic,Thermoneutral,Depends on gas,B
+57,Chemistry,p-Block Elements,The oxide of nitrogen that is a mixed anhydride is:,N₂O,NO,N₂O₃,N₂O₅,C
+58,Chemistry,d-Block Elements,KMnO₄ in acidic medium acts as oxidizing agent. The oxidation state of Mn changes from +7 to:,0,2,4,6,B
+59,Chemistry,Coordination Chemistry,EDTA is a:,Monodentate ligand,Bidentate ligand,Hexadentate ligand,Tridentate ligand,C
+60,Chemistry,Haloalkanes,"In SN2 reaction, the configuration at the carbon centre undergoes:",Retention,Inversion,Racemization,No change,B
+61,Chemistry,Alcohols,"Lucas test is used to distinguish between primary, secondary and tertiary alcohols. Tertiary alcohol gives turbidity:",After 5 minutes,No turbidity,Immediately,After 1 minute,C
+62,Chemistry,Carbonyl Compounds,Aldol condensation occurs when aldehydes or ketones having α-hydrogen are treated with:,Dilute NaOH,Conc. H₂SO₄,Grignard reagent,LiAlH₄,A
+63,Chemistry,Carboxylic Acids,Which of the following has highest acidity?,CH₃COOH,ClCH₂COOH,Cl₂CHCOOH,Cl₃CCOOH,D
+64,Chemistry,Amines,"In Hinsberg test, primary amines react with benzenesulfonyl chloride to give a product soluble in:",Dilute HCl,NaOH,Water,Ether,B
+65,Chemistry,Biomolecules,Which amino acid is essential and cannot be synthesized in the human body?,Glycine,Alanine,Lysine,Serine,C
+66,Chemistry,Polymers,"Nylon-6,6 is formed by condensation of:",Caprolactam,Hexamethylenediamine and adipic acid,Hexamethylenediamine and terephthalic acid,Glycol and dimethyl terephthalate,B
+67,Chemistry,s-Block Elements,Which alkali metal reacts with nitrogen directly?,Li,Na,K,Cs,A
+68,Chemistry,p-Block Elements,The strongest reducing agent among hydrides of Group 15 is:,NH₃,PH₃,AsH₃,BiH₃,D
+69,Chemistry,Atomic Structure,Which quantum number determines the energy of an electron in hydrogen atom?,Principal (n),Azimuthal (l),Magnetic (m),Spin (s),A
+70,Chemistry,Chemical Bonding,The order of bond dissociation energy among halogens is:,F₂>Cl₂>Br₂>I₂,Cl₂>Br₂>F₂>I₂,Cl₂>F₂>Br₂>I₂,I₂>Br₂>Cl₂>F₂,C
+71,Chemistry,Thermodynamics,Enthalpy of formation of water is −286 kJ/mol. The bond energy of O−H bond (approximately) is:,463 kJ/mol,286 kJ/mol,143 kJ/mol,572 kJ/mol,A
+72,Chemistry,Equilibrium,Henderson-Hasselbalch equation is used for calculating pH of:,Strong acid solution,Buffer solution,Salt solution,Pure water,B
+73,Chemistry,Electrochemistry,The standard cell potential of Zn-Cu Daniell cell is:,1.1 V,0.76 V,0.34 V,1.44 V,A
+74,Chemistry,Chemical Kinetics,Arrhenius equation relates rate constant k with temperature. The slope of ln k vs 1/T graph is:,Ea/R,-Ea/R,R/Ea,A (frequency factor),B
+75,Chemistry,Solutions,Osmotic pressure π = CRT. For a 0.2 M glucose solution at 300K (R=0.082 L·atm/mol·K):,4.92 atm,2.46 atm,9.84 atm,1.23 atm,A
+76,Chemistry,d-Block Elements,The catalyst used in Haber process for synthesis of ammonia is:,Platinum,Iron,Vanadium pentoxide,Nickel,B
+77,Chemistry,Coordination Chemistry,"According to Crystal Field Theory, Δo is larger for:",Weak field ligands,Strong field ligands,Halide ligands,Monodentate ligands,B
+78,Chemistry,Haloalkanes,The order of reactivity in SN1 reaction is:,Primary > Secondary > Tertiary,Secondary > Primary > Tertiary,Tertiary > Secondary > Primary,All equal,C
+79,Chemistry,Phenols,Phenol when treated with bromine water gives:,Monobromophenol,"2,4,6-tribromophenol",4-bromophenol,2-bromophenol,B
+80,Chemistry,Carbonyl Compounds,Tollens' reagent (ammonical AgNO₃) gives silver mirror test positive with:,Acetone,Benzaldehyde,Cyclohexanone,Methyl ketone,B
+81,Chemistry,Biomolecules,The glycosidic linkage in sucrose is between:,C1 of glucose and C4 of fructose,C1 of glucose and C2 of fructose,C1 of glucose and C6 of fructose,C4 of glucose and C1 of fructose,B
+82,Chemistry,p-Block Elements,White phosphorus (P₄) has the structure of:,Regular tetrahedron,Square planar,Trigonal bipyramidal,Octahedral,A
+83,Chemistry,Surface Chemistry,Brownian motion in colloids is due to:,Gravity,Unequal bombardment by dispersion medium,Charge on particles,Temperature gradient,B
+84,Chemistry,Environmental Chemistry,The main reason for acid rain is the presence of:,CO₂,CO,SO₂ and NO₂,O₃,C
+85,Chemistry,Redox Reactions,"In the reaction MnO₄⁻ + Fe²⁺ → Mn²⁺ + Fe³⁺ (acidic medium), the moles of Fe²⁺ oxidized per mole of MnO₄⁻ is:",3,4,5,6,C
+86,Chemistry,States of Matter,"At constant pressure, the volume of a gas is directly proportional to temperature. This is:",Boyle's Law,Charles' Law,Gay-Lussac's Law,Graham's Law,B
+87,Chemistry,Atomic Structure,The electronic configuration of Cu (Z=29) is:,[Ar] 3d⁹ 4s²,[Ar] 3d¹⁰ 4s¹,[Ar] 3d⁸ 4s²,[Ar] 4s² 4p¹,B
+88,Chemistry,Amines,The pKa of aniline is much higher than that of methylamine because:,Benzene ring is electron withdrawing,Lone pair of N delocalizes into ring,N is more electronegative in aniline,Steric effect,B
+89,Chemistry,Polymers,Buna-S rubber is a copolymer of:,Styrene and isoprene,Butadiene and styrene,Isoprene and styrene,Butadiene and isobutylene,B
+90,Chemistry,Haloalkanes,Fluorocarbon compounds are chemically inert due to:,Weak C-F bond,Strong C-F bond due to small size of F,Low electronegativity of F,High polarity,B
+91,Botany,Cell Biology,The middle lamella is primarily composed of:,Cellulose,Pectin,Lignin,Suberin,B
+92,Botany,Cell Biology,Which organelle is known as the 'powerhouse of the cell'?,Golgi body,Ribosome,Mitochondria,Lysosome,C
+93,Botany,Cell Biology,The contractile vacuole in Amoeba mainly functions to:,Store food,Regulate water balance,Aid in locomotion,Digest food,B
+94,Botany,Cell Division,"In meiosis II, the number of chromosomes in each daughter cell of a human cell (original 2n=46) is:",46,23,12,92,B
+95,Botany,Cell Division,Crossing over occurs during which stage of meiosis?,Leptotene,Zygotene,Pachytene,Diplotene,C
+96,Botany,Biomolecules,Which of the following is a non-reducing sugar?,Glucose,Maltose,Lactose,Sucrose,D
+97,Botany,Plant Morphology,The tap root system is characteristic of:,Monocots,Dicots,Pteridophytes,Bryophytes,B
+98,Botany,Plant Morphology,Stipules are outgrowths at the base of:,Leaf,Petiole,Stem,Root,B
+99,Botany,Anatomy,Casparian strips are present in:,Epidermis,Cortex,Endodermis,Pericycle,C
+100,Botany,Anatomy,The vascular bundles in monocot stem are:,Open and arranged in a ring,Closed and scattered,Open and scattered,Closed and arranged in ring,B
+101,Botany,Mineral Nutrition,Nitrogen fixation by free-living aerobic bacteria is performed by:,Rhizobium,Azotobacter,Nitrobacter,Nitrosomonas,B
+102,Botany,Mineral Nutrition,Which element is a component of chlorophyll and is essential for photosynthesis?,Iron,Manganese,Magnesium,Zinc,C
+103,Botany,Photosynthesis,The C4 cycle is also known as:,Calvin cycle,Hatch-Slack pathway,Krebs cycle,Shikimic acid pathway,B
+104,Botany,Photosynthesis,"In the Z-scheme of photosynthesis, non-cyclic photophosphorylation produces:",Only ATP,Only NADPH,Both ATP and NADPH,Only O₂,C
+105,Botany,Respiration,The net gain of ATP from complete oxidation of one glucose molecule in eukaryotes is:,36-38 ATP,38-40 ATP,30-32 ATP,2 ATP,A
+106,Botany,Respiration,Which enzyme catalyzes the first reaction of glycolysis (phosphorylation of glucose)?,Phosphoglucose isomerase,Hexokinase,Phosphofructokinase,Pyruvate kinase,B
+107,Botany,Plant Growth,Apical dominance is caused by:,Cytokinin,Auxin,Gibberellin,Abscisic acid,B
+108,Botany,Plant Growth,The hormone responsible for fruit ripening and senescence is:,Ethylene,Auxin,Cytokinin,GA₃,A
+109,Botany,Plant Growth,Vernalization is the process by which:,Seeds germinate after cold treatment,Flowers are induced by cold temperature,Roots grow towards gravity,Leaves lose water,B
+110,Botany,Reproduction,The endosperm of angiosperms is:,Diploid (2n),Triploid (3n),Haploid (n),Tetraploid (4n),B
+111,Botany,Reproduction,Double fertilization is unique to:,Gymnosperms,Angiosperms,Bryophytes,Pteridophytes,B
+112,Botany,Genetics,A cross between Tt × tt is:,Monohybrid cross,Test cross,Reciprocal cross,Back cross,B
+113,Botany,Genetics,"In incomplete dominance, the F₁ hybrid of red × white flowers is:",Red,White,Pink,Variegated,C
+114,Botany,Molecular Biology,The enzyme that unwinds the DNA double helix during replication is:,DNA polymerase,Helicase,Ligase,Primase,B
+115,Botany,Molecular Biology,The anticodon is present on:,mRNA,tRNA,rRNA,DNA,B
+116,Botany,Ecology,Lichens are considered as pollution indicators because they are sensitive to:,CO₂,SO₂,CO,NO₂,B
+117,Botany,Ecology,"In a food chain, the energy available at each successive trophic level is:",10% of previous level,20% of previous level,50% of previous level,100% of previous level,A
+118,Botany,Plant Kingdom,"Alternation of generation is found in all plants. In bryophytes, the dominant phase is:",Sporophyte,Gametophyte,Both equally,Neither,B
+119,Botany,Plant Kingdom,Pteridophytes are the first land plants to have:,Seeds,Vascular tissue,Flowers,Fruits,B
+120,Botany,Biotechnology,Restriction enzymes are also called molecular scissors because they:,Cut DNA at specific sequences,Join DNA fragments,Replicate DNA,Transcribe DNA,A
+121,Botany,Cell Biology,Lysosomes contain enzymes that work at:,pH 7.4,pH 5 (acidic),pH 9 (alkaline),pH 6.8,B
+122,Botany,Photosynthesis,Chlorophyll a absorbs light maximally at:,450 nm (blue) and 680 nm (red),550 nm (green),700 nm (far red),350 nm (UV),A
+123,Botany,Plant Morphology,The type of placentation where ovules are borne on the inner wall of the ovary is:,Axile,Parietal,Free central,Basal,B
+124,Botany,Anatomy,Which of the following is responsible for the secondary growth in dicot stem?,Cork cambium,Vascular cambium,Apical meristem,Intercalary meristem,B
+125,Botany,Mineral Nutrition,Deficiency of which element causes chlorosis (yellowing) of younger leaves?,Nitrogen,Iron,Calcium,Potassium,B
+126,Botany,Plant Growth,ABA (Abscisic acid) is known as the stress hormone because it:,Promotes growth under drought,Causes stomatal closure during water stress,Promotes seed germination,Inhibits root growth,B
+127,Botany,Reproduction,Apomixis is a type of reproduction where:,Seeds are formed without fertilization,Fruits form without fertilization (parthenocarpy),Vegetative propagation occurs,Clonal propagation through seeds,A
+128,Botany,Genetics,The law of independent assortment holds true when genes are located on:,Same chromosome,Different chromosomes,Sex chromosomes only,Autosomes only,B
+129,Botany,Molecular Biology,Sigma factor in bacterial transcription is responsible for:,Recognizing and binding to the promoter,Terminating transcription,Elongating the RNA chain,Adding 5' cap,A
+130,Botany,Ecology,Mutualistic association between fungi and roots of higher plants is called:,Lichen,Mycorrhiza,Rhizobium association,Parasitism,B
+131,Botany,Plant Kingdom,"In Pinus, the male cone produces:",Megaspores,Microspores,Seeds,Ovules,B
+132,Botany,Biotechnology,"Ti plasmid, used as a vector in plant transformation, is found in:",Agrobacterium tumefaciens,Bacillus thuringiensis,Rhizobium,Pseudomonas,A
+133,Botany,Cell Division,MPF (Maturation Promoting Factor) promotes entry into M phase. It is a complex of:,Cyclin B and CDK1,Cyclin D and CDK4,Cyclin A and CDK2,Cyclin E and CDK2,A
+134,Botany,Respiration,RQ (Respiratory Quotient) for carbohydrates is:,0.7,0.8,1,More than 1,C
+135,Botany,Plant Growth,Photoperiodism is controlled by the pigment:,Chlorophyll,Phytochrome,Carotenoid,Xanthophyll,B
+136,Zoology,Animal Kingdom,Notochord is derived from which germ layer?,Ectoderm,Mesoderm,Endoderm,None of these,B
+137,Zoology,Animal Kingdom,Which of the following is a characteristic exclusive to chordates?,Bilateral symmetry,Coelom,Post-anal tail,Closed circulatory system,C
+138,Zoology,Animal Kingdom,"In Phylum Porifera, the water current is expelled through:",Ostia,Oscula,Choanocytes,Spongocoel,B
+139,Zoology,Animal Kingdom,The larval stage of Fasciola hepatica that infects snail is:,Miracidium,Cercaria,Metacercaria,Redia,A
+140,Zoology,Animal Kingdom,Malpighian tubules are the excretory organs of:,Earthworm,Cockroach,Frog,Hydra,B
+141,Zoology,Human Physiology,The enzyme pepsin is secreted by:,Chief (peptic) cells,Parietal cells,G cells,Goblet cells,A
+142,Zoology,Human Physiology,The bicuspid (mitral) valve is present between:,Right atrium and right ventricle,Left atrium and left ventricle,Right ventricle and pulmonary artery,Left ventricle and aorta,B
+143,Zoology,Human Physiology,Erythroblastosis fetalis occurs when:,Mother is Rh+ and fetus is Rh-,Mother is Rh- and fetus is Rh+,Both mother and fetus are Rh-,Both are Rh+,B
+144,Zoology,Human Physiology,The normal glomerular filtration rate (GFR) in humans is approximately:,12.5 mL/min,125 mL/min,1250 mL/min,1.25 mL/min,B
+145,Zoology,Human Physiology,Which part of the brain controls breathing?,Cerebrum,Cerebellum,Medulla oblongata,Hypothalamus,C
+146,Zoology,Human Physiology,The resting membrane potential of a nerve cell is approximately:,+70 mV,-70 mV,0 mV,-55 mV,B
+147,Zoology,Human Physiology,Sertoli cells in testes provide nourishment to:,Leydig cells,Spermatogonia,Developing spermatids,Spermatozoa,C
+148,Zoology,Human Physiology,The hormone responsible for milk ejection (let-down reflex) is:,Prolactin,Oxytocin,Estrogen,FSH,B
+149,Zoology,Human Physiology,Which of the following is the correct sequence of air movement during inhalation?,Nostrils→pharynx→larynx→trachea→bronchi→bronchioles→alveoli,Nostrils→larynx→pharynx→trachea→bronchi→alveoli,Mouth→trachea→pharynx→bronchi→alveoli,Trachea→bronchi→larynx→alveoli,A
+150,Zoology,Human Physiology,The enzyme that converts fibrinogen to fibrin during blood clotting is:,Prothrombin,Thrombin,Factor X,Plasmin,B
+151,Zoology,Genetics,A person with genotype IAi has blood group:,AB,O,A,B,C
+152,Zoology,Genetics,Colour blindness gene is located on:,Autosome,Y chromosome,X chromosome,Both X and Y,C
+153,Zoology,Genetics,"In a dihybrid cross AaBb × AaBb, the ratio of AABB : AaBb in offspring is:",01:04,01:02,01:03,02:03,A
+154,Zoology,Evolution,Which evidence of evolution is provided by comparative embryology?,Similar early embryonic development across phyla,Fossil records,Homologous organs,Vestigial organs,A
+155,Zoology,Evolution,Industrial melanism in Biston betularia is an example of:,Genetic drift,Natural selection,Mutation,Gene flow,B
+156,Zoology,Molecular Biology,Okazaki fragments are formed during:,Transcription,Translation,DNA replication (lagging strand),Recombination,C
+157,Zoology,Human Health,The causative agent of malaria is Plasmodium. It is transmitted by:,Male Anopheles mosquito,Female Anopheles mosquito,Aedes mosquito,Culex mosquito,B
+158,Zoology,Human Health,Active immunity differs from passive immunity in that:,It is acquired from mother,It involves administration of antibodies,It is long-lasting as memory cells are formed,It acts immediately,C
+159,Zoology,Human Health,The antibody most abundant in serum and involved in secondary immune response is:,IgM,IgA,IgE,IgG,D
+160,Zoology,Biotechnology,"Dolly, the first cloned sheep, was produced by:",In vitro fertilization,Somatic cell nuclear transfer,Embryo splitting,Parthenogenesis,B
+161,Zoology,Animal Kingdom,Hemocyanin is the respiratory pigment in:,Insects,Molluscs and Arthropods,Annelids,Echinoderms,B
+162,Zoology,Human Physiology,The enzyme amylase in saliva breaks down:,Proteins,Fats,Starch,Nucleic acids,C
+163,Zoology,Human Physiology,Loop of Henle plays a major role in:,Glomerular filtration,Tubular reabsorption of water,Selective reabsorption of glucose,Secretion of urea,B
+164,Zoology,Human Physiology,Insulin is secreted by the β cells of islets of Langerhans in response to:,Low blood glucose,High blood glucose,High glucagon,Low glycogen,B
+165,Zoology,Human Physiology,The hormone that increases BMR and promotes neural development is:,Cortisol,Thyroxine,Growth hormone,ADH,B
+166,Zoology,Human Physiology,"During muscle contraction, the I-band:",Remains unchanged,Increases,Decreases,Disappears,C
+167,Zoology,Genetics,"Turner syndrome (45, X0) results from:",Non-disjunction in female meiosis,Non-disjunction in male meiosis,Both A and B possible,Translocation,C
+168,Zoology,Evolution,Hardy-Weinberg equilibrium can be disturbed by:,Random mating,Large population size,Natural selection,No mutation,C
+169,Zoology,Human Health,Which cells of the immune system are responsible for cell-mediated immunity?,B lymphocytes,T lymphocytes,NK cells,Macrophages,B
+170,Zoology,Animal Kingdom,The water vascular system is a characteristic feature of:,Coelenterata,Echinodermata,Annelida,Arthropoda,B
+171,Zoology,Human Physiology,The corpus luteum secretes which hormone to maintain pregnancy?,Estrogen only,Progesterone,LH,FSH,B
+172,Zoology,Molecular Biology,The enzyme reverse transcriptase is found in:,Bacteriophages,Retroviruses,Adenoviruses,Bacterium,B
+173,Zoology,Ecology,The interaction where one species benefits and the other is neither harmed nor benefited is:,Mutualism,Commensalism,Predation,Parasitism,B
+174,Zoology,Human Health,Widal test is used for the diagnosis of:,Typhoid,Malaria,TB,Cholera,A
+175,Zoology,Animal Kingdom,The process of ecdysis (moulting) in arthropods is controlled by the hormone:,Juvenile hormone,Ecdysone,Insulin,Thyroxine,B
+176,Zoology,Human Physiology,Carbonic anhydrase enzyme is found in:,Plasma,RBC,WBC,Platelets,B
+177,Zoology,Genetics,Pleiotropy refers to:,Many genes controlling one character,One gene controlling many characters,Multiple alleles,Codominance,B
+178,Zoology,Evolution,Which of the following best describes convergent evolution?,Similar structures due to common ancestry,Similar structures due to similar environment in unrelated species,Different structures with same function from same ancestor,Gene flow between populations,B
+179,Zoology,Human Health,The type of immunity transferred from mother to child through placenta is:,Active natural,Active artificial,Passive natural,Passive artificial,C
+180,Zoology,Human Physiology,The pacemaker of the heart (SA node) is located in the:,Right atrium,Left atrium,Right ventricle,Interventricular septum,A

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:flutter_application_1/core/constants/app_colors.dart';
 import 'package:flutter_application_1/core/widgets/chat_bubble.dart';
 import 'package:flutter_application_1/core/widgets/custom_card.dart';
 import 'package:flutter_application_1/widgets/bottom_nav.dart';
@@ -19,13 +18,9 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
   final List<ChatMessageModel> _messages = [];
   final ChatService _service = ChatService();
-  final List<String> _suggestions = const [
-    'which hormone produce calcium in blood',
-    'what is mitochondria',
-    'explain animal kingdom detaily',
-  ];
   String? _sessionId;
-  bool _detailedMode = false;
+  // detailed mode removed
+
   bool _sending = false;
 
   @override
@@ -54,7 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
         text,
         history: _messages,
         sessionId: _sessionId,
-        detailed: _detailedMode,
+
       );
       final reply = res['reply'] as String? ?? 'No reply';
       setState(() {
@@ -92,29 +87,7 @@ class _ChatScreenState extends State<ChatScreen> {
           'AI Chat',
           style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: Row(
-              children: [
-                Text(
-                  'Detailed',
-                  style: GoogleFonts.poppins(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textSecondary,
-                  ),
-                ),
-                Switch(
-                  value: _detailedMode,
-                  onChanged: _sending
-                      ? null
-                      : (value) => setState(() => _detailedMode = value),
-                ),
-              ],
-            ),
-          ),
-        ],
+        actions: [],
       ),
       body: Column(
         children: [
@@ -137,32 +110,6 @@ class _ChatScreenState extends State<ChatScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    // horizontal scrollable suggestion chips near composer
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: SizedBox(
-                        height: 40,
-                        child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.only(right: 8),
-                          itemCount: _suggestions.length,
-                          separatorBuilder: (context, index) => const SizedBox(width: 8),
-                          itemBuilder: (context, idx) {
-                            final suggestion = _suggestions[idx];
-                            return ActionChip(
-                              label: Text(suggestion),
-                              onPressed: _sending
-                                  ? null
-                                  : () {
-                                      _controller.text = suggestion;
-                                      _send();
-                                    },
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 12),
                     Row(
                       children: [
                         Expanded(
@@ -202,22 +149,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          _detailedMode ? 'Mode: Detailed' : 'Mode: Concise',
-                          style: GoogleFonts.poppins(
-                            fontSize: 12,
-                            color: AppColors.textSecondary,
-                          ),
-                        ),
-                        if (_sending)
-                          Text(
-                            'Generating reply...',
-                            style: GoogleFonts.poppins(
-                              fontSize: 12,
-                              color: AppColors.primary,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+
                       ],
                     ),
                   ],

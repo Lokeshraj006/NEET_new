@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/widgets/bottom_nav_bar.dart';
 import 'package:flutter_application_1/screens/chat_screen.dart';
 import 'package:flutter_application_1/screens/profile_screen.dart';
+import 'package:flutter_application_1/screens/pyq_screen.dart';
 
 class BottomNav extends StatelessWidget {
   final int selectedIndex;
@@ -23,6 +24,10 @@ class BottomNav extends StatelessWidget {
           return;
         }
         if (index == 3) {
+          Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PyqScreen()));
+          return;
+        }
+        if (index == 4) {
           Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProfileScreen()));
           return;
         }

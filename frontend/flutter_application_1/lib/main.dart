@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/theme.dart';
 import 'package:flutter_application_1/models/home_model.dart';
-import 'package:flutter_application_1/screens/home_screen.dart';
-import 'package:flutter_application_1/screens/login_screen.dart';
+import 'package:flutter_application_1/screens/daily_streak_screen.dart';
 import 'package:flutter_application_1/screens/mock_test_flow.dart';
+import 'package:flutter_application_1/screens/splash_screen.dart';
 import 'package:flutter_application_1/services/auth_service.dart';
 
 void main() async {
@@ -26,8 +26,11 @@ class NEETPrepApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: buildAppTheme(),
         onGenerateRoute: (settings) {
+          if (settings.name == '/streak/daily') {
+            return MaterialPageRoute(builder: (_) => const DailyStreakScreen(), settings: settings);
+          }
           if (settings.name == '/mock-test/start') {
-            return MaterialPageRoute(builder: (_) => const MockTestPracticeScreen(), settings: settings);
+            return MaterialPageRoute(builder: (_) => const MockTestLandingScreen(), settings: settings);
           }
           if (settings.name == '/mock-test/result') {
             final args = settings.arguments;
@@ -38,7 +41,7 @@ class NEETPrepApp extends StatelessWidget {
           }
           return null;
         },
-        home: loggedIn ? const HomeScreen() : const LoginScreen(),
+        home: SplashScreen(loggedIn: loggedIn),
       ),
     );
   }

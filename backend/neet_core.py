@@ -35,6 +35,7 @@ try:
     from .pageindex import get_page_index
     from . import auth as auth_router
     from . import mock_test_api
+    from . import streak_api
 except ImportError:
     import memory as session_memory
     from neet_config import (
@@ -60,6 +61,7 @@ except ImportError:
     from pageindex import get_page_index
     import auth as auth_router
     import mock_test_api
+    import streak_api
 PAGE_INDEX = get_page_index()
 RAG_AVAILABLE = False
 _PAGE_INDEX_READY = False
@@ -76,6 +78,7 @@ app.add_middleware(
 
 app.include_router(auth_router.router)
 app.include_router(mock_test_api.router)
+app.include_router(streak_api.router)
 
 
 @app.get('/health')
@@ -603,8 +606,6 @@ def synthesize_answer(query: str, history: List[Dict], retrieved: List[Dict], de
         reply = retrieved[0]['text'].strip()
         if len(retrieved) > 1:
             reply = f"{reply} {retrieved[1]['text'].strip()}"
-        if len(reply) > 500:
-            reply = reply[:500].rstrip() + '...'
         return format_mistral_response(reply, query=query, detailed=detailed)
     return fallback_neet_answer(query)
 
@@ -695,8 +696,6 @@ def call_mistral_generate(api_key: str, prompt: str) -> str:
                         for key in ('text', 'response', 'generated_text', 'output'):
                             if key in data and isinstance(data[key], str):
                                 text = data[key].strip()
-                                if len(text) > 1000:
-                                    text = text[:1000] + '...'
                                 return text
                         if 'choices' in data and isinstance(data['choices'], list) and data['choices']:
                             c0 = data['choices'][0]
@@ -706,8 +705,6 @@ def call_mistral_generate(api_key: str, prompt: str) -> str:
                                     content = message.get('content')
                                     if isinstance(content, str) and content.strip():
                                         txt = content.strip()
-                                        if len(txt) > 1000:
-                                            txt = txt[:1000] + '...'
                                         return txt
 
                         if 'choices' in data and isinstance(data['choices'], list) and data['choices']:
@@ -716,10 +713,8 @@ def call_mistral_generate(api_key: str, prompt: str) -> str:
                                 txt = c0.get('text') or c0.get('message') or c0.get('output')
                                 if isinstance(txt, str):
                                     txt = txt.strip()
-                                    if len(txt) > 1000:
-                                        txt = txt[:1000] + '...'
                                     return txt
-                    return resp.text.strip()[:1000]
+                    return resp.text.strip()
 
                 body_preview = resp.text[:200]
                 is_capacity_429 = (
@@ -864,7 +859,8 @@ def _fallback_mock_questions(count: int, exclude_hashes: List[str]) -> List[Dict
 
 @app.post('/mock-test/generate')
 async def generate_mock_test(req: MockTestRequest):
-    count = max(1, min(int(req.count or 10), 20))
+    # Allow up to 180 questions (full mock) — prefer pipeline outputs if present
+    count = max(1, min(int(req.count or 180), 180))
     exclude_hashes = [str(x) for x in req.exclude_hashes if str(x).strip()]
     query = 'Physics Chemistry Biology NEET full syllabus'
     retrieved = get_retrieved(query, k=max(12, count))
@@ -872,6 +868,28 @@ async def generate_mock_test(req: MockTestRequest):
         'session_id': req.session_id or session_memory.create_session(),
         'questions': [],
     }
+    # If pipeline JSON bundles exist, prefer them to assemble the full paper quickly
+    try:
+        from pathlib import Path
+        from .mock_test_api import _flatten_pipeline_bundle
+        pipeline_dir = Path(__file__).parent / 'mock_test_pipeline' / 'output'
+        if pipeline_dir.exists():
+            pipeline_questions = []
+            for p in sorted(pipeline_dir.glob('mock_test_set_*.json')):
+                try:
+                    import json
+                    payload_json = json.loads(p.read_text(encoding='utf-8'))
+                    flattened = _flatten_pipeline_bundle(payload_json)
+                    if isinstance(flattened, list) and flattened:
+                        pipeline_questions.extend(flattened)
+                except Exception:
+                    continue
+            if pipeline_questions:
+                payload['questions'] = pipeline_questions[:count]
+                return payload
+    except Exception:
+        # Fall back to existing generation logic on any error
+        pass
     api_key = get_mistral_api_key()
     if api_key:
         try:
@@ -884,6 +902,27 @@ async def generate_mock_test(req: MockTestRequest):
         payload['questions'].extend(_fallback_mock_questions(count - len(payload['questions']), exclude_hashes))
     payload['questions'] = payload['questions'][:count]
     return payload
+
+
+@app.post('/dev/fixed-set/{set_id}')
+async def dev_fixed_set(set_id: int):
+    """Developer-only endpoint to return a fixed-set bundle without auth.
+
+    This is a temporary helper for local testing. Do not expose in production.
+    """
+    try:
+        # Prefer the pipeline bundle loader from mock_test_api if available
+        try:
+            bundle = mock_test_api._load_fixed_set_bundle(set_id)
+            return bundle
+        except Exception:
+            # Fall back to loading via the module function if direct call fails
+            from .mock_test_api import _load_fixed_set_bundle as _loader
+            return _loader(set_id)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
 
 
 @app.post('/session/reset')

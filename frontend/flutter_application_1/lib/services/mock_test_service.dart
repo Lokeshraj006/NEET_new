@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_application_1/services/auth_service.dart';
+import 'package:flutter_application_1/services/mock_test_api_service.dart';
 
 class MockQuestion {
   final String subject;
@@ -15,7 +16,7 @@ class MockQuestion {
   final int answerIndex;
   final String explanation;
   final String hash;
-  final String questionImageBase64;
+  final String? questionImageBase64;
   final int? sourcePage;
 
   const MockQuestion({
@@ -26,7 +27,7 @@ class MockQuestion {
     required this.answerIndex,
     required this.explanation,
     required this.hash,
-    this.questionImageBase64 = '',
+    this.questionImageBase64,
     this.sourcePage,
   });
 
@@ -47,7 +48,7 @@ class MockQuestion {
 
   static String _stripOptionPrefix(String value) {
     return value
-        .replaceFirst(RegExp(r'^\s*(?:\(?\s*[A-Da-d1-4]\s*\)?[\).:-]?\s*)'), '')
+        .replaceFirst(RegExp(r'^\s*(?:\(?\s*[A-Da-d1-4]\s*\)?[\).:-]\s*)'), '')
         .trim();
   }
 
@@ -68,6 +69,22 @@ class MockQuestion {
       }
     }
     return _cleanText(value);
+  }
+
+  static List<String> _uniqueOptions(Iterable<String> values) {
+    final seen = <String>{};
+    final result = <String>[];
+    for (final value in values) {
+      final cleaned = _stripOptionPrefix(_cleanText(value));
+      if (cleaned.isEmpty || !seen.add(cleaned)) {
+        continue;
+      }
+      result.add(cleaned);
+      if (result.length == 4) {
+        break;
+      }
+    }
+    return result;
   }
 
   static List<String> _optionsFromInlineQuestion(String question) {
@@ -109,10 +126,11 @@ class MockQuestion {
       options.add(_stripOptionPrefix(currentOption.toString()));
     }
 
-    if (options.length >= 2) {
-      return options.take(4).where((entry) => entry.trim().isNotEmpty).toList();
-    }
-    return const [];
+    return _uniqueOptions(options);
+  }
+
+  static List<String> optionsFromInlineQuestion(String question) {
+    return _optionsFromInlineQuestion(question);
   }
 
   static int _answerIndexFromJson(Map<String, dynamic> json) {
@@ -176,13 +194,33 @@ class MockQuestion {
       if (fallback.length >= 4) return fallback.take(4).toList();
     }
     if (raw is List) {
-      final values = raw
-          .map(_stringFromJsonValue)
-          .map(_stripOptionPrefix)
-          .where((value) => value.isNotEmpty)
-          .take(4)
-          .toList();
-      if (values.length == 4) return values;
+      final values = _uniqueOptions(
+        raw
+            .map(_stringFromJsonValue)
+            .map(_stripOptionPrefix)
+            .where((value) => value.isNotEmpty),
+      );
+      if (values.length == 4) {
+        return values;
+      }
+
+      final merged = <String>[...values];
+      final inlineOptions = _optionsFromInlineQuestion(
+        _cleanText(json['question']),
+      );
+      for (final option in inlineOptions) {
+        if (merged.length == 4) {
+          break;
+        }
+        if (merged.contains(option)) {
+          continue;
+        }
+        merged.add(option);
+      }
+      while (merged.length < 4) {
+        merged.add('');
+      }
+      return merged.take(4).toList(growable: false);
     }
     final inlineOptions = _optionsFromInlineQuestion(
       _cleanText(json['question']),
@@ -220,8 +258,8 @@ class MockTestBundle {
 }
 
 class MockTestService {
-  static const _seenKey = 'mock_test_seen_hashes';
   static const _sessionKey = 'mock_test_session_id';
+  final MockTestApiService _mockTestApiService = MockTestApiService();
   static const _envBaseUrl = String.fromEnvironment(
     'MOCK_TEST_BASE_URL',
     defaultValue: '',
@@ -323,8 +361,9 @@ class MockTestService {
       } on SocketException catch (e) {
         lastConnectionError = e;
         continue;
-      } on TimeoutException {
-        throw Exception('Server took too long to respond.');
+      } on TimeoutException catch (e) {
+        lastConnectionError = e;
+        continue;
       }
     }
 
@@ -334,47 +373,7 @@ class MockTestService {
   }
 
   Future<MockTestBundle> startFullMockTest({int count = 180}) async {
-    final prefs = await _prefs;
-    final seen = prefs.getStringList(_seenKey) ?? const [];
-    final token = await AuthService.getToken();
-    if (token == null || token.trim().isEmpty) {
-      throw Exception('You must sign in before starting a mock test.');
-    }
-    final response = await _postWithFallback(
-      '/mock-test/generate',
-      {'count': count, 'exclude_hashes': seen},
-      token,
-      timeout: const Duration(seconds: 180),
-    );
-    final data = jsonDecode(response.body) as Map<String, dynamic>;
-    final quiz = Map<String, dynamic>.from((data['quiz'] as Map?) ?? const {});
-    final questionList =
-        (data['questions'] as List? ?? quiz['questions'] as List? ?? const []);
-    final questions = questionList
-        .map((e) => MockQuestion.fromJson(Map<String, dynamic>.from(e as Map)))
-        .toList();
-    final nextSessionId = (data['session_id'] ?? '').toString();
-    if (nextSessionId.isNotEmpty) {
-      await prefs.setString(_sessionKey, nextSessionId);
-    }
-    final attempt =
-        int.tryParse('${data['attempt'] ?? quiz['attempt'] ?? 1}') ?? 1;
-    final attemptsAllowed =
-        int.tryParse(
-          '${data['attempts_allowed'] ?? quiz['attempts_allowed'] ?? 5}',
-        ) ??
-        5;
-    final mergedSeen = {
-      ...seen,
-      ...questions.map((q) => q.hash).where((e) => e.isNotEmpty),
-    }.toList();
-    await prefs.setStringList(_seenKey, mergedSeen);
-    return MockTestBundle(
-      sessionId: nextSessionId,
-      questions: questions,
-      attempt: attempt,
-      attemptsAllowed: attemptsAllowed,
-    );
+    return loadFixedSetBundle(1);
   }
 
   Future<void> preloadFullMockTest() async {
@@ -420,22 +419,12 @@ class MockTestService {
     if (token == null || token.trim().isEmpty) {
       throw Exception('You must sign in before opening a mock test set.');
     }
-    final response = await _postWithFallback(
-      '/mock-test/fixed-set/$setId',
-      <String, dynamic>{},
-      token,
-      timeout: const Duration(seconds: 20),
-    );
-    final data = jsonDecode(response.body) as Map<String, dynamic>;
-    final items = (data['questions'] as List? ?? const []);
+    final items = await _mockTestApiService.fetchQuestions(setId, token: token);
     final questions = items
-        .map(
-          (entry) =>
-              MockQuestion.fromJson(Map<String, dynamic>.from(entry as Map)),
-        )
+        .map((entry) => MockQuestion.fromJson(entry))
         .toList();
     return MockTestBundle(
-      sessionId: 'fixed_set_$setId',
+      sessionId: 'db_set_$setId',
       questions: questions,
       attempt: setId,
       attemptsAllowed: 1,
@@ -443,7 +432,7 @@ class MockTestService {
   }
 
   Future<MockTestBundle> fetchQuestions({int count = 180}) async =>
-      startFullMockTest(count: count);
+      loadFixedSetBundle(1);
 
   Future<MockTestBundle> generateUnitQuiz({
     required String subject,

@@ -67,26 +67,11 @@ class SubjectUnitsScreen extends StatelessWidget {
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
-        itemCount: units.length + 1,
+        itemCount: units.length,
         itemBuilder: (context, index) {
-          if (index == 0) {
-            return InfoCard(
-              child: Text(
-                allowStartQuiz
-                    ? 'Choose a unit and jump directly into a focused quiz.'
-                    : 'Browse the chapter tree and open the next level from here.',
-                style: GoogleFonts.poppins(
-                  fontSize: 13.5,
-                  height: 1.45,
-                  color: AppColors.textSecondary,
-                ),
-              ),
-            );
-          }
-
-          final unit = units[index - 1];
+          final unit = units[index];
           return Padding(
-            padding: const EdgeInsets.only(top: 12),
+            padding: EdgeInsets.only(top: index == 0 ? 0 : 12),
             child: InfoCard(
               padding: const EdgeInsets.all(16),
               child: ListTile(
@@ -146,12 +131,6 @@ class SubjectUnitsScreen extends StatelessWidget {
                           subject: title.replaceAll(' Units', '').trim(),
                           unitTitle: unit.title,
                         ),
-                      ),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Open Mock Test > Explore Quizzes to start a quiz.'),
                       ),
                     );
                   }

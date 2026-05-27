@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/app_colors.dart';
 
-class CustomButton extends StatelessWidget {
+class CustomButton extends StatefulWidget {
   final String label;
   final VoidCallback? onPressed;
   final bool outlined;
@@ -19,8 +19,28 @@ class CustomButton extends StatelessWidget {
   });
 
   @override
+  State<CustomButton> createState() => _CustomButtonState();
+}
+
+class _CustomButtonState extends State<CustomButton> with SingleTickerProviderStateMixin {
+  bool _pressed = false;
+  late final AnimationController _shimmerController;
+
+  @override
+  void initState() {
+    super.initState();
+    _shimmerController = AnimationController(vsync: this, duration: const Duration(seconds: 2))..repeat();
+  }
+
+  @override
+  void dispose() {
+    _shimmerController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final content = loading
+    final content = widget.loading
         ? const SizedBox(
             width: 18,
             height: 18,
@@ -33,47 +53,98 @@ class CustomButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (icon != null) ...[
-                Icon(icon, size: 18),
+              if (widget.icon != null) ...[
+                Icon(widget.icon, size: 18),
                 const SizedBox(width: 8),
               ],
-              Text(label),
+              Text(widget.label),
             ],
           );
 
-    final shape = RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(18),
+    final shape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(18));
+
+    final buttonChild = AnimatedScale(
+      duration: const Duration(milliseconds: 120),
+      scale: _pressed ? 0.985 : 1.0,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 11),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            content,
+            if (!widget.outlined && !widget.loading)
+              Positioned.fill(
+                child: AnimatedBuilder(
+                  animation: _shimmerController,
+                  builder: (context, child) {
+                    final w = MediaQuery.of(context).size.width;
+                    final dx = ( _shimmerController.value * (w * 1.2)) - (w * 0.2);
+                    return Transform.translate(
+                      offset: Offset(dx, 0),
+                      child: Opacity(
+                        opacity: 0.12,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [Colors.white.withValues(alpha: 0.0), Colors.white.withValues(alpha: 0.18), Colors.white.withValues(alpha: 0.0)],
+                              stops: const [0.0, 0.5, 1.0],
+                            ),
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+          ],
+        ),
+      ),
     );
 
-    if (outlined) {
+    if (widget.outlined) {
       return SizedBox(
         width: double.infinity,
-        child: OutlinedButton(
-          onPressed: onPressed,
-          style: OutlinedButton.styleFrom(
-            foregroundColor: AppColors.primary,
-            side: const BorderSide(color: AppColors.primary),
-            backgroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-            shape: shape,
+        child: GestureDetector(
+          onTapDown: (_) => setState(() => _pressed = true),
+          onTapUp: (_) => setState(() => _pressed = false),
+          onTapCancel: () => setState(() => _pressed = false),
+          onTap: widget.onPressed,
+          child: OutlinedButton(
+            onPressed: widget.onPressed,
+            style: OutlinedButton.styleFrom(
+              foregroundColor: AppColors.primary,
+              side: const BorderSide(color: AppColors.primary),
+              backgroundColor: Colors.white,
+              shape: shape,
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 11),
+            ),
+            child: buttonChild,
           ),
-          child: content,
         ),
       );
     }
 
     return SizedBox(
       width: double.infinity,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
-          elevation: 0,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-          shape: shape,
+      child: GestureDetector(
+        onTapDown: (_) => setState(() => _pressed = true),
+        onTapUp: (_) => setState(() => _pressed = false),
+        onTapCancel: () => setState(() => _pressed = false),
+        onTap: widget.onPressed,
+        child: ElevatedButton(
+          onPressed: widget.onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.primary,
+            foregroundColor: Colors.white,
+            elevation: 0,
+            shape: shape,
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 11),
+          ),
+          child: buttonChild,
         ),
-        child: content,
       ),
     );
   }

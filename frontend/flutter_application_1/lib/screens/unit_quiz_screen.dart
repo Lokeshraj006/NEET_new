@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,6 +22,59 @@ class _UnitQuizScreenState extends State<UnitQuizScreen> {
   static const int _fixedMinutes = 10;
   int? _attempt;
   int? _attemptsAllowed;
+  
+  bool _isLoading = false;
+  int _countdown = 15;
+  Timer? _timer;
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _startCountdown() {
+    setState(() {
+      _isLoading = true;
+      _countdown = 15;
+    });
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_countdown > 0) {
+        setState(() {
+          _countdown--;
+        });
+      }
+    });
+  }
+
+  void _stopCountdown() {
+    _timer?.cancel();
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  Widget _buildRuleItem(String emoji, String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(emoji, style: const TextStyle(fontSize: 16)),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              text,
+              style: GoogleFonts.poppins(
+                fontSize: 13,
+                color: AppColors.textSecondary,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,11 +160,58 @@ class _UnitQuizScreenState extends State<UnitQuizScreen> {
                 ],
               ),
             ),
-            const Spacer(),
-            CustomButton(
-              label: 'START QUIZ',
-              onPressed: _startQuiz,
-            ),
+            if (_isLoading) ...[
+              const SizedBox(height: 14),
+              InfoCard(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Quiz Rules', style: GoogleFonts.poppins(fontWeight: FontWeight.w700, fontSize: 16)),
+                    const SizedBox(height: 12),
+                    _buildRuleItem('📚', 'Subject-wise practice for ${widget.subject}'),
+                    _buildRuleItem('🤖', 'AI is generating unique questions for this topic'),
+                    _buildRuleItem('🔄', 'Questions are fresh and will not be repeated'),
+                    _buildRuleItem('🎯', 'Maximum 5 attempts allowed per topic'),
+                  ],
+                ),
+              ),
+              const Spacer(),
+              Center(
+                child: Column(
+                  children: [
+                    Text(
+                      _countdown > 0 
+                        ? 'The quiz will generate in $_countdown seconds...'
+                        : 'Almost there, finalizing your quiz...',
+                      style: GoogleFonts.poppins(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primary,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    SizedBox(
+                      width: 200,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
+                        child: const LinearProgressIndicator(
+                          color: AppColors.primary,
+                          backgroundColor: AppColors.primarySoft,
+                          minHeight: 6,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 24),
+            ] else ...[
+              const Spacer(),
+              CustomButton(
+                label: 'START QUIZ',
+                onPressed: _startQuiz,
+              ),
+            ],
           ],
         ),
       ),
@@ -122,23 +223,20 @@ class _UnitQuizScreenState extends State<UnitQuizScreen> {
   }
 
   void _startQuiz() async {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (_) => const Center(child: CircularProgressIndicator()),
-    );
+    _startCountdown();
     try {
       final svc = MockTestService();
       final bundle = await svc.generateUnitQuiz(subject: widget.subject, topic: widget.unitTitle);
       if (!mounted) return;
-      Navigator.of(context).pop(); // remove loader
+      _stopCountdown();
       setState(() {
         _attempt = bundle.attempt;
         _attemptsAllowed = bundle.attemptsAllowed;
       });
       Navigator.of(context).push(MaterialPageRoute(builder: (_) => QuizInProgress(durationMinutes: _fixedMinutes, title: '${widget.unitTitle} • Attempt ${bundle.attempt}/${bundle.attemptsAllowed}', sessionId: bundle.sessionId, questions: bundle.questions)));
     } catch (e) {
-      Navigator.of(context).pop();
+      if (!mounted) return;
+      _stopCountdown();
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to start quiz: $e')));
     }
   }

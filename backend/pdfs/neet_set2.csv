@@ -1,0 +1,182 @@
+﻿NEET 2025 Practice Paper — SET 2 (All 180 Questions),,,,,,,,
+qno,subject,topic,question,optionA,optionB,optionC,optionD,correctAnswer
+1,Physics,Units & Measurement,The dimensional formula of angular momentum is:,[ML²T⁻¹],[MLT⁻¹],[ML²T⁻²],[M²L²T⁻¹],A
+2,Physics,Kinematics,A ball is thrown vertically upward with a velocity of 20 m/s. The maximum height reached is (g=10 m/s²):,10 m,20 m,40 m,5 m,B
+3,Physics,Laws of Motion,A body of mass 5 kg is acted upon by two perpendicular forces 8 N and 6 N. The acceleration of the body is:,2 m/s²,3 m/s²,1 m/s²,4 m/s²,A
+4,Physics,Work Energy Power,A bullet of mass 10 g moving at 400 m/s is stopped by a wooden block. The kinetic energy of bullet before stopping is:,800 J,400 J,200 J,1600 J,A
+5,Physics,Laws of Motion,A rocket of mass 3×10⁴ kg ejects gas at 4×10³ m/s. The thrust force is 1.2×10⁸ N. The acceleration of rocket (neglecting gravity) is:,4000 m/s²,3000 m/s²,2000 m/s²,1000 m/s²,A
+6,Physics,Gravitation,The gravitational potential energy of a body of mass m at height h above Earth's surface (R = radius) is:,−GMm/(R+h),−GMm/R,GMm/h,GMm/(R+h),A
+7,Physics,Properties of Matter,"When a wire of length L, cross-section A and Young's modulus Y is stretched by x, the elastic potential energy stored is:",YAx²/2L,YAx/L,YAx²/L,2YAx²/L,A
+8,Physics,Thermodynamics,One mole of an ideal gas undergoes isothermal expansion from V to 2V at temperature T. The work done by the gas is:,RT ln2,RT,2RT,RT/2,A
+9,Physics,Kinetic Theory,At what temperature will the average KE of gas molecules be double that at 27°C?,54°C,327°C,600°C,300°C,B
+10,Physics,Waves,A transverse wave y = 0.5 sin(2πx − 4πt) cm. The speed of wave is:,2 m/s,4 m/s,1 m/s,0.5 m/s,A
+11,Physics,Electrostatics,"The capacitance of a parallel plate capacitor with plate area A, separation d and dielectric constant K is:",KAε₀/d,Aε₀/Kd,KAε₀d,Aε₀/d,A
+12,Physics,Electrostatics,Two capacitors C₁ = 4μF and C₂ = 6μF are connected in series across 100V. The charge on each capacitor is:,240 μC,120 μC,60 μC,360 μC,A
+13,Physics,Current Electricity,The resistivity of a material depends on:,Length of conductor,Area of cross-section,Nature and temperature of material,Shape of conductor,C
+14,Physics,Current Electricity,"In a meter bridge, the balance point is at 40 cm from left. If known resistance is 60Ω, unknown resistance is:",90 Ω,40 Ω,80 Ω,100 Ω,B
+15,Physics,Magnetism,The magnetic field at the centre of a circular loop of radius R carrying current I is:,μ₀I/2R,μ₀I/R,2μ₀I/R,μ₀I/4R,A
+16,Physics,Magnetism,Tangent galvanometer works on the principle that the magnetic field of current-carrying coil balances:,Vertical component of Earth's field,Horizontal component of Earth's field,Total Earth's field,None of these,B
+17,Physics,EMI,A conducting rod of length L moves with velocity v in a magnetic field B perpendicular to both rod and field. The EMF induced is:,BLv,BL²v,BLv²,B²Lv,A
+18,Physics,AC Circuits,The power factor of a purely inductive circuit is:,1,0,0.5,Infinity,B
+19,Physics,Optics,A concave mirror of focal length 15 cm forms a virtual image at 45 cm behind the mirror. The object distance is:,22.5 cm,30 cm,10 cm,45 cm,A
+20,Physics,Optics,"Snell's law states that n₁sinθ₁ = n₂sinθ₂. When light goes from denser to rarer medium, it bends:",Towards normal,Away from normal,Along normal,Depends on wavelength,B
+21,Physics,Wave Optics,"In single slit diffraction, the angular position of first minimum is:",λ/a,λ/2a,2λ/a,aλ,A
+22,Physics,Wave Optics,Polarisation of light proves that light is:,Longitudinal wave,Transverse wave,Mechanical wave,Sound wave,B
+23,Physics,Modern Physics,The stopping potential for photoelectric effect depends on:,Intensity of light,Frequency of light only,Both intensity and frequency,Number of photons,B
+24,Physics,Modern Physics,The uncertainty principle states Δx·Δp ≥ h/4π. It is applicable to:,Macroscopic particles only,Microscopic particles only,All particles,Only charged particles,C
+25,Physics,Atoms,The wavelength of Hα line (first line of Balmer series) of hydrogen is:,656 nm,486 nm,434 nm,410 nm,A
+26,Physics,Nuclei,"In alpha decay, the mass number decreases by:",1,2,3,4,D
+27,Physics,Semiconductors,"In an n-type semiconductor, the majority charge carriers are:",Holes,Electrons,Both equally,Protons,B
+28,Physics,Semiconductors,The logic gate whose output is 1 only when all inputs are 1 is:,OR,AND,NOT,NOR,B
+29,Physics,Communication,Modulation index in AM is kept less than 1 to avoid:,Noise,Over-modulation and distortion,Carrier loss,Weak signal,B
+30,Physics,Kinematics,A stone is projected horizontally from height H with velocity u. The time to reach the ground is:,√(2H/g),2H/g,√(H/g),H/g,A
+31,Physics,Work Energy Power,The coefficient of restitution for a perfectly elastic collision is:,0,0.5,1,Greater than 1,C
+32,Physics,Rotational Motion,"The moment of inertia of a thin rod of mass M, length L about its centre is:",ML²/3,ML²/12,ML²/6,ML²/4,B
+33,Physics,Gravitation,Geostationary satellites orbit at height ~36000 km. Their time period is:,12 hours,24 hours,6 hours,48 hours,B
+34,Physics,Fluid Mechanics,"The terminal velocity of a sphere of radius r, density ρ falling in a fluid of viscosity η and density σ is:",2r²(ρ−σ)g/9η,r²(ρ−σ)g/9η,2r²ρg/9η,r²ρg/9η,A
+35,Physics,Thermodynamics,"For a monoatomic ideal gas, the ratio Cp/Cv (γ) is:",05-Mar,07-May,04-Mar,03-Feb,A
+36,Physics,Electrostatics,The electric flux through a closed surface enclosing charge Q (Gauss's law) is:,Q/ε₀,Qε₀,Q/4πε₀,4πQ/ε₀,A
+37,Physics,Current Electricity,Kirchhoff's current law is based on conservation of:,Energy,Charge,Momentum,Mass,B
+38,Physics,Magnetism,The force on a current-carrying conductor of length L in magnetic field B at angle θ is:,BIL sinθ,BIL cosθ,BIL tanθ,BIL,A
+39,Physics,Optics,Myopia (short-sightedness) is corrected using:,Convex lens,Concave lens,Cylindrical lens,Bifocal lens,B
+40,Physics,Modern Physics,"Energy of a photon of frequency ν is E = hν. For λ = 500 nm, the energy is approximately:",2.48 eV,1.24 eV,4.96 eV,0.62 eV,A
+41,Physics,Nuclei,Nuclear fission of U-235 releases approximately how much energy per fission?,200 MeV,20 MeV,2 MeV,2000 MeV,A
+42,Physics,Oscillations,"At mean position of a particle executing SHM, which of the following is maximum?",Potential energy,Acceleration,Velocity,Displacement,C
+43,Physics,Properties of Matter,The pressure at depth h below the surface of a liquid of density ρ is:,ρgh,ρg/h,ρh/g,g/ρh,A
+44,Physics,EMI,"Self-inductance of a solenoid of N turns, length l, area A is:",μ₀N²A/l,μ₀NA/l,μ₀N²A·l,μ₀NA/l²,A
+45,Physics,AC Circuits,"Resonant frequency of an LCR circuit with L=1H, C=1μF is:",1000/2π Hz,1/2π Hz,1000 Hz,500/π Hz,A
+46,Chemistry,Some Basic Concepts,"According to Avogadro's hypothesis, 22.4 L of any gas at STP contains:",6.022×10²²,6.022×10²³,6.022×10²⁴,3.011×10²³,B
+47,Chemistry,Atomic Structure,Heisenberg uncertainty principle states that the uncertainty in position and momentum of an electron is:,Δx·Δp ≥ h/4π,Δx·Δp = h,Δx·Δp ≤ h/2π,Δx·Δp = h/2π,A
+48,Chemistry,Chemical Bonding,"In PCl₅, the geometry is:",Trigonal pyramidal,Trigonal bipyramidal,Octahedral,Square pyramidal,B
+49,Chemistry,States of Matter,The van der Waals equation for one mole of gas is:,(P + a/V²)(V − b) = RT,PV = RT,(P − a/V²)(V + b) = RT,PV = nRT,A
+50,Chemistry,Thermodynamics,"At absolute zero, the entropy of a perfectly crystalline substance is:",Maximum,Zero,Minimum but not zero,Infinite,B
+51,Chemistry,Equilibrium,The pH of 0.01 M HCl solution is:,1,2,3,0.5,B
+52,Chemistry,Redox Reactions,"In the reaction: 2H₂O₂ → 2H₂O + O₂, hydrogen peroxide acts as:",Oxidizing agent only,Reducing agent only,Both oxidizing and reducing agent,Neither,C
+53,Chemistry,Solutions,"Elevation in boiling point ΔTb = Kbm. If Kb of water = 0.512 K·kg/mol and 1 mol glucose is dissolved in 1 kg water, ΔTb is:",0.512 K,1.024 K,0.256 K,1.536 K,A
+54,Chemistry,Electrochemistry,The equivalent conductance of a solution increases with dilution because:,Number of ions decreases,Ionic mobility increases,Ionic strength increases,Solvation decreases,B
+55,Chemistry,Chemical Kinetics,The half-life of a zero order reaction is:,0.693/k,[A]₀/2k,1/k[A]₀,k/[A]₀,B
+56,Chemistry,Surface Chemistry,The coagulation of a colloid is caused by:,Heating,Adding electrolytes,Both A and B,Dilution,C
+57,Chemistry,p-Block Elements,The hybridisation of sulphur in SF₆ is:,sp³,sp³d,sp³d²,sp²,C
+58,Chemistry,d-Block Elements,Which of the following shows maximum number of oxidation states?,Sc,Mn,Zn,Cu,B
+59,Chemistry,Coordination Chemistry,The IUPAC name of [Co(NH₃)₄Cl₂]Cl is:,Tetraaminedichlorocobalt(III) chloride,Tetraamminedichloridocobalt(III) chloride,Dichloroaminecobalt chloride,Cobalt tetraamine dichloride,B
+60,Chemistry,Haloalkanes,Grignard reagent is represented as:,R-MgX,R-Li,R-Na,R-ZnX,A
+61,Chemistry,Alcohols,Which alcohol undergoes dehydration most easily (lowest temperature)?,Methanol,Ethanol,Isopropanol,tert-Butanol,D
+62,Chemistry,Carbonyl Compounds,Fehling's solution is used to detect:,Ketones,Aldehydes,Carboxylic acids,Esters,B
+63,Chemistry,Carboxylic Acids,The reaction of acetic acid with ammonia forms:,Acetamide directly,"Ammonium acetate first, then acetamide on heating",Acetic anhydride,Acetyl chloride,B
+64,Chemistry,Amines,Gabriel synthesis is used for preparation of:,Primary amines,Secondary amines,Tertiary amines,Quaternary ammonium salts,A
+65,Chemistry,Biomolecules,The secondary structure of proteins refers to:,Sequence of amino acids,α-helix and β-pleated sheet,3D folding,Combination of subunits,B
+66,Chemistry,Polymers,Teflon (PTFE) is a polymer of:,Tetrafluoroethylene,Vinyl chloride,Styrene,Acrylonitrile,A
+67,Chemistry,s-Block Elements,The thermal stability of carbonates of alkaline earth metals increases:,Down the group,Up the group,Remains same,Irregular,A
+68,Chemistry,p-Block Elements,Ozone acts as an oxidizing agent because it releases:,O₂,Nascent oxygen,O⁻ ion,O₃⁻,B
+69,Chemistry,Chemical Bonding,Which molecule has zero dipole moment despite having polar bonds?,NH₃,H₂O,BF₃,HF,C
+70,Chemistry,Thermodynamics,The standard enthalpy of combustion of carbon (graphite) to CO₂ is −393.5 kJ/mol. This represents:,Bond enthalpy,Enthalpy of formation of CO₂,Lattice enthalpy,Enthalpy of atomisation,B
+71,Chemistry,Equilibrium,A weak acid HA has Ka = 1.8×10⁻⁵. The degree of ionisation in 0.1 M solution is:,0.134,0.0134,0.00134,1.34,B
+72,Chemistry,Solutions,Which colligative property is most useful for determination of molar mass of macromolecules?,Osmotic pressure,Boiling point elevation,Freezing point depression,Relative lowering of vapour pressure,A
+73,Chemistry,Electrochemistry,Faraday's second law of electrolysis states that masses of different substances deposited by the same quantity of electricity are:,Equal,Proportional to their equivalent weights,Inversely proportional to atomic mass,Proportional to valency,B
+74,Chemistry,Chemical Kinetics,"If the rate of a reaction doubles for every 10°C rise in temperature, then the temperature coefficient is:",1,2,3,4,B
+75,Chemistry,Atomic Structure,The maximum number of electrons in a subshell with l = 3 is:,6,10,14,18,C
+76,Chemistry,d-Block Elements,The magnetic moment of Fe³⁺ ion (Z=26) is approximately:,5.92 BM,4.90 BM,3.87 BM,2.83 BM,A
+77,Chemistry,Coordination Chemistry,EAN (Effective Atomic Number) of the metal in [Fe(CO)₅] is:,36,26,54,18,A
+78,Chemistry,Haloalkanes,Which of the following undergoes E2 elimination most readily?,n-Butyl bromide,sec-Butyl bromide,tert-Butyl bromide,Methyl bromide,C
+79,Chemistry,Phenols,The acidity of phenol is due to:,O-H bond polarity,Resonance stabilization of phenoxide ion,Inductive effect of benzene ring,Hyperconjugation,B
+80,Chemistry,Carbonyl Compounds,Cannizzaro reaction is given by aldehydes without:,Carbonyl group,α-hydrogen,Benzene ring,OH group,B
+81,Chemistry,Biomolecules,Enzymes are biological catalysts that are:,Proteins,Lipids,Carbohydrates,Nucleic acids,A
+82,Chemistry,p-Block Elements,"In the reaction of Cl₂ with NaOH (cold and dilute), products formed are:",NaCl and NaClO₃,NaCl and NaClO,NaClO₄ and NaCl,HClO and NaCl,B
+83,Chemistry,Surface Chemistry,The size of colloidal particles lies between:,1 nm to 1 μm,0.1 nm to 1 nm,1 μm to 1 mm,Less than 0.1 nm,A
+84,Chemistry,Environmental Chemistry,Photochemical smog is caused by:,SO₂ and CO,"NO₂, O₃ and hydrocarbons under UV",Dust particles,CO₂ and CH₄,B
+85,Chemistry,Some Basic Concepts,Molarity is defined as:,Moles of solute per kg of solvent,Moles of solute per litre of solution,Gram equivalent per litre,Mole fraction of solute,B
+86,Chemistry,Redox Reactions,The number of electrons transferred in the reaction Cr₂O₇²⁻ → 2Cr³⁺ is:,3,6,12,2,B
+87,Chemistry,States of Matter,Graham's law of diffusion states that rate of diffusion is inversely proportional to:,Density,Square root of density,Molar mass,Square root of molar mass,D
+88,Chemistry,Chemical Bonding,Hydrogen bonding is strongest in:,HF,HCl,HBr,HI,A
+89,Chemistry,Amines,Coupling reaction of diazonium salt with phenol gives:,Phenyl amine,An azo dye,Benzene,Benzoquinone,B
+90,Chemistry,Polymers,Bakelite is a thermosetting polymer formed by condensation of:,Phenol and formaldehyde,Urea and formaldehyde,Melamine and formaldehyde,Phenol and acetaldehyde,A
+91,Botany,Plant Kingdom,Vascular bundles with cambium (open type) are found in:,Monocots,Dicots,Pteridophytes only,Gymnosperms only,B
+92,Botany,Morphology,Phyllotaxy refers to:,Arrangement of veins in leaf,Arrangement of leaves on stem,Shape of leaf blade,Modification of leaves,B
+93,Botany,Morphology,Pneumatophores are modified roots found in:,Mangrove plants,Desert plants,Climbing plants,Parasitic plants,A
+94,Botany,Anatomy,Bulliform cells are found in grass leaves and help in:,Photosynthesis,Rolling of leaves during drought,Water conduction,Gas exchange,B
+95,Botany,Anatomy,"In dicot root, xylem is:",Polyarch,Tetrarch (diarch to hexarch),Multiarch,Biarch only,B
+96,Botany,Cell Biology,The fluid mosaic model of plasma membrane was proposed by:,Robert Brown,Singer and Nicolson,Watson and Crick,Schleiden and Schwann,B
+97,Botany,Cell Division,DNA replication occurs during which phase of cell cycle?,G1 phase,S phase,G2 phase,M phase,B
+98,Botany,Cell Division,Spindle fibres are made of:,Actin,Tubulin,Myosin,Keratin,B
+99,Botany,Biomolecules,Which fatty acid is unsaturated?,Stearic acid,Palmitic acid,Oleic acid,Butyric acid,C
+100,Botany,Mineral Nutrition,The process of conversion of ammonia to nitrite by Nitrosomonas is called:,Nitrogen fixation,Nitrification,Denitrification,Ammonification,B
+101,Botany,Mineral Nutrition,Hydroponics is:,Growing plants in soil,Growing plants in nutrient solution without soil,Tissue culture technique,Grafting method,B
+102,Botany,Photosynthesis,The primary acceptor of CO₂ in C3 plants is:,OAA,RuBP,PEP,G3P,B
+103,Botany,Photosynthesis,Oxygen evolved during photosynthesis comes from:,CO₂,H₂O,Both CO₂ and H₂O,Glucose,B
+104,Botany,Photosynthesis,The P700 reaction centre is associated with:,Photosystem I,Photosystem II,Both,Neither,A
+105,Botany,Respiration,"In fermentation (anaerobic), pyruvate is converted to ethanol and CO₂ by:",Yeast (Saccharomyces),Lactic acid bacteria,Acetobacter,Clostridium,A
+106,Botany,Respiration,The net yield of NADH from one turn of Krebs cycle is:,2,3,4,6,B
+107,Botany,Plant Growth,Gibberellins promote:,Root initiation,Stem elongation and seed germination,Fruit ripening,Abscission,B
+108,Botany,Plant Growth,The process by which plants respond to the relative length of day and night is called:,Phototropism,Photoperiodism,Vernalization,Thigmotropism,B
+109,Botany,Plant Growth,Cytokinin delays senescence by:,Inhibiting protein synthesis,Promoting RNA and protein synthesis,Inhibiting cell division,Promoting abscission,B
+110,Botany,Reproduction,Microsporogenesis produces:,Pollen grains,Embryo sac,Seeds,Fruits,A
+111,Botany,Reproduction,The female gametophyte of angiosperms is the:,Ovule,Embryo sac,Megaspore mother cell,Nucellus,B
+112,Botany,Genetics,"In codominance, both alleles express themselves. Example:",ABO blood group IA and IB,Rh factor,Colour blindness,Sickle cell trait,A
+113,Botany,Genetics,A gene present on X chromosome but absent on Y chromosome is said to be:,Autosomal,Y-linked,X-linked,Co-dominant,C
+114,Botany,Molecular Biology,Chargaff's rule states that in DNA:,A+T = G+C,A = T and G = C,A = G and T = C,A+G = T+C,B
+115,Botany,Molecular Biology,The promoter region in prokaryotic transcription is recognized by:,RNA polymerase core enzyme,Sigma factor,Rho factor,TATA binding protein,B
+116,Botany,Ecology,The total amount of organic matter present in an ecosystem at a given time is called:,Primary productivity,Biomass,Standing crop,Net productivity,C
+117,Botany,Ecology,Pyramid of energy is always:,Inverted,Upright,Spindle-shaped,Irregular,B
+118,Botany,Plant Kingdom,"In liverworts, the sporophyte is:",Completely independent,Partially dependent on gametophyte,Completely dependent on gametophyte,Free-living,C
+119,Botany,Plant Kingdom,Which of the following is a connecting link between bryophytes and pteridophytes?,Selaginella,Funaria,Marchantia,Psilotum,A
+120,Botany,Biotechnology,PCR (Polymerase Chain Reaction) requires a heat-stable DNA polymerase called:,Taq polymerase,RNA polymerase,DNA polymerase I,Ligase,A
+121,Botany,Cell Biology,Tonoplast is the membrane surrounding:,Nucleus,Vacuole,Mitochondria,Chloroplast,B
+122,Botany,Photosynthesis,The dark reactions of photosynthesis (Calvin cycle) occur in:,Thylakoid membrane,Stroma of chloroplast,Grana,Inner membrane of chloroplast,B
+123,Botany,Plant Morphology,The edible part of mango is:,Seed,Mesocarp,Endocarp,Exocarp,B
+124,Botany,Anatomy,Sieve tubes in phloem are associated with:,Companion cells,Tracheids,Vessel elements,Fibers,A
+125,Botany,Mineral Nutrition,Ferredoxin contains which metal as a cofactor?,Copper,Iron,Manganese,Molybdenum,B
+126,Botany,Plant Growth,The three main steps of signal transduction in plants are:,"Reception, transduction, response","Absorption, conduction, response","Perception, amplification, effect","Detection, relay, output",A
+127,Botany,Reproduction,"In angiosperms, the pollen tube enters the ovule through:",Chalaza,Integuments,Micropyle,Funicle,C
+128,Botany,Genetics,A recessive gene causes disease only in:,Heterozygous condition,Homozygous recessive condition,Both heterozygous and homozygous,Carrier state,B
+129,Botany,Molecular Biology,The post-transcriptional modification of pre-mRNA includes:,"Addition of 5' cap and poly-A tail, splicing",Only splicing,Only addition of 5' cap,Methylation only,A
+130,Botany,Ecology,The concept of ecological niche was introduced by:,Charles Darwin,G.E. Hutchinson,Raunkiaer,A.G. Tansley,B
+131,Botany,Plant Kingdom,Heterospory in pteridophytes leads to:,Bisexual gametophytes,Unisexual gametophytes,Free-living sporophytes,Absence of gametophyte,B
+132,Botany,Biotechnology,Southern blotting is used for detection of:,DNA sequences,RNA sequences,Protein sequences,Lipid sequences,A
+133,Botany,Cell Division,Colchicine is used to arrest cell division at metaphase because it:,Inhibits DNA synthesis,Inhibits spindle formation,Inhibits cytokinesis,Promotes G1 phase,B
+134,Botany,Respiration,The electron transport chain (ETC) in mitochondria is located in:,Matrix,Outer membrane,Inner mitochondrial membrane,Intermembrane space,C
+135,Botany,Plant Growth,Long-day plants flower when the dark period is:,Longer than critical night length,Shorter than critical night length,Equal to critical night length,Independent of night length,B
+136,Zoology,Animal Kingdom,Which phylum has radial symmetry in adults but bilateral symmetry in larvae?,Coelenterata,Echinodermata,Mollusca,Annelida,B
+137,Zoology,Animal Kingdom,"In earthworm, the clitellum helps in:",Locomotion,Cocoon formation for reproduction,Excretion,Digestion,B
+138,Zoology,Animal Kingdom,The open circulatory system is found in:,Earthworm,Cockroach,Frog,Fish,B
+139,Zoology,Animal Kingdom,Which group of animals is triploblastic and acoelomate?,Porifera,Platyhelminthes,Annelida,Echinodermata,B
+140,Zoology,Animal Kingdom,The larva of frog is called:,Nauplius,Tadpole,Trochophore,Planula,B
+141,Zoology,Human Physiology,Gastric juice contains HCl which:,Activates pepsinogen to pepsin,Digests carbohydrates,Emulsifies fats,Activates bile,A
+142,Zoology,Human Physiology,Pulmonary vein carries:,Deoxygenated blood to lungs,Oxygenated blood to heart,Deoxygenated blood to heart,Oxygenated blood to lungs,B
+143,Zoology,Human Physiology,The process of filtration in the kidney occurs in:,Loop of Henle,Bowman's capsule and glomerulus,Collecting duct,Distal convoluted tubule,B
+144,Zoology,Human Physiology,The hormone ADH (antidiuretic hormone) targets:,Loop of Henle,Collecting duct,Proximal convoluted tubule,Glomerulus,B
+145,Zoology,Human Physiology,Acetylcholine is the neurotransmitter at:,Adrenergic synapse,Neuromuscular junction,CNS inhibitory synapse,Adrenal medulla synapse,B
+146,Zoology,Human Physiology,The normal blood pressure is 120/80 mmHg. Here 80 mmHg represents:,Systolic pressure,Diastolic pressure,Pulse pressure,Mean arterial pressure,B
+147,Zoology,Human Physiology,Spermatogenesis begins at puberty due to increased secretion of:,FSH and LH,Only LH,Only FSH,Testosterone only,A
+148,Zoology,Human Physiology,The site of fertilization in humans is usually:,Uterus,Fallopian tube (oviduct),Cervix,Ovary,B
+149,Zoology,Human Physiology,Tidal volume is the amount of air:,Remaining after maximum expiration,Inspired or expired in normal breathing,Maximum that can be inspired,Difference between IRV and ERV,B
+150,Zoology,Human Physiology,The protein that prevents the reversal of muscle contraction (keeps myosin away from actin at rest) is:,Actin,Tropomyosin,Myosin,Titin,B
+151,Zoology,Genetics,Which of the following is a chromosomal disorder?,Phenylketonuria,Down syndrome,Sickle cell anemia,Colour blindness,B
+152,Zoology,Genetics,"In humans, sex is determined by:",XX-XY mechanism,ZW-ZZ mechanism,Haploid-diploid,Temperature,A
+153,Zoology,Genetics,A man with genotype XᴬY mates with a normal woman. The probability of colour blind sons is:,0%,25%,50%,100%,C
+154,Zoology,Evolution,The geological era when reptiles dominated is called:,Palaeozoic,Mesozoic,Cenozoic,Precambrian,B
+155,Zoology,Evolution,Vestigial organs in humans include:,Thumb,Appendix and coccyx,Cerebellum,All limbs,B
+156,Zoology,Molecular Biology,The template strand of DNA is read in which direction by RNA polymerase?,5' to 3',3' to 5',Both directions,Random,B
+157,Zoology,Human Health,HIV primarily attacks:,B lymphocytes,T helper cells (CD4+),NK cells,Neutrophils,B
+158,Zoology,Human Health,The vaccine for tuberculosis (TB) is:,MMR,BCG,DPT,OPV,B
+159,Zoology,Human Health,Interferons are proteins produced by virus-infected cells that:,Kill the virus directly,Protect neighbouring cells from viral infection,Produce antibodies,Activate T cells,B
+160,Zoology,Biotechnology,ELISA test is used for detection of:,Antigens or antibodies,DNA sequences,Enzyme activity,Hormone levels,A
+161,Zoology,Animal Kingdom,Flame cells are the excretory structures in:,Annelida,Platyhelminthes,Arthropoda,Echinodermata,B
+162,Zoology,Human Physiology,The gastric hormone gastrin stimulates secretion of:,Bile,HCl by parietal cells,Pancreatic juice,Mucus,B
+163,Zoology,Human Physiology,The major site of urea synthesis is:,Kidney,Liver,Small intestine,Spleen,B
+164,Zoology,Human Physiology,Calcitonin is secreted by the thyroid gland and:,Increases blood calcium,Decreases blood calcium,Has no effect on calcium,Stimulates PTH,B
+165,Zoology,Human Physiology,"During expiration, the diaphragm:",Contracts and moves down,Relaxes and moves up,Remains unchanged,Moves sideways,B
+166,Zoology,Human Physiology,The H-zone in a sarcomere disappears during muscle contraction because:,Actin filaments are degraded,Myosin heads pull actin filaments to overlap H-zone,Sarcomere length increases,ATP is depleted,B
+167,Zoology,Genetics,"If both parents are carriers of autosomal recessive disease, the probability of affected child is:",0%,25%,50%,75%,B
+168,Zoology,Evolution,The concept of 'survival of the fittest' is associated with:,Lamarck,Darwin,De Vries,Mendel,B
+169,Zoology,Human Health,Monoclonal antibodies are produced by:,B lymphocytes alone,Hybridoma technique,T lymphocytes,Macrophages,B
+170,Zoology,Animal Kingdom,The notochord in chordates is replaced by vertebral column in:,All chordates,Vertebrates,Urochordates,Cephalochordates,B
+171,Zoology,Human Physiology,Progesterone is mainly produced by:,Anterior pituitary,Corpus luteum,Adrenal cortex,Thyroid,B
+172,Zoology,Molecular Biology,"In translation, the ribosome moves along mRNA in which direction?",3' to 5',5' to 3',Both directions,Stationary,B
+173,Zoology,Ecology,The relationship between clownfish and sea anemone is an example of:,Parasitism,Mutualism,Commensalism,Predation,B
+174,Zoology,Human Health,The most common cancer in women worldwide is:,Lung cancer,Breast cancer,Cervical cancer,Ovarian cancer,B
+175,Zoology,Animal Kingdom,Compound eyes are found in:,Cockroach and other Arthropods,Snakes,Earthworms,Hydra,A
+176,Zoology,Human Physiology,The P wave in an ECG represents:,Ventricular depolarization,Atrial depolarization,Ventricular repolarization,Atrial repolarization,B
+177,Zoology,Genetics,Linkage was first discovered by:,Morgan in Drosophila,Mendel in pea,Bateson and Punnett,de Vries,C
+178,Zoology,Evolution,Which of the following is considered the most direct evidence of evolution?,Comparative anatomy,Fossil record,Embryology,Biogeography,B
+179,Zoology,Human Health,The full form of ELISA is:,Enzyme Linked Immunosorbent Assay,Enzyme Linked Immune Specific Assay,Enzymatic Linked Immunological Serum Assay,Enzyme Labelled Immune Serum Assay,A
+180,Zoology,Human Physiology,The juxtaglomerular apparatus secretes:,Aldosterone,Renin,ADH,Erythropoietin,B

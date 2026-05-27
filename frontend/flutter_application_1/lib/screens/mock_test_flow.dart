@@ -6,6 +6,7 @@ import 'dart:math' as math;
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -45,15 +46,284 @@ class MockTestResultArgs {
   final MockTestBundle bundle;
   final List<int?> answers;
   final Set<int> marked;
-  final Duration elapsed;
   final Map<String, dynamic> result;
+  final Duration elapsed;
 
   const MockTestResultArgs({
     required this.bundle,
     required this.answers,
     required this.marked,
-    required this.elapsed,
     required this.result,
+    required this.elapsed,
+  });
+}
+
+class MockTestLandingScreen extends StatelessWidget {
+  const MockTestLandingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFF0FDF4),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_rounded),
+          onPressed: () => Navigator.of(context).maybePop(),
+        ),
+        title: Text(
+          'Mock Test',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      body: ListView(
+        padding: const EdgeInsets.fromLTRB(16, 10, 16, 16),
+        children: [
+          Text(
+            'Practice like the real NEET exam with topic-wise quizzes and a full timed mock test.',
+            style: GoogleFonts.poppins(
+              fontSize: 15,
+              height: 1.45,
+              color: AppColors.textSecondary,
+            ),
+          ),
+          const SizedBox(height: 16),
+          const _QuizzesCard(),
+          const SizedBox(height: 14),
+          _CombinedMockCard(
+            loading: false,
+            onStart: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const MockTestSetPickerScreen(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNav(
+        selectedIndex: 1,
+        onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
+      ),
+    );
+  }
+}
+
+class MockTestSetPickerScreen extends StatelessWidget {
+  const MockTestSetPickerScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final papers = const [
+      _MockPaperOption(
+        setId: 1,
+        title: 'Mock Test Set 1',
+        subtitle: 'Full NEET-style paper',
+        accent: Color(0xFF14532D),
+        accentSoft: Color(0xFFD1FAE5),
+        icon: Icons.library_books_rounded,
+      ),
+      _MockPaperOption(
+        setId: 2,
+        title: 'Mock Test Set 2',
+        subtitle: 'Full NEET-style paper',
+        accent: Color(0xFF0F766E),
+        accentSoft: Color(0xFFCFFAFE),
+        icon: Icons.library_books_rounded,
+      ),
+    ];
+
+    return Scaffold(
+      backgroundColor: const Color(0xFFF0FDF4),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_rounded),
+          onPressed: () => Navigator.of(context).maybePop(),
+        ),
+        title: Text(
+          'Choose Mock Test Set',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final isWide = constraints.maxWidth >= 700;
+                  return GridView.builder(
+                    itemCount: papers.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: isWide ? 2 : 1,
+                      mainAxisSpacing: 16,
+                      crossAxisSpacing: 16,
+                      childAspectRatio: isWide ? 1.85 : 2.25,
+                    ),
+                    itemBuilder: (context, index) {
+                      final paper = papers[index];
+                      return _MockPaperCard(
+                        paper: paper,
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  MockTestSetRulesScreen(setId: paper.setId),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNav(
+        selectedIndex: 1,
+        onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
+      ),
+    );
+  }
+}
+
+class _MockPaperCard extends StatelessWidget {
+  final _MockPaperOption paper;
+  final VoidCallback onTap;
+
+  const _MockPaperCard({required this.paper, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(28),
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(28),
+          gradient: LinearGradient(
+            colors: [Colors.white, paper.accentSoft.withValues(alpha: 0.8)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          border: Border.all(color: paper.accent.withValues(alpha: 0.10)),
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x14000000),
+              blurRadius: 24,
+              offset: Offset(0, 12),
+            ),
+          ],
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 64,
+              height: 64,
+              decoration: BoxDecoration(
+                color: paper.accent.withValues(alpha: 0.10),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Icon(paper.icon, color: paper.accent, size: 30),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    paper.title,
+                    style: GoogleFonts.poppins(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    paper.subtitle,
+                    style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      _PaperChip(label: '180 questions', color: paper.accent),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 8),
+            Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 16,
+              color: paper.accent,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _PaperChip extends StatelessWidget {
+  final String label;
+  final Color color;
+
+  const _PaperChip({required this.label, required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.10),
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Text(
+        label,
+        style: GoogleFonts.poppins(
+          fontSize: 11,
+          fontWeight: FontWeight.w700,
+          color: color,
+        ),
+      ),
+    );
+  }
+}
+
+class _MockPaperOption {
+  final int setId;
+  final String title;
+  final String subtitle;
+  final Color accent;
+  final Color accentSoft;
+  final IconData icon;
+
+  const _MockPaperOption({
+    required this.setId,
+    required this.title,
+    required this.subtitle,
+    required this.accent,
+    required this.accentSoft,
+    required this.icon,
   });
 }
 
@@ -72,234 +342,155 @@ class _MockTestDraft {
     required this.marked,
     required this.currentIndex,
     required this.duration,
-    this.isPaused = false,
-    this.remainingSeconds,
+    required this.isPaused,
+    required this.remainingSeconds,
   });
 
-  Map<String, dynamic> toJson() => {
-    'bundle': {
-      'sessionId': bundle.sessionId,
-      'attempt': bundle.attempt,
-      'attemptsAllowed': bundle.attemptsAllowed,
-      'questions': bundle.questions
-          .map(
-            (q) => {
-              'subject': q.subject,
-              'unit': q.unit,
-              'question': q.question,
-              'options': q.options,
-              'answerIndex': q.answerIndex,
-              'explanation': q.explanation,
-              'hash': q.hash,
-            },
-          )
-          .toList(),
-    },
-    'answers': answers.map((value) => value).toList(),
-    'marked': marked.toList(),
-    'currentIndex': currentIndex,
-    'durationSeconds': duration.inSeconds,
-    'isPaused': isPaused,
-    'remainingSeconds': remainingSeconds,
-  };
+  Map<String, dynamic> toJson() {
+    return {
+      'bundle': {
+        'sessionId': bundle.sessionId,
+        'attempt': bundle.attempt,
+        'attemptsAllowed': bundle.attemptsAllowed,
+        'questions': bundle.questions
+            .map(
+              (question) => {
+                'subject': question.subject,
+                'unit': question.unit,
+                'question': question.question,
+                'options': question.options,
+                'answerIndex': question.answerIndex,
+                'explanation': question.explanation,
+                'hash': question.hash,
+                'questionImageBase64': question.questionImageBase64,
+                'sourcePage': question.sourcePage,
+              },
+            )
+            .toList(),
+      },
+      'answers': answers.map((answer) => answer).toList(),
+      'marked': marked.toList(),
+      'currentIndex': currentIndex,
+      'durationSeconds': duration.inSeconds,
+      'isPaused': isPaused,
+      'remainingSeconds': remainingSeconds,
+    };
+  }
 
-  static _MockTestDraft? fromJson(Map<String, dynamic>? json) {
-    if (json == null) return null;
+  factory _MockTestDraft.fromJson(Map<String, dynamic> json) {
     final bundleJson = Map<String, dynamic>.from(
       (json['bundle'] as Map?) ?? const {},
     );
-    final questionList = (bundleJson['questions'] as List? ?? const []);
-    final questions = questionList
+    final questions = (bundleJson['questions'] as List? ?? const [])
         .map(
           (entry) =>
               MockQuestion.fromJson(Map<String, dynamic>.from(entry as Map)),
         )
         .toList();
-    final bundle = MockTestBundle(
-      sessionId: (bundleJson['sessionId'] ?? '').toString(),
-      questions: questions,
-      attempt: int.tryParse('${bundleJson['attempt'] ?? 1}') ?? 1,
-      attemptsAllowed:
-          int.tryParse('${bundleJson['attemptsAllowed'] ?? 5}') ?? 5,
-    );
-    final rawAnswers = (json['answers'] as List? ?? const []);
-    final answers = rawAnswers.map<int?>((entry) {
-      if (entry == null) return null;
-      return int.tryParse(entry.toString());
-    }).toList();
-    while (answers.length < questions.length) {
-      answers.add(null);
-    }
+    final answers = ((json['answers'] as List? ?? const []))
+        .map<int?>(
+          (entry) => entry == null ? null : int.tryParse(entry.toString()),
+        )
+        .toList();
     final marked = ((json['marked'] as List? ?? const []))
         .map((entry) => int.tryParse(entry.toString()))
         .whereType<int>()
         .toSet();
-    final currentIndex = math.max(
-      0,
-      int.tryParse('${json['currentIndex'] ?? 0}') ?? 0,
-    );
-    final durationSeconds =
-        int.tryParse('${json['durationSeconds'] ?? 3 * 60 * 60}') ??
-        3 * 60 * 60;
-    final isPaused = json['isPaused'] == true;
-    final remainingSeconds = int.tryParse('${json['remainingSeconds'] ?? ''}');
+
     return _MockTestDraft(
-      bundle: bundle,
+      bundle: MockTestBundle(
+        sessionId: (bundleJson['sessionId'] ?? '').toString(),
+        questions: questions,
+        attempt: int.tryParse('${bundleJson['attempt'] ?? 1}') ?? 1,
+        attemptsAllowed:
+            int.tryParse('${bundleJson['attemptsAllowed'] ?? 5}') ?? 5,
+      ),
       answers: answers,
       marked: marked,
-      currentIndex: currentIndex.clamp(0, math.max(0, questions.length - 1)),
-      duration: Duration(seconds: durationSeconds),
-      isPaused: isPaused,
-      remainingSeconds: remainingSeconds,
+      currentIndex: int.tryParse('${json['currentIndex'] ?? 0}') ?? 0,
+      duration: Duration(
+        seconds: int.tryParse('${json['durationSeconds'] ?? 0}') ?? 0,
+      ),
+      isPaused: json['isPaused'] == true,
+      remainingSeconds: int.tryParse('${json['remainingSeconds'] ?? ''}'),
     );
   }
 }
 
-class MockTestPracticeScreen extends StatefulWidget {
-  const MockTestPracticeScreen({super.key});
+class MockTestLaunchScreen extends StatefulWidget {
+  final int setId;
+
+  const MockTestLaunchScreen({super.key, required this.setId});
 
   @override
-  State<MockTestPracticeScreen> createState() => _MockTestPracticeScreenState();
+  State<MockTestLaunchScreen> createState() => _MockTestLaunchScreenState();
 }
 
-class _MockTestPracticeScreenState extends State<MockTestPracticeScreen> {
-  _MockTestDraft? _draft;
-  bool _loadingDraft = true;
-  bool _starting = false;
+class _MockTestLaunchScreenState extends State<MockTestLaunchScreen> {
+  final MockTestService _service = MockTestService();
+  Object? _error;
 
   @override
   void initState() {
     super.initState();
-    _restoreDraft();
+    _openPaper();
   }
 
-  Future<void> _restoreDraft() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(_draftKey);
-    if (mounted) {
-      setState(() => _loadingDraft = false);
-    }
-  }
-
-  Future<void> _startTest() async {
-    setState(() => _starting = true);
+  Future<void> _openPaper() async {
     try {
-      await Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => const MockTestSetPickerScreen()),
+      final bundle = await _service.loadFixedSetBundle(widget.setId);
+      if (!mounted) return;
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => MockTestScreen(bundle: bundle)),
       );
     } catch (error) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to start mock test: $error')),
-      );
-    } finally {
-      if (mounted) {
-        setState(() => _starting = false);
-      }
+      setState(() {
+        _error = error;
+      });
     }
-  }
-
-  Future<void> _clearDraft() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(_draftKey);
-    if (!mounted) return;
-    setState(() => _draft = null);
   }
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final background = isDark ? const Color(0xFF09111F) : _kBackground;
-    if (_loadingDraft) {
-      return Scaffold(
-        backgroundColor: background,
-        body: const _MockTestSkeleton(),
-      );
-    }
-
-    return Scaffold(
-      backgroundColor: background,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_rounded),
-          onPressed: () => Navigator.of(context).maybePop(),
-        ),
-        title: Text('Mock Tests', style: GoogleFonts.poppins(fontWeight: FontWeight.w800)),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(18),
-          child: Column(
-            children: [
-              _PracticeHeroCard(onStart: _startTest, loading: _starting),
-              const SizedBox(height: 16),
-              const _ExamPatternCard(),
-              const SizedBox(height: 16),
-              const _QuizzesCard(),
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: BottomNav(
-        selectedIndex: 1,
-        onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
-      ),
-    );
-  }
-}
-
-class MockTestSetPickerScreen extends StatelessWidget {
-  const MockTestSetPickerScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final sets = List.generate(8, (index) => index + 1);
     return Scaffold(
       backgroundColor: const Color(0xFFF0FDF4),
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_rounded),
-          onPressed: () => Navigator.of(context).maybePop(),
+        title: Text(
+          'Opening Paper ${widget.setId}',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
         ),
-        title: Text('Mock Test Sets', style: GoogleFonts.poppins(fontWeight: FontWeight.w800)),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(18),
-        child: GridView.builder(
-          itemCount: sets.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: MediaQuery.of(context).size.width > 700 ? 3 : 2,
-            mainAxisSpacing: 16,
-            crossAxisSpacing: 16,
-            // allow slightly taller tiles on very narrow screens to avoid vertical overflow
-            childAspectRatio: MediaQuery.of(context).size.width < 360
-                ? 0.95
-                : 1.05,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const CircularProgressIndicator(color: _kPrimary),
+              const SizedBox(height: 16),
+              Text(
+                _error == null
+                    ? 'Loading questions and options...'
+                    : 'Failed to open paper: $_error',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+              if (_error != null) ...[
+                const SizedBox(height: 12),
+                ElevatedButton(
+                  onPressed: _openPaper,
+                  child: const Text('Retry'),
+                ),
+              ],
+            ],
           ),
-          shrinkWrap: false,
-          physics: const AlwaysScrollableScrollPhysics(),
-          itemBuilder: (context, index) {
-            final setId = sets[index];
-            return _SetCard(
-              setId: setId,
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => MockTestSetRulesScreen(setId: setId),
-                  ),
-                );
-              },
-            );
-          },
         ),
-      ),
-      bottomNavigationBar: BottomNav(
-        selectedIndex: 1,
-        onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
       ),
     );
   }
@@ -386,30 +577,84 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
   final MockTestService _service = MockTestService();
   bool _loading = true;
   bool _starting = false;
+  static const int _loadingCountdownStart = 15;
+  int _loadingCountdown = _loadingCountdownStart;
+  Timer? _loadingTicker;
   Object? _error;
   MockTestBundle? _bundle;
 
   @override
   void initState() {
     super.initState();
+    _loadingTicker = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (!mounted || !_loading) return;
+      if (_loadingCountdown > 0) {
+        setState(() => _loadingCountdown -= 1);
+      }
+    });
     _loadBundle();
+  }
+
+  @override
+  void dispose() {
+    _loadingTicker?.cancel();
+    super.dispose();
   }
 
   Future<void> _loadBundle() async {
     try {
       final bundle = await _service.loadFixedSetBundle(widget.setId);
+      // If a stale draft exists for a different session, clear it so old
+      // options/structure do not persist in SharedPreferences.
+      try {
+        final prefs = await SharedPreferences.getInstance();
+        final raw = prefs.getString(_draftKey);
+        if (raw != null && raw.trim().isNotEmpty) {
+          try {
+            final data = jsonDecode(raw) as Map<String, dynamic>;
+            final bundleJson = Map<String, dynamic>.from(
+              (data['bundle'] as Map?) ?? {},
+            );
+            final savedSession = (bundleJson['sessionId'] ?? '').toString();
+            if (savedSession.isNotEmpty && savedSession != bundle.sessionId) {
+              await prefs.remove(_draftKey);
+              debugPrint(
+                'Cleared stale mock test draft (saved=$savedSession, new=${bundle.sessionId})',
+              );
+            }
+          } catch (_) {
+            // ignore malformed draft; remove it to be safe
+            await prefs.remove(_draftKey);
+            debugPrint('Removed malformed mock test draft');
+          }
+        }
+      } catch (e) {
+        debugPrint('Failed to inspect/clear draft: $e');
+      }
       if (!mounted) return;
       setState(() {
         _bundle = bundle;
         _loading = false;
+        _loadingCountdown = _loadingCountdownStart;
       });
+      _loadingTicker?.cancel();
     } catch (error) {
       if (!mounted) return;
       setState(() {
         _error = error;
         _loading = false;
+        _loadingCountdown = _loadingCountdownStart;
       });
+      _loadingTicker?.cancel();
     }
+  }
+
+  String _loadingButtonLabel() {
+    if (!_loading) return 'Start Test';
+    if (_loadingCountdown > 0) {
+      return 'The paper will load in $_loadingCountdown seconds...';
+    }
+    return 'Almost there, loading your paper...';
   }
 
   Future<void> _startTest() async {
@@ -435,100 +680,115 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF0FDF4),
-      appBar: AppBar(
-        title: Text(
-          'Set ${widget.setId} Rules',
-          style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(18),
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(28),
-            boxShadow: const [
-              BoxShadow(
-                color: Color(0x12000000),
-                blurRadius: 24,
-                offset: Offset(0, 12),
-              ),
-            ],
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {},
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF0FDF4),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Paper ${widget.setId}',
+            style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Rules and Regulations',
-                style: GoogleFonts.poppins(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w800,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(18),
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(28),
+              boxShadow: const [
+                BoxShadow(
+                  color: Color(0x12000000),
+                  blurRadius: 24,
+                  offset: Offset(0, 12),
                 ),
-              ),
-              const SizedBox(height: 12),
-              _RuleTile('Set ${widget.setId} contains the full fixed paper.'),
-              const _RuleTile('Use the same NEET pattern and scoring.'),
-              const _RuleTile(
-                'Marks: +4 for correct, -1 for wrong, 0 for unattempted.',
-              ),
-              const _RuleTile('Pause Test and Resume Test are available.'),
-              const _RuleTile(
-                'Mark for Review, Previous, and Save & Next are available.',
-              ),
-              const _RuleTile('Submit only after reviewing the whole paper.'),
-              const SizedBox(height: 18),
-              if (_error != null)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: Text(
-                    'Failed to load set ${widget.setId}. Check the extracted PDF text.',
-                    style: GoogleFonts.poppins(
-                      color: Colors.red.shade800,
-                      fontWeight: FontWeight.w600,
-                    ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Rules and Regulations',
+                  style: GoogleFonts.poppins(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: (_starting || _loading || _bundle == null)
-                      ? null
-                      : _startTest,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: _kPrimary,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18),
+                const SizedBox(height: 12),
+                const _RuleTile('NEET scoring pattern is followed strictly.'),
+                const _RuleTile(
+                  '4 sections are included: Physics, Chemistry, Botany, and Zoology.',
+                ),
+                const _RuleTile('Each section has 45 questions (total 180 questions).'),
+                const _RuleTile(
+                  'Marks: +4 for correct, -1 for wrong, 0 for unattempted.',
+                ),
+                const _RuleTile('Total duration is 3 hours, like NEET exam mode.'),
+                const _RuleTile(
+                  'Mark for Review, Previous, and Save & Next are available.',
+                ),
+                const _RuleTile('Submit only after reviewing the whole paper.'),
+                const _RuleTile(
+                  'When the mock test starts, full-screen mode is enabled: you will not be able to use app navigation or the bottom navigation bar until you end or submit the test. Normal app navigation resumes only after the test is ended.',
+                ),
+                const SizedBox(height: 18),
+                if (_error != null)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Text(
+                      'Failed to load set ${widget.setId}. Check the extracted PDF text.',
+                      style: GoogleFonts.poppins(
+                        color: Colors.red.shade800,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                  child: _starting
-                      ? const SizedBox(
-                          width: 18,
-                          height: 18,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2.2,
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              Colors.white,
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: (_starting || _loading || _bundle == null)
+                        ? null
+                        : _startTest,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: _kPrimary,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                    ),
+                    child: _starting
+                        ? const SizedBox(
+                            width: 18,
+                            height: 18,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2.2,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.white,
+                              ),
+                            ),
+                          )
+                        : Text(
+                            _loadingButtonLabel(),
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w800,
                             ),
                           ),
-                        )
-                      : Text(
-                          _loading ? 'Loading Set...' : 'Start Test',
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
+        ),
+        bottomNavigationBar: BottomNav(
+          selectedIndex: 1,
+          onTap: (_) {},
         ),
       ),
     );
@@ -657,6 +917,79 @@ class _MockTestScreenState extends State<MockTestScreen> {
     );
   }
 
+  List<String> _normalizeOptions(Iterable<String> options) {
+    final seen = <String>{};
+    final normalized = <String>[];
+    for (final option in options) {
+      final cleaned = option.replaceAll('\u00a0', ' ').trim();
+      if (cleaned.isEmpty || !seen.add(cleaned)) {
+        continue;
+      }
+      normalized.add(cleaned);
+      if (normalized.length == 4) {
+        break;
+      }
+    }
+    return normalized;
+  }
+
+  List<String> _repairOptions(MockQuestion question) {
+    final merged = _normalizeOptions(question.options);
+    final inlineOptions = _normalizeOptions(
+      MockQuestion.optionsFromInlineQuestion(question.question),
+    );
+
+    for (final option in inlineOptions) {
+      if (merged.length == 4) {
+        break;
+      }
+      if (merged.contains(option)) {
+        continue;
+      }
+      merged.add(option);
+    }
+
+    while (merged.length < 4) {
+      merged.add('—');
+    }
+
+    return merged.take(4).toList(growable: false);
+  }
+
+  MockTestBundle _sanitizeBundle(MockTestBundle bundle) {
+    final sanitized = <MockQuestion>[];
+    for (var i = 0; i < bundle.questions.length; i++) {
+      final q = bundle.questions[i];
+      final repaired = _repairOptions(q);
+      var ai = q.answerIndex;
+      if (ai < 0 || ai >= repaired.length) ai = 0;
+      if (!listEquals(repaired, q.options)) {
+        debugPrint(
+          'MockTest sanitize q#${i + 1}: original=${q.options} -> sanitized=$repaired',
+        );
+      }
+      sanitized.add(
+        MockQuestion(
+          subject: q.subject,
+          unit: q.unit,
+          question: q.question,
+          options: repaired,
+          answerIndex: ai,
+          explanation: q.explanation,
+          hash: q.hash,
+          questionImageBase64: q.questionImageBase64,
+          sourcePage: q.sourcePage,
+        ),
+      );
+    }
+    return MockTestBundle(
+      sessionId: bundle.sessionId,
+      questions: sanitized,
+      attempt: bundle.attempt,
+      attemptsAllowed: bundle.attemptsAllowed,
+    );
+  }
+
   void _syncSectionForIndex(int index) {
     if (_sections.isEmpty) return;
     final sectionIndex = _sections.indexWhere(
@@ -709,6 +1042,8 @@ class _MockTestScreenState extends State<MockTestScreen> {
     super.initState();
     final draft = widget.draft;
     _bundle = _trimBundle(draft?.bundle ?? widget.bundle);
+    // Sanitize options early to avoid duplicate/missing option rendering
+    _bundle = _sanitizeBundle(_bundle);
     _sections = _buildSections(_bundle.questions);
     _answers = List<int?>.filled(_bundle.questions.length, null);
     _marked = <int>{};
@@ -741,6 +1076,7 @@ class _MockTestScreenState extends State<MockTestScreen> {
     _syncSectionForIndex(_currentIndex);
     if (!_isPaused) {
       _startTimer();
+      _enterImmersiveMode();
     }
     _saveDraft();
   }
@@ -748,6 +1084,7 @@ class _MockTestScreenState extends State<MockTestScreen> {
   @override
   void dispose() {
     _timer?.cancel();
+    _exitImmersiveMode();
     super.dispose();
   }
 
@@ -897,8 +1234,8 @@ class _MockTestScreenState extends State<MockTestScreen> {
     final elapsed = Duration(seconds: math.max(0, elapsedSeconds));
     Map<String, dynamic> result = {};
     try {
-      if (_bundle.sessionId.startsWith('fixed_set_')) {
-        result = {'status': 'ok', 'mode': 'fixed_set'};
+      if (_bundle.sessionId.startsWith('db_set_')) {
+        result = {'status': 'ok', 'mode': 'db_set'};
       } else {
         result = await MockTestService().submitAnswers(
           sessionId: _bundle.sessionId,
@@ -912,6 +1249,8 @@ class _MockTestScreenState extends State<MockTestScreen> {
 
     await _saveResult(result, elapsed);
     await _clearDraft();
+    // Restore system UI before leaving the mock test
+    _exitImmersiveMode();
     if (!mounted) return;
     setState(() => _submitting = false);
 
@@ -927,6 +1266,22 @@ class _MockTestScreenState extends State<MockTestScreen> {
     );
   }
 
+  Future<void> _enterImmersiveMode() async {
+    try {
+      await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    } catch (_) {
+      // ignore errors on platforms where immersive mode not supported
+    }
+  }
+
+  Future<void> _exitImmersiveMode() async {
+    try {
+      await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    } catch (_) {
+      // ignore
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -935,271 +1290,103 @@ class _MockTestScreenState extends State<MockTestScreen> {
     final minutes = (_remainingSeconds ~/ 60).toString().padLeft(2, '0');
     final seconds = (_remainingSeconds % 60).toString().padLeft(2, '0');
 
-    return Shortcuts(
-      shortcuts: <ShortcutActivator, Intent>{
-        const SingleActivator(LogicalKeyboardKey.arrowLeft):
-            const _PreviousIntent(),
-        const SingleActivator(LogicalKeyboardKey.arrowRight):
-            const _NextIntent(),
-        const SingleActivator(LogicalKeyboardKey.keyA): const _PickOptionIntent(
-          0,
-        ),
-        const SingleActivator(LogicalKeyboardKey.keyB): const _PickOptionIntent(
-          1,
-        ),
-        const SingleActivator(LogicalKeyboardKey.keyC): const _PickOptionIntent(
-          2,
-        ),
-        const SingleActivator(LogicalKeyboardKey.keyD): const _PickOptionIntent(
-          3,
-        ),
-      },
-      child: Actions(
-        actions: <Type, Action<Intent>>{
-          _PreviousIntent: CallbackAction<_PreviousIntent>(
-            onInvoke: (_) {
-              _prev();
-              return null;
-            },
-          ),
-          _NextIntent: CallbackAction<_NextIntent>(
-            onInvoke: (_) {
-              _next();
-              return null;
-            },
-          ),
-          _PickOptionIntent: CallbackAction<_PickOptionIntent>(
-            onInvoke: (intent) {
-              if (intent != null) {
-                _selectOption(intent.index);
-              }
-              return null;
-            },
-          ),
-        },
-        child: Focus(
-          autofocus: true,
-          child: Scaffold(
-            backgroundColor: background,
-            body: SafeArea(
-              child: Column(
-                children: [
-                  TestHeader(
-                    onBack: () => Navigator.of(context).popUntil(
-                          (route) => route.settings.name == '/mock-test/start' || route.isFirst),
-                    timerText: '$minutes:$seconds',
-                    answered: _answered,
-                    total: _answers.length,
-                    subject: _activeSection.name,
-                    currentIndex: _currentIndex,
-                    onEndTest: _submit,
-                    isPaused: _isPaused,
-                    onPauseToggle: _togglePause,
-                    progress: _progress,
-                  ),
-                  Expanded(
-                    child: LayoutBuilder(
-                      builder: (context, constraints) {
-                        final paletteIndexes = _visibleQuestionIndexes();
-                        if (constraints.maxWidth >= 1100) {
-                          return Row(
-                            children: [
-                              Expanded(
-                                flex: 3,
-                                child: SingleChildScrollView(
-                                  padding: const EdgeInsets.fromLTRB(
-                                    18,
-                                    16,
-                                    12,
-                                    18,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Wrap(
-                                        spacing: 10,
-                                        runSpacing: 10,
-                                        children: List.generate(
-                                          _sections.length,
-                                          (index) {
-                                            final section = _sections[index];
-                                            final isSelected =
-                                                index == _activeSectionIndex;
-                                            return ChoiceChip(
-                                              selected: isSelected,
-                                              label: Text(
-                                                '${section.name} • ${section.count}',
-                                                style: GoogleFonts.poppins(
-                                                  fontWeight: FontWeight.w700,
-                                                ),
-                                              ),
-                                              onSelected: (_) =>
-                                                  _switchSection(index),
-                                              selectedColor: _kPrimary,
-                                              backgroundColor: Colors.white,
-                                              labelStyle: TextStyle(
-                                                color: isSelected
-                                                    ? Colors.white
-                                                    : Colors.black87,
-                                              ),
-                                            );
-                                          },
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        backgroundColor: background,
+        body: SafeArea(
+          child: Column(
+            children: [
+              TestHeader(
+                onBack: null,
+                timerText: '$minutes:$seconds',
+                answered: _answered,
+                total: _answers.length,
+                currentIndex: _currentIndex,
+                onEndTest: _submit,
+                progress: _progress,
+              ),
+              Expanded(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    if (constraints.maxWidth >= 1100) {
+                      return Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: SingleChildScrollView(
+                              padding: const EdgeInsets.fromLTRB(18, 16, 12, 18),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Wrap(
+                                    spacing: 10,
+                                    runSpacing: 10,
+                                    children: List.generate(_sections.length, (index) {
+                                      final section = _sections[index];
+                                      final isSelected = index == _activeSectionIndex;
+                                      return ChoiceChip(
+                                        selected: isSelected,
+                                        label: Text(
+                                          '${section.name} • ${section.count}',
+                                          style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
                                         ),
-                                      ),
-                                      const SizedBox(height: 16),
-                                      ProgressHeader(
-                                        title: 'NEET Mock Test - Full Syllabus',
-                                        subtitle:
-                                            '${_activeSection.name} • Question ${_sectionQuestionNumber} of ${_activeSection.count}',
-                                        progress: _progress,
-                                        answered: _answered,
-                                        total: _answers.length,
-                                      ),
-                                      const SizedBox(height: 16),
-                                      QuestionCard(
-                                        question: currentQuestion,
-                                        sectionName: _activeSection.name,
-                                        questionNumber: _sectionQuestionNumber,
-                                        sectionCount: _activeSection.count,
-                                        selectedIndex: _answers[_currentIndex],
-                                        currentIndex: _currentIndex,
-                                        isMarked: _marked.contains(
-                                          _currentIndex,
+                                        onSelected: (_) => _switchSection(index),
+                                        selectedColor: _kPrimary,
+                                        backgroundColor: Colors.white,
+                                        labelStyle: TextStyle(
+                                          color: isSelected ? Colors.white : Colors.black87,
                                         ),
-                                        onToggleMark: _toggleMark,
-                                        onSelect: _selectOption,
-                                        isDark: isDark,
-                                      ),
-                                      const SizedBox(height: 16),
-                                      BottomControls(
-                                        answered: _answered,
-                                        remaining: _remaining,
-                                        marked: _markedCount,
-                                        onPrevious: _prev,
-                                        onSaveNext: () =>
-                                            _next(submitIfLast: true),
-                                        isLast:
-                                            _currentIndex ==
-                                            _answers.length - 1,
-                                      ),
-                                      const SizedBox(height: 16),
-                                      SummaryBar(
-                                        answered: _answered,
-                                        remaining: _remaining,
-                                        marked: _markedCount,
-                                        total: _answers.length,
-                                      ),
-                                    ],
+                                      );
+                                    }),
                                   ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 380,
-                                child: SingleChildScrollView(
-                                  padding: const EdgeInsets.fromLTRB(
-                                    0,
-                                    16,
-                                    18,
-                                    18,
+                                  const SizedBox(height: 16),
+                                  ProgressHeader(
+                                    title: 'NEET Mock Test - Full Syllabus',
+                                    subtitle:
+                                        '${_activeSection.name} • Question ${_sectionQuestionNumber} of ${_activeSection.count}',
+                                    progress: _progress,
+                                    answered: _answered,
+                                    total: _answers.length,
                                   ),
-                                  child: QuestionPalette(
-                                    sections: _sections,
-                                    activeSectionIndex: _activeSectionIndex,
-                                    sectionPage: _sectionPage,
+                                  const SizedBox(height: 16),
+                                  QuestionCard(
+                                    question: currentQuestion,
+                                    sectionName: _activeSection.name,
+                                    questionNumber: _sectionQuestionNumber,
+                                    sectionCount: _activeSection.count,
+                                    selectedIndex: _answers[_currentIndex],
                                     currentIndex: _currentIndex,
-                                    answers: _answers,
-                                    marked: _marked,
-                                    onTap: _jumpToQuestion,
-                                    onSectionTap: _switchSection,
-                                    onPreviousPage: _sectionPage == 0
-                                        ? null
-                                        : () {
-                                            setState(() {
-                                              _sectionPage = math.max(
-                                                0,
-                                                _sectionPage - 1,
-                                              );
-                                            });
-                                            _saveDraft();
-                                          },
-                                    onNextPage:
-                                        _sectionPage >= _sectionPageCount - 1
-                                        ? null
-                                        : () {
-                                            setState(() {
-                                              _sectionPage = math.min(
-                                                _sectionPageCount - 1,
-                                                _sectionPage + 1,
-                                              );
-                                            });
-                                            _saveDraft();
-                                          },
+                                    isMarked: _marked.contains(_currentIndex),
+                                    onToggleMark: _toggleMark,
+                                    onSelect: _selectOption,
                                     isDark: isDark,
                                   ),
-                                ),
+                                  const SizedBox(height: 16),
+                                  BottomControls(
+                                    answered: _answered,
+                                    remaining: _remaining,
+                                    marked: _markedCount,
+                                    onPrevious: _prev,
+                                    onSaveNext: () => _next(submitIfLast: true),
+                                    isLast: _currentIndex == _answers.length - 1,
+                                  ),
+                                  const SizedBox(height: 16),
+                                  SummaryBar(
+                                    answered: _answered,
+                                    remaining: _remaining,
+                                    marked: _markedCount,
+                                    total: _answers.length,
+                                  ),
+                                ],
                               ),
-                            ],
-                          );
-                        }
-
-                        return SingleChildScrollView(
-                          padding: const EdgeInsets.fromLTRB(16, 16, 16, 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Wrap(
-                                spacing: 10,
-                                runSpacing: 10,
-                                children: List.generate(_sections.length, (
-                                  index,
-                                ) {
-                                  final section = _sections[index];
-                                  final isSelected =
-                                      index == _activeSectionIndex;
-                                  return ChoiceChip(
-                                    selected: isSelected,
-                                    label: Text(
-                                      '${section.name} • ${section.count}',
-                                      style: GoogleFonts.poppins(
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    onSelected: (_) => _switchSection(index),
-                                    selectedColor: _kPrimary,
-                                    backgroundColor: Colors.white,
-                                    labelStyle: TextStyle(
-                                      color: isSelected
-                                          ? Colors.white
-                                          : Colors.black87,
-                                    ),
-                                  );
-                                }),
-                              ),
-                              const SizedBox(height: 14),
-                              ProgressHeader(
-                                title: 'NEET Mock Test - Full Syllabus',
-                                subtitle:
-                                    '${_activeSection.name} • Question ${_sectionQuestionNumber} of ${_activeSection.count}',
-                                progress: _progress,
-                                answered: _answered,
-                                total: _answers.length,
-                              ),
-                              const SizedBox(height: 14),
-                              QuestionCard(
-                                question: currentQuestion,
-                                sectionName: _activeSection.name,
-                                questionNumber: _sectionQuestionNumber,
-                                sectionCount: _activeSection.count,
-                                selectedIndex: _answers[_currentIndex],
-                                currentIndex: _currentIndex,
-                                isMarked: _marked.contains(_currentIndex),
-                                onToggleMark: _toggleMark,
-                                onSelect: _selectOption,
-                                isDark: isDark,
-                              ),
-                              const SizedBox(height: 14),
-                              QuestionPalette(
+                            ),
+                          ),
+                          SizedBox(
+                            width: 380,
+                            child: SingleChildScrollView(
+                              padding: const EdgeInsets.fromLTRB(0, 16, 18, 18),
+                              child: QuestionPalette(
                                 sections: _sections,
                                 activeSectionIndex: _activeSectionIndex,
                                 sectionPage: _sectionPage,
@@ -1212,90 +1399,146 @@ class _MockTestScreenState extends State<MockTestScreen> {
                                     ? null
                                     : () {
                                         setState(() {
-                                          _sectionPage = math.max(
-                                            0,
-                                            _sectionPage - 1,
-                                          );
+                                          _sectionPage = math.max(0, _sectionPage - 1);
                                         });
                                         _saveDraft();
                                       },
-                                onNextPage:
-                                    _sectionPage >= _sectionPageCount - 1
+                                onNextPage: _sectionPage >= _sectionPageCount - 1
                                     ? null
                                     : () {
                                         setState(() {
-                                          _sectionPage = math.min(
-                                            _sectionPageCount - 1,
-                                            _sectionPage + 1,
-                                          );
+                                          _sectionPage = math.min(_sectionPageCount - 1, _sectionPage + 1);
                                         });
                                         _saveDraft();
                                       },
                                 isDark: isDark,
                               ),
-                              const SizedBox(height: 14),
-                              BottomControls(
-                                answered: _answered,
-                                remaining: _remaining,
-                                marked: _markedCount,
-                                onPrevious: _prev,
-                                onSaveNext: () => _next(submitIfLast: true),
-                                isLast: _currentIndex == _answers.length - 1,
-                              ),
-                              const SizedBox(height: 14),
-                              SummaryBar(
-                                answered: _answered,
-                                remaining: _remaining,
-                                marked: _markedCount,
-                                total: _answers.length,
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  // ensure bottom navigation is visible during mock test
-                  BottomNav(
-                    selectedIndex: 1,
-                    onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
-                  ),
-                  if (_isPaused)
-                    Container(
-                      width: double.infinity,
-                      color: Colors.black.withValues(alpha: 0.38),
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Center(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 18,
-                            vertical: 12,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          child: Text(
-                            'Test paused',
-                            style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w800,
-                              color: _kPrimary,
                             ),
                           ),
-                        ),
+                        ],
+                      );
+                    }
+
+                    return SingleChildScrollView(
+                      padding: const EdgeInsets.fromLTRB(16, 16, 16, 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Wrap(
+                            spacing: 10,
+                            runSpacing: 10,
+                            children: List.generate(_sections.length, (index) {
+                              final section = _sections[index];
+                              final isSelected = index == _activeSectionIndex;
+                              return ChoiceChip(
+                                selected: isSelected,
+                                label: Text(
+                                  '${section.name} • ${section.count}',
+                                  style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
+                                ),
+                                onSelected: (_) => _switchSection(index),
+                                selectedColor: _kPrimary,
+                                backgroundColor: Colors.white,
+                                labelStyle: TextStyle(
+                                  color: isSelected ? Colors.white : Colors.black87,
+                                ),
+                              );
+                            }),
+                          ),
+                          const SizedBox(height: 14),
+                          ProgressHeader(
+                            title: 'NEET Mock Test - Full Syllabus',
+                            subtitle:
+                                '${_activeSection.name} • Question ${_sectionQuestionNumber} of ${_activeSection.count}',
+                            progress: _progress,
+                            answered: _answered,
+                            total: _answers.length,
+                          ),
+                          const SizedBox(height: 14),
+                          QuestionCard(
+                            question: currentQuestion,
+                            sectionName: _activeSection.name,
+                            questionNumber: _sectionQuestionNumber,
+                            sectionCount: _activeSection.count,
+                            selectedIndex: _answers[_currentIndex],
+                            currentIndex: _currentIndex,
+                            isMarked: _marked.contains(_currentIndex),
+                            onToggleMark: _toggleMark,
+                            onSelect: _selectOption,
+                            isDark: isDark,
+                          ),
+                          const SizedBox(height: 14),
+                          QuestionPalette(
+                            sections: _sections,
+                            activeSectionIndex: _activeSectionIndex,
+                            sectionPage: _sectionPage,
+                            currentIndex: _currentIndex,
+                            answers: _answers,
+                            marked: _marked,
+                            onTap: _jumpToQuestion,
+                            onSectionTap: _switchSection,
+                            onPreviousPage: _sectionPage == 0
+                                ? null
+                                : () {
+                                    setState(() {
+                                      _sectionPage = math.max(0, _sectionPage - 1);
+                                    });
+                                    _saveDraft();
+                                  },
+                            onNextPage: _sectionPage >= _sectionPageCount - 1
+                                ? null
+                                : () {
+                                    setState(() {
+                                      _sectionPage = math.min(_sectionPageCount - 1, _sectionPage + 1);
+                                    });
+                                    _saveDraft();
+                                  },
+                            isDark: isDark,
+                          ),
+                          const SizedBox(height: 14),
+                          BottomControls(
+                            answered: _answered,
+                            remaining: _remaining,
+                            marked: _markedCount,
+                            onPrevious: _prev,
+                            onSaveNext: () => _next(submitIfLast: true),
+                            isLast: _currentIndex == _answers.length - 1,
+                          ),
+                          const SizedBox(height: 14),
+                          SummaryBar(
+                            answered: _answered,
+                            remaining: _remaining,
+                            marked: _markedCount,
+                            total: _answers.length,
+                          ),
+                        ],
                       ),
-                    ),
-                  if (_submitting)
-                    Container(
-                      width: double.infinity,
-                      color: Colors.black.withValues(alpha: 0.35),
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: const Center(child: CircularProgressIndicator()),
-                    ),
-                ],
+                    );
+                  },
+                ),
               ),
-            ),
+              const SizedBox(height: 12),
+              if (_isPaused)
+                Container(
+                  width: double.infinity,
+                  color: Colors.black.withValues(alpha: 0.38),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: Center(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
+                      child: Text('Test paused', style: GoogleFonts.poppins(fontWeight: FontWeight.w800, color: _kPrimary)),
+                    ),
+                  ),
+                ),
+              if (_submitting)
+                Container(
+                  width: double.infinity,
+                  color: Colors.black.withValues(alpha: 0.35),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: const Center(child: CircularProgressIndicator()),
+                ),
+            ],
           ),
         ),
       ),
@@ -1457,7 +1700,9 @@ class ResultAnalyticsPage extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton.icon(
                 onPressed: () => Navigator.of(context).popUntil(
-                  (route) => route.settings.name == '/mock-test/start' || route.isFirst,
+                  (route) =>
+                      route.settings.name == '/mock-test/start' ||
+                      route.isFirst,
                 ),
                 icon: const Icon(Icons.arrow_back),
                 label: Text(
@@ -1585,15 +1830,12 @@ _MockTestMetrics _buildMetrics(
 }
 
 class TestHeader extends StatelessWidget {
-  final VoidCallback onBack;
+  final VoidCallback? onBack;
   final String timerText;
   final int answered;
   final int total;
-  final String subject;
   final int currentIndex;
   final VoidCallback onEndTest;
-  final bool isPaused;
-  final VoidCallback onPauseToggle;
   final double progress;
 
   const TestHeader({
@@ -1602,11 +1844,8 @@ class TestHeader extends StatelessWidget {
     required this.timerText,
     required this.answered,
     required this.total,
-    required this.subject,
     required this.currentIndex,
     required this.onEndTest,
-    required this.isPaused,
-    required this.onPauseToggle,
     required this.progress,
   });
 
@@ -1631,128 +1870,47 @@ class TestHeader extends StatelessWidget {
           IconButton(
             onPressed: onBack,
             icon: const Icon(Icons.arrow_back_rounded),
-            tooltip: 'Back',
+            tooltip: onBack == null ? 'Back disabled' : 'Back',
           ),
-          const SizedBox(width: 4),
+          const SizedBox(width: 8),
+          // Timer placed on the left side as requested
           Container(
-            width: 44,
-            height: 44,
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              color: _kPrimary,
-              borderRadius: BorderRadius.circular(12),
+              color: _kPrimarySoft,
+              borderRadius: BorderRadius.circular(16),
             ),
-            child: const Icon(Icons.school_outlined, color: Colors.white),
-          ),
-          const SizedBox(width: 10),
-          // Title and subtitle take remaining space and can wrap.
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
+                const Icon(Icons.timer_outlined, color: _kPrimary, size: 16),
+                const SizedBox(width: 6),
                 Text(
-                  'ANEET PREP',
+                  timerText,
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w800,
-                    fontSize: 16,
+                    color: _kPrimary,
                   ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  'Subject: $subject • Question ${currentIndex + 1} / $total',
-                  style: GoogleFonts.poppins(
-                    color: Colors.black54,
-                    fontSize: 12,
-                  ),
-                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
           ),
-          const SizedBox(width: 8),
-          // Timer - shrink if necessary
-          Flexible(
-            fit: FlexFit.loose,
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 8,
-                ),
-                decoration: BoxDecoration(
-                  color: _kPrimarySoft,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(
-                      Icons.timer_outlined,
-                      color: _kPrimary,
-                      size: 16,
-                    ),
-                    const SizedBox(width: 6),
-                    Text(
-                      timerText,
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w800,
-                        color: _kPrimary,
-                      ),
-                    ),
-                  ],
-                ),
+          const Spacer(),
+          // End button on the right in red
+          ElevatedButton(
+            onPressed: onEndTest,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFDC2626),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
               ),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              minimumSize: Size(0, 0),
             ),
-          ),
-          const SizedBox(width: 8),
-          // Pause and End buttons wrapped to fit smaller screens
-          Flexible(
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Row(
-                children: [
-                  FilledButton(
-                    onPressed: onPauseToggle,
-                    style: FilledButton.styleFrom(
-                      backgroundColor: isPaused
-                          ? const Color(0xFF16A34A)
-                          : const Color(0xFFF59E0B),
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 14,
-                        vertical: 12,
-                      ),
-                    ),
-                    child: Text(
-                      isPaused ? 'Resume' : 'Pause',
-                      style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  FilledButton(
-                    onPressed: onEndTest,
-                    style: FilledButton.styleFrom(
-                      backgroundColor: const Color(0xFF111827),
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 14,
-                        vertical: 12,
-                      ),
-                    ),
-                    child: Text(
-                      'End',
-                      style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                ],
-              ),
+            child: Text(
+              'End',
+              style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
             ),
           ),
         ],
@@ -1901,7 +2059,15 @@ class QuestionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final surface = isDark ? const Color(0xFF111A2A) : _kSurface;
     final border = isDark ? const Color(0xFF223047) : const Color(0xFFE5E7EB);
-    final hasQuestionImage = question.questionImageBase64.trim().isNotEmpty;
+    final questionImageBase64 = question.questionImageBase64?.trim();
+    final hasQuestionImage = questionImageBase64?.isNotEmpty ?? false;
+    Uint8List? questionImageBytes;
+    if (hasQuestionImage) {
+      final encodedImage = questionImageBase64!.contains(',')
+          ? questionImageBase64.split(',').last
+          : questionImageBase64;
+      questionImageBytes = base64Decode(encodedImage);
+    }
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -1952,20 +2118,22 @@ class QuestionCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           if (hasQuestionImage) ...[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(18),
-              child: Container(
-                width: double.infinity,
-                color: const Color(0xFFF8FAFC),
-                padding: const EdgeInsets.all(10),
-                child: Image.memory(
-                  base64Decode(question.questionImageBase64),
-                  fit: BoxFit.contain,
-                  alignment: Alignment.center,
-                  errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+            if (questionImageBytes != null)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(18),
+                child: Container(
+                  width: double.infinity,
+                  color: const Color(0xFFF8FAFC),
+                  padding: const EdgeInsets.all(10),
+                  child: Image.memory(
+                    questionImageBytes,
+                    fit: BoxFit.contain,
+                    alignment: Alignment.center,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const SizedBox.shrink(),
+                  ),
                 ),
               ),
-            ),
             const SizedBox(height: 16),
           ],
           Text(
@@ -2343,14 +2511,15 @@ class SummaryBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(18),
+      constraints: const BoxConstraints(minHeight: 120),
       decoration: BoxDecoration(
         color: _kSurface,
         borderRadius: BorderRadius.circular(24),
         boxShadow: const [
           BoxShadow(
             color: Color(0x10000000),
-            blurRadius: 16,
+            blurRadius: 18,
             offset: Offset(0, 8),
           ),
         ],
@@ -2676,11 +2845,6 @@ class _ResultHero extends StatelessWidget {
                       color: const Color(0xFFE9F8EE),
                       textColor: const Color(0xFF0F766E),
                     ),
-                    _TinyBadge(
-                      text: 'Rank est. ~${metrics.rankEstimate}',
-                      color: const Color(0xFFFFF4E5),
-                      textColor: const Color(0xFFB45309),
-                    ),
                   ],
                 ),
               ],
@@ -2701,7 +2865,7 @@ class _StatsGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final crossAxisCount = constraints.maxWidth > 720 ? 4 : 2;
+        final crossAxisCount = constraints.maxWidth > 720 ? 3 : 2;
         final mainAxisExtent = constraints.maxWidth > 720 ? 132.0 : 122.0;
         final cards = [
           StatCard(
@@ -2713,11 +2877,6 @@ class _StatsGrid extends StatelessWidget {
             label: 'Accuracy',
             value: '${metrics.accuracy.toStringAsFixed(0)}%',
             color: const Color(0xFF0F766E),
-          ),
-          StatCard(
-            label: 'Rank Estimate',
-            value: '~${metrics.rankEstimate}',
-            color: const Color(0xFFB45309),
           ),
           StatCard(
             label: 'Time Taken',
@@ -2828,68 +2987,24 @@ class _ChartsPanel extends StatelessWidget {
         value: metrics.correct.toDouble(),
         color: const Color(0xFF22C55E),
         radius: 54,
-        title: 'Correct',
+        showTitle: false,
       ),
       PieChartSectionData(
         value: metrics.wrong.toDouble(),
         color: const Color(0xFFEF4444),
         radius: 54,
-        title: 'Wrong',
+        showTitle: false,
       ),
       PieChartSectionData(
         value: metrics.skipped.toDouble(),
-        color: const Color(0xFFF59E0B),
+        color: const Color(0xFF3B82F6),
         radius: 54,
-        title: 'Skipped',
+        showTitle: false,
       ),
     ];
-    final subjectEntries = metrics.subjectStats.entries.toList();
-    final barGroups = <BarChartGroupData>[];
-    for (var index = 0; index < subjectEntries.length; index += 1) {
-      final entry = subjectEntries[index];
-      final total = entry.value['total'] ?? 0;
-      final score = entry.value['score'] ?? 0;
-      final normalized = total == 0
-          ? 0.0
-          : (score.clamp(0, total * 4) / (total * 4)).toDouble();
-      barGroups.add(
-        BarChartGroupData(
-          x: index,
-          barRods: [
-            BarChartRodData(
-              toY: normalized * 100,
-              width: 18,
-              borderRadius: BorderRadius.circular(12),
-              color: _kPrimary,
-            ),
-          ],
-        ),
-      );
-    }
-    final timeBars = subjectEntries.asMap().entries.map((entry) {
-      final total = entry.value.value['total'] ?? 0;
-      final totalQuestions = metrics.subjectStats.values.fold<double>(
-        0,
-        (sum, item) => sum + ((item['total'] ?? 0).toDouble()),
-      );
-      final estimate = totalQuestions == 0
-          ? 0.0
-          : metrics.elapsed.inSeconds * (total / totalQuestions);
-      return BarChartGroupData(
-        x: entry.key,
-        barRods: [
-          BarChartRodData(
-            toY: estimate,
-            width: 18,
-            borderRadius: BorderRadius.circular(12),
-            color: const Color(0xFFF59E0B),
-          ),
-        ],
-      );
-    }).toList();
 
     return Container(
-      padding: const EdgeInsets.all(18),
+      padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(26),
@@ -2911,90 +3026,32 @@ class _ChartsPanel extends StatelessWidget {
               fontWeight: FontWeight.w800,
             ),
           ),
-          const SizedBox(height: 14),
-          LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth > 840) {
-                return Row(
-                  children: [
-                    Expanded(
-                      child: _ChartCard(
-                        title: 'Accuracy Split',
-                        child: PieChart(
-                          PieChartData(
-                            sections: pieSections,
-                            centerSpaceRadius: 44,
-                            sectionsSpace: 2,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 14),
-                    Expanded(
-                      child: _ChartCard(
-                        title: 'Subject-wise Performance',
-                        child: BarChart(
-                          BarChartData(
-                            barGroups: barGroups,
-                            titlesData: _axisTitles(
-                              subjectEntries.map((e) => e.key).toList(),
-                            ),
-                            gridData: const FlGridData(show: false),
-                            borderData: FlBorderData(show: false),
-                            barTouchData: BarTouchData(enabled: false),
-                            maxY: 100,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                );
-              }
-              return Column(
-                children: [
-                  _ChartCard(
-                    title: 'Accuracy Split',
-                    child: PieChart(
-                      PieChartData(
-                        sections: pieSections,
-                        centerSpaceRadius: 44,
-                        sectionsSpace: 2,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 14),
-                  _ChartCard(
-                    title: 'Subject-wise Performance',
-                    child: BarChart(
-                      BarChartData(
-                        barGroups: barGroups,
-                        titlesData: _axisTitles(
-                          subjectEntries.map((e) => e.key).toList(),
-                        ),
-                        gridData: const FlGridData(show: false),
-                        borderData: FlBorderData(show: false),
-                        barTouchData: BarTouchData(enabled: false),
-                        maxY: 100,
-                      ),
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 18),
           _ChartCard(
-            title: 'Estimated Time Distribution',
-            child: BarChart(
-              BarChartData(
-                barGroups: timeBars,
-                titlesData: _axisTitles(
-                  subjectEntries.map((e) => e.key).toList(),
+            title: 'Accuracy Split',
+            child: Column(
+              children: [
+                Expanded(
+                  child: PieChart(
+                    PieChartData(
+                      sections: pieSections,
+                      centerSpaceRadius: 44,
+                      sectionsSpace: 2,
+                    ),
+                  ),
                 ),
-                gridData: const FlGridData(show: false),
-                borderData: FlBorderData(show: false),
-                barTouchData: BarTouchData(enabled: false),
-              ),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildLegendItem(const Color(0xFF22C55E), 'Correct'),
+                    const SizedBox(width: 16),
+                    _buildLegendItem(const Color(0xFFEF4444), 'Wrong'),
+                    const SizedBox(width: 16),
+                    _buildLegendItem(const Color(0xFF3B82F6), 'Skipped'),
+                  ],
+                ),
+              ],
             ),
           ),
         ],
@@ -3002,33 +3059,25 @@ class _ChartsPanel extends StatelessWidget {
     );
   }
 
-  FlTitlesData _axisTitles(List<String> labels) {
-    return FlTitlesData(
-      leftTitles: const AxisTitles(
-        sideTitles: SideTitles(showTitles: true, reservedSize: 34),
-      ),
-      rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-      topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-      bottomTitles: AxisTitles(
-        sideTitles: SideTitles(
-          showTitles: true,
-          getTitlesWidget: (value, meta) {
-            final index = value.toInt();
-            if (index < 0 || index >= labels.length)
-              return const SizedBox.shrink();
-            return Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text(
-                labels[index].split(' ').first,
-                style: GoogleFonts.poppins(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            );
-          },
+  Widget _buildLegendItem(Color color, String label) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 12,
+          height: 12,
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
         ),
-      ),
+        const SizedBox(width: 6),
+        Text(
+          label,
+          style: GoogleFonts.poppins(
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -3180,31 +3229,45 @@ class _AdditionalAnalytics extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            children: [
-              StatCard(
-                label: 'Correct',
-                value: '${metrics.correct}',
-                color: const Color(0xFF22C55E),
-              ),
-              StatCard(
-                label: 'Incorrect',
-                value: '${metrics.wrong}',
-                color: const Color(0xFFEF4444),
-              ),
-              StatCard(
-                label: 'Skipped',
-                value: '${metrics.skipped}',
-                color: const Color(0xFFF59E0B),
-              ),
-              StatCard(
-                label: 'Negative Marks',
-                value: '-${metrics.wrong}',
-                color: const Color(0xFF6B7280),
-              ),
-            ],
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final crossAxisCount = constraints.maxWidth > 720 ? 4 : 2;
+              final mainAxisExtent = constraints.maxWidth > 720 ? 132.0 : 122.0;
+              final cards = [
+                StatCard(
+                  label: 'Correct',
+                  value: '${metrics.correct}',
+                  color: const Color(0xFF22C55E),
+                ),
+                StatCard(
+                  label: 'Incorrect',
+                  value: '${metrics.wrong}',
+                  color: const Color(0xFFEF4444),
+                ),
+                StatCard(
+                  label: 'Skipped',
+                  value: '${metrics.skipped}',
+                  color: const Color(0xFF3B82F6),
+                ),
+                StatCard(
+                  label: 'Negative Marks',
+                  value: '-${metrics.wrong}',
+                  color: const Color(0xFFB91C1C),
+                ),
+              ];
+              return GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: cards.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxisCount,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  mainAxisExtent: mainAxisExtent,
+                ),
+                itemBuilder: (context, index) => cards[index],
+              );
+            },
           ),
         ],
       ),
@@ -3282,7 +3345,7 @@ class _MetricChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(18),
@@ -3293,15 +3356,16 @@ class _MetricChip extends StatelessWidget {
           Text(
             label,
             style: GoogleFonts.poppins(
-              fontSize: 11,
+              fontSize: 12,
               color: Colors.black54,
               fontWeight: FontWeight.w700,
             ),
           ),
-          const SizedBox(height: 2),
+          const SizedBox(height: 4),
           Text(
             value,
             style: GoogleFonts.poppins(
+              fontSize: 16,
               fontWeight: FontWeight.w800,
               color: color,
             ),
@@ -3397,30 +3461,47 @@ class _PracticeHeroCard extends StatelessWidget {
         ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 74,
-            height: 74,
-            decoration: BoxDecoration(
-              color: _kPrimary,
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: const Icon(
-              Icons.play_arrow_rounded,
-              color: Colors.white,
-              size: 42,
-            ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: 74,
+                height: 74,
+                decoration: BoxDecoration(
+                  color: _kPrimary,
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                child: const Icon(
+                  Icons.play_arrow_rounded,
+                  color: Colors.white,
+                  size: 42,
+                ),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Start Full Mock Test',
+                      style: GoogleFonts.poppins(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      'Attempt a full NEET-style mock test covering all subjects.',
+                      style: GoogleFonts.poppins(color: Colors.black54),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 18),
-          Text(
-            'Start Full Mock Test',
-            style: GoogleFonts.poppins(
-              fontSize: 24,
-              fontWeight: FontWeight.w800,
-            ),
-          ),
-
-          const SizedBox(height: 18),
+          const SizedBox(height: 16),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
@@ -3431,7 +3512,7 @@ class _PracticeHeroCard extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 14),
               ),
               child: loading
                   ? const SizedBox(
@@ -3448,34 +3529,9 @@ class _PracticeHeroCard extends StatelessWidget {
                     ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ExamPatternCard extends StatelessWidget {
-  const _ExamPatternCard();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(28),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x10000000),
-            blurRadius: 18,
-            offset: Offset(0, 8),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+          const SizedBox(height: 16),
+          const Divider(height: 1),
+          const SizedBox(height: 12),
           Text(
             'NEET Mock Test Structure',
             style: GoogleFonts.poppins(
@@ -3484,11 +3540,11 @@ class _ExamPatternCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          _PatternRow(label: 'Physics', value: '45 Questions'),
+          const _PatternRow(label: 'Physics', value: '45 Questions'),
           const Divider(height: 1),
-          _PatternRow(label: 'Chemistry', value: '45 Questions'),
+          const _PatternRow(label: 'Chemistry', value: '45 Questions'),
           const Divider(height: 1),
-          _PatternRow(label: 'Biology', value: '90 Questions'),
+          const _PatternRow(label: 'Biology', value: '90 Questions'),
           const Divider(height: 1),
           const SizedBox(height: 10),
           Row(
@@ -3685,7 +3741,7 @@ class _QuizzesCard extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            'The quiz module stays separate from mock tests.',
+            'Attempt quizzes for separate units and practice topic by topic.',
             style: GoogleFonts.poppins(color: Colors.black54),
             textAlign: TextAlign.center,
           ),
@@ -3709,6 +3765,97 @@ class _QuizzesCard extends StatelessWidget {
                   fontWeight: FontWeight.w800,
                   color: _kPrimary,
                 ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CombinedMockCard extends StatelessWidget {
+  final VoidCallback onStart;
+  final bool loading;
+
+  const _CombinedMockCard({required this.onStart, required this.loading});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(28),
+        boxShadow: const [
+          BoxShadow(
+            color: Color(0x10000000),
+            blurRadius: 18,
+            offset: Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Center(
+            child: Container(
+              width: 72,
+              height: 72,
+              decoration: BoxDecoration(
+                color: _kPrimary,
+                borderRadius: BorderRadius.circular(22),
+              ),
+              child: const Icon(
+                Icons.play_arrow_rounded,
+                color: Colors.white,
+                size: 40,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'Full NEET Mock Test',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.poppins(
+              fontSize: 22,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Take the complete NEET-style paper with Physics, Chemistry, and Biology in exam conditions.',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.poppins(color: Colors.black54),
+          ),
+          const SizedBox(height: 16),
+          Center(
+            child: SizedBox(
+              width: 220,
+              child: ElevatedButton(
+                onPressed: loading ? null : onStart,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: _kPrimary,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                ),
+                child: loading
+                    ? const SizedBox(
+                        width: 18,
+                        height: 18,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: Colors.white,
+                        ),
+                      )
+                    : Text(
+                        'START FULL MOCK TEST',
+                        style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
+                      ),
               ),
             ),
           ),

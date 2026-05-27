@@ -4,12 +4,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 import 'package:flutter_application_1/core/constants/app_colors.dart';
-import 'package:flutter_application_1/core/widgets/custom_button.dart';
 import 'package:flutter_application_1/core/widgets/info_card.dart';
 import 'package:flutter_application_1/core/widgets/info_tile.dart';
-import 'package:flutter_application_1/screens/login_screen.dart';
+import 'package:flutter_application_1/models/home_model.dart';
 import 'package:flutter_application_1/screens/settings_screen.dart';
 import 'package:flutter_application_1/services/auth_service.dart';
 import 'package:flutter_application_1/widgets/bottom_nav.dart';
@@ -92,18 +92,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  Future<void> _logout() async {
-    await AuthService.logout();
-    if (!mounted) return;
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (_) => const LoginScreen()),
-      (_) => false,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    final homeModel = context.watch<HomeModel>();
     final avatarRadius = 56.0;
     return Scaffold(
       appBar: AppBar(
@@ -179,6 +170,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   const SizedBox(height: 4),
                   Text(
+                    'NEET ASPIRANT',
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      letterSpacing: 1.2,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.primary,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
                     _email ?? '-',
                     style: GoogleFonts.poppins(
                       fontSize: 13,
@@ -190,22 +191,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             const SizedBox(height: 14),
             InfoCard(
-              child: Row(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: _StatChip(
-                      title: 'Streak',
-                      value: '14 days',
-                      icon: Icons.local_fire_department_rounded,
+                  Text(
+                    'Future doctor in progress',
+                    style: GoogleFonts.poppins(
+                      fontSize: 14,
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.textPrimary,
                     ),
                   ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: _StatChip(
-                      title: 'Completion',
-                      value: '78%',
-                      icon: Icons.check_circle_rounded,
-                    ),
+                  const SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.local_fire_department_rounded, color: AppColors.primary),
+                      const SizedBox(width: 8),
+                      Text(
+                        '${homeModel.streakDays} days',
+                        style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.textPrimary,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -222,86 +235,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
             ),
             const SizedBox(height: 14),
-            InfoCard(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Logout',
-                    style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Sign out from this device and clear the local session.',
-                    style: GoogleFonts.poppins(
-                      fontSize: 13,
-                      color: AppColors.textSecondary,
-                    ),
-                  ),
-                  const SizedBox(height: 14),
-                  CustomButton(
-                    label: 'LOGOUT',
-                    outlined: true,
-                    onPressed: _logout,
-                  ),
-                ],
-              ),
-            ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNav(
-        selectedIndex: 3,
+        selectedIndex: 4,
         onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
-      ),
-    );
-  }
-}
-
-class _StatChip extends StatelessWidget {
-  final String title;
-  final String value;
-  final IconData icon;
-
-  const _StatChip({
-    required this.title,
-    required this.value,
-    required this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: AppColors.primarySoft,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, color: AppColors.primary),
-          const SizedBox(height: 10),
-          Text(
-            title,
-            style: GoogleFonts.poppins(
-              fontSize: 12,
-              color: AppColors.textSecondary,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            value,
-            style: GoogleFonts.poppins(
-              fontSize: 15,
-              fontWeight: FontWeight.w800,
-              color: AppColors.textPrimary,
-            ),
-          ),
-        ],
       ),
     );
   }
