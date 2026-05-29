@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -12,6 +14,7 @@ import 'package:flutter_application_1/core/widgets/info_tile.dart';
 import 'package:flutter_application_1/models/home_model.dart';
 import 'package:flutter_application_1/screens/settings_screen.dart';
 import 'package:flutter_application_1/services/auth_service.dart';
+import 'package:flutter_application_1/services/theme_service.dart';
 import 'package:flutter_application_1/widgets/bottom_nav.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -235,11 +238,67 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
             ),
             const SizedBox(height: 14),
+            InfoTile(
+              icon: Icons.color_lens_rounded,
+              title: 'Choose mode',
+              subtitle: 'App theme: System / Light / Dark',
+              onTap: () async {
+                // show modal with radio options
+                await showModalBottomSheet<void>(
+                  context: context,
+                  builder: (c) {
+                    ThemeMode current = ThemeService.mode.value;
+                    return StatefulBuilder(builder: (ctx, setState) {
+                      return SafeArea(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            ListTile(title: const Text('Choose app theme')),
+                            RadioListTile<ThemeMode>(
+                              title: const Text('System default'),
+                              value: ThemeMode.system,
+                              groupValue: current,
+                              onChanged: (v) async {
+                                if (v == null) return;
+                                setState(() => current = v);
+                                await ThemeService.setMode(v);
+                              },
+                            ),
+                            RadioListTile<ThemeMode>(
+                              title: const Text('Light mode'),
+                              value: ThemeMode.light,
+                              groupValue: current,
+                              onChanged: (v) async {
+                                if (v == null) return;
+                                setState(() => current = v);
+                                await ThemeService.setMode(v);
+                              },
+                            ),
+                            RadioListTile<ThemeMode>(
+                              title: const Text('Dark mode'),
+                              value: ThemeMode.dark,
+                              groupValue: current,
+                              onChanged: (v) async {
+                                if (v == null) return;
+                                setState(() => current = v);
+                                await ThemeService.setMode(v);
+                              },
+                            ),
+                            const SizedBox(height: 12),
+                          ],
+                        ),
+                      );
+                    });
+                  },
+                );
+              },
+            ),
+            const SizedBox(height: 14),
           ],
         ),
       ),
       bottomNavigationBar: BottomNav(
-        selectedIndex: 4,
+        selectedIndex: 3,
         onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
       ),
     );

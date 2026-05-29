@@ -119,7 +119,7 @@ class ChatBubble extends StatelessWidget {
               );
             },
           )
-        : const _AvatarChip(
+        : _AvatarChip(
             backgroundColor: AppColors.primarySoft,
             icon: Icons.smart_toy_rounded,
             iconColor: AppColors.primary,

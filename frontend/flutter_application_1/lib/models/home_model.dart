@@ -32,8 +32,9 @@ class HomeModel extends ChangeNotifier {
     try {
       dailyError = null;
       dailyChallenge = await _streakService.fetchToday();
-    } catch (error) {
-      dailyError = error.toString().replaceFirst('Exception: ', '');
+    } catch (_) {
+      dailyChallenge = null;
+      dailyError = null;
     } finally {
       isLoadingDaily = false;
       notifyListeners();
@@ -71,8 +72,7 @@ class HomeModel extends ChangeNotifier {
 
   String get dailyStatusText {
     if (isLoadingDaily) return 'Loading today\'s arena...';
-    if (dailyError != null) return dailyError!;
-    if (dailyChallenge == null) return 'Daily arena unavailable.';
+    if (dailyChallenge == null) return 'Tap to open today\'s daily arena';
     if (dailyChallenge!.submitted) return 'Locked for today';
     return '3 quests ready';
   }

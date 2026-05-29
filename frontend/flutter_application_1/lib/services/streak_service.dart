@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -95,6 +96,11 @@ class StreakService {
     defaultValue: '',
   );
 
+  static const String _authBaseUrl = String.fromEnvironment(
+    'AUTH_BASE_URL',
+    defaultValue: '',
+  );
+
   static const String _legacyChatBaseUrl = String.fromEnvironment(
     'CHAT_BASE_URL',
     defaultValue: '',
@@ -109,15 +115,22 @@ class StreakService {
   String _clean(String url) => url.endsWith('/') ? url.substring(0, url.length - 1) : url;
 
   List<String> _candidateBaseUrls() {
-    final explicit = _envBaseUrl.trim().isNotEmpty ? _envBaseUrl.trim() : _legacyChatBaseUrl.trim();
-    final urls = <String>[
-      _clean(explicit.isNotEmpty ? explicit : _platformDefaultBaseUrl()),
-    ];
-    const legacyIp = 'http://10.65.205.248:8000';
+    final explicit = _envBaseUrl.trim().isNotEmpty
+        ? _envBaseUrl.trim()
+        : _authBaseUrl.trim().isNotEmpty
+        ? _authBaseUrl.trim()
+        : _legacyChatBaseUrl.trim();
+    final urls = <String>[];
+
+    if (explicit.isNotEmpty) {
+      urls.add(_clean(explicit));
+    } else {
+      urls.add(_clean(_platformDefaultBaseUrl()));
+    }
+
     final platformDefault = _clean(_platformDefaultBaseUrl());
 
     if (!urls.contains(platformDefault)) urls.add(platformDefault);
-    if (!urls.contains(legacyIp)) urls.add(legacyIp);
     if (!kIsWeb && !Platform.isAndroid && !urls.contains('http://localhost:8000')) {
       urls.add('http://localhost:8000');
     }
@@ -129,7 +142,7 @@ class StreakService {
     String path,
     String token, {
     Map<String, dynamic>? body,
-    Duration timeout = const Duration(seconds: 30),
+    Duration timeout = const Duration(seconds: 12),
   }) async {
     Object? lastConnectionError;
     for (final candidate in _candidateBaseUrls()) {
@@ -163,11 +176,14 @@ class StreakService {
       } on SocketException catch (e) {
         lastConnectionError = e;
         continue;
+      } on TimeoutException catch (e) {
+        lastConnectionError = e;
+        continue;
       }
     }
 
     throw Exception(
-      'Cannot reach streak server. Check backend and STREAK_BASE_URL. Tried: ${_candidateBaseUrls().join(', ')}${lastConnectionError != null ? ' (${lastConnectionError.runtimeType})' : ''}',
+      'Cannot reach streak server. Check backend and STREAK_BASE_URL or AUTH_BASE_URL. Tried: ${_candidateBaseUrls().join(', ')}${lastConnectionError != null ? ' (${lastConnectionError.runtimeType})' : ''}',
     );
   }
 

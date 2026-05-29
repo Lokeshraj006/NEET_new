@@ -36,9 +36,21 @@ class MockTestApiService {
     final explicit = _envBaseUrl.trim().isNotEmpty
         ? _envBaseUrl.trim()
         : _legacyBaseUrl.trim();
-    final urls = <String>[
-      _clean(explicit.isNotEmpty ? explicit : _platformDefaultBaseUrl()),
-    ];
+    final urls = <String>[];
+
+    if (_authBaseUrl.trim().isNotEmpty) {
+      urls.add(_clean(_authBaseUrl.trim()));
+    }
+
+    if (explicit.isNotEmpty) {
+      final cleanedExplicit = _clean(explicit);
+      if (!urls.contains(cleanedExplicit)) {
+        urls.add(cleanedExplicit);
+      }
+    } else {
+      urls.add(_clean(_platformDefaultBaseUrl()));
+    }
+
     final platformDefault = _clean(_platformDefaultBaseUrl());
     if (!urls.contains(platformDefault)) urls.add(platformDefault);
     for (final extra in [_chatBaseUrl, _authBaseUrl]) {

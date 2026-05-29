@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 import json
@@ -9,6 +10,8 @@ import requests
 import re
 import time
 import traceback
+import threading
+from pathlib import Path
 
 try:
     from . import memory as session_memory
@@ -81,9 +84,40 @@ app.include_router(mock_test_api.router)
 app.include_router(streak_api.router)
 
 
+SYLLABUS_PDF_PATH = Path(__file__).resolve().parent / 'pdfs' / 'NEET_Syllabus.pdf'
+
+
+@app.on_event("startup")
+def _warm_unit_quiz_banks() -> None:
+    """Prebuild the unit quiz banks in background so startup stays responsive."""
+
+    def _run_warmup() -> None:
+        try:
+            mock_test_api._ensure_schema()
+            mock_test_api._prefill_all_unit_banks()
+        except Exception:
+            # Best effort only; request-time generation still has a fast fallback.
+            pass
+
+    threading.Thread(target=_run_warmup, daemon=True).start()
+
+
 @app.get('/health')
 async def health():
     return {'status': 'OK', 'message': 'Backend is running'}
+
+
+@app.get('/syllabus/neet.pdf')
+async def get_neet_syllabus_pdf(download: bool = False):
+    if not SYLLABUS_PDF_PATH.exists():
+        raise HTTPException(status_code=404, detail='NEET syllabus PDF not found')
+    disposition = 'attachment' if download else 'inline'
+    return FileResponse(
+        path=str(SYLLABUS_PDF_PATH),
+        media_type='application/pdf',
+        filename='NEET_Syllabus.pdf',
+        content_disposition_type=disposition,
+    )
 
 
 class Msg(BaseModel):
@@ -689,7 +723,7 @@ def call_mistral_generate(api_key: str, prompt: str) -> str:
             }
 
             try:
-                resp = requests.post(base_url, headers=headers, json=body, timeout=60)
+                resp = requests.post(base_url, headers=headers, json=body, timeout=120)
                 if resp.status_code == 200:
                     data = resp.json()
                     if isinstance(data, dict):

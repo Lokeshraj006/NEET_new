@@ -32,10 +32,14 @@ from pydantic import BaseModel, Field
 
 try:
     from .auth import JWT_ALGORITHM, JWT_SECRET, get_db
+    from .neet_config import load_project_env
     from .pageindex import get_page_index
 except ImportError:
     from auth import JWT_ALGORITHM, JWT_SECRET, get_db
+    from neet_config import load_project_env
     from pageindex import get_page_index
+
+load_project_env()
 
 router = APIRouter(prefix="/mock-test", tags=["mock-test"])
 
@@ -51,6 +55,7 @@ SUBJECT_QUOTAS = {"Physics": 45, "Chemistry": 45, "Botany": 45, "Zoology": 45}
 UNIT_QUIZ_COUNT = 10
 UNIT_QUIZ_DURATION = 10 * 60
 UNIT_QUIZ_VARIANTS = 5
+UNIT_QUIZ_POOL_SIZE = UNIT_QUIZ_COUNT * UNIT_QUIZ_VARIANTS
 VALID_DIFFICULTIES = {"Easy", "Medium", "Hard"}
 VALID_QUESTION_TYPES = {
     "MCQ",
@@ -379,6 +384,11 @@ class MockTestCacheEntry:
 _mock_test_cache_lock = Lock()
 _mock_test_cache: Dict[int, deque[MockTestCacheEntry]] = {}
 _mock_test_bg_threads: Dict[int, Thread] = {}
+_rotation_bg_lock = Lock()
+# keys are composite strings: "{user_id}:{subject}:{unit}" -> Thread
+_rotation_bg_threads: Dict[str, Thread] = {}
+_unit_bank_lock = Lock()
+_unit_question_bank: Dict[str, List[Dict]] = {}
 
 
 @lru_cache(maxsize=1)
@@ -1178,224 +1188,113 @@ def _unit_keywords(unit: str) -> List[str]:
     return [token for token in re.findall(r"[a-zA-Z]{3,}", unit.lower()) if token not in {"and", "the", "for", "with", "from", "into", "unit", "chapter"}]
 
 
+def _bank_entry(
+    question: str,
+    answer: str,
+    options: List[str],
+    concept: str,
+) -> tuple[str, str, List[str], str]:
+    return (question, answer, options[:4], concept)
+
+
+def _physics_kinematics_bank() -> List[tuple[str, str, List[str], str]]:
+    return [
+        _bank_entry("The slope of a velocity-time graph gives:", "Acceleration", ["Acceleration", "Displacement", "Speed", "Force"], "v-t slope"),
+        _bank_entry("The area under a velocity-time graph gives:", "Displacement", ["Displacement", "Acceleration", "Momentum", "Power"], "v-t area"),
+        _bank_entry("For uniform acceleration, v = u + at is valid when:", "Acceleration is constant", ["Acceleration is constant", "Velocity is zero", "Displacement is zero", "Force is zero"], "equations of motion"),
+        _bank_entry("Average velocity is defined as:", "Total displacement / total time", ["Total displacement / total time", "Total distance x time", "Force / mass", "Work / time"], "average velocity"),
+        _bank_entry("A body in free fall near Earth has acceleration about:", "9.8 m/s² downward", ["9.8 m/s² downward", "9.8 m/s² upward", "0 m/s²", "98 m/s²"], "free fall"),
+        _bank_entry("Relative velocity is used to analyze:", "Motion of one object with respect to another", ["Motion of one object with respect to another", "Only circular motion", "Only SHM", "Only optics"], "relative motion"),
+        _bank_entry("If a particle returns to the starting point, its displacement is:", "Zero", ["Zero", "Equal to distance", "Equal to speed", "Equal to acceleration"], "displacement"),
+        _bank_entry("Instantaneous velocity is:", "Velocity at a particular instant", ["Velocity at a particular instant", "Total distance over total time", "Change in acceleration", "Mass x acceleration"], "instantaneous velocity"),
+        _bank_entry("A particle moving with constant velocity has acceleration:", "Zero", ["Zero", "9.8 m/s²", "Increasing always", "Equal to speed"], "constant velocity"),
+        _bank_entry("In 1D motion, speed is the magnitude of:", "Velocity", ["Velocity", "Displacement", "Acceleration", "Force"], "speed"),
+        _bank_entry("If velocity and acceleration are in opposite directions, the body is:", "Slowing down", ["Slowing down", "Speeding up", "At rest always", "Moving with constant speed"], "direction of acceleration"),
+        _bank_entry("The SI unit of acceleration is:", "m/s²", ["m/s²", "m/s", "newton", "joule"], "acceleration unit"),
+    ]
+
+
+def _build_varied_unit_bank(subject: str, unit: str, size: int = 15) -> List[tuple[str, str, List[str], str]]:
+    """Guarantee many unique hashes for any unit title (topic-aware stems)."""
+    unit_label = _clean_text(unit) or subject
+    stems = [
+        "Which option best matches the core theme of {unit}?",
+        "For {unit}, NEET usually asks questions based on:",
+        "While studying {unit}, solved examples mainly help with:",
+        "A quick self-check for {unit}: focus first on:",
+        "In {unit}, formula-based questions mainly test:",
+        "For {unit}, eliminating options works best when you know:",
+        "An effective revision tip for {unit} is to revise:",
+        "Timed practice for {unit} improves:",
+        "Concept links inside {unit} are important because:",
+        "Wrong options in {unit} MCQs are often based on:",
+        "Before mock tests, {unit} notes should be used for:",
+        "Difficulty in {unit} usually comes from:",
+        "One-hour revision of {unit} should cover:",
+        "When stuck in {unit}, first recall:",
+        "Scoring in {unit} improves if you practice:",
+    ]
+    answer_sets = [
+        ("Core definitions with applications", ["Core definitions with applications", "Only memorizing years", "Ignoring NCERT terms", "Skipping solved examples"]),
+        ("Key concepts and typical traps", ["Key concepts and typical traps", "Only lengthy derivations", "Only scientist names", "Only lab glassware"]),
+        ("Linking theory with numericals", ["Linking theory with numericals", "Only spelling of terms", "Only exam date", "Only rank prediction"]),
+        ("High-yield facts and formulas", ["High-yield facts and formulas", "Unrelated chapters", "Random mnemonics only", "Only previous rank"]),
+    ]
+    bank: List[tuple[str, str, List[str], str]] = []
+    for i in range(max(size, UNIT_QUIZ_POOL_SIZE)):
+        stem = stems[i % len(stems)]
+        ans, options = answer_sets[(i // len(stems)) % len(answer_sets)]
+        question = stem.format(unit=unit_label)
+        concept = f"{unit_label}::{subject}::practice::{i}"
+        bank.append(_bank_entry(question, ans, options, concept))
+    return bank
+
+
+def _resolve_unit_question_bank(subject: str, unit: str) -> List[tuple[str, str, List[str], str]]:
+    unit_lower = unit.lower()
+    topic_banks: Dict[str, List[List[tuple[str, str, List[str], str]]]] = {
+        "Physics": [
+            (["laws of motion"], [
+                _bank_entry("Newton's second law relates force to:", "Rate of change of momentum", ["Rate of change of momentum", "Mass only", "Velocity only", "Time period"], "Newton II"),
+                _bank_entry("Inertia is the property of a body to resist change in:", "State of motion", ["State of motion", "Mass only", "Temperature", "Shape only"], "Inertia"),
+                _bank_entry("Action and reaction forces:", "Act on different bodies", ["Act on different bodies", "Cancel on same body", "Are always unequal", "Depend on friction only"], "Newton III"),
+                _bank_entry("Impulse equals change in:", "Momentum", ["Momentum", "Energy only", "Power", "Mass"], "Impulse"),
+                _bank_entry("Static friction is:", "Self-adjusting up to a limit", ["Self-adjusting up to a limit", "Always constant", "Always zero", "Equal to weight always"], "Friction"),
+                _bank_entry("Banking of roads helps provide:", "Centripetal force component", ["Centripetal force component", "Only gravity", "Only friction", "Only tension"], "Banking"),
+                _bank_entry("A lift problem mainly uses:", "Pseudo force in non-inertial frame", ["Pseudo force in non-inertial frame", "Only optics", "Only thermodynamics", "Only organic chemistry"], "Lift problems"),
+                _bank_entry("Limiting friction is proportional to:", "Normal reaction", ["Normal reaction", "Area only", "Volume", "Speed"], "Limiting friction"),
+                _bank_entry("Momentum is conserved when:", "Net external force is zero", ["Net external force is zero", "Velocity is zero", "Mass is zero", "Friction is maximum"], "Momentum conservation"),
+                _bank_entry("Centripetal acceleration direction is:", "Towards the centre", ["Towards the centre", "Away from centre", "Tangent to path", "Always zero"], "Centripetal acceleration"),
+                _bank_entry("A block on a rough horizontal plane may remain at rest due to:", "Static friction", ["Static friction", "Kinetic friction only", "Buoyancy", "Viscosity"], "Static equilibrium"),
+                _bank_entry("The unit of force in SI is:", "Newton", ["Newton", "Joule", "Watt", "Pascal"], "Force unit"),
+            ]),
+            (["kinematics"], _physics_kinematics_bank()),
+            (["work", "energy", "power"], [
+                _bank_entry("Work done is zero when:", "Force is perpendicular to displacement", ["Force is perpendicular to displacement", "Force is parallel", "Displacement is large", "Mass is large"], "Work"),
+                _bank_entry("Kinetic energy depends on:", "Mass and speed", ["Mass and speed", "Only height", "Only time", "Only charge"], "Kinetic energy"),
+                _bank_entry("Power is defined as:", "Work per unit time", ["Work per unit time", "Force per unit mass", "Energy per unit charge", "Pressure per area"], "Power"),
+                _bank_entry("Potential energy of a spring is:", "½ kx²", ["½ kx²", "mv", "mgh only always", "qV only"], "Spring energy"),
+                _bank_entry("Conservative force implies:", "Work independent of path", ["Work independent of path", "Work always zero", "Always increases energy", "Always decreases energy"], "Conservative force"),
+                _bank_entry("Mechanical energy is conserved when:", "Non-conservative work is zero", ["Non-conservative work is zero", "Friction is large", "Air resistance always present", "Mass changes"], "Energy conservation"),
+                _bank_entry("The SI unit of work is:", "Joule", ["Joule", "Newton", "Watt", "Pascal"], "Work unit"),
+                _bank_entry("If velocity doubles, kinetic energy becomes:", "Four times", ["Four times", "Two times", "Half", "Same"], "KE scaling"),
+                _bank_entry("Gravitational potential energy near Earth is:", "mgh", ["mgh", "½ mv²", "qV", "Fd only always"], "GPE"),
+                _bank_entry("Efficiency is:", "Useful output / input", ["Useful output / input", "Input / output always >1", "Force / area", "Charge / time"], "Efficiency"),
+                _bank_entry("Instantaneous power is:", "F · v", ["F · v", "mgh", "mv²", "qE"], "Instantaneous power"),
+                _bank_entry("Work-energy theorem states work equals change in:", "Kinetic energy", ["Kinetic energy", "Potential energy only", "Momentum only", "Power"], "Work-energy theorem"),
+            ]),
+        ],
+    }
+    for keywords, bank in topic_banks.get(subject, []):
+        if any(keyword in unit_lower for keyword in keywords):
+            return bank
+    return _build_varied_unit_bank(subject, unit, UNIT_QUIZ_POOL_SIZE)
+
+
 def _generic_unit_question(subject: str, unit: str, rng: random.Random, source_text: str = "", difficulty: str = "Medium", variant_index: int = 0) -> Dict:
     unit_label = _clean_text(unit) or subject
-    unit_lower = unit_label.lower()
-    keywords = _unit_keywords(unit_label)
-    key = " ".join(keywords)
-
-    if subject == "Physics":
-        if any(term in unit_lower for term in ["work", "energy", "power"]):
-            question = "Which quantity is the rate of doing work?"
-            answer = "Power"
-            options = ["Power", "Work", "Energy", "Momentum"]
-            concept = "Power"
-        elif any(term in unit_lower for term in ["kinematics", "motion"]):
-            question = "The slope of a velocity-time graph gives:"
-            answer = "Acceleration"
-            options = ["Acceleration", "Displacement", "Speed", "Force"]
-            concept = "Velocity-time graph"
-        elif any(term in unit_lower for term in ["laws of motion", "force"]):
-            question = "Newton's second law relates force to:"
-            answer = "Rate of change of momentum"
-            options = ["Rate of change of momentum", "Mass only", "Velocity only", "Time period"]
-            concept = "Newton's second law"
-        elif any(term in unit_lower for term in ["gravitation"]):
-            question = "The acceleration due to gravity near the Earth's surface is approximately:"
-            answer = "9.8 m/s²"
-            options = ["9.8 m/s²", "1.6 m/s²", "3.0 m/s²", "15.0 m/s²"]
-            concept = "Acceleration due to gravity"
-        elif any(term in unit_lower for term in ["current electricity", "electricity"]):
-            question = "The SI unit of electric resistance is:"
-            answer = "Ohm"
-            options = ["Ohm", "Volt", "Ampere", "Watt"]
-            concept = "Resistance"
-        elif any(term in unit_lower for term in ["electrostatics"]):
-            question = "Like charges:"
-            answer = "Repel each other"
-            options = ["Repel each other", "Attract each other", "Always become neutral", "Have no force"]
-            concept = "Electrostatic force"
-        elif any(term in unit_lower for term in ["magnetic", "induction", "alternating"]):
-            question = "The SI unit of magnetic flux density is:"
-            answer = "Tesla"
-            options = ["Tesla", "Weber", "Henry", "Farad"]
-            concept = "Magnetic flux density"
-        elif any(term in unit_lower for term in ["optics"]):
-            question = "A convex lens can produce a real image when the object is placed:"
-            answer = "Beyond the focal length"
-            options = ["Beyond the focal length", "At the optical centre", "Between lens and focus only", "At infinity only"]
-            concept = "Image formation by lens"
-        elif any(term in unit_lower for term in ["atom", "nucleus"]):
-            question = "The nucleus of an atom contains:"
-            answer = "Protons and neutrons"
-            options = ["Protons and neutrons", "Only electrons", "Only neutrons", "Only protons"]
-            concept = "Atomic nucleus"
-        elif any(term in unit_lower for term in ["waves", "oscillations", "oscillation"]):
-            question = "Time period is the reciprocal of:"
-            answer = "Frequency"
-            options = ["Frequency", "Amplitude", "Wavelength", "Speed"]
-            concept = "Periodic motion"
-        else:
-            bank = [
-                ("Which physical quantity is measured in newton?", "Force", ["Force", "Work", "Power", "Energy"], "Force"),
-                ("What is the SI unit of speed?", "m/s", ["m/s", "kg", "newton", "joule"], "Speed"),
-                ("Which relation gives work done?", "Force x displacement", ["Force x displacement", "Mass x velocity", "Charge x time", "Pressure x area"], "Work"),
-                ("Power is defined as: ", "Work per unit time", ["Work per unit time", "Force per unit mass", "Mass per unit volume", "Energy per unit charge"], "Power"),
-                ("Momentum is the product of: ", "Mass and velocity", ["Mass and velocity", "Force and time", "Energy and time", "Pressure and area"], "Momentum"),
-                ("Density is mass per: ", "Unit volume", ["Unit volume", "Unit time", "Unit charge", "Unit length"], "Density"),
-            ]
-            q, ans, opts, concept = bank[variant_index % len(bank)]
-            question = q
-            answer = ans
-            options = opts
-    elif subject == "Chemistry":
-        if any(term in unit_lower for term in ["basic concepts", "mole"]):
-            question = "One mole contains:"
-            answer = "Avogadro number of particles"
-            options = ["Avogadro number of particles", "1 gram of substance", "10 particles only", "6 atoms only"]
-            concept = "Mole concept"
-        elif any(term in unit_lower for term in ["atomic structure"]):
-            question = "Atomic number of an element equals the number of:"
-            answer = "Protons"
-            options = ["Protons", "Neutrons", "Isotopes", "Molecules"]
-            concept = "Atomic number"
-        elif any(term in unit_lower for term in ["bonding", "molecular structure"]):
-            question = "A covalent bond is formed by:"
-            answer = "Sharing of electrons"
-            options = ["Sharing of electrons", "Transfer of protons", "Loss of neutrons", "Release of heat only"]
-            concept = "Covalent bonding"
-        elif any(term in unit_lower for term in ["thermodynamics"]):
-            question = "At constant pressure, heat change of a system is equal to its:"
-            answer = "Enthalpy change"
-            options = ["Enthalpy change", "Entropy only", "Atomic mass", "Mole fraction"]
-            concept = "Thermodynamics"
-        elif any(term in unit_lower for term in ["equilibrium"]):
-            question = "At chemical equilibrium, the forward and reverse reaction rates are:"
-            answer = "Equal"
-            options = ["Equal", "Zero", "Infinite", "Always different"]
-            concept = "Chemical equilibrium"
-        elif any(term in unit_lower for term in ["solution", "solutions"]):
-            question = "Molarity is defined as moles of solute per:"
-            answer = "Litre of solution"
-            options = ["Litre of solution", "Kilogram of solvent", "Mole of solvent", "Millilitre of gas"]
-            concept = "Molarity"
-        elif any(term in unit_lower for term in ["redox", "electrochemistry"]):
-            question = "Oxidation involves:"
-            answer = "Loss of electrons"
-            options = ["Loss of electrons", "Gain of electrons", "Loss of protons", "Gain of neutrons"]
-            concept = "Oxidation"
-        elif any(term in unit_lower for term in ["kinetics"]):
-            question = "Rate of a reaction generally increases when temperature:"
-            answer = "Increases"
-            options = ["Increases", "Decreases", "Becomes zero", "Has no effect"]
-            concept = "Chemical kinetics"
-        elif any(term in unit_lower for term in ["periodicity", "periodic"]):
-            question = "Elements in the same group generally have the same:"
-            answer = "Valence electron configuration"
-            options = ["Valence electron configuration", "Atomic mass", "Nuclear charge only", "Number of isotopes"]
-            concept = "Periodic properties"
-        elif any(term in unit_lower for term in ["p-block"]):
-            question = "Halogens belong to which group of the periodic table?"
-            answer = "Group 17"
-            options = ["Group 17", "Group 1", "Group 2", "Group 18"]
-            concept = "P-block elements"
-        elif any(term in unit_lower for term in ["coordination"]):
-            question = "Ligands in coordination compounds donate:"
-            answer = "Lone pair of electrons"
-            options = ["Lone pair of electrons", "Neutrons", "Protons", "Metal ions only"]
-            concept = "Coordination chemistry"
-        elif any(term in unit_lower for term in ["hydrocarbon", "organic"]):
-            question = "Alkanes contain only:"
-            answer = "Single bonds"
-            options = ["Single bonds", "Only triple bonds", "Only ionic bonds", "No carbon bonds"]
-            concept = "Hydrocarbons"
-        elif any(term in unit_lower for term in ["oxygen", "alcohol", "carbonyl"]):
-            question = "Alcohols contain which functional group?"
-            answer = "-OH"
-            options = ["-OH", "-COOH", "-NH2", "-X"]
-            concept = "Alcohol functional group"
-        elif any(term in unit_lower for term in ["nitrogen", "amine"]):
-            question = "Amines are derivatives of:"
-            answer = "Ammonia"
-            options = ["Ammonia", "Water", "Methane", "Hydrogen chloride"]
-            concept = "Amines"
-        elif any(term in unit_lower for term in ["biomolecule"]):
-            question = "Glucose is a:"
-            answer = "Carbohydrate"
-            options = ["Carbohydrate", "Protein", "Lipid", "Nucleic acid"]
-            concept = "Biomolecules"
-        else:
-            bank = [
-                ("One mole contains: ", "Avogadro number of particles", ["Avogadro number of particles", "1 gram of substance", "10 particles only", "6 atoms only"], "Mole concept"),
-                ("Atomic number equals the number of: ", "Protons", ["Protons", "Neutrons", "Isotopes", "Molecules"], "Atomic number"),
-                ("A covalent bond is formed by: ", "Sharing of electrons", ["Sharing of electrons", "Transfer of protons", "Loss of neutrons", "Release of heat only"], "Covalent bond"),
-                ("At equilibrium, forward and reverse reaction rates are: ", "Equal", ["Equal", "Zero", "Infinite", "Always different"], "Chemical equilibrium"),
-                ("Oxidation involves: ", "Loss of electrons", ["Loss of electrons", "Gain of electrons", "Loss of protons", "Gain of neutrons"], "Oxidation"),
-                ("Molarity is defined as moles of solute per: ", "Litre of solution", ["Litre of solution", "Kilogram of solvent", "Mole of solvent", "Millilitre of gas"], "Molarity"),
-            ]
-            q, ans, opts, concept = bank[variant_index % len(bank)]
-            question = q
-            answer = ans
-            options = opts
-    else:
-        if any(term in unit_lower for term in ["diversity", "living world"]):
-            question = "Binomial nomenclature consists of genus and:"
-            answer = "Species"
-            options = ["Species", "Family", "Order", "Phylum"]
-            concept = "Binomial nomenclature"
-        elif any(term in unit_lower for term in ["structural organisation", "cell"]):
-            question = "The basic structural unit of living organisms is the:"
-            answer = "Cell"
-            options = ["Cell", "Tissue", "Organ", "System"]
-            concept = "Cell as unit of life"
-        elif any(term in unit_lower for term in ["plant physiology"]):
-            question = "Xylem mainly transports:"
-            answer = "Water and minerals"
-            options = ["Water and minerals", "Food only", "Hormones only", "Oxygen only"]
-            concept = "Xylem transport"
-        elif any(term in unit_lower for term in ["human physiology"]):
-            question = "Red blood cells mainly transport:"
-            answer = "Oxygen"
-            options = ["Oxygen", "Enzymes", "Glucose", "Urea"]
-            concept = "Blood and transport"
-        elif any(term in unit_lower for term in ["reproduction"]):
-            question = "In humans, fertilization usually occurs in the:"
-            answer = "Fallopian tube"
-            options = ["Fallopian tube", "Uterus", "Vagina", "Ovary"]
-            concept = "Human reproduction"
-        elif any(term in unit_lower for term in ["genetics", "evolution"]):
-            question = "DNA is the molecule that carries:"
-            answer = "Genetic information"
-            options = ["Genetic information", "Only water", "Only minerals", "Heat energy"]
-            concept = "Genetic material"
-        elif any(term in unit_lower for term in ["biotechnology"]):
-            question = "PCR is used for:"
-            answer = "Amplification of DNA"
-            options = ["Amplification of DNA", "Protein digestion", "Cell division", "Photosynthesis"]
-            concept = "PCR"
-        elif any(term in unit_lower for term in ["ecology", "environment"]):
-            question = "An ecosystem consists of biotic and:"
-            answer = "Abiotic components"
-            options = ["Abiotic components", "Only plants", "Only animals", "Only microbes"]
-            concept = "Ecosystem"
-        elif any(term in unit_lower for term in ["human welfare"]):
-            question = "Antibiotics primarily act against:"
-            answer = "Bacteria"
-            options = ["Bacteria", "Viruses", "All fungi", "Plants"]
-            concept = "Health and disease"
-        else:
-            bank = [
-                ("The basic structural unit of living organisms is the: ", "Cell", ["Cell", "Tissue", "Organ", "System"], "Cell"),
-                ("DNA carries: ", "Genetic information", ["Genetic information", "Only water", "Only minerals", "Heat energy"], "DNA"),
-                ("Xylem mainly transports: ", "Water and minerals", ["Water and minerals", "Food only", "Hormones only", "Oxygen only"], "Xylem"),
-                ("Red blood cells mainly transport: ", "Oxygen", ["Oxygen", "Enzymes", "Glucose", "Urea"], "RBC"),
-                ("PCR is used for: ", "Amplification of DNA", ["Amplification of DNA", "Protein digestion", "Cell division", "Photosynthesis"], "PCR"),
-                ("An ecosystem consists of biotic and: ", "Abiotic components", ["Abiotic components", "Only plants", "Only animals", "Only microbes"], "Ecosystem"),
-            ]
-            q, ans, opts, concept = bank[variant_index % len(bank)]
-            question = q
-            answer = ans
-            options = opts
+    bank = _resolve_unit_question_bank(subject, unit_label)
+    question, answer, options, concept = bank[variant_index % len(bank)]
 
     if source_text and len(source_text) > 40:
         explanation = source_text[:260]
@@ -1933,6 +1832,29 @@ def _count_mock_test_attempts(user_id: int) -> int:
         db.close()
 
 
+def _load_unit_concept_history(user_id: int, subject: str, unit: str) -> set[str]:
+    db = None
+    cursor = None
+    try:
+        db, cursor = _get_db_cursor()
+        cursor.execute(
+            "SELECT concept_key FROM unit_quiz_question_history WHERE user_id = %s AND subject = %s AND unit = %s",
+            (user_id, subject, unit),
+        )
+        rows = cursor.fetchall() or []
+        return {str(row.get("concept_key", "")).strip() for row in rows if str(row.get("concept_key", "")).strip()}
+    except Exception:
+        return set()
+    finally:
+        try:
+            if cursor is not None:
+                cursor.close()
+            if db is not None:
+                db.close()
+        except Exception:
+            pass
+
+
 def _load_concept_history(user_id: int) -> set[str]:
     db = None
     cursor = None
@@ -2004,7 +1926,12 @@ def _mistral_api_key() -> str:
     return os.environ.get("MISTRAL_API_KEY", "").strip()
 
 
-def _call_mistral_generate(api_key: str, prompt: str) -> str:
+def _call_mistral_generate(
+    api_key: str,
+    prompt: str,
+    timeout: Optional[int] = None,
+    max_tokens: int = 2500,
+) -> str:
     if not api_key:
         raise RuntimeError("Missing MISTRAL_API_KEY")
 
@@ -2015,9 +1942,10 @@ def _call_mistral_generate(api_key: str, prompt: str) -> str:
         "model": model_name,
         "messages": [{"role": "user", "content": prompt}],
         "temperature": 0.25,
-        "max_tokens": 2500,
+        "max_tokens": max(512, min(8000, int(max_tokens))),
     }
-    timeout_secs = int(os.environ.get("MISTRAL_TIMEOUT", "10"))
+    timeout_secs = int(timeout if timeout is not None else os.environ.get("MISTRAL_TIMEOUT", "50"))
+    timeout_secs = max(10, min(90, timeout_secs))
     try:
         resp = requests.post(base_url, headers=headers, json=body, timeout=timeout_secs)
     except requests.exceptions.Timeout:
@@ -2138,16 +2066,17 @@ def _topic_prompt(subject: str, topic: str, batch_size: int, excluded_hashes: Li
     difficulty_hint = f"Prefer difficulty: {target_difficulty}. " if target_difficulty else ""
     return (
         "Generate valid JSON only. Return an array of unique NEET-style MCQ questions. "
-        f"Generate {batch_size} fresh questions only for the selected topic: {topic_label} in {subject}. "
-        "Do not include unrelated topics, chapters, or mixed-syllabus items. "
-        "Make the questions based on NEET paper style and NCERT-level understanding of this topic. "
+        f"Generate {batch_size} fresh questions ONLY for this exact unit/topic: \"{topic_label}\" in {subject}. "
+        "Every question must belong strictly to this topic — no other chapters or units. "
+        "Make the questions based on NEET paper style and NCERT-level understanding of this topic only. "
         "Each object must include subject, unit, chapter, topic, question_type, difficulty, question, passage, options, correct_answer, explanation, and concept. "
-        "Options must contain exactly four answer choices. Use correct_answer as A, B, C, or D. "
+        "The options array must contain exactly four distinct answer choices (A/B/C/D style). "
+        "Use correct_answer as A, B, C, or D. "
         "Avoid repeating the same concept, wording, numerical values, assertion-reason pair, or diagram scenario. "
         f"Avoid any question whose hash matches these excluded hashes: {excluded_hashes}. "
         "Use only valid JSON and no markdown. "
         + difficulty_hint
-        + "Target the selected topic only; do not retrieve or quote PDF context."
+        + f'Set unit, chapter, and topic fields to "{topic_label}".'
     )
 
 
@@ -2338,6 +2267,157 @@ def _unit_sources(subject: str, unit: str) -> List[QuestionSource]:
     return sources
 
 
+def _unit_bank_key(subject: str, unit: str) -> str:
+    return f"{_clean_text(subject).lower()}::{_clean_text(unit).lower()}"
+
+
+def _fast_fill_unit_questions(
+    subject: str,
+    unit: str,
+    needed: int,
+    excluded_hashes: set[str],
+    seed: str,
+    history_concepts: Optional[set[str]] = None,
+) -> List[Dict]:
+    """Instantly build unique unit questions from syllabus fallbacks (no LLM wait)."""
+    rng = random.Random(seed + ":fast")
+    sources = list(_unit_sources(subject, unit) or [])
+    if sources:
+        rng.shuffle(sources)
+
+    generated: List[Dict] = []
+    used_hashes: set[str] = set(excluded_hashes)
+    history_hashes = set(excluded_hashes)
+    concept_history = set(history_concepts or set())
+    source_idx = 0
+    variant_idx = 0
+    attempts = 0
+    max_attempts = max(needed * 40, 120)
+
+    while len(generated) < needed and attempts < max_attempts:
+        attempts += 1
+        if sources:
+            candidate = _fallback_question_from_source(sources[source_idx % len(sources)], rng)
+            source_idx += 1
+        else:
+            candidate = _fallback_question_for_unit(
+                subject,
+                unit,
+                rng,
+                variant_index=variant_idx,
+            )
+            variant_idx += 1
+
+        qhash = str(candidate.get("hash", "")).strip()
+        if not _question_is_unique(
+            qhash,
+            used_hashes,
+            history_hashes,
+            list(excluded_hashes),
+            "",
+            set(),
+            set(),
+        ):
+            continue
+        concept_key = str(candidate.get("concept_key", "")).strip()
+        generated.append(candidate)
+        used_hashes.add(qhash)
+        if concept_key:
+            concept_history.add(concept_key)
+
+    if len(generated) < needed:
+        for question, answer, options, concept in _build_varied_unit_bank(subject, unit, needed * 3):
+            qhash = _question_hash(question, options)
+            if not _question_is_unique(
+                qhash,
+                used_hashes,
+                history_hashes,
+                list(excluded_hashes),
+                "",
+                set(),
+                set(),
+            ):
+                continue
+            generated.append(
+                {
+                    "subject": subject,
+                    "unit": unit,
+                    "chapter": unit,
+                    "question_type": "MCQ",
+                    "difficulty": "Medium",
+                    "question": question,
+                    "options": options[:4],
+                    "answer_index": options.index(answer) if answer in options else 0,
+                    "correct_answer": _answer_letter_from_index(options.index(answer) if answer in options else 0),
+                    "passage": "",
+                    "explanation": f"This tests the core idea of {unit}.",
+                    "concept": concept,
+                    "topic": unit,
+                    "concept_key": _concept_key(subject, unit, concept),
+                    "hash": qhash,
+                }
+            )
+            used_hashes.add(qhash)
+            if len(generated) >= needed:
+                break
+
+    return generated[:needed]
+
+
+def _build_unit_question_bank(subject: str, unit: str, size: int = UNIT_QUIZ_POOL_SIZE) -> List[Dict]:
+    seed = f"bank:{subject}:{unit}"
+    history_hashes: set[str] = set()
+    questions = _fast_fill_unit_questions(
+        subject,
+        unit,
+        max(UNIT_QUIZ_POOL_SIZE, size),
+        history_hashes,
+        seed,
+        set(),
+    )
+
+    unique_questions: List[Dict] = []
+    seen_hashes: set[str] = set()
+    for item in questions:
+        qhash = str(item.get("hash", "")).strip()
+        if not qhash or qhash in seen_hashes or qhash in history_hashes:
+            continue
+        seen_hashes.add(qhash)
+        unique_questions.append(item)
+        if len(unique_questions) >= size:
+            break
+
+    if len(unique_questions) < size:
+        raise HTTPException(status_code=500, detail=f"Unable to prebuild {size} unique NEET questions for {subject} / {unit} within 60 seconds.")
+
+    return unique_questions[:size]
+
+
+def _ensure_unit_question_bank(subject: str, unit: str, size: int = UNIT_QUIZ_POOL_SIZE) -> List[Dict]:
+    key = _unit_bank_key(subject, unit)
+    with _unit_bank_lock:
+        existing = _unit_question_bank.get(key)
+        if existing and len(existing) >= size:
+            return existing[:size]
+
+    bank = _build_unit_question_bank(subject, unit, size)
+    with _unit_bank_lock:
+        _unit_question_bank[key] = bank
+    return bank
+
+
+def _prefill_all_unit_banks() -> Dict[str, int]:
+    counts: Dict[str, int] = {}
+    for subject, units in _syllabus_units().items():
+        for unit in units:
+            try:
+                bank = _ensure_unit_question_bank(subject, unit, UNIT_QUIZ_POOL_SIZE)
+                counts[f"{subject}::{unit}"] = len(bank)
+            except Exception:
+                continue
+    return counts
+
+
 def _generate_unit_questions(
     subject: str,
     unit: str,
@@ -2346,6 +2426,9 @@ def _generate_unit_questions(
     seed: str,
     target_difficulty: Optional[str] = None,
     history_concepts: Optional[set[str]] = None,
+    allow_live_model: bool = True,
+    allow_fallback: bool = True,
+    max_generation_seconds: int = 60,
 ) -> List[Dict]:
     rng = random.Random(seed + f":{unit}")
     generated: List[Dict] = []
@@ -2353,11 +2436,18 @@ def _generate_unit_questions(
     history_hashes = set(excluded_hashes)
     concept_history = set(history_concepts or set())
     api_key = _mistral_api_key()
+    started_at = datetime.utcnow()
 
-    if api_key:
+    def _time_left() -> int:
+        elapsed = int((datetime.utcnow() - started_at).total_seconds())
+        return max(0, int(max_generation_seconds) - elapsed)
+
+    if api_key and allow_live_model:
         batch_guard = 0
         while len(generated) < needed and batch_guard < max(needed * 3, 6):
-            prompt = _topic_prompt(subject, unit, min(6, needed - len(generated)), excluded_hashes + list(used_hashes), target_difficulty)
+            if _time_left() <= 0:
+                break
+            prompt = _topic_prompt(subject, unit, min(10, max(1, needed - len(generated))), excluded_hashes + list(used_hashes), target_difficulty)
             try:
                 raw = _call_mistral_generate(api_key, prompt)
                 candidates = _parse_question_list(raw)
@@ -2378,8 +2468,8 @@ def _generate_unit_questions(
                 generated.append(
                     {
                         "subject": subject,
-                        "unit": _clean_text(item.get("unit", unit)) or unit,
-                        "chapter": _clean_text(item.get("chapter", unit)) or unit,
+                        "unit": unit,
+                        "chapter": unit,
                         "question_type": _normalized_question_type(item.get("question_type", "MCQ")),
                         "difficulty": _normalized_difficulty(item.get("difficulty", target_difficulty or "Medium")),
                         "question": question,
@@ -2389,7 +2479,7 @@ def _generate_unit_questions(
                         "passage": _clean_text(item.get("passage", "")),
                         "explanation": _clean_text(item.get("explanation", "")),
                         "concept": concept,
-                        "topic": _clean_text(item.get("topic", unit)) or unit,
+                        "topic": unit,
                         "concept_key": concept_key,
                         "hash": qhash,
                     }
@@ -2400,9 +2490,11 @@ def _generate_unit_questions(
                     break
             batch_guard += 1
 
-    if len(generated) < needed:
+    if len(generated) < needed and allow_fallback:
         idx = 0
         while len(generated) < needed:
+            if _time_left() <= 0:
+                break
             candidate = _fallback_question_for_unit(subject, unit, rng, difficulty=target_difficulty or "Medium", variant_index=idx)
             idx += 1
             qhash = candidate["hash"]
@@ -2415,6 +2507,356 @@ def _generate_unit_questions(
                 concept_history.add(concept_key)
 
     return generated[:needed]
+
+
+def _append_mistral_candidates(
+    subject: str,
+    unit: str,
+    candidates: List[Dict],
+    generated: List[Dict],
+    used_hashes: set[str],
+    history_hashes: set[str],
+    excluded_hashes: List[str],
+) -> None:
+    for item in candidates:
+        options = [_clean_text(option) for option in item.get("options", [])[:4]]
+        question = _clean_text(item.get("question", ""))
+        if len(options) != 4 or not question:
+            continue
+        qhash = str(item.get("hash") or _question_hash(question, options)).strip()
+        concept = _clean_text(item.get("concept", item.get("topic", unit))) or unit
+        concept_key = _concept_key(subject, unit, concept)
+        if not _question_is_unique(qhash, used_hashes, history_hashes, excluded_hashes, "", set(), set()):
+            continue
+        answer_index = _answer_index_from_value(item.get("answer_index", item.get("correct_answer", 0)))
+        generated.append(
+            {
+                "subject": subject,
+                "unit": unit,
+                "chapter": unit,
+                "question_type": _normalized_question_type(item.get("question_type", "MCQ")),
+                "difficulty": _normalized_difficulty(item.get("difficulty", "Medium")),
+                "question": question,
+                "options": options,
+                "answer_index": answer_index,
+                "correct_answer": _answer_letter_from_index(answer_index),
+                "passage": _clean_text(item.get("passage", "")),
+                "explanation": _clean_text(item.get("explanation", "")),
+                "concept": concept,
+                "topic": unit,
+                "concept_key": concept_key,
+                "hash": qhash,
+            }
+        )
+        used_hashes.add(qhash)
+
+
+def _generate_mistral_unit_attempt(
+    subject: str,
+    unit: str,
+    needed: int,
+    excluded_hashes: List[str],
+    seed: str,
+) -> List[Dict]:
+    """Generate unit questions with one primary Mistral call (fast) plus one retry if needed."""
+    api_key = _mistral_api_key()
+    if not api_key:
+        return []
+
+    excluded = list(excluded_hashes)
+    used_hashes: set[str] = set(excluded_hashes)
+    history_hashes = set(excluded_hashes)
+    generated: List[Dict] = []
+
+    try:
+        prompt = _topic_prompt(subject, unit, needed, excluded)
+        raw = _call_mistral_generate(api_key, prompt, timeout=55, max_tokens=4500)
+        candidates = _parse_question_list(raw)
+        _append_mistral_candidates(subject, unit, candidates, generated, used_hashes, history_hashes, excluded)
+    except Exception:
+        pass
+
+    if len(generated) < needed:
+        try:
+            remaining = needed - len(generated)
+            prompt = _topic_prompt(subject, unit, remaining, excluded + list(used_hashes))
+            raw = _call_mistral_generate(api_key, prompt, timeout=40, max_tokens=2500)
+            candidates = _parse_question_list(raw)
+            _append_mistral_candidates(subject, unit, candidates, generated, used_hashes, history_hashes, excluded)
+        except Exception:
+            pass
+
+    return generated[:needed]
+
+
+def _take_unit_quiz_from_bank(
+    subject: str,
+    unit: str,
+    variant: int,
+    excluded_hashes: set[str],
+    count: int = UNIT_QUIZ_COUNT,
+) -> List[Dict]:
+    """Pick unused questions from the warmed in-memory unit bank."""
+    key = _unit_bank_key(subject, unit)
+    bank: List[Dict] = []
+    with _unit_bank_lock:
+        existing = _unit_question_bank.get(key)
+        if existing and len(existing) >= count:
+            bank = list(existing)
+    if not bank:
+        return []
+
+    preferred_start = (max(1, variant) - 1) * count
+    ordered: List[Dict] = []
+    if preferred_start < len(bank):
+        ordered.extend(bank[preferred_start : preferred_start + count])
+    ordered.extend(bank[:preferred_start])
+    ordered.extend(bank[preferred_start + count :])
+
+    picked: List[Dict] = []
+    seen: set[str] = set()
+    for item in ordered:
+        qhash = str(item.get("hash", "")).strip()
+        if not qhash or qhash in excluded_hashes or qhash in seen:
+            continue
+        picked.append(item)
+        seen.add(qhash)
+        if len(picked) >= count:
+            break
+    return picked[:count]
+
+
+def _merge_unique_unit_questions(
+    primary: List[Dict],
+    extra: List[Dict],
+    excluded_hashes: set[str],
+    limit: int,
+) -> List[Dict]:
+    merged = list(primary)
+    seen = {str(q.get("hash", "")).strip() for q in merged if str(q.get("hash", "")).strip()}
+    for item in extra:
+        if len(merged) >= limit:
+            break
+        qhash = str(item.get("hash", "")).strip()
+        if not qhash or qhash in excluded_hashes or qhash in seen:
+            continue
+        merged.append(item)
+        seen.add(qhash)
+    return merged[:limit]
+
+
+def _load_unit_history_hashes(user_id: int, subject: str, unit: str) -> set[str]:
+    db, cursor = _get_db_cursor()
+    try:
+        cursor.execute(
+            "SELECT question_hash FROM unit_quiz_question_history WHERE user_id = %s AND subject = %s AND unit = %s",
+            (user_id, subject, unit),
+        )
+        rows = cursor.fetchall() or []
+        return {str(row.get("question_hash", "")).strip() for row in rows if str(row.get("question_hash", "")).strip()}
+    finally:
+        cursor.close()
+        db.close()
+
+
+def _count_rotation_pool(user_id: int, subject: str, unit: str) -> int:
+    db, cursor = _get_db_cursor()
+    try:
+        cursor.execute(
+            "SELECT COUNT(1) AS cnt FROM unit_quiz_rotation WHERE user_id = %s AND subject = %s AND unit = %s",
+            (user_id, subject, unit),
+        )
+        row = cursor.fetchone() or {}
+        return int(row.get("cnt", 0) or 0)
+    finally:
+        cursor.close()
+        db.close()
+
+
+def _load_rotation_hashes(user_id: int, subject: str, unit: str) -> set[str]:
+    db, cursor = _get_db_cursor()
+    try:
+        cursor.execute(
+            "SELECT question_hash FROM unit_quiz_rotation WHERE user_id = %s AND subject = %s AND unit = %s",
+            (user_id, subject, unit),
+        )
+        rows = cursor.fetchall() or []
+        return {str(row.get("question_hash", "")).strip() for row in rows if str(row.get("question_hash", "")).strip()}
+    finally:
+        cursor.close()
+        db.close()
+
+
+def _load_rotation_pool_ordered(user_id: int, subject: str, unit: str) -> List[Dict]:
+    db, cursor = _get_db_cursor(dictionary=False)
+    try:
+        cursor.execute(
+            """
+            SELECT question_payload
+            FROM unit_quiz_rotation
+            WHERE user_id = %s AND subject = %s AND unit = %s
+            ORDER BY created_at ASC
+            LIMIT %s
+            """,
+            (user_id, subject, unit, UNIT_QUIZ_POOL_SIZE),
+        )
+        rows = cursor.fetchall() or []
+        payloads: List[Dict] = []
+        for row in rows:
+            try:
+                payloads.append(json.loads(row[0]))
+            except Exception:
+                continue
+        return payloads
+    finally:
+        cursor.close()
+        db.close()
+
+
+def _insert_rotation_questions(user_id: int, subject: str, unit: str, questions: List[Dict]) -> int:
+    inserted = 0
+    if not questions:
+        return inserted
+    db, cursor = _get_db_cursor(dictionary=False)
+    try:
+        for item in questions:
+            qhash = str(item.get("hash", "")).strip()
+            if not qhash:
+                continue
+            payload = json.dumps(item, ensure_ascii=False)
+            rid = str(uuid.uuid4())
+            now = datetime.utcnow()
+            try:
+                cursor.execute(
+                    """
+                    INSERT INTO unit_quiz_rotation
+                    (id, user_id, subject, unit, question_hash, concept_key, question_payload, used, created_at)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    """,
+                    (
+                        rid,
+                        user_id,
+                        subject,
+                        unit,
+                        qhash,
+                        str(item.get("concept_key", "")).strip(),
+                        payload,
+                        0,
+                        now,
+                    ),
+                )
+                inserted += 1
+            except Exception:
+                continue
+        db.commit()
+    finally:
+        cursor.close()
+        db.close()
+    return inserted
+
+
+def _materialize_unit_pool_questions(
+    subject: str,
+    unit: str,
+    excluded_hashes: set[str],
+    size: int,
+    seed: str,
+) -> List[Dict]:
+    """Build `size` unique questions for a unit, skipping hashes in excluded_hashes."""
+    seen = set(excluded_hashes)
+    pool: List[Dict] = []
+    rng = random.Random(seed)
+
+    bank = _resolve_unit_question_bank(subject, unit)
+    variant = 0
+    while len(pool) < size and variant < size * 4:
+        item = _generic_unit_question(subject, unit, rng, variant_index=variant)
+        variant += 1
+        qhash = str(item.get("hash", "")).strip()
+        if not qhash or qhash in seen:
+            continue
+        pool.append(item)
+        seen.add(qhash)
+
+    for question, answer, options, concept in _build_varied_unit_bank(subject, unit, size):
+        if len(pool) >= size:
+            break
+        answer_index = options.index(answer) if answer in options else 0
+        qhash = _question_hash(question, options)
+        if not qhash or qhash in seen:
+            continue
+        pool.append(
+            {
+                "subject": subject,
+                "unit": unit,
+                "chapter": unit,
+                "question_type": "MCQ",
+                "difficulty": "Medium",
+                "question": question,
+                "options": options[:4],
+                "answer_index": answer_index,
+                "correct_answer": _answer_letter_from_index(answer_index),
+                "passage": "",
+                "explanation": f"This tests the core idea of {unit}.",
+                "concept": concept,
+                "topic": unit,
+                "concept_key": _concept_key(subject, unit, concept),
+                "hash": qhash,
+            }
+        )
+        seen.add(qhash)
+
+    return pool[:size]
+
+
+def _ensure_user_unit_rotation_pool(user_id: int, subject: str, unit: str, excluded_hashes: set[str]) -> None:
+    """Ensure this user has 50 ordered questions stored for the unit (5 attempts x 10)."""
+    total = _count_rotation_pool(user_id, subject, unit)
+    if total >= UNIT_QUIZ_POOL_SIZE:
+        return
+    need = UNIT_QUIZ_POOL_SIZE - total
+    excluded = set(excluded_hashes) | _load_rotation_hashes(user_id, subject, unit)
+    seed = f"{user_id}:{subject}:{unit}:pool:v2"
+    fresh = _materialize_unit_pool_questions(subject, unit, excluded, need, seed)
+    _insert_rotation_questions(user_id, subject, unit, fresh)
+
+
+def _pick_attempt_questions(
+    user_id: int,
+    subject: str,
+    unit: str,
+    variant: int,
+    excluded_hashes: set[str],
+) -> List[Dict]:
+    """Return 10 questions for this attempt from the fixed 50-question pool (no repeats across attempts)."""
+    _ensure_user_unit_rotation_pool(user_id, subject, unit, excluded_hashes)
+    pool = _load_rotation_pool_ordered(user_id, subject, unit)
+    if not pool:
+        return []
+
+    start = (max(1, variant) - 1) * UNIT_QUIZ_COUNT
+    attempt_slice = pool[start : start + UNIT_QUIZ_COUNT] if len(pool) >= start else []
+
+    picked: List[Dict] = []
+    seen: set[str] = set()
+    for item in attempt_slice:
+        qhash = str(item.get("hash", "")).strip()
+        if not qhash or qhash in excluded_hashes or qhash in seen:
+            continue
+        picked.append(item)
+        seen.add(qhash)
+
+    if len(picked) < UNIT_QUIZ_COUNT:
+        for item in pool:
+            qhash = str(item.get("hash", "")).strip()
+            if not qhash or qhash in excluded_hashes or qhash in seen:
+                continue
+            picked.append(item)
+            seen.add(qhash)
+            if len(picked) >= UNIT_QUIZ_COUNT:
+                break
+
+    return picked[:UNIT_QUIZ_COUNT]
 
 
 def _count_unit_quizzes(user_id: int, subject: str, unit: str) -> int:
@@ -2453,73 +2895,25 @@ def _pop_rotation_questions(user_id: int, subject: str, unit: str, count: int) -
 
 
 def _build_rotation_pool(user_id: int, subject: str, unit: str, size_hint: int = 100) -> int:
-    """Build a rotation pool of up to `size_hint` unique questions for the user/unit.
-    Returns the number of questions inserted."""
-    inserted = 0
+    """Build a rotation pool of 50 unique questions for the user/unit (5 x 10)."""
     try:
-        # gather unit sources
-        sources = _unit_sources(subject, unit) or []
-        rng = random.Random(f"{user_id}:{subject}:{unit}:{datetime.utcnow().isoformat()}")
-        rng.shuffle(sources)
-        candidates: List[Dict] = []
-
-        # First, create fallback candidates from unit sources
-        for src in sources:
-            if len(candidates) >= size_hint:
-                break
-            candidates.append(_fallback_question_from_source(src, rng))
-
-        # If still short, try LLM-backed generation for more candidates
-        if len(candidates) < size_hint:
-            needed = size_hint - len(candidates)
-            try:
-                extra = _generate_unit_questions(subject, unit, needed, list(_load_all_question_history(user_id)), f"{user_id}:{subject}:{unit}:pool", history_concepts=_load_concept_history(user_id))
-                candidates.extend(extra)
-            except Exception:
-                # ignore LLM failures; rely on fallback
-                pass
-
-        # Deduplicate by hash and avoid ones already in user's history or rotation
-        existing_hashes = set()
-        db, cursor = _get_db_cursor()
-        try:
-            cursor.execute("SELECT question_hash FROM unit_quiz_rotation WHERE user_id = %s AND subject = %s AND unit = %s", (user_id, subject, unit))
-            rows = cursor.fetchall() or []
-            for r in rows:
-                existing_hashes.add(str(r.get("question_hash", "")).strip())
-        finally:
-            cursor.close()
-            db.close()
-
-        history_hashes = _load_all_question_history(user_id)
-        dbi, cursi = _get_db_cursor(dictionary=False)
-        try:
-            for item in candidates:
-                if inserted >= size_hint:
-                    break
-                qhash = str(item.get("hash", "")).strip()
-                if not qhash or qhash in existing_hashes or qhash in history_hashes:
-                    continue
-                payload = json.dumps(item, ensure_ascii=False)
-                rid = str(uuid.uuid4())
-                now = datetime.utcnow()
-                try:
-                    cursi.execute(
-                        "INSERT INTO unit_quiz_rotation (id, user_id, subject, unit, question_hash, concept_key, question_payload, used, created_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
-                        (rid, user_id, subject, unit, qhash, str(item.get("concept_key", "")).strip(), payload, 0, now),
-                    )
-                    inserted += 1
-                    existing_hashes.add(qhash)
-                except Exception:
-                    # unique constraint or other issue -> skip
-                    continue
-            dbi.commit()
-        finally:
-            cursi.close()
-            dbi.close()
+        existing_hashes = _load_rotation_hashes(user_id, subject, unit)
+        history_hashes = _load_unit_history_hashes(user_id, subject, unit)
+        excluded = existing_hashes | history_hashes
+        target = max(size_hint, UNIT_QUIZ_POOL_SIZE)
+        if len(existing_hashes) >= target:
+            return 0
+        need = target - len(existing_hashes)
+        fresh = _materialize_unit_pool_questions(
+            subject,
+            unit,
+            excluded,
+            need,
+            f"{user_id}:{subject}:{unit}:pool",
+        )
+        return _insert_rotation_questions(user_id, subject, unit, fresh)
     except Exception:
-        return inserted
-    return inserted
+        return 0
 
 
 def _save_unit_session(user_id: int, session_id: str, subject: str, unit: str, variant: int, questions: List[Dict]) -> None:
@@ -2694,19 +3088,9 @@ class UnitQuizSubmitRequest(BaseModel):
 @router.post("/unit/generate")
 def generate_unit_quiz(req: UnitQuizGenerateRequest, authorization: Optional[str] = Header(default=None)):
     print(f"[mock_test_api] ENTER generate_unit_quiz subject={req.subject} unit={req.unit}")
-    try:
-        with open(BASE_DIR / 'debug_unit.log', 'a', encoding='utf-8') as df:
-            df.write(f"ENTER generate_unit_quiz subject={req.subject} unit={req.unit}\n")
-    except Exception:
-        pass
     _ensure_schema()
     user_id = _user_id_from_token(authorization)
     print(f"[mock_test_api] user_id resolved: {user_id}")
-    try:
-        with open(BASE_DIR / 'debug_unit.log', 'a', encoding='utf-8') as df:
-            df.write(f"user_id_resolved:{user_id}\n")
-    except Exception:
-        pass
     subject = (req.subject or "").strip()
     unit = (req.topic or req.unit or "").strip()
     if not subject or not unit:
@@ -2714,81 +3098,52 @@ def generate_unit_quiz(req: UnitQuizGenerateRequest, authorization: Optional[str
 
     taken = _count_unit_quizzes(user_id, subject, unit)
     if taken >= UNIT_QUIZ_VARIANTS:
-        raise HTTPException(status_code=403, detail="Maximum quizzes reached for this topic")
+        raise HTTPException(status_code=403, detail="Maximum attempt reached for this unit. You have already completed 5 attempts.")
 
     variant = int(req.variant) if req.variant and 1 <= int(req.variant) <= UNIT_QUIZ_VARIANTS else (taken + 1)
     session_id = req.session_id or str(uuid.uuid4())
+    used_hashes = _load_unit_history_hashes(user_id, subject, unit)
     seed = f"{user_id}:{subject}:{unit}:{variant}:{datetime.utcnow().date().isoformat()}"
 
-    history_hashes = _load_all_question_history(user_id)
-    print(f"[mock_test_api] loaded history hashes: {len(history_hashes)}")
-    try:
-        with open(BASE_DIR / 'debug_unit.log', 'a', encoding='utf-8') as df:
-            df.write(f"history_hashes_count:{len(history_hashes)}\n")
-    except Exception:
-        pass
+    api_key = _mistral_api_key()
+    if not api_key:
+        raise HTTPException(
+            status_code=503,
+            detail="Mistral API key is not configured on the server. Set MISTRAL_API_KEY and retry.",
+        )
 
-    print(f"[mock_test_api] calling _generate_unit_questions for subject={subject} unit={unit}")
-    try:
-        with open(BASE_DIR / 'debug_unit.log', 'a', encoding='utf-8') as df:
-            df.write(f"calling_generate_unit_questions:{subject}:{unit}\n")
-    except Exception:
-        pass
-    questions = _generate_unit_questions(subject, unit, UNIT_QUIZ_COUNT, list(history_hashes), seed, history_concepts=_load_concept_history(user_id))
-    print(f"[mock_test_api] generated {len(questions)} questions from generator")
-    try:
-        with open(BASE_DIR / 'debug_unit.log', 'a', encoding='utf-8') as df:
-            df.write(f"generated_count:{len(questions)}\n")
-    except Exception:
-        pass
-    # Deduplicate by hash (preserve order)
-    seen_hashes = set()
-    unique_questions: List[Dict] = []
-    for q in questions:
-        h = str(q.get("hash", "")).strip()
-        if not h or h in seen_hashes:
-            continue
-        seen_hashes.add(h)
-        unique_questions.append(q)
-    questions = unique_questions[:UNIT_QUIZ_COUNT]
+    questions = _generate_mistral_unit_attempt(
+        subject,
+        unit,
+        UNIT_QUIZ_COUNT,
+        list(used_hashes),
+        seed,
+    )
 
     if len(questions) < UNIT_QUIZ_COUNT:
-        # Enforce difficulty distribution only when we still need to fill the quiz.
-        DIFF_TARGET = {"Easy": 3, "Medium": 5, "Hard": 2}
-        diff_counts = {k: 0 for k in DIFF_TARGET.keys()}
-        for q in questions:
-            d = str(q.get("difficulty", "")).title()
-            if d not in diff_counts:
-                d = "Medium"
-            diff_counts[d] += 1
+        excluded_set = set(used_hashes)
+        excluded_set.update(str(q.get("hash", "")).strip() for q in questions if str(q.get("hash", "")).strip())
+        backup = _fast_fill_unit_questions(
+            subject,
+            unit,
+            UNIT_QUIZ_COUNT - len(questions),
+            excluded_set,
+            seed + ":backup",
+        )
+        questions = _merge_unique_unit_questions(questions, backup, used_hashes, UNIT_QUIZ_COUNT)
 
-        missing_total = sum(max(0, DIFF_TARGET[d] - diff_counts.get(d, 0)) for d in DIFF_TARGET)
-        gen_attempts = 0
-        max_attempts = 6
-        while missing_total > 0 and gen_attempts < max_attempts and len(questions) < UNIT_QUIZ_COUNT:
-            for diff, target in DIFF_TARGET.items():
-                have = diff_counts.get(diff, 0)
-                need = max(0, target - have)
-                if need <= 0:
-                    continue
-                try:
-                    extra = _generate_unit_questions(subject, unit, need, list(history_hashes) + list(seen_hashes), seed, target_difficulty=diff, history_concepts=_load_concept_history(user_id))
-                except Exception:
-                    extra = []
-                for item in extra:
-                    h = str(item.get("hash", "")).strip()
-                    if not h or h in seen_hashes or h in history_hashes:
-                        continue
-                    questions.append(item)
-                    seen_hashes.add(h)
-                    diff_counts[str(item.get("difficulty", "")).title() or "Medium"] = diff_counts.get(str(item.get("difficulty", "")).title() or "Medium", 0) + 1
-                    if len(questions) >= UNIT_QUIZ_COUNT:
-                        break
-            missing_total = sum(max(0, DIFF_TARGET[d] - diff_counts.get(d, 0)) for d in DIFF_TARGET)
-            gen_attempts += 1
+    unique_hashes = {str(q.get("hash", "")).strip() for q in questions if str(q.get("hash", "")).strip()}
+    if len(unique_hashes) != len(questions) or unique_hashes & used_hashes:
+        raise HTTPException(
+            status_code=500,
+            detail="Unable to prepare 10 unique questions for this attempt. Please retry.",
+        )
 
     if len(questions) < UNIT_QUIZ_COUNT:
-        raise HTTPException(status_code=500, detail="Unable to generate enough unique unit-quiz questions.")
+        raise HTTPException(
+            status_code=500,
+            detail="Unable to prepare 10 questions for this topic. Please retry.",
+        )
 
     try:
         _store_unit_history(user_id, session_id, questions)
@@ -2821,6 +3176,61 @@ def generate_unit_quiz(req: UnitQuizGenerateRequest, authorization: Optional[str
         "attempts_allowed": UNIT_QUIZ_VARIANTS,
         "attempts_left": max(0, UNIT_QUIZ_VARIANTS - variant),
     }
+
+
+@router.post("/unit/prefill")
+def prefill_unit_rotation(req: UnitQuizGenerateRequest, size: Optional[int] = UNIT_QUIZ_POOL_SIZE, mode: Optional[str] = "async", authorization: Optional[str] = Header(default=None)):
+    """Prefill the global unit quiz bank for the authenticated subject/unit.
+
+    The generated bank contains 50 unique questions per unit by default so
+    each of the five attempts can consume a prebuilt slice of 10 questions.
+    """
+    _ensure_schema()
+    subject = (req.subject or "").strip()
+    unit = (req.topic or req.unit or "").strip()
+    if not subject or not unit:
+        raise HTTPException(status_code=400, detail="subject and unit are required")
+
+    size_hint = max(UNIT_QUIZ_POOL_SIZE, int(size or UNIT_QUIZ_POOL_SIZE))
+    user_id: Optional[int] = None
+    try:
+        user_id = _user_id_from_token(authorization)
+    except Exception:
+        user_id = None
+
+    if mode == "async":
+        key = _unit_bank_key(subject, unit)
+        with _rotation_bg_lock:
+            existing = _rotation_bg_threads.get(key)
+            if existing and existing.is_alive():
+                return {"status": "started", "subject": subject, "unit": unit}
+            thread = Thread(target=lambda: _ensure_unit_question_bank(subject, unit, size_hint), daemon=True)
+            _rotation_bg_threads[key] = thread
+            thread.start()
+        if user_id:
+            rotation_key = f"{user_id}:{subject}:{unit}"
+            with _rotation_bg_lock:
+                existing_rotation = _rotation_bg_threads.get(rotation_key)
+                if not existing_rotation or not existing_rotation.is_alive():
+                    rotation_thread = Thread(
+                        target=lambda: _build_rotation_pool(user_id, subject, unit, size_hint),
+                        daemon=True,
+                    )
+                    _rotation_bg_threads[rotation_key] = rotation_thread
+                    rotation_thread.start()
+        return {"status": "started", "subject": subject, "unit": unit, "size_hint": size_hint}
+
+    # mode == 'now' (blocking)
+    inserted = 0
+    try:
+        if user_id:
+            _ensure_user_unit_rotation_pool(user_id, subject, unit, _load_unit_history_hashes(user_id, subject, unit))
+            inserted = _count_rotation_pool(user_id, subject, unit)
+        else:
+            inserted = len(_ensure_unit_question_bank(subject, unit, size_hint))
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Prefill failed: {str(exc)[:200]}")
+    return {"status": "ready", "subject": subject, "unit": unit, "inserted": inserted, "pool_size": UNIT_QUIZ_POOL_SIZE}
 
 
 @router.post("/unit/submit")

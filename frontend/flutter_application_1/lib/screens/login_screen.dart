@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import 'package:flutter_application_1/core/constants/app_colors.dart';
 import 'package:flutter_application_1/core/widgets/custom_button.dart';
@@ -8,7 +9,7 @@ import 'package:flutter_application_1/models/home_model.dart';
 import 'package:flutter_application_1/screens/home_screen.dart';
 import 'package:flutter_application_1/screens/register_screen.dart';
 import 'package:flutter_application_1/services/auth_service.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_application_1/services/google_auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,7 +18,8 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin {
+class _LoginScreenState extends State<LoginScreen>
+    with TickerProviderStateMixin {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _loading = false;
@@ -28,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
   late final Animation<double> _cardShadow;
 
   Future<void> _login() async {
+    final homeModel = context.read<HomeModel>();
     setState(() {
       _loading = true;
       _error = null;
@@ -37,8 +40,36 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
         _emailController.text.trim(),
         _passwordController.text.trim(),
       );
+      await homeModel.refreshDailyChallenge();
       if (!mounted) return;
-      await context.read<HomeModel>().refreshDailyChallenge();
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const HomeScreen()),
+      );
+    } catch (e) {
+      setState(() => _error = e.toString().replaceFirst('Exception: ', ''));
+    } finally {
+      if (mounted) {
+        setState(() => _loading = false);
+      }
+    }
+  }
+
+  Future<void> _loginWithGoogle() async {
+    final homeModel = context.read<HomeModel>();
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
+    try {
+      final googleAccount = await GoogleAuthService.signIn();
+      if (googleAccount == null) return;
+      final googleToken = googleAccount.accessToken ?? googleAccount.idToken;
+      if (googleToken == null || googleToken.isEmpty) {
+        throw Exception('Google sign-in did not return a usable token.');
+      }
+      await AuthService.loginWithGoogle(googleToken);
+      await homeModel.refreshDailyChallenge();
       if (!mounted) return;
       Navigator.pushReplacement(
         context,
@@ -64,9 +95,16 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
   @override
   void initState() {
     super.initState();
-    _cardController = AnimationController(vsync: this, duration: const Duration(seconds: 4))..repeat(reverse: true);
-    _cardFloat = Tween<double>(begin: 0.0, end: -6.0).animate(CurvedAnimation(parent: _cardController, curve: Curves.easeInOut));
-    _cardShadow = Tween<double>(begin: 20.0, end: 28.0).animate(CurvedAnimation(parent: _cardController, curve: Curves.easeInOut));
+    _cardController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 4),
+    )..repeat(reverse: true);
+    _cardFloat = Tween<double>(begin: 0.0, end: -6.0).animate(
+      CurvedAnimation(parent: _cardController, curve: Curves.easeInOut),
+    );
+    _cardShadow = Tween<double>(begin: 20.0, end: 28.0).animate(
+      CurvedAnimation(parent: _cardController, curve: Curves.easeInOut),
+    );
   }
 
   @override
@@ -92,11 +130,11 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(22, 24, 22, 22),
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.96),
+                        color: AppColors.surface.withValues(alpha: 0.98),
                         borderRadius: BorderRadius.circular(30),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0x18000000),
+                            color: const Color(0x28000000),
                             blurRadius: _cardShadow.value,
                             offset: const Offset(0, 16),
                           ),
@@ -114,7 +152,10 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                 height: 78,
                                 decoration: BoxDecoration(
                                   gradient: const LinearGradient(
-                                    colors: [Color(0xFF14532D), Color(0xFF16A34A)],
+                                    colors: [
+                                      Color(0xFF14532D),
+                                      Color(0xFF16A34A),
+                                    ],
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
                                   ),
@@ -164,12 +205,16 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                             onSubmitted: (_) => _login(),
                             prefixIcon: const Icon(Icons.lock_outline_rounded),
                             suffixIcon: GestureDetector(
-                              onTap: () => setState(() => _hidePassword = !_hidePassword),
+                              onTap: () => setState(
+                                () => _hidePassword = !_hidePassword,
+                              ),
                               child: AnimatedRotation(
                                 duration: const Duration(milliseconds: 300),
                                 turns: _hidePassword ? 0.0 : 0.08,
                                 child: Icon(
-                                  _hidePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                                  _hidePassword
+                                      ? Icons.visibility_off_outlined
+                                      : Icons.visibility_outlined,
                                 ),
                               ),
                             ),
@@ -207,6 +252,13 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                           ),
                           const SizedBox(height: 12),
                           CustomButton(
+                            label: 'CONTINUE WITH GOOGLE',
+                            outlined: true,
+                            onPressed: _loading ? null : _loginWithGoogle,
+                            loading: _loading,
+                          ),
+                          const SizedBox(height: 12),
+                          CustomButton(
                             label: 'CREATE ACCOUNT',
                             outlined: true,
                             onPressed: () {
@@ -237,55 +289,6 @@ class _LoginBackdrop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFFF0FDF4), Color(0xFFF0FDF4)],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
-      child: Stack(
-        children: [
-          Positioned(
-            top: -40,
-            left: -20,
-            child: _GlowCircle(
-              color: AppColors.primarySoft.withValues(alpha: 0.9),
-              size: 170,
-            ),
-          ),
-          Positioned(
-            bottom: 84,
-            right: -24,
-            child: _GlowCircle(
-              color: AppColors.primary.withValues(alpha: 0.12),
-              size: 180,
-            ),
-          ),
-          Positioned(
-            top: 140,
-            right: 18,
-            child: _GlowCircle(color: const Color(0xFFBBF7D0), size: 92),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _GlowCircle extends StatelessWidget {
-  final Color color;
-  final double size;
-
-  const _GlowCircle({required this.color, required this.size});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-    );
+    return Container(color: AppColors.background);
   }
 }

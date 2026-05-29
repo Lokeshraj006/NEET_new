@@ -3,12 +3,12 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 import 'package:flutter_application_1/core/constants/app_colors.dart';
 import 'package:flutter_application_1/models/home_model.dart';
 import 'package:flutter_application_1/screens/home_screen.dart';
 import 'package:flutter_application_1/screens/login_screen.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   final bool loggedIn;
@@ -61,6 +61,7 @@ class _SplashScreenState extends State<SplashScreen>
     _ecgController.repeat();
 
     Timer(const Duration(milliseconds: 2600), () async {
+      if (!mounted) return;
       if (widget.loggedIn) {
         await context.read<HomeModel>().refreshDailyChallenge();
       }
@@ -86,20 +87,20 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF0FDF4),
+      backgroundColor: AppColors.background,
       body: Stack(
         children: [
           Positioned(
             top: -60,
             left: -40,
-            child: AnimatedBlob(size: 220, color: AppColors.primarySoft),
+            child: AnimatedBlob(size: 220, color: AppColors.surface.withValues(alpha: 0.12)),
           ),
           Positioned(
             bottom: -40,
             right: -30,
             child: AnimatedBlob(
               size: 260,
-              color: AppColors.primary.withValues(alpha: 0.12),
+              color: AppColors.surface.withValues(alpha: 0.08),
             ),
           ),
           Positioned(
@@ -107,7 +108,7 @@ class _SplashScreenState extends State<SplashScreen>
             right: 16,
             child: AnimatedBlob(
               size: 92,
-              color: const Color(0xFFBBF7D0),
+              color: AppColors.surface.withValues(alpha: 0.14),
             ),
           ),
           Center(
@@ -165,7 +166,7 @@ class _SplashScreenState extends State<SplashScreen>
                                 height: 92,
                                 decoration: BoxDecoration(
                                   gradient: const LinearGradient(
-                                    colors: [Color(0xFF14532D), Color(0xFF16A34A)],
+                                    colors: [Color(0xFF0B1220), Color(0xFF111827)],
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
                                   ),

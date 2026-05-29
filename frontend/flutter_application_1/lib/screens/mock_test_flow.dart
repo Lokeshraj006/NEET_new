@@ -16,11 +16,11 @@ import 'package:flutter_application_1/core/constants/app_colors.dart';
 import 'package:flutter_application_1/widgets/bottom_nav.dart';
 import 'package:flutter_application_1/screens/quizzes_screen.dart';
 import 'package:flutter_application_1/services/mock_test_service.dart';
+import 'package:flutter_application_1/services/theme_service.dart';
 
-const Color _kPrimary = AppColors.primary;
-const Color _kPrimarySoft = AppColors.primarySoft;
-const Color _kBackground = AppColors.background;
-const Color _kSurface = AppColors.surface;
+final Color _kPrimary = AppColors.primary;
+final Color _kPrimarySoft = AppColors.primarySoft;
+final Color _kBackground = AppColors.background;
 const String _draftKey = 'mock_test_active_draft_v2';
 const String _resultKey = 'mock_test_last_result_v2';
 
@@ -64,7 +64,7 @@ class MockTestLandingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF0FDF4),
+      backgroundColor: AppColors.background,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_rounded),
@@ -136,7 +136,7 @@ class MockTestSetPickerScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF0FDF4),
+      backgroundColor: AppColors.background,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_rounded),
@@ -185,8 +185,8 @@ class MockTestSetPickerScreen extends StatelessWidget {
               ),
             ),
           ],
+          ),
         ),
-      ),
       bottomNavigationBar: BottomNav(
         selectedIndex: 1,
         onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
@@ -211,7 +211,7 @@ class _MockPaperCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(28),
           gradient: LinearGradient(
-            colors: [Colors.white, paper.accentSoft.withValues(alpha: 0.8)],
+            colors: [AppColors.surface, AppColors.background],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -454,7 +454,7 @@ class _MockTestLaunchScreenState extends State<MockTestLaunchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF0FDF4),
+      backgroundColor: AppColors.background,
       appBar: AppBar(
         title: Text(
           'Opening Paper ${widget.setId}',
@@ -469,7 +469,7 @@ class _MockTestLaunchScreenState extends State<MockTestLaunchScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const CircularProgressIndicator(color: _kPrimary),
+              CircularProgressIndicator(color: _kPrimary),
               const SizedBox(height: 16),
               Text(
                 _error == null
@@ -545,7 +545,7 @@ class _SetCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 const Spacer(),
-                const Icon(Icons.arrow_forward_ios, size: 16, color: _kPrimary),
+                Icon(Icons.arrow_forward_ios, size: 16, color: _kPrimary),
               ],
             ),
             const SizedBox(height: 8),
@@ -684,7 +684,7 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {},
       child: Scaffold(
-        backgroundColor: const Color(0xFFF0FDF4),
+        backgroundColor: AppColors.background,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text(
@@ -700,7 +700,7 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
             width: double.infinity,
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.surface,
               borderRadius: BorderRadius.circular(28),
               boxShadow: const [
                 BoxShadow(
@@ -778,6 +778,7 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
                             _loadingButtonLabel(),
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w800,
+                              color: AppColors.textPrimary,
                             ),
                           ),
                   ),
@@ -807,7 +808,7 @@ class _RuleTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(top: 6),
             child: Icon(Icons.check_circle, color: _kPrimary, size: 18),
           ),
@@ -1037,7 +1038,6 @@ class _MockTestScreenState extends State<MockTestScreen> {
       ? 1
       : ((_activeSection.count - 1) ~/ _sectionPageSize) + 1;
 
-  @override
   void initState() {
     super.initState();
     final draft = widget.draft;
@@ -1333,9 +1333,9 @@ class _MockTestScreenState extends State<MockTestScreen> {
                                         ),
                                         onSelected: (_) => _switchSection(index),
                                         selectedColor: _kPrimary,
-                                        backgroundColor: Colors.white,
+                                        backgroundColor: isDark ? AppColors.surface : Colors.white,
                                         labelStyle: TextStyle(
-                                          color: isSelected ? Colors.white : Colors.black87,
+                                          color: isSelected ? Colors.white : (isDark ? AppColors.textPrimary : Colors.black87),
                                         ),
                                       );
                                     }),
@@ -1438,9 +1438,9 @@ class _MockTestScreenState extends State<MockTestScreen> {
                                 ),
                                 onSelected: (_) => _switchSection(index),
                                 selectedColor: _kPrimary,
-                                backgroundColor: Colors.white,
+                                backgroundColor: isDark ? AppColors.surface : Colors.white,
                                 labelStyle: TextStyle(
-                                  color: isSelected ? Colors.white : Colors.black87,
+                                  color: isSelected ? Colors.white : (isDark ? AppColors.textPrimary : Colors.black87),
                                 ),
                               );
                             }),
@@ -1526,8 +1526,8 @@ class _MockTestScreenState extends State<MockTestScreen> {
                   child: Center(
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
-                      child: Text('Test paused', style: GoogleFonts.poppins(fontWeight: FontWeight.w800, color: _kPrimary)),
+                      decoration: BoxDecoration(color: AppColors.surface, borderRadius: BorderRadius.circular(16)),
+                      child: Text('Test paused', style: GoogleFonts.poppins(fontWeight: FontWeight.w800, color: Colors.white)),
                     ),
                   ),
                 ),
@@ -1646,8 +1646,8 @@ class ResultAnalyticsPage extends StatelessWidget {
       args.elapsed,
     );
     final background = Theme.of(context).brightness == Brightness.dark
-        ? const Color(0xFF09111F)
-        : const Color(0xFFF0FDF4);
+      ? AppColors.background
+      : AppColors.background;
 
     return Scaffold(
       backgroundColor: background,
@@ -1883,7 +1883,7 @@ class TestHeader extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.timer_outlined, color: _kPrimary, size: 16),
+                Icon(Icons.timer_outlined, color: _kPrimary, size: 16),
                 const SizedBox(width: 6),
                 Text(
                   timerText,
@@ -1937,10 +1937,15 @@ class ProgressHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final surfaceColor = isDark ? const Color(0xFF0B1220) : Colors.white;
+    final titleColor = isDark ? Colors.white : AppColors.textPrimary;
+    final subtitleColor = isDark ? Colors.white70 : AppColors.textSecondary;
+    final statColor = isDark ? Colors.white70 : AppColors.textPrimary;
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: _kSurface,
+        color: surfaceColor,
         borderRadius: BorderRadius.circular(24),
         boxShadow: const [
           BoxShadow(
@@ -1964,12 +1969,13 @@ class ProgressHeader extends StatelessWidget {
                       style: GoogleFonts.poppins(
                         fontSize: 18,
                         fontWeight: FontWeight.w800,
+                        color: titleColor,
                       ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       subtitle,
-                      style: GoogleFonts.poppins(color: Colors.black54),
+                      style: GoogleFonts.poppins(color: subtitleColor),
                     ),
                   ],
                 ),
@@ -1999,8 +2005,8 @@ class ProgressHeader extends StatelessWidget {
             child: LinearProgressIndicator(
               value: progress,
               minHeight: 10,
-              backgroundColor: const Color(0xFFDCFCE7),
-              valueColor: const AlwaysStoppedAnimation(_kPrimary),
+              backgroundColor: AppColors.surface.withValues(alpha: 0.18),
+              valueColor: AlwaysStoppedAnimation(_kPrimary),
             ),
           ),
           const SizedBox(height: 10),
@@ -2011,6 +2017,7 @@ class ProgressHeader extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
+                  color: statColor,
                 ),
               ),
               const Spacer(),
@@ -2019,6 +2026,7 @@ class ProgressHeader extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
+                  color: statColor,
                 ),
               ),
             ],
@@ -2057,7 +2065,7 @@ class QuestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final surface = isDark ? const Color(0xFF111A2A) : _kSurface;
+    final surface = isDark ? const Color(0xFF111A2A) : Colors.white;
     final border = isDark ? const Color(0xFF223047) : const Color(0xFFE5E7EB);
     final questionImageBase64 = question.questionImageBase64?.trim();
     final hasQuestionImage = questionImageBase64?.isNotEmpty ?? false;
@@ -2268,7 +2276,9 @@ class QuestionPalette extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final surface = isDark ? const Color(0xFF111A2A) : _kSurface;
+    final surface = isDark ? const Color(0xFF111A2A) : Colors.white;
+    final titleColor = isDark ? Colors.white : AppColors.textPrimary;
+    final subtitleColor = isDark ? Colors.white70 : AppColors.textSecondary;
     final activeSection = sections[activeSectionIndex];
     final visibleStart = activeSection.startIndex + (sectionPage * 10);
     final visibleEnd = math.min(activeSection.endIndex, visibleStart + 9);
@@ -2303,12 +2313,13 @@ class QuestionPalette extends StatelessWidget {
                       style: GoogleFonts.poppins(
                         fontSize: 18,
                         fontWeight: FontWeight.w800,
+                        color: titleColor,
                       ),
                     ),
                     const SizedBox(height: 3),
                     Text(
                       '${activeSection.name} • ${visibleStart - activeSection.startIndex + 1}-${visibleEnd - activeSection.startIndex + 1} of ${activeSection.count}',
-                      style: GoogleFonts.poppins(color: Colors.black54),
+                      style: GoogleFonts.poppins(color: subtitleColor),
                     ),
                   ],
                 ),
@@ -2396,11 +2407,17 @@ class QuestionPalette extends StatelessWidget {
           Wrap(
             spacing: 12,
             runSpacing: 10,
-            children: const [
-              _LegendChip(color: Color(0xFF14532D), label: 'Answered'),
-              _LegendChip(color: Color(0xFFF59E0B), label: 'Marked'),
-              _LegendChip(color: Color(0xFFDCFCE7), label: 'Current'),
-              _LegendChip(color: Color(0xFFD4D4DD), label: 'Unanswered'),
+            children: [
+              const _LegendChip(color: Color(0xFF14532D), label: 'Answered'),
+              const _LegendChip(color: Color(0xFFF59E0B), label: 'Marked'),
+              _LegendChip(
+                color: isDark ? const Color(0xFF1F2937) : const Color(0xFFDCFCE7),
+                label: 'Current',
+              ),
+              _LegendChip(
+                color: isDark ? const Color(0xFF374151) : const Color(0xFFD4D4DD),
+                label: 'Unanswered',
+              ),
             ],
           ),
         ],
@@ -2429,10 +2446,12 @@ class BottomControls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final surfaceColor = isDark ? const Color(0xFF0B1220) : Colors.white;
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: _kSurface,
+        color: surfaceColor,
         borderRadius: BorderRadius.circular(24),
         boxShadow: const [
           BoxShadow(
@@ -2510,11 +2529,14 @@ class SummaryBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final surfaceColor = isDark ? const Color(0xFF0B1220) : Colors.white;
+    final totalLabelColor = isDark ? Colors.white70 : AppColors.textSecondary;
     return Container(
       padding: const EdgeInsets.all(18),
       constraints: const BoxConstraints(minHeight: 120),
       decoration: BoxDecoration(
-        color: _kSurface,
+        color: surfaceColor,
         borderRadius: BorderRadius.circular(24),
         boxShadow: const [
           BoxShadow(
@@ -2532,16 +2554,19 @@ class SummaryBar extends StatelessWidget {
               label: 'Answered',
               value: '$answered',
               color: _kPrimary,
+              isDark: isDark,
             ),
             _MetricChip(
               label: 'Remaining',
               value: '$remaining',
               color: Colors.orange,
+              isDark: isDark,
             ),
             _MetricChip(
               label: 'Marked',
               value: '$marked',
               color: const Color(0xFFF59E0B),
+              isDark: isDark,
             ),
           ];
 
@@ -2557,7 +2582,7 @@ class SummaryBar extends StatelessWidget {
                   '$total Questions',
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w800,
-                    color: Colors.black54,
+                    color: totalLabelColor,
                   ),
                 ),
               ],
@@ -2576,7 +2601,7 @@ class SummaryBar extends StatelessWidget {
                 '$total Questions',
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w800,
-                  color: Colors.black54,
+                  color: totalLabelColor,
                 ),
               ),
             ],
@@ -2603,6 +2628,13 @@ class SubmitModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cardColor = isDark ? AppColors.surface : Colors.white;
+    final titleColor = isDark ? Colors.white : AppColors.textPrimary;
+    final subtitleColor = isDark ? Colors.white70 : AppColors.textSecondary;
+    final warnBg = isDark ? const Color(0xFF2B1116) : const Color(0xFFFFF1F2);
+    final warnBorder = isDark ? const Color(0xFF7F1D1D) : Colors.red.shade200;
+    final warnText = isDark ? const Color(0xFFFCA5A5) : Colors.red.shade800;
     return Center(
       child: Material(
         color: Colors.transparent,
@@ -2612,7 +2644,7 @@ class SubmitModal extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 460),
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: cardColor,
             borderRadius: BorderRadius.circular(28),
             boxShadow: const [
               BoxShadow(
@@ -2625,7 +2657,7 @@ class SubmitModal extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(
+              Icon(
                 Icons.help_outline_rounded,
                 color: _kPrimary,
                 size: 42,
@@ -2636,12 +2668,13 @@ class SubmitModal extends StatelessWidget {
                 style: GoogleFonts.poppins(
                   fontSize: 22,
                   fontWeight: FontWeight.w800,
+                  color: titleColor,
                 ),
               ),
               const SizedBox(height: 6),
               Text(
                 'Review the count below before final submission.',
-                style: GoogleFonts.poppins(color: Colors.black54),
+                style: GoogleFonts.poppins(color: subtitleColor),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
@@ -2663,21 +2696,21 @@ class SubmitModal extends StatelessWidget {
               _DialogStatRow(
                 label: 'Total Questions',
                 value: total,
-                color: Colors.black87,
+                color: isDark ? Colors.white : Colors.black87,
               ),
               const SizedBox(height: 14),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFFF1F2),
-                  border: Border.all(color: Colors.red.shade200),
+                  color: warnBg,
+                  border: Border.all(color: warnBorder),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Text(
                   '$unanswered questions left unanswered.',
                   style: GoogleFonts.poppins(
-                    color: Colors.red.shade800,
+                    color: warnText,
                     fontWeight: FontWeight.w700,
                   ),
                   textAlign: TextAlign.center,
@@ -2690,7 +2723,7 @@ class SubmitModal extends StatelessWidget {
                     child: OutlinedButton(
                       onPressed: () => Navigator.pop(context, false),
                       style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: _kPrimary),
+                        side: BorderSide(color: _kPrimary),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
@@ -2757,6 +2790,7 @@ class _ResultHero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final darkModeOnly = ThemeService.mode.value == ThemeMode.dark;
     final performance = metrics.maxScore == 0
         ? 0.0
         : (metrics.score.clamp(0, metrics.maxScore) / metrics.maxScore);
@@ -2769,8 +2803,10 @@ class _ResultHero extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFFDCFCE7), Colors.white],
+        gradient: LinearGradient(
+          colors: darkModeOnly
+              ? const [Color(0xFF0B1220), Color(0xFF111827)]
+              : const [Color(0xFFDCFCE7), Colors.white],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -2797,13 +2833,14 @@ class _ResultHero extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 24,
                     fontWeight: FontWeight.w800,
+                    color: darkModeOnly ? Colors.white : AppColors.textPrimary,
                   ),
                 ),
                 Text(
                   '/ ${metrics.maxScore}',
                   style: GoogleFonts.poppins(
                     fontSize: 13,
-                    color: Colors.black54,
+                    color: darkModeOnly ? Colors.white70 : AppColors.textSecondary,
                   ),
                 ),
               ],
@@ -2822,12 +2859,15 @@ class _ResultHero extends StatelessWidget {
                   style: GoogleFonts.poppins(
                     fontSize: 24,
                     fontWeight: FontWeight.w800,
+                    color: darkModeOnly ? Colors.white : AppColors.textPrimary,
                   ),
                 ),
                 const SizedBox(height: 6),
                 Text(
                   'You answered ${metrics.correct} correctly and ${metrics.wrong} incorrectly in ${_formatDuration(metrics.elapsed)}.',
-                  style: GoogleFonts.poppins(color: Colors.black54),
+                  style: GoogleFonts.poppins(
+                    color: darkModeOnly ? Colors.white70 : AppColors.textSecondary,
+                  ),
                 ),
                 const SizedBox(height: 14),
                 Wrap(
@@ -2881,7 +2921,7 @@ class _StatsGrid extends StatelessWidget {
           StatCard(
             label: 'Time Taken',
             value: _formatDuration(metrics.elapsed),
-            color: Colors.black87,
+                color: AppColors.textPrimary,
           ),
         ];
         return GridView.builder(
@@ -2946,7 +2986,7 @@ class StatCard extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 11,
               fontWeight: FontWeight.w700,
-              color: Colors.black54,
+              color: AppColors.textSecondary,
             ),
           ),
           const SizedBox(height: 6),
@@ -3176,15 +3216,15 @@ class _SubjectAnalysis extends StatelessWidget {
                     child: LinearProgressIndicator(
                       value: percent,
                       minHeight: 10,
-                      backgroundColor: const Color(0xFFDCFCE7),
-                      valueColor: const AlwaysStoppedAnimation(_kPrimary),
+                      backgroundColor: AppColors.surface.withValues(alpha: 0.18),
+                      valueColor: AlwaysStoppedAnimation(_kPrimary),
                     ),
                   ),
                   const SizedBox(height: 6),
                   Text(
                     'Correct ${entry.value['correct'] ?? 0} • Wrong ${entry.value['wrong'] ?? 0} • Skipped ${entry.value['skipped'] ?? 0}',
                     style: GoogleFonts.poppins(
-                      color: Colors.black54,
+                      color: AppColors.textSecondary,
                       fontSize: 12,
                     ),
                   ),
@@ -3335,11 +3375,13 @@ class _MetricChip extends StatelessWidget {
   final String label;
   final String value;
   final Color color;
+  final bool isDark;
 
   const _MetricChip({
     required this.label,
     required this.value,
     required this.color,
+    this.isDark = false,
   });
 
   @override
@@ -3347,7 +3389,7 @@ class _MetricChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
+        color: color.withValues(alpha: isDark ? 0.18 : 0.1),
         borderRadius: BorderRadius.circular(18),
       ),
       child: Column(
@@ -3357,7 +3399,7 @@ class _MetricChip extends StatelessWidget {
             label,
             style: GoogleFonts.poppins(
               fontSize: 12,
-              color: Colors.black54,
+              color: isDark ? Colors.white70 : Colors.black54,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -3446,8 +3488,8 @@ class _PracticeHeroCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFFFFFFFF), Color(0xFFF0FDF4)],
+        gradient: LinearGradient(
+          colors: [AppColors.surface, AppColors.background],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -3598,7 +3640,7 @@ class _MockTestInfoCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(28),
         boxShadow: const [
           BoxShadow(
@@ -3616,12 +3658,13 @@ class _MockTestInfoCard extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 18,
               fontWeight: FontWeight.w800,
+              color: AppColors.textPrimary,
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'The backend generates AI-based questions across all Physics, Chemistry, and Biology syllabus units and avoids repeats across attempts.',
-            style: GoogleFonts.poppins(color: Colors.black54),
+            style: GoogleFonts.poppins(color: AppColors.textSecondary),
           ),
         ],
       ),
@@ -3644,7 +3687,7 @@ class _MockTestSkeleton extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 720),
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.surface,
             borderRadius: BorderRadius.circular(26),
             boxShadow: const [
               BoxShadow(
@@ -3657,17 +3700,20 @@ class _MockTestSkeleton extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const CircularProgressIndicator(color: _kPrimary),
+              CircularProgressIndicator(color: _kPrimary),
               const SizedBox(height: 18),
               Text(
                 message,
-                style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.textPrimary,
+                ),
               ),
               const SizedBox(height: 12),
               Container(
                 height: 12,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF1F5F9),
+                  color: AppColors.surface.withValues(alpha: 0.16),
                   borderRadius: BorderRadius.circular(999),
                 ),
               ),
@@ -3676,7 +3722,7 @@ class _MockTestSkeleton extends StatelessWidget {
                 height: 12,
                 width: 280,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF1F5F9),
+                  color: AppColors.surface.withValues(alpha: 0.16),
                   borderRadius: BorderRadius.circular(999),
                 ),
               ),
@@ -3685,7 +3731,7 @@ class _MockTestSkeleton extends StatelessWidget {
                 height: 12,
                 width: 180,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF1F5F9),
+                  color: AppColors.surface.withValues(alpha: 0.16),
                   borderRadius: BorderRadius.circular(999),
                 ),
               ),
@@ -3706,7 +3752,7 @@ class _QuizzesCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(28),
         boxShadow: const [
           BoxShadow(
@@ -3725,7 +3771,7 @@ class _QuizzesCard extends StatelessWidget {
               color: _kPrimarySoft,
               borderRadius: BorderRadius.circular(22),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.menu_book_outlined,
               color: _kPrimary,
               size: 36,
@@ -3753,7 +3799,7 @@ class _QuizzesCard extends StatelessWidget {
                 context,
               ).push(MaterialPageRoute(builder: (_) => const QuizzesScreen())),
               style: OutlinedButton.styleFrom(
-                side: const BorderSide(color: _kPrimary),
+                side: BorderSide(color: _kPrimary),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -3786,7 +3832,7 @@ class _CombinedMockCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         borderRadius: BorderRadius.circular(28),
         boxShadow: const [
           BoxShadow(

@@ -73,8 +73,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     if (_loading) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
+      return Scaffold(
+        backgroundColor: AppColors.background,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
@@ -161,6 +162,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   final confirm = await showDialog<bool>(
                     context: context,
                     builder: (c) => AlertDialog(
+                      backgroundColor: AppColors.surface,
                       title: const Text('Sign out'),
                       content: const Text('Do you want to sign out from this device?'),
                       actions: [
@@ -197,7 +199,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
       ),
       bottomNavigationBar: BottomNav(
-        selectedIndex: 4,
+        selectedIndex: 3,
         onTap: (_) => Navigator.of(context).popUntil((route) => route.isFirst),
       ),
     );

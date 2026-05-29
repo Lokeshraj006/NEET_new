@@ -11,7 +11,7 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.surface,
         boxShadow: [
           BoxShadow(
@@ -50,11 +50,6 @@ class BottomNavBar extends StatelessWidget {
                 icon: Icon(Icons.chat_bubble_outline, size: 22),
                 selectedIcon: Icon(Icons.chat_bubble_rounded, size: 22),
                 label: 'AI Chat',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.description_outlined, size: 22),
-                selectedIcon: Icon(Icons.description_rounded, size: 22),
-                label: 'PYQ',
               ),
               NavigationDestination(
                 icon: Icon(Icons.person_outline, size: 22),

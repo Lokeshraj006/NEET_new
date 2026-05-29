@@ -4,11 +4,13 @@ import base64
 import mysql.connector
 import logging
 import time
+import secrets
 from fastapi import APIRouter, HTTPException, UploadFile, File, Form, Header
 from pydantic import BaseModel
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 from typing import Optional
+import requests
 
 logger = logging.getLogger("auth")
 logging.basicConfig(level=logging.INFO)
@@ -81,6 +83,10 @@ class UpdateProfileRequest(BaseModel):
     new_password: Optional[str] = None
 
 
+class GoogleLoginRequest(BaseModel):
+    token: str
+
+
 def _serialize_user(user: dict, token: Optional[str] = None) -> dict:
     photo_b64 = base64.b64encode(user["photo"]).decode('utf-8') if user.get("photo") else None
     return {
@@ -105,6 +111,54 @@ def _get_user_from_token(authorization: Optional[str]) -> dict:
     if not user_id:
         raise HTTPException(status_code=401, detail="Invalid token payload.")
     return {"id": int(user_id), "email": payload.get("email")}
+
+
+def _fetch_google_profile(token: str) -> dict:
+    profile_endpoints = [
+        "https://www.googleapis.com/oauth2/v2/userinfo",
+        "https://www.googleapis.com/oauth2/v3/userinfo",
+    ]
+    last_error = None
+
+    for endpoint in profile_endpoints:
+        try:
+            response = requests.get(
+                endpoint,
+                headers={"Authorization": f"Bearer {token}"},
+                timeout=20,
+            )
+            if response.status_code == 200:
+                data = response.json()
+                email = (data.get("email") or "").strip().lower()
+                if not email:
+                    raise HTTPException(status_code=401, detail="Google sign-in did not return an email.")
+                return {
+                    "email": email,
+                    "name": (data.get("name") or data.get("given_name") or email).strip(),
+                    "photo": data.get("picture"),
+                }
+            last_error = response.text
+        except requests.RequestException as exc:
+            last_error = str(exc)
+
+    tokeninfo_url = f"https://oauth2.googleapis.com/tokeninfo?id_token={token}"
+    try:
+        response = requests.get(tokeninfo_url, timeout=20)
+        if response.status_code == 200:
+            data = response.json()
+            email = (data.get("email") or "").strip().lower()
+            if not email:
+                raise HTTPException(status_code=401, detail="Google sign-in did not return an email.")
+            return {
+                "email": email,
+                "name": (data.get("name") or data.get("given_name") or email).strip(),
+                "photo": data.get("picture"),
+            }
+        last_error = response.text
+    except requests.RequestException as exc:
+        last_error = str(exc)
+
+    raise HTTPException(status_code=401, detail=f"Google sign-in verification failed. {last_error or ''}".strip())
 
 
 @router.post("/register")
@@ -185,6 +239,67 @@ def login(req: LoginRequest):
 
         logger.info(f"Login completed successfully in {time.time() - t0:.4f}s")
         return serialized
+    finally:
+        cursor.close()
+        db.close()
+
+
+@router.post("/login/google")
+def login_google(req: GoogleLoginRequest):
+    if not req.token.strip():
+        raise HTTPException(status_code=400, detail="Google token is required.")
+
+    profile = _fetch_google_profile(req.token.strip())
+
+    db = get_db()
+    cursor = db.cursor(dictionary=True)
+    try:
+        cursor.execute("SELECT * FROM users WHERE email = %s", (profile["email"],))
+        user = cursor.fetchone()
+
+        if user:
+            updates = []
+            params = []
+            if profile["name"] and profile["name"] != user["name"]:
+                updates.append("name = %s")
+                params.append(profile["name"])
+            if profile.get("photo"):
+                photo_resp = requests.get(profile["photo"], timeout=20)
+                if photo_resp.status_code == 200 and photo_resp.content:
+                    updates.append("photo = %s")
+                    params.append(photo_resp.content)
+            if updates:
+                params.append(user["id"])
+                cursor.execute(f"UPDATE users SET {', '.join(updates)} WHERE id = %s", tuple(params))
+                db.commit()
+
+            cursor.execute("SELECT * FROM users WHERE id = %s", (user["id"],))
+            refreshed = cursor.fetchone()
+            return _serialize_user(refreshed)
+
+        photo_bytes = None
+        if profile.get("photo"):
+            try:
+                photo_resp = requests.get(profile["photo"], timeout=20)
+                if photo_resp.status_code == 200 and photo_resp.content:
+                    photo_bytes = photo_resp.content
+            except requests.RequestException:
+                photo_bytes = None
+
+        temp_password = hash_password(secrets.token_urlsafe(24))
+        cursor.execute(
+            "INSERT INTO users (name, email, password, photo) VALUES (%s, %s, %s, %s)",
+            (profile["name"], profile["email"], temp_password, photo_bytes),
+        )
+        db.commit()
+        user_id = cursor.lastrowid
+        user = {
+            "id": user_id,
+            "email": profile["email"],
+            "name": profile["name"],
+            "photo": photo_bytes,
+        }
+        return _serialize_user(user)
     finally:
         cursor.close()
         db.close()

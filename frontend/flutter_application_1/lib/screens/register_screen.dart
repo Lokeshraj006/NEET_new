@@ -71,7 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Container(
                     padding: const EdgeInsets.all(22),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.96),
+                      color: AppColors.surface.withValues(alpha: 0.98),
                       borderRadius: BorderRadius.circular(30),
                       boxShadow: const [
                         BoxShadow(
@@ -182,13 +182,7 @@ class _Backdrop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFFF0FDF4), Color(0xFFF0FDF4)],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
+      color: AppColors.background,
       child: Stack(
         children: [
           Positioned(
@@ -198,7 +192,7 @@ class _Backdrop extends StatelessWidget {
               width: 170,
               height: 170,
               decoration: BoxDecoration(
-                color: AppColors.primarySoft.withValues(alpha: 0.9),
+                color: AppColors.surface.withValues(alpha: 0.12),
                 shape: BoxShape.circle,
               ),
             ),
@@ -210,7 +204,7 @@ class _Backdrop extends StatelessWidget {
               width: 160,
               height: 160,
               decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha: 0.12),
+                color: AppColors.surface.withValues(alpha: 0.08),
                 shape: BoxShape.circle,
               ),
             ),

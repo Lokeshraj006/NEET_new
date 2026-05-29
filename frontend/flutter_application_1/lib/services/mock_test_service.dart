@@ -264,6 +264,10 @@ class MockTestService {
     'MOCK_TEST_BASE_URL',
     defaultValue: '',
   );
+  static const _authBaseUrl = String.fromEnvironment(
+    'AUTH_BASE_URL',
+    defaultValue: '',
+  );
   static const _legacyChatBaseUrl = String.fromEnvironment(
     'CHAT_BASE_URL',
     defaultValue: '',
@@ -298,15 +302,19 @@ class MockTestService {
   List<String> _candidateBaseUrls() {
     final explicit = _envBaseUrl.trim().isNotEmpty
         ? _envBaseUrl.trim()
+        : _authBaseUrl.trim().isNotEmpty
+        ? _authBaseUrl.trim()
         : _legacyChatBaseUrl.trim();
-    final urls = <String>[
-      _clean(explicit.isNotEmpty ? explicit : _platformDefaultBaseUrl()),
-    ];
-    const legacyIp = 'http://10.65.205.248:8000';
+    final urls = <String>[];
+
+    if (explicit.isNotEmpty) {
+      urls.add(_clean(explicit));
+    } else {
+      urls.add(_clean(_platformDefaultBaseUrl()));
+    }
 
     final platformDefault = _clean(_platformDefaultBaseUrl());
     if (!urls.contains(platformDefault)) urls.add(platformDefault);
-    if (!urls.contains(legacyIp)) urls.add(legacyIp);
 
     if (!kIsWeb &&
         !Platform.isAndroid &&
@@ -321,10 +329,20 @@ class MockTestService {
     String path,
     Map<String, dynamic> body,
     String token, {
-    Duration timeout = const Duration(seconds: 60),
+    Duration timeout = const Duration(seconds: 12),
   }) async {
     Object? lastConnectionError;
-    for (final candidate in _candidateBaseUrls()) {
+
+    // Try using a cached working base URL first to reduce fallback latency.
+    final prefs = await _prefs;
+    final stored = prefs.getString('working_base_url');
+    final candidates = [..._candidateBaseUrls()];
+    if (stored != null && stored.trim().isNotEmpty) {
+      final cleaned = _clean(stored.trim());
+      if (!candidates.contains(cleaned)) candidates.insert(0, cleaned);
+    }
+
+    for (final candidate in candidates) {
       final uri = Uri.parse('$candidate$path');
       try {
         final response = await http
@@ -338,6 +356,7 @@ class MockTestService {
             )
             .timeout(timeout);
         if (response.statusCode == 200) {
+          await prefs.setString('working_base_url', candidate);
           return response;
         }
         if (response.statusCode == 401) {
@@ -368,7 +387,7 @@ class MockTestService {
     }
 
     throw Exception(
-      'Cannot reach mock-test server. Check backend and CHAT_BASE_URL or MOCK_TEST_BASE_URL. Tried: ${_candidateBaseUrls().join(', ')}${lastConnectionError != null ? ' (${lastConnectionError.runtimeType})' : ''}',
+      'Cannot reach mock-test server. Check backend and AUTH_BASE_URL or MOCK_TEST_BASE_URL. Tried: ${_candidateBaseUrls().join(', ')}${lastConnectionError != null ? ' (${lastConnectionError.runtimeType})' : ''}',
     );
   }
 
@@ -437,6 +456,7 @@ class MockTestService {
   Future<MockTestBundle> generateUnitQuiz({
     required String subject,
     required String topic,
+    Duration timeout = const Duration(seconds: 120),
   }) async {
     final prefs = await _prefs;
     final sessionId = prefs.getString(_sessionKey);
@@ -449,7 +469,7 @@ class MockTestService {
       'unit': topic,
       'topic': topic,
       'session_id': sessionId,
-    }, token);
+    }, token, timeout: timeout);
     final data = jsonDecode(response.body) as Map<String, dynamic>;
     final quiz = Map<String, dynamic>.from((data['quiz'] as Map?) ?? const {});
     final questionList =
@@ -475,6 +495,23 @@ class MockTestService {
       attempt: attempt,
       attemptsAllowed: attemptsAllowed,
     );
+  }
+
+  Future<void> prefillUnit({
+    required String subject,
+    required String unit,
+    int size = 50,
+  }) async {
+    final token = await AuthService.getToken();
+    if (token == null || token.trim().isEmpty) return;
+    final body = <String, dynamic>{
+      'subject': subject,
+      'unit': unit,
+    };
+    // call with query params as backend expects; don't throw on failure
+    try {
+      await _postWithFallback('/mock-test/unit/prefill?mode=async&size=$size', body, token, timeout: const Duration(seconds: 10));
+    } catch (_) {}
   }
 
   Future<Map<String, dynamic>> submitAnswers({

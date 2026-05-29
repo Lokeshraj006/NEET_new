@@ -1,10 +1,18 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:developer' as developer;
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:flutter_application_1/services/google_auth_service.dart';
+
 class AuthService {
+  static const Duration _requestTimeout = Duration(seconds: 15);
+  static const String _authWorkingBaseUrlKey = 'auth_working_base_url';
+  static const String _legacyWorkingBaseUrlKey = 'working_base_url';
+
   static final ValueNotifier<String?> nameNotifier = ValueNotifier<String?>(
     null,
   );
@@ -30,6 +38,23 @@ class AuthService {
     defaultValue: '',
   );
 
+  static const String _mockTestBaseUrl = String.fromEnvironment(
+    'MOCK_TEST_BASE_URL',
+    defaultValue: '',
+  );
+
+  static const String _streakBaseUrl = String.fromEnvironment(
+    'STREAK_BASE_URL',
+    defaultValue: '',
+  );
+
+  static const String _apiBaseUrl = String.fromEnvironment(
+    'API_BASE_URL',
+    defaultValue: '',
+  );
+
+  static String? _resolvedBaseUrl;
+
   static String _platformDefaultBaseUrl() {
     if (kIsWeb) return 'http://localhost:8000';
     if (Platform.isAndroid) return 'http://10.0.2.2:8000';
@@ -40,19 +65,33 @@ class AuthService {
       url.endsWith('/') ? url.substring(0, url.length - 1) : url;
 
   static List<String> _candidateBaseUrls() {
-    final explicit = _envBaseUrl.trim().isNotEmpty
-        ? _envBaseUrl.trim()
-        : _envBaseUrlTypo.trim().isNotEmpty
-        ? _envBaseUrlTypo.trim()
-        : _legacyChatBaseUrl.trim();
-    final urls = <String>[
-      _clean(explicit.isNotEmpty ? explicit : _platformDefaultBaseUrl()),
-    ];
-    const legacyIp = 'http://10.65.205.248:8000';
+    final explicitCandidates = <String>[
+      _envBaseUrl.trim(),
+      _envBaseUrlTypo.trim(),
+      _apiBaseUrl.trim(),
+      _streakBaseUrl.trim(),
+      _mockTestBaseUrl.trim(),
+      _legacyChatBaseUrl.trim(),
+    ].where((value) => value.isNotEmpty).map(_clean).toList();
+    final urls = <String>[];
+
+    if (_resolvedBaseUrl != null && _resolvedBaseUrl!.trim().isNotEmpty) {
+      urls.add(_clean(_resolvedBaseUrl!.trim()));
+    }
+
+    if (explicitCandidates.isNotEmpty) {
+      for (final candidate in explicitCandidates) {
+        if (!urls.contains(candidate)) {
+          urls.add(candidate);
+        }
+      }
+    } else {
+      urls.add(_clean(_platformDefaultBaseUrl()));
+    }
+
     final platformDefault = _clean(_platformDefaultBaseUrl());
 
     if (!urls.contains(platformDefault)) urls.add(platformDefault);
-    if (!urls.contains(legacyIp)) urls.add(legacyIp);
 
     if (!kIsWeb &&
         !Platform.isAndroid &&
@@ -67,25 +106,56 @@ class AuthService {
     String path,
     Map<String, dynamic> payload, {
     Map<String, String> headers = const {},
+    Duration timeout = _requestTimeout,
   }) async {
     Object? lastConnectionError;
+
+    // Prefer a previously discovered working base URL persisted across runs.
+    final prefs = await SharedPreferences.getInstance();
+    if (_resolvedBaseUrl == null) {
+      final stored = prefs.getString(_authWorkingBaseUrlKey);
+      final legacyStored = prefs.getString(_legacyWorkingBaseUrlKey);
+      final selectedStored = (stored != null && stored.trim().isNotEmpty)
+          ? stored
+          : legacyStored;
+      if (selectedStored != null && selectedStored.trim().isNotEmpty) {
+        _resolvedBaseUrl = _clean(selectedStored.trim());
+      }
+    }
+
     for (final candidate in _candidateBaseUrls()) {
       try {
-        return await http
+        developer.log('Auth POST start', name: 'AuthService', error: {'candidate': candidate, 'path': path});
+        final response = await http
             .post(
               Uri.parse('$candidate$path'),
               headers: {'Content-Type': 'application/json', ...headers},
               body: jsonEncode(payload),
             )
-            .timeout(const Duration(seconds: 60));
+            .timeout(timeout);
+        _resolvedBaseUrl = candidate;
+        await prefs.setString(_authWorkingBaseUrlKey, candidate);
+        developer.log('Auth POST success', name: 'AuthService', error: {'candidate': candidate, 'path': path, 'statusCode': response.statusCode});
+        return response;
       } on SocketException catch (e) {
+        developer.log('Auth POST socket error', name: 'AuthService', error: {'candidate': candidate, 'path': path, 'error': e.toString()});
+        lastConnectionError = e;
+        continue;
+      } on TimeoutException catch (e) {
+        developer.log('Auth POST timeout', name: 'AuthService', error: {'candidate': candidate, 'path': path, 'error': e.toString(), 'timeoutSeconds': timeout.inSeconds});
+        lastConnectionError = e;
+        continue;
+      } on http.ClientException catch (e) {
+        developer.log('Auth POST client error', name: 'AuthService', error: {'candidate': candidate, 'path': path, 'error': e.toString()});
         lastConnectionError = e;
         continue;
       }
     }
 
     throw Exception(
-      'Cannot reach auth server. Check backend and AUTH_BASE_URL. Tried: ${_candidateBaseUrls().join(', ')}${lastConnectionError != null ? ' (${lastConnectionError.runtimeType})' : ''}',
+      'Cannot reach auth server. Check backend and AUTH_BASE_URL. '
+      'If you are on a physical Android phone, set AUTH_BASE_URL to your PC IP, '
+      'for example http://192.168.x.x:8000. Tried: ${_candidateBaseUrls().join(', ')}${lastConnectionError != null ? ' (${lastConnectionError.runtimeType})' : ''}',
     );
   }
 
@@ -100,8 +170,9 @@ class AuthService {
       'password': password,
     });
     final data = jsonDecode(res.body);
-    if (res.statusCode != 200)
+    if (res.statusCode != 200) {
       throw Exception(data['detail'] ?? 'Registration failed.');
+    }
     await _saveSession(data);
     return data;
   }
@@ -110,15 +181,15 @@ class AuthService {
     String email,
     String password,
   ) async {
-    final res = await _postWithFallback('/login', {
-      'email': email,
-      'password': password,
-    });
-    final data = jsonDecode(res.body);
-    if (res.statusCode != 200)
-      throw Exception(data['detail'] ?? 'Login failed.');
-    await _saveSession(data);
-    return data;
+    return _submitAuth('/login', {'email': email, 'password': password});
+  }
+
+  static Future<Map<String, dynamic>> loginWithGoogle(String token) async {
+    return _submitAuth(
+      '/login/google',
+      {'token': token},
+      timeout: const Duration(seconds: 20),
+    );
   }
 
   static Future<Map<String, dynamic>> updateProfile({
@@ -145,8 +216,29 @@ class AuthService {
       headers: {'Authorization': 'Bearer $token'},
     );
     final data = jsonDecode(res.body);
-    if (res.statusCode != 200)
+    if (res.statusCode != 200) {
       throw Exception(data['detail'] ?? 'Profile update failed.');
+    }
+    await _saveSession(data);
+    return data;
+  }
+
+  static Future<Map<String, dynamic>> _submitAuth(
+    String path,
+    Map<String, dynamic> payload, {
+    Map<String, String> headers = const {},
+    Duration timeout = _requestTimeout,
+  }) async {
+    final res = await _postWithFallback(
+      path,
+      payload,
+      headers: headers,
+      timeout: timeout,
+    );
+    final data = jsonDecode(res.body);
+    if (res.statusCode != 200) {
+      throw Exception(data['detail'] ?? 'Login failed.');
+    }
     await _saveSession(data);
     return data;
   }
@@ -166,9 +258,11 @@ class AuthService {
         final res = await req.send();
         final body = await res.stream.bytesToString();
         final data = jsonDecode(body);
-        if (res.statusCode != 200)
+        if (res.statusCode != 200) {
           throw Exception(data['detail'] ?? 'Upload failed.');
+        }
         final photo64 = data['photo'] as String;
+        _resolvedBaseUrl = candidate;
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString('photo', photo64);
         photoNotifier.value = photo64;
@@ -180,7 +274,9 @@ class AuthService {
     }
 
     throw Exception(
-      'Cannot reach auth server. Check backend and AUTH_BASE_URL. Tried: ${_candidateBaseUrls().join(', ')}${lastConnectionError != null ? ' (${lastConnectionError.runtimeType})' : ''}',
+      'Cannot reach auth server. Check backend and AUTH_BASE_URL. '
+      'If you are on a physical Android phone, set AUTH_BASE_URL to your PC IP, '
+      'for example http://192.168.x.x:8000. Tried: ${_candidateBaseUrls().join(', ')}${lastConnectionError != null ? ' (${lastConnectionError.runtimeType})' : ''}',
     );
   }
 
@@ -197,6 +293,103 @@ class AuthService {
     nameNotifier.value = data['name'] as String?;
     emailNotifier.value = data['email'] as String?;
     photoNotifier.value = data['photo'] as String?;
+
+    // Proactively warm server caches and rotation pools so quizzes are instant.
+    // Runs in background; failures are ignored.
+    unawaited(_backgroundPrefill());
+  }
+
+  static Future<void> _backgroundPrefill() async {
+    try {
+      final token = await getToken();
+      if (token == null || token.isEmpty) return;
+      final headers = {'Authorization': 'Bearer $token'};
+
+      // Prime mock-test cache (async, fallback-only for speed).
+      try {
+        await _postWithFallback(
+          '/mock-test/preload',
+          {'mode': 'async', 'use_fallback': true},
+          headers: headers,
+        );
+      } catch (_) {}
+
+      // Prefill a small set of high-traffic units; each call is async on the server.
+      final unitsToPrefill = <Map<String, String>>[
+        // Physics
+        {'subject': 'Physics', 'unit': 'Physics and Measurement'},
+        {'subject': 'Physics', 'unit': 'Kinematics'},
+        {'subject': 'Physics', 'unit': 'Laws of Motion'},
+        {'subject': 'Physics', 'unit': 'Work, Energy and Power'},
+        {'subject': 'Physics', 'unit': 'Rotational Motion'},
+        {'subject': 'Physics', 'unit': 'Gravitation'},
+        {'subject': 'Physics', 'unit': 'Properties of Solids and Liquids'},
+        {'subject': 'Physics', 'unit': 'Thermodynamics'},
+        {'subject': 'Physics', 'unit': 'Kinetic Theory of Gases'},
+        {'subject': 'Physics', 'unit': 'Oscillations and Waves'},
+        {'subject': 'Physics', 'unit': 'Electrostatics'},
+        {'subject': 'Physics', 'unit': 'Current Electricity'},
+        {'subject': 'Physics', 'unit': 'Magnetic Effects of Current and Magnetism'},
+        {'subject': 'Physics', 'unit': 'Electromagnetic Induction and Alternating Currents'},
+        {'subject': 'Physics', 'unit': 'Electromagnetic Waves'},
+        {'subject': 'Physics', 'unit': 'Optics'},
+        {'subject': 'Physics', 'unit': 'Dual Nature of Matter and Radiation'},
+        {'subject': 'Physics', 'unit': 'Atoms and Nuclei'},
+        {'subject': 'Physics', 'unit': 'Electronic Devices'},
+        // Chemistry - Physical
+        {'subject': 'Chemistry', 'unit': 'Some Basic Concepts in Chemistry'},
+        {'subject': 'Chemistry', 'unit': 'Atomic Structure'},
+        {'subject': 'Chemistry', 'unit': 'Chemical Bonding and Molecular Structure'},
+        {'subject': 'Chemistry', 'unit': 'Chemical Thermodynamics'},
+        {'subject': 'Chemistry', 'unit': 'Equilibrium'},
+        {'subject': 'Chemistry', 'unit': 'Solutions'},
+        {'subject': 'Chemistry', 'unit': 'Redox Reactions and Electrochemistry'},
+        {'subject': 'Chemistry', 'unit': 'Chemical Kinetics'},
+        // Chemistry - Inorganic
+        {'subject': 'Chemistry', 'unit': 'Classification of Elements and Periodicity in Properties'},
+        {'subject': 'Chemistry', 'unit': 'P-Block Elements'},
+        {'subject': 'Chemistry', 'unit': 'd- and f-Block Elements'},
+        {'subject': 'Chemistry', 'unit': 'Co-ordination Compounds'},
+        // Chemistry - Organic
+        {'subject': 'Chemistry', 'unit': 'Purification and Characterisation of Organic Compounds'},
+        {'subject': 'Chemistry', 'unit': 'Some Basic Principles of Organic Chemistry'},
+        {'subject': 'Chemistry', 'unit': 'Hydrocarbons'},
+        {'subject': 'Chemistry', 'unit': 'Organic Compounds Containing Halogens'},
+        {'subject': 'Chemistry', 'unit': 'Organic Compounds Containing Oxygen'},
+        {'subject': 'Chemistry', 'unit': 'Organic Compounds Containing Nitrogen'},
+        {'subject': 'Chemistry', 'unit': 'Biomolecules'},
+        {'subject': 'Chemistry', 'unit': 'Principles Related to Practical Chemistry'},
+        // Biology
+        {'subject': 'Biology', 'unit': 'Diversity in Living World'},
+        {'subject': 'Biology', 'unit': 'Structural Organisation in Animals and Plants'},
+        {'subject': 'Biology', 'unit': 'Cell Structure and Function'},
+        {'subject': 'Biology', 'unit': 'Plant Physiology'},
+        {'subject': 'Biology', 'unit': 'Human Physiology'},
+        {'subject': 'Biology', 'unit': 'Reproduction'},
+        {'subject': 'Biology', 'unit': 'Genetics and Evolution'},
+        {'subject': 'Biology', 'unit': 'Biology and Human Welfare'},
+        {'subject': 'Biology', 'unit': 'Biotechnology and Its Applications'},
+        {'subject': 'Biology', 'unit': 'Ecology and Environment'},
+      ];
+
+      const int size = 50;
+      const int maxUnits = 6;
+      for (final u in unitsToPrefill.take(maxUnits)) {
+        try {
+          await _postWithFallback(
+            '/mock-test/unit/prefill?mode=async&size=$size',
+            {
+              'subject': u['subject'],
+              'unit': u['unit'],
+            },
+            headers: headers,
+            timeout: const Duration(seconds: 8),
+          );
+        } catch (_) {}
+      }
+    } catch (_) {
+      // ignore all background prefill errors
+    }
   }
 
   static Future<bool> isLoggedIn() async {
@@ -205,6 +398,7 @@ class AuthService {
   }
 
   static Future<void> logout() async {
+    await GoogleAuthService.signOut();
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
     nameNotifier.value = null;

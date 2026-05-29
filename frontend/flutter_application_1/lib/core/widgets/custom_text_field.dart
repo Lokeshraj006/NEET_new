@@ -66,21 +66,23 @@ class _CustomTextFieldState extends State<CustomTextField> {
         textInputAction: widget.textInputAction,
         onSubmitted: widget.onSubmitted,
         maxLines: widget.maxLines,
+        style: TextStyle(color: AppColors.textPrimary),
         decoration: InputDecoration(
           hintText: widget.hintText,
           prefixIcon: widget.prefixIcon,
           suffixIcon: widget.suffixIcon,
           filled: true,
-          fillColor: Colors.white,
+          fillColor: AppColors.surface,
           contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.transparent),
+            borderSide: BorderSide(color: AppColors.border),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(color: AppColors.primary.withValues(alpha: 0.9), width: 1.6),
           ),
+          hintStyle: TextStyle(color: AppColors.textSecondary),
         ),
       ),
     );

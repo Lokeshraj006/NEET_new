@@ -66,7 +66,7 @@ class ProgressCard extends StatelessWidget {
             child: LinearProgressIndicator(
               value: progress,
               minHeight: 10,
-              backgroundColor: const Color(0xFFF0FDF4),
+              backgroundColor: AppColors.background,
               valueColor: const AlwaysStoppedAnimation(AppColors.primary),
             ),
           ),

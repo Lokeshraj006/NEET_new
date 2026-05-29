@@ -22,14 +22,18 @@ class CustomButton extends StatefulWidget {
   State<CustomButton> createState() => _CustomButtonState();
 }
 
-class _CustomButtonState extends State<CustomButton> with SingleTickerProviderStateMixin {
+class _CustomButtonState extends State<CustomButton>
+    with SingleTickerProviderStateMixin {
   bool _pressed = false;
   late final AnimationController _shimmerController;
 
   @override
   void initState() {
     super.initState();
-    _shimmerController = AnimationController(vsync: this, duration: const Duration(seconds: 2))..repeat();
+    _shimmerController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..repeat();
   }
 
   @override
@@ -40,13 +44,14 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
+    final loadingColor = widget.outlined ? AppColors.primary : Colors.white;
     final content = widget.loading
-        ? const SizedBox(
+        ? SizedBox(
             width: 18,
             height: 18,
             child: CircularProgressIndicator(
               strokeWidth: 2,
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              valueColor: AlwaysStoppedAnimation<Color>(loadingColor),
             ),
           )
         : Row(
@@ -61,7 +66,9 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
             ],
           );
 
-    final shape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(18));
+    final shape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(18),
+    );
 
     final buttonChild = AnimatedScale(
       duration: const Duration(milliseconds: 120),
@@ -78,7 +85,8 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
                   animation: _shimmerController,
                   builder: (context, child) {
                     final w = MediaQuery.of(context).size.width;
-                    final dx = ( _shimmerController.value * (w * 1.2)) - (w * 0.2);
+                    final dx =
+                        (_shimmerController.value * (w * 1.2)) - (w * 0.2);
                     return Transform.translate(
                       offset: Offset(dx, 0),
                       child: Opacity(
@@ -88,7 +96,11 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
                             gradient: LinearGradient(
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
-                              colors: [Colors.white.withValues(alpha: 0.0), Colors.white.withValues(alpha: 0.18), Colors.white.withValues(alpha: 0.0)],
+                              colors: [
+                                Colors.white.withValues(alpha: 0.0),
+                                Colors.white.withValues(alpha: 0.18),
+                                Colors.white.withValues(alpha: 0.0),
+                              ],
                               stops: const [0.0, 0.5, 1.0],
                             ),
                             borderRadius: BorderRadius.circular(18),
@@ -117,7 +129,7 @@ class _CustomButtonState extends State<CustomButton> with SingleTickerProviderSt
             style: OutlinedButton.styleFrom(
               foregroundColor: AppColors.primary,
               side: const BorderSide(color: AppColors.primary),
-              backgroundColor: Colors.white,
+              backgroundColor: AppColors.surface,
               shape: shape,
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 11),
             ),

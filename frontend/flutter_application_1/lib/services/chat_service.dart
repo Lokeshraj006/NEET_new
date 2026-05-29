@@ -58,8 +58,8 @@ class ChatService {
       final uri = Uri.parse('$candidate/chat');
       try {
         final res = await http
-            .post(uri, body: jsonEncode(body), headers: {'Content-Type': 'application/json'})
-            .timeout(const Duration(seconds: 60));
+          .post(uri, body: jsonEncode(body), headers: {'Content-Type': 'application/json'})
+          .timeout(const Duration(seconds: 120));
         if (res.statusCode != 200) {
           throw Exception('Server error (${res.statusCode}) from $candidate.');
         }

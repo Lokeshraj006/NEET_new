@@ -30,10 +30,6 @@ class _QuizInProgressState extends State<QuizInProgress> {
   Map<String, dynamic>? _submitResult;
   static const String _progressPrefix = 'unit_quiz_progress_';
   static const int _progressExpirySeconds = 24 * 3600; // 24 hours
-  static const int _autoSubmitNoticeSeconds = 5; // show undo 5s before auto-submit
-  bool _autoNoticeShown = false;
-  bool _autoCancelled = false;
-  Timer? _autoSubmitCountdownTimer;
 
   @override
   void initState() {
@@ -47,8 +43,6 @@ class _QuizInProgressState extends State<QuizInProgress> {
           if (_remainingSeconds == 0 && !_submitted && !_submitting) {
             // time's up -> auto-submit
             _autoSubmit();
-          } else if (_remainingSeconds == _autoSubmitNoticeSeconds && !_autoNoticeShown && !_submitted && !_submitting) {
-            _showAutoSubmitNotice();
           }
         }
       });
@@ -240,32 +234,6 @@ class _QuizInProgressState extends State<QuizInProgress> {
     if (!mounted) return;
     await Future.delayed(const Duration(milliseconds: 300));
     await _submit();
-  }
-
-  void _showAutoSubmitNotice() {
-    if (!mounted) return;
-    _autoNoticeShown = true;
-    _autoCancelled = false;
-    // start a countdown timer; if it reaches zero, submit
-    _autoSubmitCountdownTimer = Timer(Duration(seconds: _autoSubmitNoticeSeconds), () {
-      if (!_autoCancelled && !_submitted && !_submitting) {
-        _autoSubmit();
-      }
-    });
-
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text('Auto-submitting in ${_autoSubmitNoticeSeconds}s — tap CANCEL to stop'),
-      duration: Duration(seconds: _autoSubmitNoticeSeconds),
-      action: SnackBarAction(label: 'CANCEL', onPressed: () {
-        _autoCancelled = true;
-        _autoSubmitCountdownTimer?.cancel();
-        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        // give user a small buffer by restoring a few seconds
-        setState(() {
-          _remainingSeconds = 3; // small buffer
-        });
-      }),
-    ));
   }
 
   Future<void> _saveProgress() async {

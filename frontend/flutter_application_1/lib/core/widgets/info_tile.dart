@@ -64,7 +64,7 @@ class InfoTile extends StatelessWidget {
               ],
             ),
           ),
-          trailing ?? const Icon(Icons.chevron_right_rounded, color: AppColors.textSecondary),
+          trailing ?? Icon(Icons.chevron_right_rounded, color: AppColors.textSecondary),
         ],
       ),
     );

@@ -2130,7 +2130,22 @@ def generate_unit_quiz(req: UnitQuizGenerateRequest, authorization: Optional[str
             df.write(f"calling_generate_unit_questions:{subject}:{unit}\n")
     except Exception:
         pass
-    questions = _generate_unit_questions(subject, unit, UNIT_QUIZ_COUNT, list(history_hashes), seed, history_concepts=_load_concept_history(user_id))
+    # Fast-path: try to pop pre-built rotation questions for this user/unit.
+    try:
+        rotation_questions = _pop_rotation_questions(user_id, subject, unit, UNIT_QUIZ_COUNT)
+    except Exception:
+        rotation_questions = []
+
+    if rotation_questions and len(rotation_questions) >= UNIT_QUIZ_COUNT:
+        questions = rotation_questions[:UNIT_QUIZ_COUNT]
+        print(f"[mock_test_api] used {len(questions)} rotation questions")
+    else:
+        # Start background pool build so future requests are faster.
+        try:
+            Thread(target=lambda: _build_rotation_pool(user_id, subject, unit, max(100, UNIT_QUIZ_COUNT * 10)), daemon=True).start()
+        except Exception:
+            pass
+        questions = _generate_unit_questions(subject, unit, UNIT_QUIZ_COUNT, list(history_hashes), seed, history_concepts=_load_concept_history(user_id))
     print(f"[mock_test_api] generated {len(questions)} questions from generator")
     try:
         with open(BASE_DIR / 'debug_unit.log', 'a', encoding='utf-8') as df:
