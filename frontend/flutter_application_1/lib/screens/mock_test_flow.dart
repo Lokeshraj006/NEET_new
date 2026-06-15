@@ -680,16 +680,23 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final titleColor = isDark ? Colors.white : AppColors.textPrimary;
+    final bodyColor = isDark ? Colors.white70 : AppColors.textSecondary;
+
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {},
       child: Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: isDark ? const Color(0xFF071018) : AppColors.background,
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text(
             'Paper ${widget.setId}',
-            style: GoogleFonts.poppins(fontWeight: FontWeight.w800),
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w800,
+              color: titleColor,
+            ),
           ),
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -700,7 +707,7 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
             width: double.infinity,
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: isDark ? const Color(0xFF0B1220) : AppColors.surface,
               borderRadius: BorderRadius.circular(28),
               boxShadow: const [
                 BoxShadow(
@@ -718,24 +725,29 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
                   style: GoogleFonts.poppins(
                     fontSize: 22,
                     fontWeight: FontWeight.w800,
+                    color: titleColor,
                   ),
                 ),
                 const SizedBox(height: 12),
-                const _RuleTile('NEET scoring pattern is followed strictly.'),
-                const _RuleTile(
+                _RuleTile('NEET scoring pattern is followed strictly.', isDark: isDark),
+                _RuleTile(
                   '4 sections are included: Physics, Chemistry, Botany, and Zoology.',
+                  isDark: isDark,
                 ),
-                const _RuleTile('Each section has 45 questions (total 180 questions).'),
-                const _RuleTile(
+                _RuleTile('Each section has 45 questions (total 180 questions).', isDark: isDark),
+                _RuleTile(
                   'Marks: +4 for correct, -1 for wrong, 0 for unattempted.',
+                  isDark: isDark,
                 ),
-                const _RuleTile('Total duration is 3 hours, like NEET exam mode.'),
-                const _RuleTile(
+                _RuleTile('Total duration is 3 hours, like NEET exam mode.', isDark: isDark),
+                _RuleTile(
                   'Mark for Review, Previous, and Save & Next are available.',
+                  isDark: isDark,
                 ),
-                const _RuleTile('Submit only after reviewing the whole paper.'),
-                const _RuleTile(
+                _RuleTile('Submit only after reviewing the whole paper.', isDark: isDark),
+                _RuleTile(
                   'When the mock test starts, full-screen mode is enabled: you will not be able to use app navigation or the bottom navigation bar until you end or submit the test. Normal app navigation resumes only after the test is ended.',
+                  isDark: isDark,
                 ),
                 const SizedBox(height: 18),
                 if (_error != null)
@@ -752,9 +764,7 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: (_starting || _loading || _bundle == null)
-                        ? null
-                        : _startTest,
+                    onPressed: _loading || _error != null ? null : _startTest,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: _kPrimary,
                       foregroundColor: Colors.white,
@@ -778,7 +788,7 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
                             _loadingButtonLabel(),
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w800,
-                              color: AppColors.textPrimary,
+                              color: bodyColor,
                             ),
                           ),
                   ),
@@ -798,8 +808,9 @@ class _MockTestSetRulesScreenState extends State<MockTestSetRulesScreen> {
 
 class _RuleTile extends StatelessWidget {
   final String text;
+  final bool isDark;
 
-  const _RuleTile(this.text);
+  const _RuleTile(this.text, {required this.isDark});
 
   @override
   Widget build(BuildContext context) {
@@ -818,7 +829,7 @@ class _RuleTile extends StatelessWidget {
               text,
               style: GoogleFonts.poppins(
                 fontSize: 14,
-                color: Colors.black87,
+                color: isDark ? Colors.white70 : Colors.black87,
                 height: 1.4,
               ),
             ),
@@ -2131,7 +2142,7 @@ class QuestionCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 child: Container(
                   width: double.infinity,
-                  color: const Color(0xFFF8FAFC),
+                  color: isDark ? const Color(0xFF0F172A) : const Color(0xFFF8FAFC),
                   padding: const EdgeInsets.all(10),
                   child: Image.memory(
                     questionImageBytes,
@@ -2192,6 +2203,7 @@ class OptionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(18),
@@ -2219,7 +2231,7 @@ class OptionButton extends StatelessWidget {
               child: Text(
                 label,
                 style: GoogleFonts.poppins(
-                  color: selected ? Colors.white : Colors.black87,
+                  color: selected ? Colors.white : (isDark ? Colors.white70 : Colors.black87),
                   fontWeight: FontWeight.w700,
                   fontSize: 12,
                 ),
@@ -2231,13 +2243,13 @@ class OptionButton extends StatelessWidget {
                 text,
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w600,
-                  color: selected ? _kPrimary : Colors.black87,
+                  color: selected ? _kPrimary : (isDark ? Colors.white70 : Colors.black87),
                 ),
               ),
             ),
             Icon(
               selected ? Icons.radio_button_checked : Icons.radio_button_off,
-              color: selected ? _kPrimary : Colors.black26,
+              color: selected ? _kPrimary : (isDark ? Colors.white38 : Colors.black26),
             ),
           ],
         ),
@@ -2276,6 +2288,7 @@ class QuestionPalette extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final surface = isDark ? const Color(0xFF111A2A) : Colors.white;
     final titleColor = isDark ? Colors.white : AppColors.textPrimary;
     final subtitleColor = isDark ? Colors.white70 : AppColors.textSecondary;
@@ -3114,7 +3127,7 @@ class _ChartsPanel extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontSize: 12,
             fontWeight: FontWeight.w600,
-            color: Colors.black87,
+            color: Colors.white70,
           ),
         ),
       ],
@@ -3130,16 +3143,23 @@ class _ChartCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF8FAFC),
+        color: isDark ? const Color(0xFF0B1220) : const Color(0xFFF8FAFC),
         borderRadius: BorderRadius.circular(22),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: GoogleFonts.poppins(fontWeight: FontWeight.w700)),
+          Text(
+            title,
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w700,
+              color: isDark ? Colors.white : AppColors.textPrimary,
+            ),
+          ),
           const SizedBox(height: 12),
           SizedBox(height: 220, child: child),
         ],
@@ -3484,12 +3504,18 @@ class _PracticeHeroCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final titleColor = isDark ? Colors.white : AppColors.textPrimary;
+    final bodyColor = isDark ? Colors.white70 : Colors.black54;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [AppColors.surface, AppColors.background],
+          colors: isDark
+              ? [const Color(0xFF0B1220), const Color(0xFF111827)]
+              : [AppColors.surface, AppColors.background],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -3531,12 +3557,13 @@ class _PracticeHeroCard extends StatelessWidget {
                       style: GoogleFonts.poppins(
                         fontSize: 22,
                         fontWeight: FontWeight.w800,
+                        color: titleColor,
                       ),
                     ),
                     const SizedBox(height: 6),
                     Text(
                       'Attempt a full NEET-style mock test covering all subjects.',
-                      style: GoogleFonts.poppins(color: Colors.black54),
+                      style: GoogleFonts.poppins(color: bodyColor),
                     ),
                   ],
                 ),
@@ -3636,11 +3663,15 @@ class _MockTestInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final titleColor = isDark ? Colors.white : AppColors.textPrimary;
+    final bodyColor = isDark ? Colors.white70 : Colors.black54;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: isDark ? const Color(0xFF0B1220) : AppColors.surface,
         borderRadius: BorderRadius.circular(28),
         boxShadow: const [
           BoxShadow(
@@ -3748,11 +3779,15 @@ class _QuizzesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final titleColor = isDark ? Colors.white : AppColors.textPrimary;
+    final bodyColor = isDark ? Colors.white70 : AppColors.textSecondary;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: isDark ? const Color(0xFF0B1220) : AppColors.surface,
         borderRadius: BorderRadius.circular(28),
         boxShadow: const [
           BoxShadow(
@@ -3783,12 +3818,13 @@ class _QuizzesCard extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 22,
               fontWeight: FontWeight.w800,
+              color: titleColor,
             ),
           ),
           const SizedBox(height: 6),
           Text(
             'Attempt quizzes for separate units and practice topic by topic.',
-            style: GoogleFonts.poppins(color: Colors.black54),
+            style: GoogleFonts.poppins(color: bodyColor),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 14),
@@ -3828,11 +3864,13 @@ class _CombinedMockCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: isDark ? const Color(0xFF0B1220) : AppColors.surface,
         borderRadius: BorderRadius.circular(28),
         boxShadow: const [
           BoxShadow(
@@ -3867,13 +3905,16 @@ class _CombinedMockCard extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 22,
               fontWeight: FontWeight.w800,
+              color: isDark ? Colors.white : AppColors.textPrimary,
             ),
           ),
           const SizedBox(height: 8),
           Text(
             'Take the complete NEET-style paper with Physics, Chemistry, and Biology in exam conditions.',
             textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(color: Colors.black54),
+            style: GoogleFonts.poppins(
+              color: isDark ? Colors.white70 : Colors.black54,
+            ),
           ),
           const SizedBox(height: 16),
           Center(

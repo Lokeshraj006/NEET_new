@@ -1,17 +1,17 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'package:flutter_application_1/core/constants/app_colors.dart';
 import 'package:flutter_application_1/models/home_model.dart';
 import 'package:flutter_application_1/screens/chat_screen.dart';
 import 'package:flutter_application_1/screens/profile_screen.dart';
+import 'package:flutter_application_1/screens/syllabus_pdf_screen.dart';
 import 'package:flutter_application_1/widgets/bottom_nav.dart';
 import 'package:flutter_application_1/services/auth_service.dart';
+import 'package:flutter_application_1/services/backend_document_service.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -19,6 +19,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.watch<HomeModel>();
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final titleColor = isDark ? Colors.white : AppColors.textPrimary;
+    final bodyColor = isDark ? Colors.white70 : AppColors.textSecondary;
 
     return Scaffold(
       body: SafeArea(
@@ -57,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                                 style: GoogleFonts.manrope(
                                   fontSize: 26,
                                   height: 1.15,
-                                  color: AppColors.textPrimary,
+                                  color: titleColor,
                                 ),
                                 children: [
                                   const TextSpan(text: 'Hello '),
@@ -65,6 +68,7 @@ class HomeScreen extends StatelessWidget {
                                     text: displayName,
                                     style: GoogleFonts.manrope(
                                       fontWeight: FontWeight.w700,
+                                      color: titleColor,
                                     ),
                                   ),
                                 ],
@@ -77,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                                 fontSize: 14,
                                 fontStyle: FontStyle.italic,
                                 height: 1.7,
-                                color: AppColors.textSecondary,
+                                color: bodyColor,
                               ),
                             ),
                           ],
@@ -103,13 +107,13 @@ class HomeScreen extends StatelessWidget {
                     style: GoogleFonts.poppins(
                       fontSize: 18,
                       fontWeight: FontWeight.w800,
-                      color: AppColors.textPrimary,
+                      color: titleColor,
                     ),
                   ),
                   const SizedBox(height: 10),
                   _SyllabusCard(
                     onTap: () => _openSyllabus(context),
-                    onDownloadTap: () => _openSyllabus(context, download: true),
+                    onDownloadTap: () => _downloadSyllabus(context),
                   ),
                   const SizedBox(height: 14),
                   _AiAssistantBanner(
@@ -135,14 +139,26 @@ class HomeScreen extends StatelessWidget {
   }
 
   Future<void> _openSyllabus(BuildContext context, {bool download = false}) async {
-    final baseUrl = kIsWeb
-        ? 'http://localhost:8000/syllabus/neet.pdf'
-        : 'http://10.0.2.2:8000/syllabus/neet.pdf';
-    final uri = Uri.parse('$baseUrl${download ? '?download=1' : ''}');
-    final launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
-    if (!launched && context.mounted) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => const SyllabusPdfScreen()),
+    );
+  }
+
+  Future<void> _downloadSyllabus(BuildContext context) async {
+    try {
+      final savedPath = await BackendDocumentService.downloadSyllabusPdf();
+      if (!context.mounted) {
+        return;
+      }
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Unable to open NEET syllabus PDF.')),
+        SnackBar(content: Text('PDF downloaded to $savedPath')),
+      );
+    } catch (error) {
+      if (!context.mounted) {
+        return;
+      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Unable to download NEET syllabus PDF: $error')),
       );
     }
   }
@@ -156,6 +172,10 @@ class _DashboardHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final titleColor = isDark ? Colors.white : AppColors.textPrimary;
+    final subtitleColor = isDark ? Colors.white70 : AppColors.textSecondary;
+
     return Row(
       children: [
         Column(
@@ -166,7 +186,7 @@ class _DashboardHeader extends StatelessWidget {
               style: GoogleFonts.poppins(
                 fontSize: 24,
                 fontWeight: FontWeight.w800,
-                color: AppColors.textPrimary,
+                color: titleColor,
               ),
             ),
             const SizedBox(height: 2),
@@ -174,7 +194,7 @@ class _DashboardHeader extends StatelessWidget {
               'Medical learning dashboard',
               style: GoogleFonts.poppins(
                 fontSize: 12,
-                color: AppColors.textSecondary,
+                color: subtitleColor,
               ),
             ),
           ],

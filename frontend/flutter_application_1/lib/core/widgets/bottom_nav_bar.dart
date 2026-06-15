@@ -10,9 +10,13 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final background = isDark ? const Color(0xFF071426) : Colors.white;
+
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: background,
         boxShadow: [
           BoxShadow(
             color: Color(0x12000000),
@@ -25,14 +29,22 @@ class BottomNavBar extends StatelessWidget {
         top: false,
         child: NavigationBarTheme(
           data: NavigationBarThemeData(
-            labelTextStyle: WidgetStateProperty.resolveWith<TextStyle?>((_) {
-              return const TextStyle(fontSize: 12, height: 1.0);
+            backgroundColor: background,
+            indicatorColor: isDark ? AppColors.primarySoft : AppColors.primarySoft,
+            labelTextStyle: WidgetStateProperty.resolveWith<TextStyle?>((states) {
+              return TextStyle(
+                fontSize: 12,
+                height: 1.0,
+                color: states.contains(WidgetState.selected)
+                    ? theme.colorScheme.primary
+                    : theme.colorScheme.onSurfaceVariant,
+              );
             }),
           ),
           child: NavigationBar(
             selectedIndex: selectedIndex,
             onDestinationSelected: onTap,
-            backgroundColor: Colors.transparent,
+            backgroundColor: background,
             indicatorColor: AppColors.primarySoft,
             labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
             destinations: const [
